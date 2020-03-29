@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Spring源码分析/Spring源码导读 |  桃花岛杂货铺
+    Spring IoC源码分析 - 深入理解IoC |  桃花岛杂货铺
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Spring源码分析/Spring源码导读" class="article article-type-post" itemscope
+  <article id="post-Spring IoC源码分析 - 深入理解IoC" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Spring源码分析/Spring源码导读
+  Spring IoC源码分析 - 深入理解IoC
 </h1>
  
 
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/29/Spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Spring%E6%BA%90%E7%A0%81%E5%AF%BC%E8%AF%BB/" class="article-date">
-  <time datetime="2020-03-29T11:02:48.504Z" itemprop="datePublished">2020-03-29</time>
+      <a href="/2020/03/29/Spring%20IoC%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3IoC/" class="article-date">
+  <time datetime="2020-03-29T11:04:20.922Z" itemprop="datePublished">2020-03-29</time>
 </a>
       
       
@@ -63,7 +63,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">600字</span>
+            <span class="post-count">438字</span>
         </span>
     </span>
 
@@ -72,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -97,60 +97,27 @@
       
 
       
-      <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 IoC（Inverse Of Control：反转控制）和 AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层 Spring MVC 和持久层 Spring JDBC 以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架。</p>
-<p>因为这阵子学习Java框架但是只是会表面的进行一些使用，对内部的结构原理并没有深入的去了解，所以觉得还是有必要进行一下源码的解读，一方面可以对Spring的原理更加深入的了解，另一方面也学习如下如何更加系统的阅读代码。主要还是跟着书籍及一些博主进行阅读，最好的当然是有自己的认识，多写注释多画图，相信会有一些收获的。</p>
-<p>可从GitHub上面拉取进行源码分析：<a href="https://github.com/spring-projects/spring-framework。" target="_blank" rel="noopener">https://github.com/spring-projects/spring-framework。</a> 我是直接进行了最新版本的clone：version=5.2.4.BUILD-SNAPSHOT。应该不会有什么问题，进行源码的阅读也仅仅是基础模块，不会对新的内容方向进行深入了解。</p>
-<p>所使用的工具及版本号如下：</p>
-<ul>
-<li>JDK1.8+</li>
-<li>IntelliJ IDEA 2019.2</li>
-<li>spring-framework 5.2.4.BUILD-SNAPSHOT</li>
-</ul>
-<h3 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h3><p>对于Spring框架的庞大早有耳闻，鉴于自己的水平不够，只能先制订一下大体阅读Spring源码的方向，再各个方向去进行攻克，如果发现有可以继续深入探索的地方，则后面续上；大体上对Spring源码的阅读分为两大部分：IOC 及 AOP</p>
-<ul>
-<li>IOC方面主要深入了解：<ul>
-<li>IOC的基础原理，IOC特性及IOC的使用认识。</li>
-<li>单例Bean的注册、获取、创建、解析、加载等等过程。</li>
-<li>分析单例Bean的生命周期。</li>
-<li>分析BeanDefinitions装载过程。</li>
-<li>分析BeanWrapper。</li>
-<li></li>
+      <p>在开始IOC源码之前先了解清楚一下理论知识，因为IOC和DI（即依赖注入）大概分为一下几点：</p>
+<ol>
+<li>IoC是什么？</li>
+<li>IoC能做什么？</li>
+<li>IoC的别名：DI(依赖注入)</li>
+<li>IoC和DI的关系是什么？</li>
+</ol>
+<h4 id="1-IoC是什么？"><a href="#1-IoC是什么？" class="headerlink" title="1.IoC是什么？"></a>1.IoC是什么？</h4><p>IoC 全称为 Inversion of Control，翻译为 “控制反转”，可以说这并不是一项技术，只是一种思想而已。<strong>在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong> 理解IoC主要的关键在于理解两个问题：</p>
+<ol>
+<li><strong>谁控制谁，控制什么</strong>：<u>直接说明，是IoC容器控制了对象，控制了外部资源的获取（不只是对象，还有文件等等）</u><ul>
+<li>在传统Java SE程序设计中，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；</li>
 </ul>
 </li>
-<li>AOP方面主要深入了解：<ul>
-<li>AOP的基础原理，</li>
-<li>基于XML和基于注解的使用</li>
-<li>创建代理对象的过程</li>
-<li>请求的完整过程</li>
-<li></li>
+<li><strong>为何是反转，哪些方面反转了</strong>：<ul>
+<li>首先需要理解的是，正转的意思：在传统应用程序中，是由我们自己在对象中主动控制去直接获取依赖对象，这就是正转。</li>
+<li>反转的意思： 由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，这是反转。 </li>
+<li>哪些方面反转了呢：依赖对象的获取被反转了。</li>
 </ul>
 </li>
-</ul>
-<h3 id="3-Spring-模块结构"><a href="#3-Spring-模块结构" class="headerlink" title="3.Spring 模块结构"></a>3.Spring 模块结构</h3><h3 id="4-结束语"><a href="#4-结束语" class="headerlink" title="4.结束语"></a>4.结束语</h3><p>附录：Spring 源码分析文章列表</p>
-<table>
-<thead>
-<tr>
-<th>更新时间</th>
-<th>更新文章</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2020-2-13</td>
-<td></td>
-</tr>
-<tr>
-<td>2020-2-13</td>
-<td></td>
-</tr>
-<tr>
-<td>content1</td>
-<td>content2</td>
-</tr>
-<tr>
-<td>content1</td>
-<td>content2</td>
-</tr>
-</tbody></table>
+</ol>
+<p>总的来说对于IoC一句话概括为：<strong>所谓IoC就是由 Spring IOC 容器来负责对象的生命周期和对象之间的关系。</strong> 其理念即为：让别人为你服务。</p>
 
       
       <!-- reward -->
@@ -216,7 +183,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://dongxiem.github.io/2020/03/29/Spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Spring%E6%BA%90%E7%A0%81%E5%AF%BC%E8%AF%BB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://dongxiem.github.io/2020/03/29/Spring%20IoC%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3IoC/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -232,19 +199,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/29/Spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Spring%20IoC%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3IoC/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Spring源码分析/Spring IoC 源码分析 - 深入理解IoC
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/03/29/Java%E5%B9%B6%E5%8F%91%E7%9B%B8%E5%85%B3/Java%E9%9B%86%E5%90%88%E5%B9%B6%E5%8F%91%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" class="article-nav-link">
+      <a href="/2020/03/29/Spring%20%E6%BA%90%E7%A0%81%E5%AF%BC%E8%AF%BB/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java并发相关/Java集合并发分析导页</div>
+        <div class="article-nav-title">Spring 源码导读</div>
       </a>
     
   </nav>
