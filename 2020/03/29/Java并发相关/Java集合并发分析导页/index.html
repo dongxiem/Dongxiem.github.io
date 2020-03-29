@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java集合源码分析导页 |  桃花岛杂货铺
+    Java并发相关/Java集合并发分析导页 |  桃花岛杂货铺
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Java集合源码分析导页" class="article article-type-post" itemscope
+  <article id="post-Java并发相关/Java集合并发分析导页" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java集合源码分析导页
+  Java并发相关/Java集合并发分析导页
 </h1>
  
 
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/29/Java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" class="article-date">
-  <time datetime="2020-03-29T10:55:24.323Z" itemprop="datePublished">2020-03-29</time>
+      <a href="/2020/03/29/Java%E5%B9%B6%E5%8F%91%E7%9B%B8%E5%85%B3/Java%E9%9B%86%E5%90%88%E5%B9%B6%E5%8F%91%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" class="article-date">
+  <time datetime="2020-03-29T10:55:51.080Z" itemprop="datePublished">2020-03-29</time>
 </a>
       
       
@@ -63,7 +63,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.1k字</span>
+            <span class="post-count">986字</span>
         </span>
     </span>
 
@@ -100,59 +100,93 @@
       <p>此篇文章整体内容如下：</p>
 <ol>
 <li>简介</li>
-<li>知识的窥探</li>
-<li>源码分析的排序</li>
+<li>文章的排序</li>
+<li>内容窥探</li>
 <li>结束语</li>
 </ol>
-<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。<br>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
-<p>工具与源码版本：</p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
+<p>在进行并发深入了解之前，先明白并发、并行、高并发的概念：</p>
 <ul>
-<li>IntelliJ IDEA 2019.2</li>
-<li>jdk-15+9 （直接从<a href="https://github.com/openjdk/jdk" target="_blank" rel="noopener">https://github.com/openjdk/jdk</a> Clone下来的）</li>
+<li>并发：是指在某个时间段内，多任务交替的执行任务。当有多个线程在操作时，把CPU运行时间划分成若干个时间段,再将时间段分配给各个线程执行。 在一个时间段的线程代码运行时，其它线程处于挂起状。</li>
+<li>并行：是指同一时刻同时处理多任务的能力。当有多个线程在操作时，cpu同时处理这些线程请求的能力。</li>
+<li>高并发：它通常是指，通过设计保证系统能够同时并行处理很多请求。</li>
 </ul>
-<h2 id="2-知识的窥探"><a href="#2-知识的窥探" class="headerlink" title="2.知识的窥探"></a>2.知识的窥探</h2><p>如若按照Collection和Map的归类来分的话，可以分为以下几部分：</p>
+<h1 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
+<p>主要涉及的源码及原理分析如下：</p>
 <ul>
-<li><strong>Collection</strong> <ol>
-<li><strong>List</strong><ol>
-<li>Arraylist： Object数。</li>
-<li>Vector： Object数组。</li>
-<li>LinkedList： 双向链表(JDK1.6之前为循环链表，JDK1.7取消了循环)。</li>
-</ol>
-</li>
-<li><strong>Set</strong><ol>
-<li>LinkedHashSet： LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 HashMap 实现一样，不过还是有一点点区别的。</li>
-<li>HashSet（无序，唯一）: 基于 HashMap 实现的，底层采用 HashMap 来保存元素。</li>
-<li>TreeSet（有序，唯一）： 红黑树(自平衡的排序二叉树)。</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><strong>Map</strong><ol>
-<li>HashMap： JDK1.8之前HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）。JDK1.8以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间。</li>
-<li>LinkedHashMap： LinkedHashMap 继承自 HashMap，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap 在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的插入顺序。同时通过对链表进行相应的操作，实现了访问顺序相关逻辑。详细可以查看：《LinkedHashMap 源码详细分析（JDK1.8）》</li>
-<li>Hashtable： 数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的</li>
-<li>TreeMap： 红黑树（自平衡的排序二叉树）</li>
-</ol>
-</li>
-<li><strong>注：如何选用集合?</strong><ul>
-<li>主要根据集合的特点来选用，比如我们需要根据键值获取到元素值时就选用Map接口下的集合，需要排序时选择TreeMap，不需要排序时就选择HashMap，需要保证线程安全就选用ConcurrentHashMap.当我们只需要存放元素值时，就选择实现Collection接口的集合，需要保证元素唯一时选择实现Set接口的集合比如TreeSet或HashSet，不需要就选择实现List接口的比如ArrayList或LinkedList，然后再根据实现这些接口的集合的特点来选用。</li>
+<li>Java 线程池分析</li>
+<li>Synchronized、Volatile 原理分析</li>
+<li>J.U.C AQS分析</li>
+<li>J.U.C 重入锁及读写锁分析</li>
+<li>J.U.C 并发工具类分析</li>
+<li>J.U.C 并发容器分析</li>
+<li>Java 阻塞队列分析</li>
+<li>Java CAS 原理分析</li>
+<li></li>
 </ul>
+<h1 id="3-内容窥探"><a href="#3-内容窥探" class="headerlink" title="3.内容窥探"></a>3.内容窥探</h1><ol>
+<li>线程与进程：<ol>
+<li>我们需要理解线程与进程的概念与联系、线程的底层数据结构源码的解析。</li>
+<li>线程的几种创建方式，这几种实现方式的源码的异同在哪里。</li>
+</ol>
 </li>
-</ul>
-<h2 id="3-源码分析的排序"><a href="#3-源码分析的排序" class="headerlink" title="3.源码分析的排序"></a>3.源码分析的排序</h2><p>主要涉及的源码及原理分析如下：</p>
-<ol>
-<li>ArrayList 源码分析</li>
-<li>LinkedList 源码分析</li>
-<li>HashMap 源码分析</li>
-<li>ConcurrentHashMap 源码分析</li>
-<li>HashSet源码分析</li>
-<li>LinkedHashMap 源码分析</li>
-<li>TreeMap 源码分析</li>
-<li>CopyOnWriteArrayList 源码分析</li>
+<li>线程池：<ol>
+<li>理解线程池的基本概念与基本架构</li>
+<li>ThreadPoolExecutor</li>
+<li>ScheduledThreadPoolExecutor</li>
+</ol>
+</li>
+<li>Synchronized：<ol>
+<li>理解Synchronized的作用</li>
+<li>进行Synchronized的代码解析</li>
+</ol>
+</li>
+<li>Volatile：<ol>
+<li>理解Volatile的作用</li>
+<li>进行Volatile的代码解析</li>
+</ol>
+</li>
+<li>AQS：AbstractQueuedSynvhronizer<ol>
+<li>同步队列</li>
+<li>同步状态</li>
+<li>阻塞与幻想线程</li>
+<li>独占/共享模式</li>
 <li></li>
 </ol>
-<h2 id="4-结束语"><a href="#4-结束语" class="headerlink" title="4.结束语"></a>4.结束语</h2><p>对于这个模块的学习，看源码是最好的，稍后补充</p>
-<p>以下为文章的更新时间及文章链接，可以直接传送：<br>|更新时间|更新文章|<br>|2020/2/14| <a href="http://ilovewincy.top/archives/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E8%AF%BB" target="_blank" rel="noopener">Java集合 源码分析导读</a>|<br>|更新。。|更新。。|</p>
+</li>
+<li>J.U.C 重入锁ReentrantLock、读写锁ReentrantReadWriteLock<ol>
+<li>理解各自的原理与作用</li>
+<li>进行代码解析</li>
+<li>进行使用对比</li>
+<li></li>
+</ol>
+</li>
+<li>J.U.C 并发工具类：<ol>
+<li>CountDownLatch</li>
+<li>CyclicBarrier</li>
+<li>Semaphore</li>
+<li>Exchanger</li>
+<li></li>
+</ol>
+</li>
+<li>J.U.C 并发容器：<ol>
+<li>ConcurrentHashMap</li>
+<li>ConcurrentLinkedQueue</li>
+<li>ConcurrentSkipListMap</li>
+</ol>
+</li>
+<li>J.U.C 阻塞队列：<ol>
+<li>ArrayBlockingQueue</li>
+<li>PriorityBlockingQueue</li>
+<li>DelayQueue</li>
+<li>SynchronousQueue</li>
+<li>LinkedTransferQueue</li>
+<li>LinkedBlockingDeque</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-结束语"><a href="#4-结束语" class="headerlink" title="4.结束语"></a>4.结束语</h1><p>因为我觉得我还是对一些高并发、高可用的知识较为感兴趣，所以对这一章节的内容可能会深入的探究一下，最好的方法我觉得还是看官方文档，这就需要一定的英语知识，可以采取的措施即为多看一下计算机相关的专业英语，实在不行的话借助翻译器也是一个方法；多动手去完成一些demo，进行编译Debug，这对以后工作状态当中进行排查错误是一个很好的方法，很多人只是了解基础知识，并没有去实践，这是一个问题所在；</p>
+<p>以下为文章的更新时间及文章链接，可以直接传送：<br>|更新时间|更新文章|<br>|2020/2/14|<a href="content2">Java并发 源码分析导读</a>|</p>
 
       
       <!-- reward -->
@@ -218,7 +252,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://dongxiem.github.io/2020/03/29/Java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://dongxiem.github.io/2020/03/29/Java%E5%B9%B6%E5%8F%91%E7%9B%B8%E5%85%B3/Java%E9%9B%86%E5%90%88%E5%B9%B6%E5%8F%91%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -234,19 +268,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/29/Java%E9%9B%86%E5%90%88%E5%B9%B6%E5%8F%91%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java集合并发分析导页
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/03/29/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AF%BC%E9%A1%B5/" class="article-nav-link">
+      <a href="/2020/03/29/Java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/Java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java基础知识导页</div>
+        <div class="article-nav-title">Java集合相关/Java集合源码分析导页</div>
       </a>
     
   </nav>
