@@ -63,7 +63,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k字</span>
+            <span class="post-count">2k字</span>
         </span>
     </span>
 
@@ -72,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">8分钟</span>
         </span>
     </span>
 </div>
@@ -123,7 +123,7 @@
 <li>注：这里的hash值并不是指hashcode，而是将hashcode高低十六位异或过的。</li>
 </ul>
 </li>
-<li><p><strong>那我用LinkedList代替数组结构可以么?</strong></p>
+<li><p>那我用<strong>LinkedList代替数组结构</strong>可以么？</p>
 <ul>
 <li>这里的意思是，源码中是这样的：<code>Entry[] table = new Entry[capacity];</code><ul>
 <li>ps：Entry就是一个链表节点。</li>
@@ -136,16 +136,16 @@
 <li>所以没毛病是可以使用用LinkedList代替数组结构</li>
 </ul>
 </li>
-<li><p><strong>那既然是可以的,为什么HashMap不用LinkedList,而选用数组?</strong></p>
+<li><p>那既然是可以的，<strong>为什么HashMap不用LinkedList，而选用数组?</strong></p>
 <ul>
 <li>因为用数组效率最高！在HashMap中，定位桶的位置是利用元素的key的哈希值对数组长度取模得到。此时，我们已得到桶的位置。显然数组的查找效率比LinkedList大。</li>
 </ul>
 </li>
-<li><p>继续挖一下，那ArrayList，底层也是数组，查找也快啊，<strong>为什么不用ArrayList（ArrayList代码分析）?</strong></p>
+<li><p>继续挖一下，那ArrayList，底层也是数组，查找也快啊，<strong>为什么不用ArrayList?</strong></p>
 <ul>
 <li><p>因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。</p>
 </li>
-<li><p>而为什么需要两倍扩容，在下面我会分析一下。</p>
+<li><p>而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。</p>
 </li>
 </ul>
 </li>
@@ -172,6 +172,55 @@
 <li>负载因子：loadFactor</li>
 <li>链表树化与树化链表的两个阈值：UNTREEIFY_THRESHOLD 和TREEIFY_THRESHOLD</li>
 </ul>
+<h2 id="3-3-HashMap的四种构造及参数分析"><a href="#3-3-HashMap的四种构造及参数分析" class="headerlink" title="3.3.HashMap的四种构造及参数分析"></a>3.3.HashMap的四种构造及参数分析</h2><ol>
+<li>无参构造，初始化一个哈希数组容量为16，装载因子为0.75的HashMap</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs an empty &#123;<span class="doctag">@code</span> HashMap&#125; with the default initial capacity</span></span><br><span class="line"><span class="comment"> * (16) and the default load factor (0.75).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR; <span class="comment">// all other fields defaulted</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>初始化一个哈希数组容量为initialCapacity，装载因子为0.75的HashMap</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs an empty &#123;<span class="doctag">@code</span> HashMap&#125; with the specified initial</span></span><br><span class="line"><span class="comment"> * capacity and the default load factor (0.75).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  initialCapacity the initial capacity.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IllegalArgumentException if the initial capacity is negative.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(initialCapacity, DEFAULT_LOAD_FACTOR);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>初始化一个哈希数组容量为initialCapacity，装载因子为loadFactor的HashMap</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Constructs an empty &#123;<span class="doctag">@code</span> HashMap&#125; with the specified initial</span></span><br><span class="line"><span class="comment">   * capacity and load factor.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span>  initialCapacity the initial capacity</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span>  loadFactor      the load factor</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@throws</span> IllegalArgumentException if the initial capacity is negative</span></span><br><span class="line"><span class="comment">   *         or the load factor is nonpositive</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 检查传入的初始容量是否合法</span></span><br><span class="line">      <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> +</span><br><span class="line">                                             initialCapacity);</span><br><span class="line">      <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">          initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">      <span class="comment">// 检查装载因子是否合法</span></span><br><span class="line">      <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +</span><br><span class="line">                                             loadFactor);</span><br><span class="line">      <span class="comment">// 初始化装载因子</span></span><br><span class="line">      <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">      <span class="comment">// 用初始容量信息来计算扩容门槛</span></span><br><span class="line">      <span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用指定的HashMap中的元素来初始化一个新的HashMap</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs a new &#123;<span class="doctag">@code</span> HashMap&#125; with the same mappings as the</span></span><br><span class="line"><span class="comment"> * specified &#123;<span class="doctag">@code</span> Map&#125;.  The &#123;<span class="doctag">@code</span> HashMap&#125; is created with</span></span><br><span class="line"><span class="comment"> * default load factor (0.75) and an initial capacity sufficient to</span></span><br><span class="line"><span class="comment"> * hold the mappings in the specified &#123;<span class="doctag">@code</span> Map&#125;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   m the map whose mappings are to be placed in this map</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span>  NullPointerException if the specified map is null</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">    <span class="comment">// 将指定HashMap中的元素存入到当前HashMap（允许覆盖）</span></span><br><span class="line">    putMapEntries(m, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们这这里对几个字段进行解释一下：</p>
+<h2 id="3-4-查询"><a href="#3-4-查询" class="headerlink" title="3.4.查询"></a>3.4.查询</h2><h3 id="3-4-1-查询HashMap大小"><a href="#3-4-1-查询HashMap大小" class="headerlink" title="3.4.1.查询HashMap大小"></a>3.4.1.查询HashMap大小</h3><p>该方法返回HashMap的大小，键值对的数目：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-2-查询HashMap是否为空"><a href="#3-4-2-查询HashMap是否为空" class="headerlink" title="3.4.2 查询HashMap是否为空"></a>3.4.2 查询HashMap是否为空</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-3-查询HashMap是否存在指定key"><a href="#3-4-3-查询HashMap是否存在指定key" class="headerlink" title="3.4.3.查询HashMap是否存在指定key"></a>3.4.3.查询HashMap是否存在指定key</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getNode(hash(key), key) != <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-4-查询HashMap中是否存在指定value的元素"><a href="#3-4-4-查询HashMap中是否存在指定value的元素" class="headerlink" title="3.4.4.查询HashMap中是否存在指定value的元素"></a>3.4.4.查询HashMap中是否存在指定value的元素</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsValue</span><span class="params">(Object value)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; V v;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; size &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 进行循环遍历查找value</span></span><br><span class="line">        <span class="keyword">for</span> (Node&lt;K,V&gt; e : tab) &#123;</span><br><span class="line">            <span class="keyword">for</span> (; e != <span class="keyword">null</span>; e = e.next) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((v = e.value) == value ||</span><br><span class="line">                    (value != <span class="keyword">null</span> &amp;&amp; value.equals(v)))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-5-取值"><a href="#3-5-取值" class="headerlink" title="3.5.取值"></a>3.5.取值</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">return</span> (e = getNode(hash(key), key)) == <span class="keyword">null</span> ? <span class="keyword">null</span> : e.value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它调用了<code>getNode(int hash, Object key)</code>方法，详细代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">getNode</span><span class="params">(<span class="keyword">int</span> hash, Object key)</span> </span>&#123;</span><br><span class="line">      Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="keyword">int</span> n; K k;</span><br><span class="line">      <span class="comment">// 如果桶的数量大于0，并且所查找的key所在的桶的第一个元素不为空</span></span><br><span class="line">      <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">          (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="comment">// 检查第一个元素是不是要查的元素，如果是则直接返回</span></span><br><span class="line">          <span class="keyword">if</span> (first.hash == hash &amp;&amp; <span class="comment">// always check first node</span></span><br><span class="line">              ((k = first.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">              <span class="keyword">return</span> first;</span><br><span class="line">          <span class="comment">// 如果不止一个元素，则继续寻找</span></span><br><span class="line">          <span class="keyword">if</span> ((e = first.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="comment">// 如果第一个元素是树节点，则按树的方式查找</span></span><br><span class="line">              <span class="keyword">if</span> (first <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                  <span class="keyword">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);</span><br><span class="line">              <span class="keyword">do</span> &#123;</span><br><span class="line">                  <span class="comment">// 否则就遍历整个链表查找该元素</span></span><br><span class="line">                  <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                      ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                      <span class="keyword">return</span> e;</span><br><span class="line">              &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
       <!-- reward -->
