@@ -3,7 +3,7 @@
   <entry>
     <title>HashMap源码分析</title>
     <url>/2020/03/29/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="1-HashMap实现原理"><a href="#1-HashMap实现原理" class="headerlink" title="1.HashMap实现原理"></a>1.HashMap实现原理</h1><p>首先，先进行查看一下HashMap的继承体系：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-HashMap实现原理"><a href="#1-HashMap实现原理" class="headerlink" title="1.HashMap实现原理"></a>1.HashMap实现原理</h1><p>首先，先进行查看一下HashMap的继承体系：</p>
 <p>我们可以从体系的继承看出来：</p>
 <ul>
 <li>HashMap实现了Cloneable，可以被克隆。</li>
@@ -135,11 +135,19 @@
 <hr>
 <h1 id="4-HashMap的其他问题思考"><a href="#4-HashMap的其他问题思考" class="headerlink" title="4.HashMap的其他问题思考"></a>4.HashMap的其他问题思考</h1><hr>
 <h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h1>]]></content>
+      <categories>
+        <category>Java集合</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Java集合</tag>
+        <tag>HashMap</tag>
+      </tags>
   </entry>
   <entry>
     <title>关于对Java编程的一些理解</title>
     <url>/2020/03/29/%E5%85%B3%E4%BA%8E%E5%AF%B9Java%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="Java是解析运行吗？"><a href="#Java是解析运行吗？" class="headerlink" title="Java是解析运行吗？"></a>Java是解析运行吗？</h4><p>不是的！Java源代码经过Javac编译成.class文件，class文件经JVM解析或编译运行。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="Java是解析运行吗？"><a href="#Java是解析运行吗？" class="headerlink" title="Java是解析运行吗？"></a>Java是解析运行吗？</h4><p>不是的！Java源代码经过Javac编译成.class文件，class文件经JVM解析或编译运行。</p>
 <ul>
 <li>解析: .class文件经过JVM内嵌的解析器解析执行。</li>
 <li>编译:存在JIT编译器（Just In Time Compile 即时编译器）把经常运行的代码作为”热点代码”编译与本地平台相关的机器码，并进行各种层次的优化。</li>
@@ -161,11 +169,17 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Java基础知识</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Spring IoC源码分析 - 深入理解IoC</title>
     <url>/2020/03/29/Spring%20IoC%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3IoC/</url>
-    <content><![CDATA[<p>在开始IOC源码之前先了解清楚一下理论知识，因为IOC和DI（即依赖注入）大概分为一下几点：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在开始IOC源码之前先了解清楚一下理论知识，因为IOC和DI（即依赖注入）大概分为一下几点：</p>
 <ol>
 <li>IoC是什么？</li>
 <li>IoC能做什么？</li>
@@ -187,11 +201,18 @@
 </ol>
 <p>总的来说对于IoC一句话概括为：<strong>所谓IoC就是由 Spring IOC 容器来负责对象的生命周期和对象之间的关系。</strong> 其理念即为：让别人为你服务。</p>
 ]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring IoC</tag>
+      </tags>
   </entry>
   <entry>
     <title>Spring 源码导读</title>
     <url>/2020/03/29/Spring%20%E6%BA%90%E7%A0%81%E5%AF%BC%E8%AF%BB/</url>
-    <content><![CDATA[<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 IoC（Inverse Of Control：反转控制）和 AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层 Spring MVC 和持久层 Spring JDBC 以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 IoC（Inverse Of Control：反转控制）和 AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层 Spring MVC 和持久层 Spring JDBC 以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架。</p>
 <p>因为这阵子学习Java框架但是只是会表面的进行一些使用，对内部的结构原理并没有深入的去了解，所以觉得还是有必要进行一下源码的解读，一方面可以对Spring的原理更加深入的了解，另一方面也学习如下如何更加系统的阅读代码。主要还是跟着书籍及一些博主进行阅读，最好的当然是有自己的认识，多写注释多画图，相信会有一些收获的。</p>
 <p>可从GitHub上面拉取进行源码分析：<a href="https://github.com/spring-projects/spring-framework。" target="_blank" rel="noopener">https://github.com/spring-projects/spring-framework。</a> 我是直接进行了最新版本的clone：version=5.2.4.BUILD-SNAPSHOT。应该不会有什么问题，进行源码的阅读也仅仅是基础模块，不会对新的内容方向进行深入了解。</p>
 <p>所使用的工具及版本号如下：</p>
@@ -246,11 +267,19 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>导页</tag>
+        <tag>Spring</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java并发源码分析导页</title>
     <url>/2020/03/29/Java%E5%B9%B6%E5%8F%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/</url>
-    <content><![CDATA[<h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
 <p>在进行并发深入了解之前，先明白并发、并行、高并发的概念：</p>
 <ul>
 <li>并发：是指在某个时间段内，多任务交替的执行任务。当有多个线程在操作时，把CPU运行时间划分成若干个时间段,再将时间段分配给各个线程执行。 在一个时间段的线程代码运行时，其它线程处于挂起状。</li>
@@ -333,6 +362,14 @@
 </ol>
 <h1 id="四-结束语"><a href="#四-结束语" class="headerlink" title="四.结束语"></a>四.结束语</h1><p>因为我觉得我还是对一些高并发、高可用的知识较为感兴趣，所以对这一章节的内容可能会深入的探究一下，最好的方法我觉得还是看官方文档，这就需要一定的英语知识，可以采取的措施即为多看一下计算机相关的专业英语，实在不行的话借助翻译器也是一个方法；多动手去完成一些demo，进行编译Debug，这对以后工作状态当中进行排查错误是一个很好的方法，很多人只是了解基础知识，并没有去实践，这是一个问题所在；</p>
 ]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>导页</tag>
+        <tag>Java并发</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java集合源码分析导页</title>
@@ -392,16 +429,24 @@
       <tags>
         <tag>Java</tag>
         <tag>Java集合</tag>
+        <tag>导页</tag>
       </tags>
   </entry>
   <entry>
     <title>Java基础知识导页</title>
     <url>/2020/03/29/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AF%BC%E9%A1%B5/</url>
-    <content><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
 <li></li>
 <li></li>
 </ol>
 <h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
 <h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+      <categories>
+        <category>Java基础知识</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>导页</tag>
+      </tags>
   </entry>
 </search>
