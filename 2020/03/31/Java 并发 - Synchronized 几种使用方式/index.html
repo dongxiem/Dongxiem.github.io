@@ -57,6 +57,10 @@
   <time datetime="2020-03-31T09:17:42.429Z" itemprop="datePublished">2020-03-31</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%B9%B6%E5%8F%91/">Java并发</a>
+  </div>
+
       
       
 <div class="word_count">
@@ -64,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0字</span>
+            <span class="post-count">213字</span>
         </span>
     </span>
 
@@ -84,6 +88,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -96,7 +102,14 @@
       
 
       
-      <p><img src="https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png" alt="image.png"></p>
+      <h1 id="1-概括"><a href="#1-概括" class="headerlink" title="1.概括"></a>1.概括</h1><p>Synchronized 可以有几种修饰方法，总体使用如下图所示：</p>
+<p><img src="https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png" alt="image.png"></p>
+<h1 id="2-具体使用"><a href="#2-具体使用" class="headerlink" title="2.具体使用"></a>2.具体使用</h1><h2 id="2-1-修饰代码块"><a href="#2-1-修饰代码块" class="headerlink" title="2.1 修饰代码块"></a>2.1 <strong>修饰代码块</strong></h2><ul>
+<li>指定加锁对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。</li>
+<li>注意：<u>它只作用于同一个对象，如果调用两个对象上的同步代码块，就不会进行同步</u>。和 synchronized 方法一样，synchronized(this)代码块也是锁定当前对象的。synchronized 关键字加到 static 静态方法和 synchronized(class)代码块上都是是给 Class 类上锁。这里再提一下：synchronized关键字加到非 static 静态方法上是给对象实例上锁。另外需要注意的是：尽量不要使用 synchronized(String a) 因为JVM中，字符串常量池具有缓冲功能！</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
       <!-- reward -->
@@ -169,6 +182,8 @@
 <div id="share-mask"></div>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
+
 
     </footer>
 
