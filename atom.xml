@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongxiem.github.io/"/>
-  <updated>2020-03-31T07:54:18.589Z</updated>
+  <updated>2020-03-30T12:40:04.338Z</updated>
   <id>http://dongxiem.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Java 并发 - 并发工具类：Exchanger 分析</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9AExchanger%20%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9AExchanger%20%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T07:55:55.212Z</published>
-    <updated>2020-03-31T07:54:18.589Z</updated>
+    <title>Java 基础 - Static关键字的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Static%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Static%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:49:15.235Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
     
     <summary type="html">
     
@@ -36,15 +36,21 @@
     </summary>
     
     
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - 并发工具类：CountDownLatch 分析</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9ACountDownLatch%20%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9ACountDownLatch%20%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T07:55:38.331Z</published>
-    <updated>2020-03-31T07:54:18.589Z</updated>
+    <title>Java 基础 - 关于Object的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8EObject%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8EObject%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:48:21.984Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
     
     <summary type="html">
     
@@ -59,15 +65,21 @@
     </summary>
     
     
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - 并发工具类：Cyclibarrier 分析</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9ACyclibarrier%20%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9ACyclibarrier%20%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T07:54:18.589Z</published>
-    <updated>2020-03-31T07:54:18.589Z</updated>
+    <title>Java 基础 - Int和Integer的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Int%E5%92%8CInteger%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Int%E5%92%8CInteger%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:47:12.203Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
     
     <summary type="html">
     
@@ -82,15 +94,21 @@
     </summary>
     
     
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - AQS 之 Condition分析</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%20%E4%B9%8B%20Condition%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%20%E4%B9%8B%20Condition%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-03-31T07:47:17.262Z</updated>
+    <title>Java 基础 - String的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20String%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20String%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:46:57.185Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
     
     <summary type="html">
     
@@ -105,15 +123,21 @@
     </summary>
     
     
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - AQS 基本框架分析总括</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%20%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%E6%80%BB%E6%8B%AC/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%20%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%E6%80%BB%E6%8B%AC/</id>
-    <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-03-31T07:46:37.472Z</updated>
+    <title>Java 基础 - Java8的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Java8%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Java8%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:46:16.428Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
     
     <summary type="html">
     
@@ -128,15 +152,21 @@
     </summary>
     
     
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - 多线程技术</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%8A%80%E6%9C%AF/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%8A%80%E6%9C%AF/</id>
-    <published>2020-03-31T07:40:36.399Z</published>
-    <updated>2020-03-31T07:40:36.399Z</updated>
+    <title>Java 基础 - 关于序列化的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:45:35.908Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
     
     <summary type="html">
     
@@ -151,14 +181,107 @@
     </summary>
     
     
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - 线程池理解</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%90%86%E8%A7%A3/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%90%86%E8%A7%A3/</id>
-    <published>2020-03-31T07:38:49.121Z</published>
+    <title>Java 基础 - 关于泛型的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:45:03.905Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 一些认识与思考</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86%E4%B8%8E%E6%80%9D%E8%80%83/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86%E4%B8%8E%E6%80%9D%E8%80%83/</id>
+    <published>2020-03-31T08:44:44.143Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 关于反射的一些认识</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
+    <published>2020-03-31T08:44:02.901Z</published>
+    <updated>2020-03-30T12:40:04.338Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 线程池 深入线程池原理</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%20%E6%B7%B1%E5%85%A5%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%20%E6%B7%B1%E5%85%A5%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86/</id>
+    <published>2020-03-31T08:37:47.116Z</published>
     <updated>2020-03-31T07:39:25.589Z</updated>
     
     <summary type="html">
@@ -184,11 +307,11 @@
   </entry>
   
   <entry>
-    <title>Java 集合框架 - ArrayList 分析</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20ArrayList%20%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20ArrayList%20%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T07:33:25.848Z</published>
-    <updated>2020-03-31T07:39:46.837Z</updated>
+    <title>Java 并发 - CAS 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20CAS%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20CAS%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:34:57.310Z</published>
+    <updated>2020-03-31T07:47:17.262Z</updated>
     
     <summary type="html">
     
@@ -203,20 +326,83 @@
     </summary>
     
     
-      <category term="Java集合" scheme="http://dongxiem.github.io/categories/Java%E9%9B%86%E5%90%88/"/>
-    
-    
-      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="集合" scheme="http://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
     
   </entry>
   
   <entry>
-    <title>Java 集合框架 - LinkedList 分析</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20LinkedList%20%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20LinkedList%20%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T07:32:49.200Z</published>
+    <title>Java 并发 - AQS同步组件：ReentrantReadWriteLock 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9AReentrantReadWriteLock%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9AReentrantReadWriteLock%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:31:16.835Z</published>
+    <updated>2020-03-31T07:46:37.472Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - AQS同步组件：ReentrantLock 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9AReentrantLock%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9AReentrantLock%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:31:00.706Z</published>
+    <updated>2020-03-31T07:46:37.472Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - AQS同步组件：Semaphore 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9ASemaphore%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9ASemaphore%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:30:08.004Z</published>
+    <updated>2020-03-31T07:46:37.472Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 集合框架 - HashTable 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashTable%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashTable%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:23:39.228Z</published>
     <updated>2020-03-31T07:39:33.662Z</updated>
     
     <summary type="html">
@@ -242,61 +428,11 @@
   </entry>
   
   <entry>
-    <title>Java 集合框架 - HashMap 认识与理解</title>
-    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E8%AE%A4%E8%AF%86%E4%B8%8E%E7%90%86%E8%A7%A3/"/>
-    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E8%AE%A4%E8%AF%86%E4%B8%8E%E7%90%86%E8%A7%A3/</id>
-    <published>2020-03-31T07:29:58.483Z</published>
-    <updated>2020-03-31T07:29:58.483Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>WTIM 简介</title>
-    <link href="http://dongxiem.github.io/2020/03/30/WTIM%20%E7%AE%80%E4%BB%8B/"/>
-    <id>http://dongxiem.github.io/2020/03/30/WTIM%20%E7%AE%80%E4%BB%8B/</id>
-    <published>2020-03-30T06:04:23.000Z</published>
-    <updated>2020-03-31T07:57:57.609Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="WTIM" scheme="http://dongxiem.github.io/categories/WTIM/"/>
-    
-    
-      <category term="WTIM" scheme="http://dongxiem.github.io/tags/WTIM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合框架 - HashMap 深入分析</title>
-    <link href="http://dongxiem.github.io/2020/03/29/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/"/>
-    <id>http://dongxiem.github.io/2020/03/29/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-29T12:00:56.331Z</published>
-    <updated>2020-03-31T07:39:50.678Z</updated>
+    <title>Java 集合框架 - CopyOnWriteArrayList 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20CopyOnWriteArrayList%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20CopyOnWriteArrayList%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:23:20.999Z</published>
+    <updated>2020-03-31T07:39:46.837Z</updated>
     
     <summary type="html">
     
@@ -321,129 +457,11 @@
   </entry>
   
   <entry>
-    <title>关于对Java编程的一些理解</title>
-    <link href="http://dongxiem.github.io/2020/03/29/%E5%85%B3%E4%BA%8E%E5%AF%B9Java%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
-    <id>http://dongxiem.github.io/2020/03/29/%E5%85%B3%E4%BA%8E%E5%AF%B9Java%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/</id>
-    <published>2020-03-29T11:37:51.813Z</published>
-    <updated>2020-03-30T12:40:34.577Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring IoC源码分析 - 深入理解IoC</title>
-    <link href="http://dongxiem.github.io/2020/03/29/Spring%20IoC%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3IoC/"/>
-    <id>http://dongxiem.github.io/2020/03/29/Spring%20IoC%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3IoC/</id>
-    <published>2020-03-29T11:04:20.922Z</published>
-    <updated>2020-03-30T12:38:39.811Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Spring" scheme="http://dongxiem.github.io/categories/Spring/"/>
-    
-    
-      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="Spring IoC" scheme="http://dongxiem.github.io/tags/Spring-IoC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 框架分析 - 导页</title>
-    <link href="http://dongxiem.github.io/2020/03/29/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E5%AF%BC%E9%A1%B5/"/>
-    <id>http://dongxiem.github.io/2020/03/29/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E5%AF%BC%E9%A1%B5/</id>
-    <published>2020-03-29T11:02:48.504Z</published>
-    <updated>2020-03-30T12:38:59.861Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Spring" scheme="http://dongxiem.github.io/categories/Spring/"/>
-    
-    
-      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
-    
-      <category term="Spring" scheme="http://dongxiem.github.io/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 导页</title>
-    <link href="http://dongxiem.github.io/2020/03/29/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%AF%BC%E9%A1%B5/"/>
-    <id>http://dongxiem.github.io/2020/03/29/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%AF%BC%E9%A1%B5/</id>
-    <published>2020-03-29T10:55:51.080Z</published>
-    <updated>2020-03-31T07:39:41.931Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Java并发" scheme="http://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
-    
-      <category term="并发" scheme="http://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合框架 - 导页</title>
-    <link href="http://dongxiem.github.io/2020/03/29/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20%E5%AF%BC%E9%A1%B5/"/>
-    <id>http://dongxiem.github.io/2020/03/29/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20%E5%AF%BC%E9%A1%B5/</id>
-    <published>2020-03-29T10:55:24.323Z</published>
-    <updated>2020-03-30T12:38:07.974Z</updated>
+    <title>Java 集合框架 - TreeMap 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20TreeMap%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20TreeMap%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:23:06.611Z</published>
+    <updated>2020-03-31T07:39:46.837Z</updated>
     
     <summary type="html">
     
@@ -463,18 +481,16 @@
     
       <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
     
-      <category term="Java集合" scheme="http://dongxiem.github.io/tags/Java%E9%9B%86%E5%90%88/"/>
-    
-      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
+      <category term="集合" scheme="http://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
     
   </entry>
   
   <entry>
-    <title>Java 基础知识 - 导页</title>
-    <link href="http://dongxiem.github.io/2020/03/29/Java%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%20-%20%E5%AF%BC%E9%A1%B5/"/>
-    <id>http://dongxiem.github.io/2020/03/29/Java%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%20-%20%E5%AF%BC%E9%A1%B5/</id>
-    <published>2020-03-29T10:48:54.286Z</published>
-    <updated>2020-03-30T12:40:04.338Z</updated>
+    <title>Java 集合框架 - HashSet 分析</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashSet%20%E5%88%86%E6%9E%90/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashSet%20%E5%88%86%E6%9E%90/</id>
+    <published>2020-03-31T08:22:48.364Z</published>
+    <updated>2020-03-31T07:39:46.837Z</updated>
     
     <summary type="html">
     
@@ -489,12 +505,58 @@
     </summary>
     
     
-      <category term="Java基础知识" scheme="http://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="Java集合" scheme="http://dongxiem.github.io/categories/Java%E9%9B%86%E5%90%88/"/>
     
     
       <category term="Java" scheme="http://dongxiem.github.io/tags/Java/"/>
     
-      <category term="导页" scheme="http://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
+      <category term="集合" scheme="http://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 框架分析 - 设计模式：模板方法模式</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</id>
+    <published>2020-03-31T08:22:19.003Z</published>
+    <updated>2020-03-31T08:19:21.551Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 框架分析 - 设计模式：策略模式</title>
+    <link href="http://dongxiem.github.io/2020/03/31/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://dongxiem.github.io/2020/03/31/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</id>
+    <published>2020-03-31T08:21:49.917Z</published>
+    <updated>2020-03-31T08:19:21.551Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
     
   </entry>
   
