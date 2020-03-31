@@ -1,39 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ArrayList源码分析</title>
-    <url>/2020/03/31/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
-]]></content>
-      <categories>
-        <category>Java集合</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Java集合</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LinkedList源码分析</title>
-    <url>/2020/03/31/LinkedList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
-]]></content>
-      <categories>
-        <category>Java集合</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Java集合</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HashMap认识与理解</title>
-    <url>/2020/03/31/HashMap%E8%AE%A4%E8%AF%86%E4%B8%8E%E7%90%86%E8%A7%A3/</url>
+    <title>Java 并发 - 并发工具类：Exchanger 分析</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9AExchanger%20%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
   </entry>
   <entry>
-    <title>HashMap源码分析</title>
-    <url>/2020/03/29/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
+    <title>Java 并发 - 并发工具类：CountDownLatch 分析</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9ACountDownLatch%20%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Java 并发 - 并发工具类：Cyclibarrier 分析</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9ACyclibarrier%20%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Java 并发 - AQS 之 Condition分析</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%20%E4%B9%8B%20Condition%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Java 并发 - AQS 基本框架分析总括</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%20%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%E6%80%BB%E6%8B%AC/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Java 并发 - 多线程技术</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Java 并发 - 线程池理解</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 集合框架 - ArrayList 分析</title>
+    <url>/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20ArrayList%20%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java集合</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>集合</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 集合框架 - LinkedList 分析</title>
+    <url>/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20LinkedList%20%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java集合</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>集合</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 集合框架 - HashMap 认识与理解</title>
+    <url>/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E8%AE%A4%E8%AF%86%E4%B8%8E%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>WTIM 简介</title>
+    <url>/2020/03/30/WTIM%20%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>搭建一个基于分布式的IM（即时通讯）系统</p>
+]]></content>
+      <categories>
+        <category>WTIM</category>
+      </categories>
+      <tags>
+        <tag>WTIM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 集合框架 - HashMap 深入分析</title>
+    <url>/2020/03/29/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-HashMap实现原理"><a href="#1-HashMap实现原理" class="headerlink" title="1.HashMap实现原理"></a>1.HashMap实现原理</h1><p>首先，先进行查看一下HashMap的继承体系：</p>
 <p>我们可以从体系的继承看出来：</p>
 <ul>
@@ -171,7 +226,7 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Java集合</tag>
+        <tag>集合</tag>
       </tags>
   </entry>
   <entry>
@@ -240,8 +295,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Spring 源码分析导页</title>
-    <url>/2020/03/29/Spring%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/</url>
+    <title>Spring 框架分析 - 导页</title>
+    <url>/2020/03/29/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E5%AF%BC%E9%A1%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 IoC（Inverse Of Control：反转控制）和 AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层 Spring MVC 和持久层 Spring JDBC 以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架。</p>
 <p>因为这阵子学习Java框架但是只是会表面的进行一些使用，对内部的结构原理并没有深入的去了解，所以觉得还是有必要进行一下源码的解读，一方面可以对Spring的原理更加深入的了解，另一方面也学习如下如何更加系统的阅读代码。主要还是跟着书籍及一些博主进行阅读，最好的当然是有自己的认识，多写注释多画图，相信会有一些收获的。</p>
 <p>可从GitHub上面拉取进行源码分析：<a href="https://github.com/spring-projects/spring-framework。" target="_blank" rel="noopener">https://github.com/spring-projects/spring-framework。</a> 我是直接进行了最新版本的clone：version=5.2.4.BUILD-SNAPSHOT。应该不会有什么问题，进行源码的阅读也仅仅是基础模块，不会对新的内容方向进行深入了解。</p>
@@ -307,8 +362,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java并发源码分析导页</title>
-    <url>/2020/03/29/Java%E5%B9%B6%E5%8F%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/</url>
+    <title>Java 并发 - 导页</title>
+    <url>/2020/03/29/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%AF%BC%E9%A1%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
 <p>在进行并发深入了解之前，先明白并发、并行、高并发的概念：</p>
 <ul>
@@ -398,12 +453,12 @@
       <tags>
         <tag>Java</tag>
         <tag>导页</tag>
-        <tag>Java并发</tag>
+        <tag>并发</tag>
       </tags>
   </entry>
   <entry>
-    <title>Java集合源码分析导页</title>
-    <url>/2020/03/29/Java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/</url>
+    <title>Java 集合框架 - 导页</title>
+    <url>/2020/03/29/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20%E5%AF%BC%E9%A1%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。<br>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
 <p>工具与源码版本：</p>
 <ul>
@@ -463,8 +518,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java基础知识导页</title>
-    <url>/2020/03/29/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AF%BC%E9%A1%B5/</url>
+    <title>Java 基础知识 - 导页</title>
+    <url>/2020/03/29/Java%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%20-%20%E5%AF%BC%E9%A1%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
 <li></li>
 <li></li>
