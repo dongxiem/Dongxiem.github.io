@@ -3,154 +3,109 @@
   <entry>
     <title>Java 基础 - Static关键字的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Static%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - 关于Object的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8EObject%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - Int和Integer的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Int%E5%92%8CInteger%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - String的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20String%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - Java8的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Java8%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - 关于序列化的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - 关于泛型的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - 一些认识与思考</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86%E4%B8%8E%E6%80%9D%E8%80%83/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>Java 基础 - 关于反射的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8E%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
       <categories>
         <category>Java基础知识</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -164,6 +119,7 @@
       <tags>
         <tag>Java</tag>
         <tag>并发</tag>
+        <tag>线程池</tag>
       </tags>
   </entry>
   <entry>
@@ -174,17 +130,44 @@
   <entry>
     <title>Java 并发 - AQS同步组件：ReentrantReadWriteLock 分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9AReentrantReadWriteLock%20%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - AQS同步组件：ReentrantLock 分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9AReentrantLock%20%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - AQS同步组件：Semaphore 分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9ASemaphore%20%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 集合框架 - HashTable 分析</title>
@@ -276,17 +259,43 @@
   <entry>
     <title>Java 并发 - 并发工具类：Exchanger 分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9AExchanger%20%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - AQS同步组件：CountDownLatch 分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9ACountDownLatch%20%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - AQS同步组件：Cyclibarrier 分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%E5%90%8C%E6%AD%A5%E7%BB%84%E4%BB%B6%EF%BC%9ACyclibarrier%20%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - Condition 分析</title>
@@ -296,12 +305,30 @@
   <entry>
     <title>Java 并发 - AQS：基本框架分析总括</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20AQS%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%E6%80%BB%E6%8B%AC/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - 多线程 分析总括</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E5%88%86%E6%9E%90%E6%80%BB%E6%8B%AC/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>多线程</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - 线程池 分析总括</title>
@@ -314,6 +341,7 @@
       <tags>
         <tag>Java</tag>
         <tag>并发</tag>
+        <tag>线程池</tag>
       </tags>
   </entry>
   <entry>
