@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 并发 - Synchronized 与其他一些锁机制的对比</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%80%E4%BA%9B%E9%94%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AF%B9%E6%AF%94/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>我们前面已经 Synchronized 在JDK1.6 进行哪一些方面的优化，通过这些底层的优化之后Synchronized  变得好用了很多，那么它究竟和其他锁机制有什么差别？换种方式说，我在进行编程的过程中，究竟要如何进行选择？什么时候应该选择Synchronized？而什么时候不选用Synchronized而选用其他的锁机制。</p>
+<h2 id="2-区别分析"><a href="#2-区别分析" class="headerlink" title="2.区别分析"></a>2.区别分析</h2><h3 id="2-1-Synchronized-和Reentrantlock（可重入锁）的区别？"><a href="#2-1-Synchronized-和Reentrantlock（可重入锁）的区别？" class="headerlink" title="2.1 Synchronized 和Reentrantlock（可重入锁）的区别？"></a>2.1 Synchronized 和Reentrantlock（可重入锁）的区别？</h3><ul>
+<li><p>总体而言：Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。</p>
+<ul>
+<li>注意：ReentrantLock 是 java.util.concurrent（J.U.C）包中的锁。</li>
+</ul>
+</li>
+<li><p><strong>区别</strong>：</p>
+<ul>
+<li><strong>两者都是可重入锁：</strong>两者都是可重入锁。<ul>
+<li>“可重入锁” 概念是：自己可以再次获取自己的内部锁。比如一个线程获得了某个对象的锁，此时这个对象锁还没有释放，当其再次想要获取这个对象的锁的时候还是可以获取的，如果不可锁重入的话，就会造成死锁。同一个线程每次获取锁，锁的计数器都自增1，所以要等到锁的计数器下降为0时才能释放锁。</li>
+</ul>
+</li>
+<li><strong>锁的实现：</strong>synchronized 依赖于 JVM ，而 ReentrantLock 依赖于 API。<ul>
+<li>synchronized 是依赖于 JVM 实现的，前面我们也讲到了 虚拟机团队在 JDK1.6 为 synchronized 关键字进行了很多优化，但是这些优化都是在虚拟机层面实现的，并没有直接暴露给我们。ReentrantLock 是 JDK 层面实现的（也就是 API 层面，需要 lock() 和 unlock() 方法配合 try/finally 语句块来完成），所以我们可以通过查看它的源代码，来看它是如何实现的。</li>
+</ul>
+</li>
+<li><strong>性能：</strong>新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。 性能已不是选择标准。</li>
+<li><strong>ReentrantLock 比 synchronized 增加了一些高级功能</strong><ul>
+<li>相比synchronized，ReentrantLock增加了一些高级功能。主要来说主要有三点：①等待可中断；②可实现公平锁；③可实现选择性通知（锁可以绑定多个条件）<ol>
+<li><strong>等待可中断：</strong>ReentrantLock提供了一种能够中断等待锁的线程的机制，通过lock.lockInterruptibly()来实现这个机制。也就是说正在等待的线程可以选择放弃等待，改为处理其他事情。</li>
+<li><strong>公平锁：</strong>ReentrantLock可以指定是公平锁还是非公平锁。而synchronized只能是非公平锁。所谓的公平锁就是先等待的线程先获得锁。 ReentrantLock默认情况是非公平的，可以通过 ReentrantLock类的ReentrantLock(boolean fair)构造方法来制定是否是公平的。</li>
+<li><strong>锁绑定多个条件：</strong>synchronized关键字与wait()和notify()/notifyAll()方法相结合可以实现等待/通知机制，ReentrantLock类当然也可以实现，但是需要借助于Condition接口与newCondition() 方法Condition是JDK1.5之后才有的，它具有很好的灵活性，比如可以实现多路通知功能也就是在一个Lock对象中可以创建多个Condition实例（即对象监视器），线程对象可以注册在指定的Condition中，从而可以有选择性的进行线程通知，在调度线程上更加灵活。 在使用notify()/notifyAll()方法进行通知时，被通知的线程是由 JVM 选择的，用ReentrantLock类结合Condition实例可以实现“选择性通知”，这个功能非常重要，而且是Condition接口默认提供的。而synchronized关键字就相当于整个Lock对象中只有一个Condition实例，所有的线程都注册在它一个身上。如果执行notifyAll()方法的话就会通知所有处于等待状态的线程这样会造成很大的效率问题，而Condition实例的signalAll()方法 只会唤醒注册在该Condition实例中的所有等待线程。</li>
+</ol>
+</li>
+<li>如果想使用上述功能，那么选择ReentrantLock是一个不错的选择。</li>
+</ul>
+</li>
+<li><strong>使用选择</strong>：除非需要使用 ReentrantLock 的高级功能，否则优先使用 synchronized。这是因为 synchronized 是 JVM 实现的一种锁机制，JVM 原生地支持它，而 ReentrantLock 不是所有的 JDK 版本都支持。并且使用 synchronized 不用担心没有释放锁而导致死锁问题，因为 JVM 会确保锁的释放。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发 - Synchronized 几种使用方式</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Java 并发 - Synchronized 原理分析</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
     <title>Java 基础 - Static关键字的一些认识</title>
     <url>/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Static%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
