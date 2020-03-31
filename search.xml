@@ -93,11 +93,39 @@
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-概括"><a href="#1-概括" class="headerlink" title="1.概括"></a>1.概括</h1><p>Synchronized 可以有几种修饰方法，总体使用如下图所示：</p>
 <p><img src="https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png" alt="image.png"></p>
-<h1 id="2-具体使用"><a href="#2-具体使用" class="headerlink" title="2.具体使用"></a>2.具体使用</h1><h2 id="2-1-修饰代码块"><a href="#2-1-修饰代码块" class="headerlink" title="2.1 修饰代码块"></a>2.1 <strong>修饰代码块</strong></h2><ul>
-<li>指定加锁对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。</li>
+<h1 id="2-具体使用"><a href="#2-具体使用" class="headerlink" title="2.具体使用"></a>2.具体使用</h1><h2 id="2-1-修饰代码块"><a href="#2-1-修饰代码块" class="headerlink" title="2.1 修饰代码块"></a>2.1 <strong>修饰代码块</strong></h2><p>指定加锁对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。</p>
+<ul>
 <li>注意：<u>它只作用于同一个对象，如果调用两个对象上的同步代码块，就不会进行同步</u>。和 synchronized 方法一样，synchronized(this)代码块也是锁定当前对象的。synchronized 关键字加到 static 静态方法和 synchronized(class)代码块上都是是给 Class 类上锁。这里再提一下：synchronized关键字加到非 static 静态方法上是给对象实例上锁。另外需要注意的是：尽量不要使用 synchronized(String a) 因为JVM中，字符串常量池具有缓冲功能！</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-2-修饰实例方法"><a href="#2-2-修饰实例方法" class="headerlink" title="2.2 修饰实例方法"></a>2.2 <strong>修饰实例方法</strong></h2><ul>
+<li>作用于当前对象实例加锁，进入同步代码前要获得当前对象实例的锁。</li>
+<li>注意：它和同步代码块一样，作用于同一个对象。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-3-同步一个类"><a href="#2-3-同步一个类" class="headerlink" title="2.3 同步一个类"></a>2.3 <strong>同步一个类</strong></h2><ul>
+<li>注意：作用于整个类，也就是说两个线程调用同一个类的不同对象上的这种同步语句，也会进行同步。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (SynchronizedExample<span class="class">.<span class="keyword">class</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-4-修饰静态方法"><a href="#2-4-修饰静态方法" class="headerlink" title="2.4 修饰静态方法"></a>2.4 <strong>修饰静态方法</strong></h2><p>作用于当前类对象加锁，进入同步代码前要获得当前类对象的锁 。</p>
+<ul>
+<li>注意：作用于整个类。也就是给当前类加锁，会作用于类的所有对象实例，因为静态成员不属于任何一个实例对象，是类成员（static 表明这是该类的一个静态资源，不管new了多少个对象，只有一份，所以对该类的所有对象都加了锁）。所以如果一个线程A调用一个实例对象的非静态 synchronized 方法，而线程B需要调用这个实例对象所属类的静态 synchronized 方法，是允许的，不会发生互斥现象，因为访问静态 synchronized 方法占用的锁是当前类的锁，而访问非静态 synchronized 方法占用的锁是当前实例对象锁。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> synchronzied <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Synchronized 修饰静态方法相当于如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 修饰静态方法</span></span><br><span class="line">    <span class="keyword">synchronized</span>(X<span class="class">.<span class="keyword">class</span>) <span class="title">static</span> <span class="title">void</span> <span class="title">bar</span>()</span>&#123;</span><br><span class="line">        <span class="comment">// 临界区</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
