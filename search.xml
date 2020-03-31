@@ -140,10 +140,7 @@
     <title>Java 并发 - Synchronized 原理分析</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>JDK1.6 之后 Synchronized  的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。锁主要存在四中状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。</p>
-<ul>
-<li>注意锁可以升级不可降级，这种策略是为了提高获得锁和释放锁的效率。</li>
-</ul>
-<p>Java中的<code>synchronized</code> 的偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&gt;轻量级锁-&gt;重量级锁 的顺序升级。JVM种的锁也是能降级的，只不过条件很苛刻。</p>
+<p>Java中的<code>synchronized</code> 的偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&gt;轻量级锁-&gt;重量级锁 的顺序升级。JVM种的锁也是能降级的，只不过条件很苛刻，可以相当于没有了，策略是为了提高获得锁和释放锁的效率。</p>
 <p>所以对Synchronized 的重点分析应该是其升级流程，以前是我觉得So easy，不就这几个状态升上去而已，不过在某天看了 <a href="https://github.com/farmerjohngit/myblog/issues/12" target="_blank" rel="noopener">死磕Synchronized底层实现</a> 之后，发现我还是太嫩了，这才是真正的深入，也许对知识的求知就该如此不断的进行深入，对于Synchronized 还是有很多值得发现的知识，以下记录了学习到的一些笔记，大概对一整个锁的升级流程有了一些认识和了解。</p>
 <ul>
 <li>锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）</li>
