@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dongxiem.github.io/Netty/index.html</loc>
+    
+    <lastmod>2020-03-31T07:05:33.395Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dongxiem.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-03-31T07:05:24.399Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dongxiem.github.io/2020/03/29/%E5%85%B3%E4%BA%8E%E5%AF%B9Java%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/</loc>
     
     <lastmod>2020-03-30T12:40:34.577Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>http://dongxiem.github.io/2020/03/29/Java%E5%B9%B6%E5%8F%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%AF%BC%E9%A1%B5/</loc>
     
     <lastmod>2020-03-30T12:37:47.682Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dongxiem.github.io/categories/index.html</loc>
-    
-    <lastmod>2020-03-30T12:35:10.065Z</lastmod>
     
   </url>
   
