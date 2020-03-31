@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">6.9k字</span>
+            <span class="post-count">7.2k字</span>
         </span>
     </span>
 
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">25分钟</span>
+            <span class="post-count">26分钟</span>
         </span>
     </span>
 </div>
@@ -274,7 +274,18 @@
 <h2 id="2-4-重量级锁"><a href="#2-4-重量级锁" class="headerlink" title="2.4 重量级锁"></a>2.4 重量级锁</h2><ul>
 <li>描述：重量级锁通过对象内部的监视器（<code>monitor</code>）实现，其中<code>monitor</code>的本质是依赖于底层操作系统的<code>Mutex Lock</code>实现，操作系统实现线程之间的切换需要从用户态到内核态的切换，切换成本非常高。</li>
 </ul>
-<h1 id="3-Synchronized-的其他细节问题"><a href="#3-Synchronized-的其他细节问题" class="headerlink" title="3.Synchronized 的其他细节问题"></a>3.Synchronized 的其他细节问题</h1><h1 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h1><p>以上参考文章：</p>
+<h1 id="3-Synchronized-的其他细节问题"><a href="#3-Synchronized-的其他细节问题" class="headerlink" title="3.Synchronized 的其他细节问题"></a>3.Synchronized 的其他细节问题</h1><h1 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h1><h2 id="4-1-总结锁的升级流程："><a href="#4-1-总结锁的升级流程：" class="headerlink" title="4.1 总结锁的升级流程："></a>4.1 总结锁的升级流程：</h2><p>每一个线程在准备获取共享资源时： </p>
+<ol>
+<li>第一步：检查<code>MarkWord</code>里面是不是放的自己的<code>ThreadId</code> ,如果是，表示当前线程是处于 “偏向锁” 。  </li>
+<li>第二步：如果<code>MarkWord</code>不是自己的<code>ThreadId</code>，锁升级，这时候，使用<code>CAS</code>来执行切换，新的线程根据<code>MarkWord</code>里面现有的<code>ThreadId</code>，通知之前线程暂停，之前线程将<code>Markword</code>的内容置为空。</li>
+<li>第三步：两个线程都把锁对象的<code>HashCode</code>复制到自己新建的用于存储锁的记录空间，接着开始通过<code>CAS</code>操作， 把锁对象的<code>MarKword</code>的内容修改为自己新建的记录空间的地址的方式竞争<code>MarkWord</code>。  </li>
+<li>第四步：第三步中成功执行<code>CAS</code>的获得资源，失败的则进自旋 。</li>
+<li>第五步：自旋的线程在自旋过程中，成功获得资源(即之前获的资源的线程执行完成并释放了共享资源)，则整个状态依然处于轻量级锁的状态，如果自旋失败进入第六步 。</li>
+<li>第六步：进行重量级锁的状态，这个时候，自旋的线程进行阻塞，等待之前线程执行完成并唤醒自己。</li>
+</ol>
+<h2 id="4-2-几种锁的优缺点对比"><a href="#4-2-几种锁的优缺点对比" class="headerlink" title="4.2 几种锁的优缺点对比"></a>4.2 几种锁的优缺点对比</h2><p>下图摘自：并发编程的艺术</p>
+<p><img src="https://i.loli.net/2020/03/31/8U6mNSjGLeKMrEB.png" alt="image.png"></p>
+<p>以上参考文章：</p>
 <ul>
 <li><a href="https://blog.dreamtobe.cn/2015/11/13/java_synchronized/" target="_blank" rel="noopener">Java Synchronised机制</a></li>
 <li><a href="https://github.com/farmerjohngit/myblog/issues/13" target="_blank" rel="noopener">死磕Synchronized底层实现–偏向锁</a></li>
@@ -282,7 +293,7 @@
 <li><a href="http://cmsblogs.com/?p=2071" target="_blank" rel="noopener">【死磕Java并发】—–深入分析synchronized的实现原理</a></li>
 <li>书籍：Java 并发编程的艺术</li>
 <li>书籍：深入理解Java虚拟机：JVM高级特性与最佳实践</li>
-<li></li>
+<li>书籍：深入浅出Java 多线程</li>
 </ul>
 
       
