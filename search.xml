@@ -92,7 +92,9 @@
     <title>Java 并发 - Synchronized 几种使用方式</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<p>categories: “Java并发”<br>tags:<br>    - Java<br>    - 并发</p>
+<p>categories: “Java并发”<br>tags:   </p>
+<p>​    - Java</p>
+<p>​    - 并发</p>
 <hr>
 <p>![image-20200331192047598](D:\Blog\dongxiem.github.io\source_posts\Java 并发 - Synchronized 几种使用方式.assets\image-20200331192047598.png)</p>
 ]]></content>
