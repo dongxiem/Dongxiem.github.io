@@ -57,10 +57,6 @@
   <time datetime="2020-04-01T05:55:16.877Z" itemprop="datePublished">2020-04-01</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%B9%B6%E5%8F%91/">Java并发</a>
-  </div>
-
       
       
 <div class="word_count">
@@ -68,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.5k字</span>
+            <span class="post-count">1.6k字</span>
         </span>
     </span>
 
@@ -102,7 +98,16 @@
       
 
       
-      <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>总的来说有两种实现线程的方式：</p>
+      <ul>
+<li><p>categories: “Java并发”<br>tags:   </p>
+<ul>
+<li>Java</li>
+<li>并发</li>
+<li>多线程</li>
+</ul>
+</li>
+</ul>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>总的来说有两种实现线程的方式：</p>
 <ol>
 <li><strong>实现Runnable接口</strong></li>
 <li><strong>继承Thread类</strong></li>
@@ -140,23 +145,19 @@
 <li>使用 Runnable 实例再创建一个 Thread 实例，然后调用 Thread 实例的 start() 方法来启动线程。</li>
 </ul>
 <p><code>Runnable</code>是一个函数式接口，这意味着我们可以使用<strong>Java 8的函数式编程</strong>来简化代码。</p>
+<p>函数式编程是个什么东西？</p>
 <ul>
-<li><p>函数式编程是个什么东西？</p>
-<ul>
-<li><p>这是在Java 8 之后才有的，它的声明是通过一个注解来实现的，可以查看Runnable 的接口实现便可知道</p>
-</li>
-<li><pre><code class="java"><span class="meta">@FunctionalInterface</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;
-}
-&lt;!--￼<span class="number">1</span>--&gt;
+<li>这是在Java 8 之后才有的，它的声明是通过一个注解来实现的，可以查看Runnable 的接口实现便可知道</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
+
+<p>Demo如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"MyThread"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">new</span> MyThread().start();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Java 8 之后的函数式编程如下</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            Ststem.out.println(<span class="string">"Java 8 匿名内部类"</span>);</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="2-3-实现-Callable接口"><a href="#2-3-实现-Callable接口" class="headerlink" title="2.3 实现 Callable接口"></a>2.3 实现 Callable接口</h2><h3 id="2-3-1-Callable接口"><a href="#2-3-1-Callable接口" class="headerlink" title="2.3.1 Callable接口"></a>2.3.1 Callable接口</h3><p>实现：</p>
 <ol>
 <li>其实也算是实现Runnable接口！</li>
@@ -260,8 +261,6 @@
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
-
 
     </footer>
 
