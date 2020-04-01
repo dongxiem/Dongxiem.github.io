@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java 并发 - 关于指令重排序的几个疑问 |  桃花岛杂货铺
+    Mybatis 框架分析（1） -  总体分析 |  桃花岛杂货铺
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,7 +36,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Java 并发 - 关于指令重排序的几个疑问" class="article article-type-post" itemscope
+  <article id="post-Mybatis 框架分析（1） -  总体分析" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -44,7 +44,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java 并发 - 关于指令重排序的几个疑问
+  Mybatis 框架分析（1） -  总体分析
 </h1>
  
 
@@ -53,14 +53,10 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%85%B3%E4%BA%8E%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E7%96%91%E9%97%AE/" class="article-date">
-  <time datetime="2020-03-31T15:45:13.930Z" itemprop="datePublished">2020-03-31</time>
+      <a href="/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%20%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2020-04-01T09:25:30.802Z" itemprop="datePublished">2020-04-01</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%B9%B6%E5%8F%91/">Java并发</a>
-  </div>
-
       
       
 <div class="word_count">
@@ -68,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">762字</span>
+            <span class="post-count">686字</span>
         </span>
     </span>
 
@@ -102,36 +98,47 @@
       
 
       
-      <h1 id="1-指令重排序"><a href="#1-指令重排序" class="headerlink" title="1.指令重排序"></a>1.指令重排序</h1><p>计算机在执行程序时，为了提高性能，编译器和处理器常常会对指令做重排。</p>
-<p>指令重排一般分为以下三种：</p>
+      <h1 id="1-MyBatis-认识与了解"><a href="#1-MyBatis-认识与了解" class="headerlink" title="1. MyBatis 认识与了解"></a>1. MyBatis 认识与了解</h1><h2 id="1-1-Jdbc的一些认识"><a href="#1-1-Jdbc的一些认识" class="headerlink" title="1.1 Jdbc的一些认识"></a>1.1 Jdbc的一些认识</h2><p>通过 JDBC 来操作数据库，需要以下几个<code>步骤</code>：</p>
 <ol>
-<li>编译器优化重排：编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序</li>
-<li>指令并行重排：现代处理器采用了指令级并行技术来将多条指令重叠执行。如果不存在数据依赖性(即后一个执行的语句无需依赖前面执行的语句的结果)，处理器可以改变语句对应的机器指令的执行顺序。</li>
-<li>内存系统重排： 由于处理器使用缓存和读写缓存冲区，这使得加载(load)和存储(store)操作看上去可能是在乱序执行，因为三级缓存的存在，导致内存与缓存的数据同步存在时间差。</li>
+<li>加载数据库驱动</li>
+<li>创建并获取数据库链接</li>
+<li>创建 jdbc statement 对象</li>
+<li>编写 sql 语句</li>
+<li>设置 sql 语句中的参数(使用 <code>preparedStatement</code>)</li>
+<li>通过 statement 执行 sql 并获取结果</li>
+<li>对 sql 执行结果进行解析处理</li>
+<li>释放资源(<code>resultSet</code>、<code>preparedstatement</code>、<code>connection</code>)</li>
 </ol>
-<h1 id="2-关于指令重排序的几个问题"><a href="#2-关于指令重排序的几个问题" class="headerlink" title="2.关于指令重排序的几个问题"></a>2.关于指令重排序的几个问题</h1><h2 id="2-1为什么指令重排序可以提高性能？"><a href="#2-1为什么指令重排序可以提高性能？" class="headerlink" title="2.1为什么指令重排序可以提高性能？"></a>2.1为什么指令重排序可以提高性能？</h2><p>简单地说，每一个指令都会包含多个步骤，每个步骤可能使用不同的硬件。因此，流水线技术产生了，它的原理是指令1还没有执行完，就可以开始执行指令2，而不用等到指令1执行结束之后再执行指令2，这样就大大提高了效率。</p>
+<p>给出使用JDBC的Demo如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>为了解决这么麻烦的一系列步骤，有人就提出来了MyBatis这个框架了！</p>
+<h2 id="1-2-MyBatis的大概介绍及其特点"><a href="#1-2-MyBatis的大概介绍及其特点" class="headerlink" title="1.2 MyBatis的大概介绍及其特点"></a>1.2 MyBatis的大概介绍及其特点</h2><p>Mybatis 是 JAVA 的一个<code>持久层框架</code>，什么是持久层？持久层就是能够长期保存数据的一层，例如我们的数据写在硬盘上，这说明我们的数据是持久的，如果写在内存当中，我们的数据就是不持久的。</p>
+<p>根据官方文档的介绍，MyBatis大概如下：</p>
 <ul>
-<li><p>举个例子：</p>
+<li>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</li>
+</ul>
+<p>百度百科总结的挺好，详细讲述了MyBatis的特点，如下：</p>
 <ul>
-<li><pre><code class="java">a = b + c;
-d = e - f;    </code></pre>
-</li>
+<li>简单易学：本身就很小且简单。没有任何第三方依赖，最简单安装只要两个 jar 文件+配置几个 sql 映射文件易于学习，易于使用，通过文档和源代码，可以比较完全的掌握它的设计思路和实现。</li>
+<li>灵活：mybatis 不会对应用程序或者数据库的现有设计强加任何影响。sql 写在 xml 里，便于统一管理和优化。通过 sql 语句可以满足操作数据库的所有需求。</li>
+<li>解除 sql 与程序代码的耦合：通过提供 DAO 层，将业务逻辑和数据访问逻辑分离，使系统的设计更清晰，更易维护，更易单元测试。sql 和代码的分离，提高了可维护性。</li>
+<li>提供映射标签，支持对象与数据库的 orm 字段关系映射</li>
+<li>提供对象关系映射标签，支持对象关系组建维护</li>
+<li>提供 xml 标签，支持编写动态 sql。</li>
 </ul>
-</li>
-<li><p>先加载b、c（注意，即有可能先加载b，也有可能先加载c），但是在执行add(b,c)的时候，需要等待b、c装载结束才能继续执行，也就是增加了停顿，那么后面的指令也会依次有停顿,这降低了计算机的执行效率。</p>
-</li>
-<li><p>为了减少这个停顿，我们可以先加载e和f，然后再去加载add(b,c)，这样做对程序（串行）是没有影响的，但却减少了停顿。既然add(b,c)需要停顿，那还不如去做些有意义的事情。</p>
-</li>
+<h1 id="2-Mybatis-总体框架"><a href="#2-Mybatis-总体框架" class="headerlink" title="2.Mybatis 总体框架"></a>2.Mybatis 总体框架</h1><p>MyBatis的总体框架大体如下：</p>
+<p><img src="https://i.loli.net/2020/04/01/duibL3NkmMJGc27.png" alt="MyBatis的总体框架.png"></p>
+<p>对于Mybatis 框架的整体学习，我主要进行深入了解的是以下几个方面：</p>
+<ul>
+<li>缓存原理</li>
+<li>映射文件的解析过程</li>
+<li>配置文件的解析过程</li>
+<li>SQL 的执行过程</li>
 </ul>
-<p>综上所述，指令重排对于提高CPU处理性能十分必要。虽然由此带来了乱序的问题，但是这点牺牲是值得的。</p>
-<h2 id="2-2-那么为什么指令重排会出现问题呢？"><a href="#2-2-那么为什么指令重排会出现问题呢？" class="headerlink" title="2.2 那么为什么指令重排会出现问题呢？"></a>2.2 <strong>那么为什么指令重排会出现问题呢？</strong></h2><p>指令重排可以保证串行语义一致，但是没有义务保证多线程间的语义也一致。所以在多线程下，指令重排序可能会导致一些问题。</p>
-<h1 id="3-指令重排序的解决方法"><a href="#3-指令重排序的解决方法" class="headerlink" title="3.指令重排序的解决方法"></a>3.指令重排序的解决方法</h1><p>所以，由此引出了<code>Volatile</code>，在一个知识体系中，进行知识的串联是尤为重要的，这就是有些东西的存在必定存在其相对的意义，知其然，知其所以然，才能更好的进行运用。对于Volatile相关的知识，查看后面的内容。</p>
-<hr>
-<p>以上引用的博客和文章：</p>
-<ol>
-<li>书籍：并发编程的艺术</li>
-<li>书籍：深入浅出Java多线程</li>
-</ol>
+<p>3.</p>
 
       
       <!-- reward -->
@@ -197,15 +204,13 @@ d = e - f;    </code></pre>
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%85%B3%E4%BA%8E%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E7%96%91%E9%97%AE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%20%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
-
 
     </footer>
 
@@ -215,19 +220,19 @@ d = e - f;    </code></pre>
   
   <nav class="article-nav">
     
-      <a href="/2020/04/01/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-nav-link">
+      <a href="/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%20%E7%AE%80%E5%8D%95Demo/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Java 并发 - 多线程 线程创建的几种方式
+            Mybatis 框架分析（2） -  简单Demo
           
         </div>
       </a>
     
     
-      <a href="/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%80%E4%BA%9B%E9%94%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AF%B9%E6%AF%94/" class="article-nav-link">
+      <a href="/2020/04/01/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java 并发 - Synchronized 与其他一些锁机制的对比</div>
+        <div class="article-nav-title">Java 并发 - 多线程 线程创建的几种方式</div>
       </a>
     
   </nav>
