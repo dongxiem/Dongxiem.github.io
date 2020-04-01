@@ -83,6 +83,8 @@
 
 
 
+
+
 <p>注意：</p>
 <ul>
 <li><strong>工具类 Executors 可以实现 Runnable 对象和 Callable 对象之间的相互转换</strong>。（<code>Executors.callable（Runnable task）</code>或 <code>Executors.callable（Runnable task，Object resule）</code>）。</li>
