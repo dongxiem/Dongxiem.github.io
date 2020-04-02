@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-02T06:28:52.741Z</updated>
+  <updated>2020-04-02T12:54:41.234Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>数据结构 - 什么是跳跃表</title>
-    <link href="https://dongxiem.github.io/2020/04/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20-%20%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%B3%E8%B7%83%E8%A1%A8/"/>
-    <id>https://dongxiem.github.io/2020/04/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20-%20%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%B3%E8%B7%83%E8%A1%A8/</id>
-    <published>2020-04-01T15:46:22.325Z</published>
-    <updated>2020-04-02T06:28:52.741Z</updated>
+    <title>剑指Offer - 65 - 矩阵中的路径</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2065%20-%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2065%20-%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/</id>
+    <published>2020-04-02T12:43:52.410Z</published>
+    <updated>2020-04-02T12:54:41.234Z</updated>
     
     <summary type="html">
     
@@ -36,21 +36,19 @@
     </summary>
     
     
-      <category term="数据结构" scheme="https://dongxiem.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="数据结构" scheme="https://dongxiem.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="Redis" scheme="https://dongxiem.github.io/tags/Redis/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>数据结构 - 什么是B+树？</title>
-    <link href="https://dongxiem.github.io/2020/04/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20-%20%E4%BB%80%E4%B9%88%E6%98%AFB+%E6%A0%91%EF%BC%9F/"/>
-    <id>https://dongxiem.github.io/2020/04/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20-%20%E4%BB%80%E4%B9%88%E6%98%AFB+%E6%A0%91%EF%BC%9F/</id>
-    <published>2020-04-01T15:45:33.737Z</published>
-    <updated>2020-04-02T06:28:40.430Z</updated>
+    <title>剑指Offer - 64 - 滑动窗口的最大值</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2064%20-%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2064%20-%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/</id>
+    <published>2020-04-02T12:43:52.232Z</published>
+    <updated>2020-04-02T12:54:40.117Z</updated>
     
     <summary type="html">
     
@@ -65,21 +63,19 @@
     </summary>
     
     
-      <category term="数据结构" scheme="https://dongxiem.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="数据结构" scheme="https://dongxiem.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="Mysql" scheme="https://dongxiem.github.io/tags/Mysql/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 源码分析（1） - 配置文件解析过程</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/</id>
-    <published>2020-04-01T15:08:15.835Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 63 - 数据流中的中位数</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2063%20-%20%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2063%20-%20%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/</id>
+    <published>2020-04-02T12:43:52.039Z</published>
+    <updated>2020-04-02T12:54:38.805Z</updated>
     
     <summary type="html">
     
@@ -94,15 +90,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 源码分析（2） - 映射文件解析过程</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/</id>
-    <published>2020-04-01T15:08:15.013Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 66 - 机器人的运动范围</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2066%20-%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2066%20-%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/</id>
+    <published>2020-04-02T12:43:51.806Z</published>
+    <updated>2020-04-02T12:54:42.878Z</updated>
     
     <summary type="html">
     
@@ -117,15 +117,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 源码分析（3） - SQL执行过程</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%883%EF%BC%89%20-%20SQL%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%883%EF%BC%89%20-%20SQL%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/</id>
-    <published>2020-04-01T15:07:58.334Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 61 - 序列化二叉树</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2061%20-%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2061%20-%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
+    <published>2020-04-02T12:43:19.142Z</published>
+    <updated>2020-04-02T12:54:36.276Z</updated>
     
     <summary type="html">
     
@@ -140,15 +144,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 框架分析（5） - 连接池管理机制</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%885%EF%BC%89%20-%20%E8%BF%9E%E6%8E%A5%E6%B1%A0%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%885%EF%BC%89%20-%20%E8%BF%9E%E6%8E%A5%E6%B1%A0%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/</id>
-    <published>2020-04-01T15:06:52.025Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 60 - 把二叉树打印成多行</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2060%20-%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2060%20-%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C/</id>
+    <published>2020-04-02T12:43:19.038Z</published>
+    <updated>2020-04-02T12:54:34.049Z</updated>
     
     <summary type="html">
     
@@ -163,15 +171,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 框架分析（6） - 缓存机制</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%886%EF%BC%89%20-%20%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%886%EF%BC%89%20-%20%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/</id>
-    <published>2020-04-01T15:06:51.774Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 59 - 按之字形顺序打印二叉树</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2059%20-%20%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2059%20-%20%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
+    <published>2020-04-02T12:43:18.807Z</published>
+    <updated>2020-04-02T12:54:34.999Z</updated>
     
     <summary type="html">
     
@@ -186,15 +198,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 框架分析（4） - 事务管理机制</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%884%EF%BC%89%20-%20%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%884%EF%BC%89%20-%20%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/</id>
-    <published>2020-04-01T15:06:50.792Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 58 - 对称的二叉树</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2058%20-%20%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2058%20-%20%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
+    <published>2020-04-02T12:43:18.720Z</published>
+    <updated>2020-04-02T12:54:32.713Z</updated>
     
     <summary type="html">
     
@@ -209,15 +225,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 框架分析（3） - 使用Mybatis进行CRUD</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%883%EF%BC%89%20-%20%E4%BD%BF%E7%94%A8Mybatis%E8%BF%9B%E8%A1%8CCRUD/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%883%EF%BC%89%20-%20%E4%BD%BF%E7%94%A8Mybatis%E8%BF%9B%E8%A1%8CCRUD/</id>
-    <published>2020-04-01T15:06:31.847Z</published>
-    <updated>2020-04-01T15:06:31.847Z</updated>
+    <title>剑指Offer - 57 - 二叉树的下一个结点</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2057%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2057%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9/</id>
+    <published>2020-04-02T12:43:18.474Z</published>
+    <updated>2020-04-02T12:54:31.762Z</updated>
     
     <summary type="html">
     
@@ -232,15 +252,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 框架分析（2） - 基于XML配置文件的方式生成简单Demo</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E5%9F%BA%E4%BA%8EXML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F%E7%94%9F%E6%88%90%E7%AE%80%E5%8D%95Demo/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E5%9F%BA%E4%BA%8EXML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F%E7%94%9F%E6%88%90%E7%AE%80%E5%8D%95Demo/</id>
-    <published>2020-04-01T09:26:08.049Z</published>
-    <updated>2020-04-01T15:00:46.500Z</updated>
+    <title>剑指Offer - 62 - 二叉搜索树的第k个结点</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2062%20-%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E7%AC%ACk%E4%B8%AA%E7%BB%93%E7%82%B9/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2062%20-%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E7%AC%ACk%E4%B8%AA%E7%BB%93%E7%82%B9/</id>
+    <published>2020-04-02T12:43:18.225Z</published>
+    <updated>2020-04-02T12:54:37.615Z</updated>
     
     <summary type="html">
     
@@ -255,19 +279,19 @@
     </summary>
     
     
-      <category term="Mybatis" scheme="https://dongxiem.github.io/categories/Mybatis/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Mybatis" scheme="https://dongxiem.github.io/tags/Mybatis/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Mybatis 框架分析（1） - 总体概述</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%E6%80%BB%E4%BD%93%E6%A6%82%E8%BF%B0/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%E6%80%BB%E4%BD%93%E6%A6%82%E8%BF%B0/</id>
-    <published>2020-04-01T09:25:30.802Z</published>
-    <updated>2020-04-02T07:31:42.370Z</updated>
+    <title>剑指Offer - 55 - 链表中环的入口结点</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2055%20-%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2055%20-%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9/</id>
+    <published>2020-04-02T12:42:47.191Z</published>
+    <updated>2020-04-02T12:54:30.245Z</updated>
     
     <summary type="html">
     
@@ -282,21 +306,19 @@
     </summary>
     
     
-      <category term="Mybatis" scheme="https://dongxiem.github.io/categories/Mybatis/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="导页" scheme="https://dongxiem.github.io/tags/%E5%AF%BC%E9%A1%B5/"/>
-    
-      <category term="Mybatis" scheme="https://dongxiem.github.io/tags/Mybatis/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - 多线程 线程创建的几种方式</title>
-    <link href="https://dongxiem.github.io/2020/04/01/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
-    <id>https://dongxiem.github.io/2020/04/01/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%20%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</id>
-    <published>2020-04-01T05:55:16.877Z</published>
-    <updated>2020-04-01T08:09:04.307Z</updated>
+    <title>剑指Offer - 54 - 字符流中第一个不重复的字符</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2054%20-%20%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2054%20-%20%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6/</id>
+    <published>2020-04-02T12:42:47.044Z</published>
+    <updated>2020-04-02T12:54:28.951Z</updated>
     
     <summary type="html">
     
@@ -311,15 +333,19 @@
     </summary>
     
     
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - 关于指令重排序的几个疑问</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%85%B3%E4%BA%8E%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E7%96%91%E9%97%AE/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E5%85%B3%E4%BA%8E%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E7%96%91%E9%97%AE/</id>
-    <published>2020-03-31T15:45:13.930Z</published>
-    <updated>2020-03-31T16:01:01.992Z</updated>
+    <title>剑指Offer - 53 - 表示数值的字符串</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2053%20-%20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2053%20-%20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/</id>
+    <published>2020-04-02T12:42:46.852Z</published>
+    <updated>2020-04-02T12:54:27.843Z</updated>
     
     <summary type="html">
     
@@ -334,21 +360,19 @@
     </summary>
     
     
-      <category term="Java并发" scheme="https://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - Synchronized 与其他一些锁机制的对比</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%80%E4%BA%9B%E9%94%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AF%B9%E6%AF%94/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%80%E4%BA%9B%E9%94%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AF%B9%E6%AF%94/</id>
-    <published>2020-03-31T09:18:02.720Z</published>
-    <updated>2020-03-31T09:55:48.992Z</updated>
+    <title>剑指Offer - 52 - 正则表达式匹配</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2052%20-%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2052%20-%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</id>
+    <published>2020-04-02T12:42:46.657Z</published>
+    <updated>2020-04-02T12:54:25.190Z</updated>
     
     <summary type="html">
     
@@ -363,21 +387,19 @@
     </summary>
     
     
-      <category term="Java并发" scheme="https://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - Synchronized 几种使用方式</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</id>
-    <published>2020-03-31T09:17:42.429Z</published>
-    <updated>2020-03-31T11:44:17.596Z</updated>
+    <title>剑指Offer - 51 - 构建乘积数组</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2051%20-%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2051%20-%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84/</id>
+    <published>2020-04-02T12:42:46.453Z</published>
+    <updated>2020-04-02T12:54:26.685Z</updated>
     
     <summary type="html">
     
@@ -392,21 +414,19 @@
     </summary>
     
     
-      <category term="Java并发" scheme="https://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 并发 - Synchronized 原理分析</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</id>
-    <published>2020-03-31T09:16:59.531Z</published>
-    <updated>2020-03-31T15:42:54.888Z</updated>
+    <title>剑指Offer - 50 - 数组中重复的数字 - 副本</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2050%20-%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97%20-%20%E5%89%AF%E6%9C%AC/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2050%20-%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97%20-%20%E5%89%AF%E6%9C%AC/</id>
+    <published>2020-04-02T12:42:46.202Z</published>
+    <updated>2020-04-02T12:54:23.038Z</updated>
     
     <summary type="html">
     
@@ -421,21 +441,19 @@
     </summary>
     
     
-      <category term="Java并发" scheme="https://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 基础 - Static关键字的一些认识</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Static%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Static%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
-    <published>2020-03-31T08:49:15.235Z</published>
-    <updated>2020-03-31T08:55:45.460Z</updated>
+    <title>剑指Offer - 49 - 把字符串转换成整数</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2049%20-%20%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2049%20-%20%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0/</id>
+    <published>2020-04-02T12:41:55.269Z</published>
+    <updated>2020-04-02T12:54:22.022Z</updated>
     
     <summary type="html">
     
@@ -450,21 +468,19 @@
     </summary>
     
     
-      <category term="Java基础知识" scheme="https://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="基础" scheme="https://dongxiem.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 基础 - 关于Object的一些认识</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8EObject%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20%E5%85%B3%E4%BA%8EObject%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
-    <published>2020-03-31T08:48:21.984Z</published>
-    <updated>2020-03-31T08:55:56.462Z</updated>
+    <title>剑指Offer - 48 - 不用加减乘除做加法</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2048%20-%20%E4%B8%8D%E7%94%A8%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%81%9A%E5%8A%A0%E6%B3%95/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2048%20-%20%E4%B8%8D%E7%94%A8%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%81%9A%E5%8A%A0%E6%B3%95/</id>
+    <published>2020-04-02T12:41:55.033Z</published>
+    <updated>2020-04-02T12:54:20.853Z</updated>
     
     <summary type="html">
     
@@ -479,21 +495,19 @@
     </summary>
     
     
-      <category term="Java基础知识" scheme="https://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="基础" scheme="https://dongxiem.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 基础 - Int和Integer的一些认识</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Int%E5%92%8CInteger%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20Int%E5%92%8CInteger%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
-    <published>2020-03-31T08:47:12.203Z</published>
-    <updated>2020-03-31T08:55:39.448Z</updated>
+    <title>剑指Offer - 47 - 求1+2+3+...+n</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2047%20-%20%E6%B1%821+2+3+...+n/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2047%20-%20%E6%B1%821+2+3+...+n/</id>
+    <published>2020-04-02T12:41:54.871Z</published>
+    <updated>2020-04-02T12:54:19.874Z</updated>
     
     <summary type="html">
     
@@ -508,21 +522,19 @@
     </summary>
     
     
-      <category term="Java基础知识" scheme="https://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="基础" scheme="https://dongxiem.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>Java 基础 - String的一些认识</title>
-    <link href="https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20String%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/"/>
-    <id>https://dongxiem.github.io/2020/03/31/Java%20%E5%9F%BA%E7%A1%80%20-%20String%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/</id>
-    <published>2020-03-31T08:46:57.185Z</published>
-    <updated>2020-03-31T08:55:50.720Z</updated>
+    <title>剑指Offer - 46 - 孩子们的游戏(圆圈中最后剩下的数)(约瑟夫环)</title>
+    <link href="https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2046%20-%20%E5%AD%A9%E5%AD%90%E4%BB%AC%E7%9A%84%E6%B8%B8%E6%88%8F(%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0)(%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF)/"/>
+    <id>https://dongxiem.github.io/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2046%20-%20%E5%AD%A9%E5%AD%90%E4%BB%AC%E7%9A%84%E6%B8%B8%E6%88%8F(%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0)(%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF)/</id>
+    <published>2020-04-02T12:41:54.751Z</published>
+    <updated>2020-04-02T12:54:18.415Z</updated>
     
     <summary type="html">
     
@@ -537,12 +549,10 @@
     </summary>
     
     
-      <category term="Java基础知识" scheme="https://dongxiem.github.io/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="剑指offer" scheme="https://dongxiem.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
     
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="基础" scheme="https://dongxiem.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
