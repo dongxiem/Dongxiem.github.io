@@ -57,6 +57,10 @@
   <time datetime="2020-03-31T07:29:58.483Z" itemprop="datePublished">2020-03-31</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E9%9B%86%E5%90%88/">Java集合</a>
+  </div>
+
       
       
 <div class="word_count">
@@ -64,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0字</span>
+            <span class="post-count">2.3k字</span>
         </span>
     </span>
 
@@ -73,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">8分钟</span>
         </span>
     </span>
 </div>
@@ -84,6 +88,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -96,7 +102,99 @@
       
 
       
-      
+      <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>关于HashMap 其实还是有很多困惑的，</p>
+<h1 id="2-主要一些知识点"><a href="#2-主要一些知识点" class="headerlink" title="2.主要一些知识点"></a>2.主要一些知识点</h1><h2 id="2-1-HashMap-底层结构的一些问题与解答"><a href="#2-1-HashMap-底层结构的一些问题与解答" class="headerlink" title="2.1 HashMap 底层结构的一些问题与解答"></a>2.1 HashMap 底层结构的一些问题与解答</h2><p>关于HashMap 的底层数据结构，我有以下这么几个疑问，当时也是查看书籍和百度谷歌了好一会儿，然后连带着寻找到其他的一些问题，如下。</p>
+<hr>
+<p>关于底层数据结构为什么采用 数组+链表 这么一种组合的几个问题：</p>
+<p><strong>1.为什么用数组+链表？</strong></p>
+<ul>
+<li>我认为数组是用来确定桶的位置，利用元素的key的hash值对数组长度取模得到.</li>
+<li>链表是用来解决hash冲突问题，当出现hash值一样的情形，就在数组上的对应位置形成一条链表。</li>
+<li>注：这里的hash值并不是指hashcode，而是将hashcode高低十六位异或过的。</li>
+</ul>
+<p><strong>2.那使用LinkedList代替数组结构可以么？</strong></p>
+<ul>
+<li>这里的意思是，源码中是这样的：<code>Entry[] table = new Entry[capacity];</code><ul>
+<li>ps：Entry就是一个链表节点。</li>
+</ul>
+</li>
+<li>那我用下面这样表示：<ul>
+<li><code>List&lt;Entry&gt; table = new LinkedList&lt;Entry&gt;();</code></li>
+</ul>
+</li>
+<li>所以没毛病是可以使用LinkedList代替数组结构</li>
+</ul>
+<p><strong>3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?</strong></p>
+<ul>
+<li>因为用数组效率最高！在HashMap中，定位桶的位置是利用元素的key的哈希值对数组长度取模得到。此时，我们已得到桶的位置。显然数组的查找效率比LinkedList大。</li>
+</ul>
+<p><strong>4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?</strong></p>
+<ul>
+<li>因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。</li>
+<li>而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。</li>
+</ul>
+<hr>
+<p>关于树化为什么采用红黑树、及红黑树的一些特性的问题、：</p>
+<p><strong>1.如果进行树化了，为什么是红黑树？别的树不可以吗？</strong></p>
+<ul>
+<li>比如二叉查找树，是可以的。但是二叉查找树在特殊情况下会变成一条线性结构（这就跟原来使用链表结构一样了，造成很深的问题），遍历查找会非常慢。</li>
+<li>AVL树中，根到任何叶子的最短路径和最长路径之间的差异最多为1，而红黑树可以是两倍，虽然红黑树放弃了一定的平衡，但是当进行查找时AVL树可能需要O（Logn）次旋转，而红黑树只需要最多两次，红黑树更加适合插入修改密集型任务</li>
+</ul>
+<p><strong>2.为什么在解决hash冲突的时候，不直接用红黑树?而选择先用链表，再转红黑树?</strong></p>
+<ul>
+<li><strong>因为红黑树需要进行</strong>左旋，右旋，变色这些操作来保持平衡，而单链表不需要。当元素小于8个当时候，此时做查询操作，链表结构已经能保证查询性能。当元素大于8个的时候，此时需要红黑树来加快查询速度，但是新增节点的效率变慢了。因此，如果一开始就用红黑树结构，元素太少，新增效率又比较慢，无疑这是浪费性能的。</li>
+</ul>
+<p><strong>3.当链表转为红黑树后，什么时候退化为链表?</strong></p>
+<ul>
+<li>为6的时候退转为链表。中间有个差值7可以防止链表和树之间频繁的转换。假设一下，如果设计成链表个数超过8则链表转换成树结构，链表个数小于8则树结构转换成链表，如果一个HashMap不停的插入、删除元素，链表个数在8左右徘徊，就会频繁的发生树转链表、链表转树，效率会很低。</li>
+</ul>
+<p><strong>4.其实这样引出了一个问题：为什么链化阈值是 6 ，树化阈值是 8（为什么8的时候树化，4不可以吗？）？</strong></p>
+<ul>
+<li>8树化，是经测试，冲突链表个数符合<u>泊松分布</u>，为8时概率零点几，为6而不是7退化，是为了避免7 8来回变引入不可变开销。线程数其实在考cpu密集型和io密集型。</li>
+</ul>
+<hr>
+<p>还有HashMap 中的哈希的一些问题：</p>
+<p><strong>1.HashMap 中哈希方法，为什么要选择31？？？</strong></p>
+<ul>
+<li>首先看下String hashcode 的方法是如何实现的：</li>
+</ul>
+<p><img src="https://i.loli.net/2020/04/02/gCVO9duskcUS1TP.png" alt="image.png"></p>
+<p>我们可以由上面的 for 循环推导出一个计算公式，hashCode 方法注释中已经给出。如下：</p>
+<p><img src="https://i.loli.net/2020/04/02/GtJUCvLyr19lIHj.png" alt="image.png"></p>
+<p>这里说明一下，上面的 s 数组即源码中的 val 数组，是 String 内部维护的一个 char 类型数组。这里我来简单推导一下这个公式：</p>
+<p><img src="https://i.loli.net/2020/04/02/6lyFtYu9bM5pz81.png" alt="image.png"></p>
+<p>上面的公式包括公式的推导并不是本文的重点，大家了解了解即可。接下来来说说本文的重点，即选择31的理由。从网上的资料来看，一般有如下两个原因：</p>
+<ol>
+<li>第一，31是一个不大不小的质数，是作为 hashCode 乘子的优选质数之一。另外一些相近的质数，比如37、41、43等等，也都是不错的选择。那么为啥偏偏选中了31呢？请看第二个原因。<ul>
+<li><strong>第一点解释一下：31是一个不大不小的质数，是优选乘子。那为啥同是质数的2和101（或者更大的质数）就不是优选乘子呢？</strong></li>
+<li>这里先分析质数2。首先，假设 n = 6，然后把质数2和 n 带入上面的计算公式。并仅计算公式中次数最高的那一项，结果是2^5 = 32，是不是很小。所以这里可以断定，当字符串长度不是很长时，用质数2做为乘子算出的哈希值，数值不会很大。也就是说，哈希值会分布在一个较小的数值区间内，分布性不佳，最终可能会导致冲突率上升。</li>
+<li>那么如果用一个较大的大质数101会产生什么样的结果呢？根据上面的分析，我想大家应该可以猜出结果了。就是不用再担心哈希值会分布在一个小的区间内了，因为101^5 = 10,510,100,501。但是要注意的是，这个计算结果太大了。如果用 int 类型表示哈希值，结果会溢出，最终导致数值信息丢失。尽管数值信息丢失并不一定会导致冲突率上升，但是我们暂且先认为质数101（或者更大的质数）也不是很好的选择。</li>
+<li>最后，我们再来看看质数31的计算结果： 31^5 = 28629151，结果值相对于32和10,510,100,501来说。是不是很nice，不大不小。</li>
+<li>总的来说，是100以内的比较好的奇质数（既要是奇数，又要是质数的数）</li>
+</ul>
+</li>
+<li>第二、31可以被 JVM 优化，31 * i = (i &lt;&lt; 5) - i。</li>
+</ol>
+<p>Stack Overflow 上关于这个问题的讨论：Why does Java’s hashCode() in String use 31 as a multiplier?</p>
+<p>其中排名第一的答案引用了《Effective Java》中的一段话，这里也引用一下：</p>
+<blockquote>
+<p>The value 31 was chosen because it is an odd prime. If it were even and the multiplication overflowed, information would be lost, as multiplication by 2 is equivalent to shifting. The advantage of using a prime is less clear, but it is traditional. A nice property of 31 is that the multiplication can be replaced by a shift and a subtraction for better performance: 31 * i == (i &lt;&lt; 5) - i`. Modern VMs do this sort of optimization automatically.</p>
+</blockquote>
+<p>翻译过来是这么说的：</p>
+<ul>
+<li>选择数字31是因为它是一个奇质数，如果选择一个偶数会在乘法运算中产生溢出，导致数值信息丢失，因为乘二相当于移位运算。</li>
+<li>选择质数的优势并不是特别的明显，但这是一个传统。</li>
+<li>同时，数字31有一个很好的特性，即乘法运算可以被移位和减法运算取代，来获取更好的性能：31 * i == (i &lt;&lt; 5) - i，现代的 Java 虚拟机可以自动的完成这个优化。</li>
+</ul>
+<p>排名第二的答案是这样说的：</p>
+<blockquote>
+<p>As Goodrich and Tamassia point out, If you take over 50,000 English words (formed as the union of the word lists provided in two variants of Unix), using the constants 31, 33, 37, 39, and 41 will produce less than 7 collisions in each case. Knowing this, it should come as no surprise that many Java implementations choose one of these constants.</p>
+</blockquote>
+<p>翻译过来是这样的：</p>
+<ul>
+<li>正如 Goodrich 和 Tamassia 指出的那样，如果你对超过 50,000 个英文单词（由两个不同版本的 Unix 字典合并而成）进行 hash code 运算，并使用常数 31, 33, 37, 39 和 41 作为乘子，每个常数算出的哈希值冲突数都小于7个，所以在上面几个常数中，常数 31 被 Java 实现所选用也就不足为奇了。</li>
+</ul>
+<h2 id="2-2-HashMap-容量相关的一些问题"><a href="#2-2-HashMap-容量相关的一些问题" class="headerlink" title="2.2 HashMap 容量相关的一些问题"></a>2.2 HashMap 容量相关的一些问题</h2><h2 id="2-3-HashMap-并发相关的一些问题"><a href="#2-3-HashMap-并发相关的一些问题" class="headerlink" title="2.3 HashMap 并发相关的一些问题"></a>2.3 HashMap 并发相关的一些问题</h2><h2 id="2-4-HashMap与其他一些容器的比较"><a href="#2-4-HashMap与其他一些容器的比较" class="headerlink" title="2.4 HashMap与其他一些容器的比较"></a>2.4 HashMap与其他一些容器的比较</h2><h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1>
       
       <!-- reward -->
       
@@ -168,6 +266,8 @@
 <div id="share-mask"></div>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a></li></ul>
+
 
     </footer>
 
