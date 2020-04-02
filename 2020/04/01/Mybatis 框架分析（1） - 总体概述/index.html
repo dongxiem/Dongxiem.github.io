@@ -165,6 +165,7 @@
 <ul>
 <li>将最终的处理结果返回。</li>
 </ul>
+<hr>
 <h2 id="2-1-接口层"><a href="#2-1-接口层" class="headerlink" title="2.1 接口层"></a>2.1 接口层</h2><p>所谓的接口层，就是MyBatis和数据库的交互，而MyBatis和数据库的交互大体上有两种方式，分别如下：</p>
 <ol>
 <li>使用传统的MyBatis提供的API；</li>
@@ -176,6 +177,7 @@
 <h3 id="2-1-2-使用Mapper接口"><a href="#2-1-2-使用Mapper接口" class="headerlink" title="2.1.2 使用Mapper接口"></a>2.1.2 使用Mapper接口</h3><p>MyBatis 将配置文件中的每一个<code>&lt;mapper&gt;</code> 节点抽象为一个 Mapper 接口，而这个接口中声明的方法和跟<mapper> 节点中的<code>&lt;select|update|delete|insert&gt;</code> 节点项对应，即<code>&lt;select|update|delete|insert&gt;</code> 节点的id值为Mapper 接口中的方法名称，<code>parameterType</code> 值表示Mapper 对应方法的入参类型，而<code>resultMap</code> 值则对应了Mapper 接口表示的返回值类型或者返回结果集的元素类型。</p>
 <p><img src="https://i.loli.net/2020/04/02/OjXWJ6Pw7gySeYU.png" alt="Mapper接口机制.png"></p>
 <p>根据<strong>MyBatis</strong> 的配置规范配置好后，通过<code>SqlSession.getMapper(XXXMapper.class)</code> 方法，MyBatis 会根据相应的接口声明的方法信息，通过<strong>动态代理机制</strong>生成一个Mapper 实例，我们使用Mapper 接口的某一个方法时，MyBatis 会根据这个方法的方法名和参数类型，确定Statement Id，底层还是通过<code>SqlSession.select(&quot;statementId&quot;,parameterObject);</code>或者<code>SqlSession.update(&quot;statementId&quot;,parameterObject);</code> 等等来实现对数据库的操作<br>MyBatis 引用Mapper 接口这种调用方式，纯粹是为了满足面向接口编程的需要。（其实还有一个原因是在于，面向接口的编程，使得用户在接口上可以使用注解来配置SQL语句，<strong>这样就可以脱离XML配置文件，实现“0配置”</strong>）。</p>
+<hr>
 <h2 id="2-2-数据处理层"><a href="#2-2-数据处理层" class="headerlink" title="2.2 数据处理层"></a>2.2 数据处理层</h2><p>数据处理层可以说是<strong>MyBatis</strong> 的核心，从大的方面上讲，它要完成两个功能：</p>
 <ol>
 <li><em>通过传入参数构建动态SQL语句；</em></li>
@@ -188,6 +190,7 @@
 <li>另一个就是对resultset查询结果集的jdbcType 数据转换成java 数据类型。</li>
 </ul>
 <h3 id="2-2-2-SQL语句的执行以及封装查询结果集成List"><a href="#2-2-2-SQL语句的执行以及封装查询结果集成List" class="headerlink" title="2.2.2 SQL语句的执行以及封装查询结果集成List"></a>2.2.2 <strong>SQL语句的执行以及封装查询结果集成List</strong></h3><p>动态SQL语句生成之后，MyBatis 将执行SQL语句，并将可能返回的结果集转换成List 列表。MyBatis 在对结果集的处理中，<strong>支持结果集关系一对多和多对一的转换</strong>，并且有两种支持方式，<strong>一种为嵌套查询语句的查询，还有一种是嵌套结果集的查询</strong>。</p>
+<hr>
 <h2 id="2-3-框架支撑层"><a href="#2-3-框架支撑层" class="headerlink" title="2.3 框架支撑层"></a>2.3 框架支撑层</h2><p>如上图所示，主要有四种机制，我想接下来可以一一对这些机制进行展开认识一下，都是挺重要的一些机制了。</p>
 <h3 id="2-3-1-事务管理机制"><a href="#2-3-1-事务管理机制" class="headerlink" title="2.3.1 事务管理机制"></a>2.3.1 <strong>事务管理机制</strong></h3><p>了解数据库之后，应该都很清楚事务是一个什么东西，对于数据库，事务管理是其非常重要的一个方面，所以Mybatis 也相对应的给出了这个方面的机制。</p>
 <p>MyBatis的事务管理分为两种形式：</p>
@@ -203,6 +206,7 @@
 <h3 id="2-3-3-缓存机制"><a href="#2-3-3-缓存机制" class="headerlink" title="2.3.3 缓存机制"></a>2.3.3 <strong>缓存机制</strong></h3><p>所以还是说，计算机的很多方面都是相同的，缓存机制，特别是对于需要查询的一些相关操作，能节省时间尽量节省时间，也就是说为了提高数据利用率和减小服务器和数据库的压力，研究MyBatis 的大叔们会对于一些查询提供会话级别的数据缓存，会将对某一次查询，放置到<strong>SqlSession</strong> 中，在允许的时间间隔内，对于完全相同的查询，MyBatis 会直接将缓存结果返回给用户，而不用再到数据库中查找。</p>
 <p>具体查看分析：</p>
 <h3 id="2-3-4-SQL语句的配置方式"><a href="#2-3-4-SQL语句的配置方式" class="headerlink" title="2.3.4 SQL语句的配置方式"></a>2.3.4 SQL语句的配置方式</h3><p>传统的MyBatis 配置SQL 语句方式就是使用XML文件进行配置的，但是这种方式不能很好地支持面向接口编程的理念，为了支持面向接口的编程，<strong>MyBatis 引入了Mapper接口的概念</strong>，面向接口的引入，对使用注解来配置SQL 语句成为可能，用户只需要在接口上添加必要的注解即可，不用再去配置XML文件了，但是，目前的MyBatis 只是对注解配置SQL 语句提供了有限的支持，某些高级功能还是要依赖XML配置文件配置SQL 语句。</p>
+<hr>
 <h2 id="2-4-引导层"><a href="#2-4-引导层" class="headerlink" title="2.4 引导层"></a>2.4 引导层</h2><p><strong>引导层是配置和启动MyBatis 配置信息的方式</strong>。MyBatis 提供两种方式来引导MyBatis ：</p>
 <ol>
 <li>基于XML配置文件的方式</li>
