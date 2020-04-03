@@ -2001,39 +2001,44 @@ d = e - f;    </code></pre>
 <p>线程池运行的状态，并不是用户显式设置的，而是伴随着线程池的运行，由内部来维护。线程池内部使用一个变量维护两个值：运行状态(<code>runState</code>)和线程数量 (<code>workerCount</code>)。在具体实现中，线程池将运行状态(<code>runState</code>)、线程数量 (<code>workerCount</code>)两个关键参数的维护放在了一起，如下代码所示：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger ctl = <span class="keyword">new</span> AtomicInteger(ctlOf(RUNNING, <span class="number">0</span>));</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> COUNT_BITS = Integer.SIZE - <span class="number">3</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CAPACITY   = (<span class="number">1</span> &lt;&lt; COUNT_BITS) - <span class="number">1</span>;</span><br><span class="line"><span class="comment">// runState is stored in the high-order bits</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RUNNING    = -<span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SHUTDOWN   =  <span class="number">0</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STOP       =  <span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TIDYING    =  <span class="number">2</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TERMINATED =  <span class="number">3</span> &lt;&lt; COUNT_BITS;</span><br></pre></td></tr></table></figure>
 
-<p><code>ctl</code>这个<code>AtomicInteger</code>类型，是对线程池的运行状态和线程池中有效线程的数量进行控制的一个字段， 它同时包含两部分的信息：线程池的运行状态 (<code>runState</code>) 和线程池内有效线程的数量 (<code>workerCount</code>)，高<u>3位保存<code>runState</code>，低29位保存<code>workerCount</code>，两个变量之间互不干扰</u>。<code>COUNT_BITS</code> 就是29，<code>CAPACITY</code>就是1左移29位减1（29个1），这个常量表示<code>workerCount</code>的上限值，大约是5亿。</p>
+<p><code>ctl</code>这个<code>AtomicInteger</code>类型，是对线程池的运行状态和线程池中有效线程的数量进行控制的一个字段， 它同时包含两部分的信息：线程池的运行状态 (<code>runState</code>) 和线程池内有效线程的数量 (<code>workerCount</code>)，高3位保存<code>runState</code>，低29位保存<code>workerCount</code>，两个变量之间互不干扰。<code>COUNT_BITS</code> 就是29，<code>CAPACITY</code>就是1左移29位减1（29个1），这个常量表示<code>workerCount</code>的上限值，大约是5亿。</p>
 <p><strong>为什么仅仅使用一个变量去存两个值呢？不分开存储？</strong></p>
-<p>用一个变量去存储两个值，可避免在做相关决策时，出现不一致的情况，不必为了维护两者的一致，而占用锁资源。通过阅读线程池源代码也可以发现，经常出现要同时判断线程池运行状态和线程数量的情况。线程池也提供了若干方法去供用户获得线程池当前的运行状态、线程个数。这里都使用的是位运算的方式，相比于基本运算，速度也会快很多。</p>
+<p><u>用一个变量去存储两个值，可避免在做相关决策时，出现不一致的情况，不必为了维护两者的一致，而占用锁资源</u>。通过阅读线程池源代码也可以发现，经常出现要同时判断线程池运行状态和线程数量的情况。线程池也提供了若干方法去供用户获得线程池当前的运行状态、线程个数。这里都使用的是位运算的方式，相比于基本运算，速度也会快很多。</p>
 <h3 id="五种状态"><a href="#五种状态" class="headerlink" title="五种状态"></a>五种状态</h3><p>下面再介绍下线程池的运行状态. 线程池一共有五种状态, 分别是：</p>
 <ol>
 <li><p><strong>RUNNING</strong> ：能接受新提交的任务，并且也能处理阻塞队列中的任务；</p>
 </li>
-<li><p><strong>SHUTDOWN</strong>：关闭状态，不再接受新提交的任务，但却可以继续处理阻塞队列中已保存的任务。在线程池处于 RUNNING 状态时，调用 shutdown()方法会使线程池进入到该状态。（finalize() 方法在执行过程中也会调用shutdown()方法进入该状态）；</p>
+<li><p><strong>SHUTDOWN</strong>：关闭状态，不再接受新提交的任务，但却可以继续处理阻塞队列中已保存的任务。在线程池处于 RUNNING 状态时，调用 <code>shutdown()</code>方法会使线程池进入到该状态。（<code>finalize()</code> 方法在执行过程中也会调用<code>shutdown()</code>方法进入该状态）；</p>
 </li>
-<li><p><strong>STOP</strong>：不能接受新任务，也不处理队列中的任务，会中断正在处理任务的线程。在线程池处于 RUNNING 或 SHUTDOWN 状态时，调用 shutdownNow() 方法会使线程池进入到该状态；</p>
+<li><p><strong>STOP</strong>：不能接受新任务，也不处理队列中的任务，会中断正在处理任务的线程。在线程池处于 RUNNING 或 SHUTDOWN 状态时，调用 <code>shutdownNow()</code> 方法会使线程池进入到该状态；</p>
 </li>
-<li><p><strong>TIDYING</strong>：如果所有的任务都已终止了，workerCount (有效线程数) 为0，线程池进入该状态后会调用 terminated() 方法进入TERMINATED 状态。</p>
+<li><p><strong>TIDYING</strong>：如果所有的任务都已终止了，<code>workerCount</code> (有效线程数) 为0，线程池进入该状态后会调用 <code>terminated()</code> 方法进入TERMINATED 状态。</p>
 </li>
-<li><p>TERMINATED：在terminated() 方法执行完后进入该状态，默认terminated()方法中什么也没有做。</p>
+<li><p><strong>TERMINATED</strong>：在<code>terminated()</code> 方法执行完后进入该状态，默认<code>terminated()</code>方法中什么也没有做。</p>
 <p>进入TERMINATED的条件如下：</p>
 <ul>
 <li>线程池不是RUNNING状态；</li>
 <li>线程池状态不是TIDYING状态或TERMINATED状态；</li>
-<li>如果线程池状态是SHUTDOWN并且workerQueue为空；</li>
-<li>workerCount为0；</li>
+<li>如果线程池状态是SHUTDOWN并且<code>workerQueue</code>为空；</li>
+<li><code>workerCount</code>为0；</li>
 <li>设置TIDYING状态成功。</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png" alt="image.png"></p>
+<p>这五种状态如下所示：</p>
+<p><img src="https://i.loli.net/2020/04/03/MKbLGHAohriWvJ2.png" alt="五种运行状态.png"></p>
+<p>下图为线程池的状态转换过程：</p>
+<p><img src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png" alt="线程池状态转换.png"></p>
 <h3 id="ctl-相关方法"><a href="#ctl-相关方法" class="headerlink" title="ctl 相关方法"></a>ctl 相关方法</h3><p>关于内部封装的获取生命周期状态、获取线程池线程数量的计算方法如以下代码所示：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">runStateOf</span><span class="params">(<span class="keyword">int</span> c)</span>     </span>&#123; <span class="keyword">return</span> c &amp; ~CAPACITY; &#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">workerCountOf</span><span class="params">(<span class="keyword">int</span> c)</span>  </span>&#123; <span class="keyword">return</span> c &amp; CAPACITY; &#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ctlOf</span><span class="params">(<span class="keyword">int</span> rs, <span class="keyword">int</span> wc)</span> </span>&#123; <span class="keyword">return</span> rs | wc; &#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-<h2 id="2-3-线程池主要的任务处理流程"><a href="#2-3-线程池主要的任务处理流程" class="headerlink" title="2.3 线程池主要的任务处理流程"></a>2.3 线程池主要的任务处理流程</h2><p>主要分为四点进行解析：</p>
+<p>这几个方法的具体含义如下所示：</p>
+<ul>
+<li><strong>runStateOf</strong>：获取运行状态；</li>
+<li><strong>workerCountOf</strong>：获取活动线程数；</li>
+<li><strong>ctlOf</strong>：获取运行状态和活动线程数的值。</li>
+</ul>
+<h2 id="2-3-线程池主要的任务执行机制"><a href="#2-3-线程池主要的任务执行机制" class="headerlink" title="2.3 线程池主要的任务执行机制"></a>2.3 线程池主要的任务执行机制</h2><p>主要分为四点进行解析：任务调度、任务缓存、任务申请、任务拒绝</p>
 <h2 id="2-4-Executor-框架接口"><a href="#2-4-Executor-框架接口" class="headerlink" title="2.4 Executor 框架接口"></a>2.4 Executor 框架接口</h2><h3 id="2-4-1-Executor-接口"><a href="#2-4-1-Executor-接口" class="headerlink" title="2.4.1 Executor 接口"></a>2.4.1 Executor 接口</h3><p>Java中的线程池顶层接口是Executor接口，<code>ThreadPoolExecutor</code>是这个接口的实现类。所以我们当然要先分析一下Executor 这个框架接口：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -2084,6 +2089,17 @@ d = e - f;    </code></pre>
 </ol>
 </li>
 </ul>
+<p>关于队列，这里还要BB多几句，线程池主要有以下几种处理方式:</p>
+<ol>
+<li><strong>直接切换</strong>：这种方式常用的队列是<code>SynchronousQueue</code>，但现在还没有研究过该队列，这里暂时还没法介绍；</li>
+<li><strong>使用无界队列</strong>：一般使用基于链表的阻塞队列<code>LinkedBlockingQueue</code>。如果使用这种方式，那么线程池中能够创建的最大线程数就是<code>corePoolSize</code>，而<code>maximumPoolSize</code>就不会起作用了（后面也会说到）。当线程池中所有的核心线程都是RUNNING状态时，这时一个新的任务提交就会放入等待队列中。</li>
+<li>使用有界队列：一般使用<code>ArrayBlockingQueue</code>。使用该方式可以将线程池的最大线程数量限制为<code>maximumPoolSize</code>，这样能够降低资源的消耗，但同时这种方式也使得线程池对线程的调度变得更困难，因为线程池和队列的容量都是有限的值，所以要想使线程池处理任务的吞吐率达到一个相对合理的范围，又想使线程调度相对简单，并且还要尽可能的降低线程池对资源的消耗，就需要合理的设置这两个数量。<ul>
+<li>如果要想降低系统资源的消耗（包括CPU的使用率，操作系统资源的消耗，上下文环境切换的开销等）, 可以设置较大的队列容量和较小的线程池容量, 但这样也会降低线程处理任务的吞吐量。</li>
+<li>如果提交的任务经常发生阻塞，那么可以考虑通过调用 <code>setMaximumPoolSize()</code> 方法来重新设定线程池的容量。</li>
+<li>如果队列的容量设置的较小，通常需要将线程池的容量设置大一点，这样CPU的使用率会相对的高一些。但如果线程池的容量设置的过大，则在提交的任务数量太多的情况下，并发量会增加，那么线程之间的调度就是一个要考虑的问题，因为这样反而有可能降低处理任务的吞吐量。</li>
+</ul>
+</li>
+</ol>
 <p>介绍完5个必须的参数之后，还有两个非必须的参数。</p>
 <ul>
 <li><strong>ThreadFactory threadFactory</strong> ：创建线程的工厂 ，用于批量创建线程，统一在创建线程时设置一些参数，如是否守护线程、线程的优先级等。如果不指定，会新建一个默认的线程工厂。</li>
@@ -2092,7 +2108,7 @@ d = e - f;    </code></pre>
 
 <ul>
 <li><strong>RejectedExecutionHandler handler</strong>：<strong>拒绝处理策略</strong>，线程数量大于最大线程数就会采用拒绝处理策略，四种拒绝处理的策略为 ：<ol>
-<li>hreadPoolExecutor.AbortPolicy：<strong>默认拒绝处理策略</strong>，丢弃任务并抛出RejectedExecutionException异常。</li>
+<li>hreadPoolExecutor.AbortPolicy：<strong>默认拒绝处理策略</strong>，丢弃任务并直接抛出<code>RejectedExecutionException</code>异常。</li>
 <li>ThreadPoolExecutor.DiscardPolicy：丢弃新来的任务，但是不抛出异常。</li>
 <li>ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列头部（最旧的）的任务，然后重新尝试执行程序（如果再次失败，重复此过程）。</li>
 <li>ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务。</li>
