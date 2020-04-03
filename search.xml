@@ -1996,7 +1996,43 @@ d = e - f;    </code></pre>
 <li><p>线程管理部分是消费者，它们被统一维护在线程池内，根据任务请求进行线程的分配，当线程执行完任务后则会继续获取新的任务去执行，最终当线程获取不到任务的时候，线程就会被回收。</p>
 </li>
 </ul>
-<p>2.2 </p>
+<h2 id="2-2-线程池的生命周期管理"><a href="#2-2-线程池的生命周期管理" class="headerlink" title="2.2 线程池的生命周期管理"></a>2.2 线程池的生命周期管理</h2><p>此部分是尤为重要的一点，要了解内部是如何运作的，肯定要了解一些线程的状态是如何设定的。</p>
+<h3 id="几个重要的字段"><a href="#几个重要的字段" class="headerlink" title="几个重要的字段"></a>几个重要的字段</h3><p>这几个字段其实是存在于<code>ThreadPoolExecutor</code> 中的字段，因为比较重要，所以先放上来讲。</p>
+<p>线程池运行的状态，并不是用户显式设置的，而是伴随着线程池的运行，由内部来维护。线程池内部使用一个变量维护两个值：运行状态(<code>runState</code>)和线程数量 (<code>workerCount</code>)。在具体实现中，线程池将运行状态(<code>runState</code>)、线程数量 (<code>workerCount</code>)两个关键参数的维护放在了一起，如下代码所示：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger ctl = <span class="keyword">new</span> AtomicInteger(ctlOf(RUNNING, <span class="number">0</span>));</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> COUNT_BITS = Integer.SIZE - <span class="number">3</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CAPACITY   = (<span class="number">1</span> &lt;&lt; COUNT_BITS) - <span class="number">1</span>;</span><br><span class="line"><span class="comment">// runState is stored in the high-order bits</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RUNNING    = -<span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SHUTDOWN   =  <span class="number">0</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STOP       =  <span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TIDYING    =  <span class="number">2</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TERMINATED =  <span class="number">3</span> &lt;&lt; COUNT_BITS;</span><br></pre></td></tr></table></figure>
+
+<p><code>ctl</code>这个<code>AtomicInteger</code>类型，是对线程池的运行状态和线程池中有效线程的数量进行控制的一个字段， 它同时包含两部分的信息：线程池的运行状态 (<code>runState</code>) 和线程池内有效线程的数量 (<code>workerCount</code>)，高<u>3位保存<code>runState</code>，低29位保存<code>workerCount</code>，两个变量之间互不干扰</u>。<code>COUNT_BITS</code> 就是29，<code>CAPACITY</code>就是1左移29位减1（29个1），这个常量表示<code>workerCount</code>的上限值，大约是5亿。</p>
+<p><strong>为什么仅仅使用一个变量去存两个值呢？不分开存储？</strong></p>
+<p>用一个变量去存储两个值，可避免在做相关决策时，出现不一致的情况，不必为了维护两者的一致，而占用锁资源。通过阅读线程池源代码也可以发现，经常出现要同时判断线程池运行状态和线程数量的情况。线程池也提供了若干方法去供用户获得线程池当前的运行状态、线程个数。这里都使用的是位运算的方式，相比于基本运算，速度也会快很多。</p>
+<h3 id="五种状态"><a href="#五种状态" class="headerlink" title="五种状态"></a>五种状态</h3><p>下面再介绍下线程池的运行状态. 线程池一共有五种状态, 分别是：</p>
+<ol>
+<li><p><strong>RUNNING</strong> ：能接受新提交的任务，并且也能处理阻塞队列中的任务；</p>
+</li>
+<li><p><strong>SHUTDOWN</strong>：关闭状态，不再接受新提交的任务，但却可以继续处理阻塞队列中已保存的任务。在线程池处于 RUNNING 状态时，调用 shutdown()方法会使线程池进入到该状态。（finalize() 方法在执行过程中也会调用shutdown()方法进入该状态）；</p>
+</li>
+<li><p><strong>STOP</strong>：不能接受新任务，也不处理队列中的任务，会中断正在处理任务的线程。在线程池处于 RUNNING 或 SHUTDOWN 状态时，调用 shutdownNow() 方法会使线程池进入到该状态；</p>
+</li>
+<li><p><strong>TIDYING</strong>：如果所有的任务都已终止了，workerCount (有效线程数) 为0，线程池进入该状态后会调用 terminated() 方法进入TERMINATED 状态。</p>
+</li>
+<li><p>TERMINATED：在terminated() 方法执行完后进入该状态，默认terminated()方法中什么也没有做。</p>
+<p>进入TERMINATED的条件如下：</p>
+<ul>
+<li>线程池不是RUNNING状态；</li>
+<li>线程池状态不是TIDYING状态或TERMINATED状态；</li>
+<li>如果线程池状态是SHUTDOWN并且workerQueue为空；</li>
+<li>workerCount为0；</li>
+<li>设置TIDYING状态成功。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png" alt="image.png"></p>
+<h3 id="ctl-相关方法"><a href="#ctl-相关方法" class="headerlink" title="ctl 相关方法"></a>ctl 相关方法</h3><p>关于内部封装的获取生命周期状态、获取线程池线程数量的计算方法如以下代码所示：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">runStateOf</span><span class="params">(<span class="keyword">int</span> c)</span>     </span>&#123; <span class="keyword">return</span> c &amp; ~CAPACITY; &#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">workerCountOf</span><span class="params">(<span class="keyword">int</span> c)</span>  </span>&#123; <span class="keyword">return</span> c &amp; CAPACITY; &#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ctlOf</span><span class="params">(<span class="keyword">int</span> rs, <span class="keyword">int</span> wc)</span> </span>&#123; <span class="keyword">return</span> rs | wc; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <h2 id="2-3-线程池主要的任务处理流程"><a href="#2-3-线程池主要的任务处理流程" class="headerlink" title="2.3 线程池主要的任务处理流程"></a>2.3 线程池主要的任务处理流程</h2><p>主要分为四点进行解析：</p>
 <h2 id="2-4-Executor-框架接口"><a href="#2-4-Executor-框架接口" class="headerlink" title="2.4 Executor 框架接口"></a>2.4 Executor 框架接口</h2><h3 id="2-4-1-Executor-接口"><a href="#2-4-1-Executor-接口" class="headerlink" title="2.4.1 Executor 接口"></a>2.4.1 Executor 接口</h3><p>Java中的线程池顶层接口是Executor接口，<code>ThreadPoolExecutor</code>是这个接口的实现类。所以我们当然要先分析一下Executor 这个框架接口：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
