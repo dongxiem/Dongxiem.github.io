@@ -157,23 +157,17 @@
 
 <h4 id="核心参数的解析"><a href="#核心参数的解析" class="headerlink" title="核心参数的解析"></a>核心参数的解析</h4><p>涉及到5~7个参数，我们先看看必须的5个参数是什么意思：</p>
 <ul>
-<li><p><strong>int corePoolSize</strong>：该线程池中<strong>核心线程数最大值</strong></p>
-<blockquote>
+<li><p><strong>int corePoolSize</strong>：<u>该线程池中核心线程数最大值</u></p>
 <p>核心线程：线程池中有两类线程，核心线程和非核心线程。核心线程默认情况下会一直存在于线程池中，即使这个核心线程什么都不干（铁饭碗），而非核心线程如果长时间的闲置，就会被销毁（临时工）。</p>
-</blockquote>
-<p>在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务除非调用了prestartAllCoreThreads()（ 初始化一个核心线程）或者prestartCoreThread()（ 初始化一个核心线程）方法。从这2个方法的名字就可以看出，是预创建线程的意思，即在没有任务到来之前就创建corePoolSize个线程或者一个线程。</p>
+<p>在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务除非调用了<code>prestartAllCoreThreads()</code>（ 初始化一个核心线程）或者prestartCoreThread()（ 初始化一个核心线程）方法。从这2个方法的名字就可以看出，是预创建线程的意思，即在没有任务到来之前就创建corePoolSize个线程或者一个线程。</p>
 <p>默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中；</p>
 </li>
-<li><p><strong>int maximumPoolSize</strong>：该线程池中<strong>线程总数最大值</strong> 。</p>
-<blockquote>
+<li><p><strong>int maximumPoolSize</strong>：<u>该线程池中线程总数最大值</u> 。</p>
 <p>该值等于核心线程数量 + 非核心线程数量。</p>
-</blockquote>
 <p>描述：池中允许的最大线程数，这个参数表示了线程池中最多能创建的线程数量，当任务数量比corePoolSize大时，任务添加到workQueue，当workQueue满了，将继续创建线程以处理任务maximumPoolSize表示的就是wordQueue满了，线程池中最多可以创建的线程数量</p>
 </li>
-<li><p><strong>long keepAliveTime</strong>：<strong>非核心线程闲置超时时长</strong>。</p>
-<blockquote>
+<li><p><strong>long keepAliveTime</strong>：<u>非核心线程闲置超时时长。</u></p>
 <p>非核心线程如果处于闲置状态超过该值，就会被销毁。如果设置allowCoreThreadTimeOut(true)，则会也作用于核心线程。</p>
-</blockquote>
 </li>
 <li><p><strong>TimeUnit unit</strong>：keepAliveTime时间单位，有7种取值，在TimeUnit类中有7种静态属性：</p>
 <ol>
@@ -186,46 +180,27 @@
 <li>TimeUnit.NANOSECONDS;    //纳秒</li>
 </ol>
 </li>
-<li><p><strong>BlockingQueue workQueue</strong>：阻塞队列，维护着<strong>等待执行的Runnable任务对象</strong>。一个阻塞队列，用来存储等待执行的任务，这个参数的选择也很重要，会对线程池的运行过程产生重大影响，一般来说，这里的阻塞队列有以下几种选择：</p>
+<li><p><strong>BlockingQueue workQueue</strong>：<u>阻塞队列，维护着等待执行的Runnable任务对象</u>。一个阻塞队列，用来存储等待执行的任务，这个参数的选择也很重要，会对线程池的运行过程产生重大影响，一般来说，这里的阻塞队列有以下几种选择：</p>
 <ol>
-<li><p><strong>LinkedBlockingQueue</strong></p>
-<p>链式阻塞队列，底层数据结构是链表，默认大小是<code>Integer.MAX_VALUE</code>，也可以指定大小。</p>
-</li>
-<li><p><strong>ArrayBlockingQueue</strong></p>
-<p>数组阻塞队列，底层数据结构是数组，需要指定队列的大小。</p>
-</li>
-<li><p><strong>SynchronousQueue</strong></p>
-<p>同步队列，内部容量为0，每个put操作必须等待一个take操作，反之亦然。</p>
-</li>
-<li><p><strong>DelayQueue</strong></p>
-<p>延迟队列，该队列中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素 。</p>
-</li>
+<li>LinkedBlockingQueue：链式阻塞队列，底层数据结构是链表，默认大小是<code>Integer.MAX_VALUE</code>，也可以指定大小。</li>
+<li>ArrayBlockingQueue：数组阻塞队列，底层数据结构是数组，需要指定队列的大小。</li>
+<li>SynchronousQueue：同步队列，内部容量为0，每个put操作必须等待一个take操作，反之亦然。</li>
+<li>DelayQueue：延迟队列，该队列中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素 。</li>
 </ol>
 </li>
 </ul>
 <p>介绍完5个必须的参数之后，还有两个非必须的参数。</p>
 <ul>
-<li><p><strong>ThreadFactory threadFactory</strong> </p>
-<p>创建线程的工厂 ，用于批量创建线程，统一在创建线程时设置一些参数，如是否守护线程、线程的优先级等。如果不指定，会新建一个默认的线程工厂。</p>
-</li>
+<li><strong>ThreadFactory threadFactory</strong> ：创建线程的工厂 ，用于批量创建线程，统一在创建线程时设置一些参数，如是否守护线程、线程的优先级等。如果不指定，会新建一个默认的线程工厂。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultThreadFactory</span> <span class="keyword">implements</span> <span class="title">ThreadFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 省略属性</span></span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    DefaultThreadFactory() &#123;</span><br><span class="line">        SecurityManager s = System.getSecurityManager();</span><br><span class="line">        group = (s != <span class="keyword">null</span>) ? s.getThreadGroup() :</span><br><span class="line">        Thread.currentThread().getThreadGroup();</span><br><span class="line">        namePrefix = <span class="string">"pool-"</span> +</span><br><span class="line">            poolNumber.getAndIncrement() +</span><br><span class="line">            <span class="string">"-thread-"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p><strong>RejectedExecutionHandler handler</strong>：<strong>拒绝处理策略</strong>，线程数量大于最大线程数就会采用拒绝处理策略，四种拒绝处理的策略为 ：</p>
-<ol>
-<li><p><strong>hreadPoolExecutor.AbortPolicy</strong></p>
-<p><strong>默认拒绝处理策略</strong>，丢弃任务并抛出RejectedExecutionException异常。</p>
-</li>
-<li><p><strong>ThreadPoolExecutor.DiscardPolicy</strong></p>
-<p>丢弃新来的任务，但是不抛出异常。</p>
-</li>
-<li><p><strong>ThreadPoolExecutor.DiscardOldestPolicy</strong></p>
-<p>丢弃队列头部（最旧的）的任务，然后重新尝试执行程序（如果再次失败，重复此过程）。</p>
-</li>
-<li><p><strong>ThreadPoolExecutor.CallerRunsPolicy</strong></p>
-<p>由调用线程处理该任务。</p>
-</li>
+<li><strong>RejectedExecutionHandler handler</strong>：<strong>拒绝处理策略</strong>，线程数量大于最大线程数就会采用拒绝处理策略，四种拒绝处理的策略为 ：<ol>
+<li>hreadPoolExecutor.AbortPolicy：<strong>默认拒绝处理策略</strong>，丢弃任务并抛出RejectedExecutionException异常。</li>
+<li>ThreadPoolExecutor.DiscardPolicy：丢弃新来的任务，但是不抛出异常。</li>
+<li>ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列头部（最旧的）的任务，然后重新尝试执行程序（如果再次失败，重复此过程）。</li>
+<li>ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务。</li>
 </ol>
 </li>
 <li></li>
