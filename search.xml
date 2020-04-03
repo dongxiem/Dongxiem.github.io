@@ -1921,9 +1921,91 @@ d = e - f;    </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 线程池 深入线程池原理</title>
-    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%20%E6%B7%B1%E5%85%A5%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+    <title>Java 并发 - 深入线程池原理</title>
+    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E6%B7%B1%E5%85%A5%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-线程池简介"><a href="#1-线程池简介" class="headerlink" title="1.线程池简介"></a>1.线程池简介</h1><h2 id="1-1-线程池是什么？"><a href="#1-1-线程池是什么？" class="headerlink" title="1.1 线程池是什么？"></a>1.1 线程池是什么？</h2><p>线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。</p>
+<p>线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。</p>
+<p>线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。</p>
+<h2 id="1-2-为什么要使用线程池？"><a href="#1-2-为什么要使用线程池？" class="headerlink" title="1.2 为什么要使用线程池？"></a>1.2 为什么要使用线程池？</h2><p>使用线程池主要有以下三个原因：</p>
+<ol>
+<li><p>创建/销毁线程需要消耗系统资源，线程池可以<strong>复用已创建的线程</strong>。</p>
+<blockquote>
+<p>例如：</p>
+<p>记创建线程消耗时间T1，执行任务消耗时间T2，销毁线程消耗时间T3</p>
+<p>如果T1+T3&gt;T2，那么是不是说开启一个线程来执行这个任务太不划算了！</p>
+<p>正好，线程池缓存线程，可用已有的闲置线程来执行新任务，避免了T1+T3带来的系统开销</p>
+</blockquote>
+</li>
+<li><p><strong>控制并发的数量</strong>。并发数量过多，可能会导致资源消耗过多，从而造成服务器崩溃。（主要原因）</p>
+<blockquote>
+<p>我们知道线程能共享系统资源，如果同时执行的线程过多，就有可能导致系统资源不足而产生阻塞的情况</p>
+<p>运用线程池能有效的控制线程最大并发数，避免以上的问题</p>
+</blockquote>
+</li>
+<li><p><strong>可以对线程做统一管理</strong></p>
+<blockquote>
+<p>比如：延时执行、定时循环执行的策略等</p>
+<p>运用线程池都能进行很好的实现</p>
+</blockquote>
+</li>
+</ol>
+<p>线程池带来的一系列好处：</p>
+<ol>
+<li><strong>降低资源消耗</strong>：通过池化技术重复利用已创建的线程，降低线程创建和销毁造成的损耗。</li>
+<li><strong>提高响应速度</strong>：任务到达时，无需等待线程创建即可立即执行。</li>
+<li><strong>提高线程的可管理性</strong>：线程是稀缺资源，如果无限制创建，不仅会消耗系统资源，还会因为线程的不合理分布导致资源调度失衡，降低系统的稳定性。使用线程池可以进行统一的分配、调优和监控。</li>
+<li><strong>提供更多更强大的功能</strong>：线程池具备可拓展性，允许开发人员向其中增加更多的功能。比如延时定时线程池<code>ScheduledThreadPoolExecutor</code>，就允许任务延期执行或定期执行。</li>
+</ol>
+<h2 id="1-2-线程池解决的问题是什么？"><a href="#1-2-线程池解决的问题是什么？" class="headerlink" title="1.2 线程池解决的问题是什么？"></a>1.2 线程池解决的问题是什么？</h2><p><strong>线程池解决的核心问题就是资源管理问题</strong>。在并发环境下，系统不能够确定在任意时刻中，有多少任务需要执行，有多少资源需要投入。这种不确定性将带来以下若干问题：</p>
+<ol>
+<li>频繁申请/销毁资源和调度资源，将带来额外的消耗，可能会非常巨大。</li>
+<li>对资源无限申请缺少抑制手段，易引发系统资源耗尽的风险。</li>
+<li>系统无法合理管理内部的资源分布，会降低系统的稳定性。</li>
+</ol>
+<p>为解决资源分配这个问题，线程池采用了“池化”（Pooling）思想。池化，顾名思义，是为了最大化收益并最小化风险，而将资源统一在一起管理的一种思想。</p>
+<blockquote>
+<p>Pooling is the grouping together of resources (assets, equipment, personnel, effort, etc.) for the purposes of maximizing advantage or minimizing risk to the users. The term is used in finance, computing and equipment management.——wikipedia</p>
+</blockquote>
+<p>“池化”思想不仅仅能应用在计算机领域，在金融、设备、人员管理、工作管理等领域也有相关的应用。</p>
+<p>在计算机领域中的表现为：统一管理IT资源，包括服务器、存储、和网络资源等等。通过共享资源，使用户在低投入中获益。除去线程池，还有其他比较典型的几种使用策略包括：</p>
+<ol>
+<li>内存池(Memory Pooling)：预先申请内存，提升申请内存速度，减少内存碎片。</li>
+<li>连接池(Connection Pooling)：预先申请数据库连接，提升申请连接的速度，降低系统的开销。</li>
+<li>实例池(Object Pooling)：循环使用对象，减少资源在初始化和释放时的昂贵损耗。</li>
+</ol>
+<h1 id="2-线程池核心原理"><a href="#2-线程池核心原理" class="headerlink" title="2.线程池核心原理"></a>2.线程池核心原理</h1><h2 id="2-1-ThreadPoolExecutor-的策略"><a href="#2-1-ThreadPoolExecutor-的策略" class="headerlink" title="2.1 ThreadPoolExecutor 的策略"></a>2.1 ThreadPoolExecutor 的策略</h2><h2 id="2-2-线程池主要的任务处理流程"><a href="#2-2-线程池主要的任务处理流程" class="headerlink" title="2.2 线程池主要的任务处理流程"></a>2.2 线程池主要的任务处理流程</h2><h2 id="2-3-Executor-框架接口"><a href="#2-3-Executor-框架接口" class="headerlink" title="2.3 Executor 框架接口"></a>2.3 Executor 框架接口</h2><p>Java中的线程池顶层接口是Executor接口，<code>ThreadPoolExecutor</code>是这个接口的实现类。所以我们当然要先分析一下Executor 这个框架接口：</p>
+<h2 id="2-4-ThreadPoolExecutor-分析"><a href="#2-4-ThreadPoolExecutor-分析" class="headerlink" title="2.4 ThreadPoolExecutor 分析"></a>2.4 ThreadPoolExecutor 分析</h2><h3 id="2-4-1-ThreadPoolExecutor-的几个重要字段"><a href="#2-4-1-ThreadPoolExecutor-的几个重要字段" class="headerlink" title="2.4.1 ThreadPoolExecutor 的几个重要字段"></a>2.4.1 ThreadPoolExecutor 的几个重要字段</h3><h3 id="2-4-2-ThreadPoolExecutor-的构造方法"><a href="#2-4-2-ThreadPoolExecutor-的构造方法" class="headerlink" title="2.4.2 ThreadPoolExecutor 的构造方法"></a>2.4.2 ThreadPoolExecutor 的构造方法</h3><h4 id="2-4-2-1-核心参数的解析"><a href="#2-4-2-1-核心参数的解析" class="headerlink" title="2.4.2.1 核心参数的解析"></a>2.4.2.1 核心参数的解析</h4><h3 id="2-4-3-ThreadPoolExecutor-的几个核心方法源码剖析"><a href="#2-4-3-ThreadPoolExecutor-的几个核心方法源码剖析" class="headerlink" title="2.4.3 ThreadPoolExecutor 的几个核心方法源码剖析"></a>2.4.3 ThreadPoolExecutor 的几个核心方法源码剖析</h3><h4 id="2-4-3-1-execute-方法"><a href="#2-4-3-1-execute-方法" class="headerlink" title="2.4.3.1 execute 方法"></a>2.4.3.1 execute 方法</h4><h4 id="2-4-3-2-addWorker-方法"><a href="#2-4-3-2-addWorker-方法" class="headerlink" title="2.4.3.2 addWorker 方法"></a>2.4.3.2 addWorker 方法</h4><h4 id="2-4-3-3-Worker-类"><a href="#2-4-3-3-Worker-类" class="headerlink" title="2.4.3.3 Worker 类"></a>2.4.3.3 Worker 类</h4><h4 id="2-4-3-4-runWorker-方法"><a href="#2-4-3-4-runWorker-方法" class="headerlink" title="2.4.3.4 runWorker 方法"></a>2.4.3.4 runWorker 方法</h4><h4 id="2-4-3-5-getTask-方法"><a href="#2-4-3-5-getTask-方法" class="headerlink" title="2.4.3.5 getTask 方法"></a>2.4.3.5 getTask 方法</h4><h4 id="2-4-3-6-proccessWorkerExite-方法"><a href="#2-4-3-6-proccessWorkerExite-方法" class="headerlink" title="2.4.3.6 proccessWorkerExite 方法"></a>2.4.3.6 proccessWorkerExite 方法</h4><h4 id="2-4-3-7-tryTerminater-方法"><a href="#2-4-3-7-tryTerminater-方法" class="headerlink" title="2.4.3.7 tryTerminater 方法"></a>2.4.3.7 tryTerminater 方法</h4><h4 id="2-4-3-8-shutdown-方法"><a href="#2-4-3-8-shutdown-方法" class="headerlink" title="2.4.3.8 shutdown 方法"></a>2.4.3.8 shutdown 方法</h4><h4 id="2-4-3-8-interruptldleWorkers-方法"><a href="#2-4-3-8-interruptldleWorkers-方法" class="headerlink" title="2.4.3.8 interruptldleWorkers 方法"></a>2.4.3.8 interruptldleWorkers 方法</h4><h4 id="2-4-3-10-shutdownNow-方法"><a href="#2-4-3-10-shutdownNow-方法" class="headerlink" title="2.4.3.10 shutdownNow 方法"></a>2.4.3.10 shutdownNow 方法</h4><h2 id="2-5-ThreadPoolExecutor如何做到线程复用的？"><a href="#2-5-ThreadPoolExecutor如何做到线程复用的？" class="headerlink" title="2.5 ThreadPoolExecutor如何做到线程复用的？"></a>2.5 ThreadPoolExecutor如何做到线程复用的？</h2><h2 id="2-6-四种常见的线程池"><a href="#2-6-四种常见的线程池" class="headerlink" title="2.6 四种常见的线程池"></a>2.6 四种常见的线程池</h2><h3 id="2-6-1-newCachedThreadPool"><a href="#2-6-1-newCachedThreadPool" class="headerlink" title="2.6.1 newCachedThreadPool"></a>2.6.1 newCachedThreadPool</h3><h3 id="2-6-2-newFixedThreadPool"><a href="#2-6-2-newFixedThreadPool" class="headerlink" title="2.6.2 newFixedThreadPool"></a>2.6.2 newFixedThreadPool</h3><h3 id="2-6-3-newSingleThreadExecutor"><a href="#2-6-3-newSingleThreadExecutor" class="headerlink" title="2.6.3 newSingleThreadExecutor"></a>2.6.3 newSingleThreadExecutor</h3><h3 id="2-6-4-newScheduledThreadPool"><a href="#2-6-4-newScheduledThreadPool" class="headerlink" title="2.6.4 newScheduledThreadPool"></a>2.6.4 newScheduledThreadPool</h3><h1 id="3-线程池使用"><a href="#3-线程池使用" class="headerlink" title="3.线程池使用"></a>3.线程池使用</h1><h1 id="4-线程池在实际运用中产生的问题及思考"><a href="#4-线程池在实际运用中产生的问题及思考" class="headerlink" title="4.线程池在实际运用中产生的问题及思考"></a>4.线程池在实际运用中产生的问题及思考</h1><h1 id="5-小结"><a href="#5-小结" class="headerlink" title="5.小结"></a>5.小结</h1><p>最后留意一下阿里Java开发手册中关于线程池涉及到这几个问题：</p>
+<ul>
+<li>【强制】 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。<ul>
+<li>说明：线程池的好处是减少在创建和销毁线程上所消耗的时间以及系统资源的开销，解决资源不足的问题。如果不使用线程池，有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换” 的问题。</li>
+</ul>
+</li>
+<li>【强制】 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。<ul>
+<li>说明：Executors 返回的线程池对象的弊端如下：<ol>
+<li>FixedThreadPool 和 SingleThreadPool：<strong>允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM</strong>。</li>
+<li>CachedThreadPool：<strong>允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM</strong>。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>【强制】 必须回收自定义的 ThreadLocal 变量，尤其在线程池场景下，线程经常会被复用，如果不清理自定义的 ThreadLocal 变量，可能会影响后续业务逻辑和造成内存泄露等问题。尽量在代理中使用 try-finally 块进行回收。<ul>
+<li><img src="https://i.loli.net/2020/04/03/McIv6xRuoEqQODY.png" alt="image.png"></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a href="[http://www.ideabuffer.cn/2017/04/04/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9AThreadPoolExecutor/](http://www.ideabuffer.cn/2017/04/04/深入理解Java线程池：ThreadPoolExecutor/)">深入理解Java线程池：ThreadPoolExecutor</a></li>
+<li><a href="https://mp.weixin.qq.com/s/baYuX8aCwQ9PP6k7TDl2Ww" target="_blank" rel="noopener">Java线程池实现原理及其在美团业务中的实践</a></li>
+<li><a href="http://www.tianxiaobo.com/2018/04/17/Java-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">Java 线程池原理分析</a></li>
+<li><a href="https://www.cnblogs.com/dongguacai/p/6030187.html" target="_blank" rel="noopener">JAVA线程池原理详解一</a></li>
+<li><a href="https://blog.csdn.net/lift_class/article/details/70216690" target="_blank" rel="noopener">线程池，这一篇或许就够了</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzIxNTQ4MzE1NA==&mid=2247483741&idx=1&sn=238fc933c3b9b19ab1754b23283ac6fd&chksm=9796d720a0e15e364f4105c29de606e7329760a41607136a722dc97bb177f9362aeacd92f762&mpshare=1&scene=1&srcid=0327sk1b22zCDOAxzazzEBon&sharer_sharetime=1585311891544&sharer_shareid=b9c5b20e14a5ec65e524cd503ba56884&key=362c475b03eb9012c3a4814de16c542df00e00cb88ad625adda59fe05e00e41bf016bca7d19de52329538b9719e995fa2746837543243fdd9b9a8a873c4b7306ae9be2f34fc0a8f197397eec5bcf36d7&ascene=1&uin=MjkxODQzNTgxMg%3D%3D&devicetype=Windows+7&version=62080079&lang=zh_TW&exportkey=A7VoXZ0wFQgcHgODYeWgoNo%3D&pass_ticket=cBjPmhH%2B5L9207Zh9fWCw5cVrpKDK%2B3yqD%2FHI0IlhthmyIKGfVv3OEP8DCmqTYVl" target="_blank" rel="noopener">有的线程它死了，于是它变成一道面试题</a></li>
+<li>书籍：Java 并发编程的艺术</li>
+<li>书籍：深入浅出Java 多线程</li>
+<li>书籍：阿里巴巴Java开发手册</li>
+</ul>
 ]]></content>
       <categories>
         <category>Java并发</category>
@@ -2110,20 +2192,6 @@ d = e - f;    </code></pre>
         <tag>Java</tag>
         <tag>并发</tag>
         <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 并发 - 线程池 分析总括</title>
-    <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%20%E5%88%86%E6%9E%90%E6%80%BB%E6%8B%AC/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
-]]></content>
-      <categories>
-        <category>Java并发</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>并发</tag>
-        <tag>线程池</tag>
       </tags>
   </entry>
   <entry>
