@@ -1056,11 +1056,11 @@
 <p>MySql：Mysql 5.7.22</p>
 <p>MyBatis：MyBatis 3.4.5</p>
 <p>Maven：Maven 3.5.2</p>
-<h1 id="2-使用Mybatis查询数据库内容"><a href="#2-使用Mybatis查询数据库内容" class="headerlink" title="2.使用Mybatis查询数据库内容"></a>2.使用Mybatis查询数据库内容</h1><h2 id="2-1-New-一个新的Project，Maven项目："><a href="#2-1-New-一个新的Project，Maven项目：" class="headerlink" title="2.1 New 一个新的Project，Maven项目："></a>2.1 New 一个新的Project，Maven项目：</h2><p><img src="https://i.loli.net/2020/04/01/hcSMWl7FdIkVAr4.png" alt="image.png"></p>
+<h1 id="2-使用Mybatis查询数据库内容"><a href="#2-使用Mybatis查询数据库内容" class="headerlink" title="2.使用Mybatis查询数据库内容"></a>2.使用Mybatis查询数据库内容</h1><h2 id="2-1-New-一个新的Project，Maven项目："><a href="#2-1-New-一个新的Project，Maven项目：" class="headerlink" title="2.1 New 一个新的Project，Maven项目："></a>2.1 New 一个新的Project，Maven项目：</h2><p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/hcSMWl7FdIkVAr4.png"  alt="image.png"></p>
 <p>接着进行Project 的信息填写如下：</p>
-<p><img src="https://i.loli.net/2020/04/01/ATzZGfEcrIjKp5x.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/ATzZGfEcrIjKp5x.png"  alt="image.png"></p>
 <p>新创建之后的Project如下：</p>
-<p><img src="https://i.loli.net/2020/04/01/Rq2hcEUbnyJjx5m.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/Rq2hcEUbnyJjx5m.png"  alt="image.png"></p>
 <h2 id="2-2-进行一些准备工作"><a href="#2-2-进行一些准备工作" class="headerlink" title="2.2 进行一些准备工作"></a>2.2 进行一些准备工作</h2><h3 id="2-2-1-填充Mysql数据："><a href="#2-2-1-填充Mysql数据：" class="headerlink" title="2.2.1 填充Mysql数据："></a>2.2.1 填充Mysql数据：</h3><p>进行如下数据的填充，方面接下来的Demo的一些操作：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE DATABASE mybatis_demo;</span><br><span class="line">use mybatis_demo;</span><br></pre></td></tr></table></figure>
 
@@ -1069,17 +1069,17 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT INTO USER (ID, NAME, PWD) VALUES (1,&#39;cici&#39;,123),(2,&#39;pipi&#39;,456),(3,&#39;gigi&#39;,789);</span><br></pre></td></tr></table></figure>
 
 <p>可以看到数据库已经有如下数据了：</p>
-<p><img src="https://i.loli.net/2020/04/01/Dgi7x1dmFUu8zQV.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/Dgi7x1dmFUu8zQV.png"  alt="image.png"></p>
 <h3 id="2-2-2-调整一些Project目录"><a href="#2-2-2-调整一些Project目录" class="headerlink" title="2.2.2 调整一些Project目录"></a>2.2.2 调整一些Project目录</h3><p>首先删除src，然后创建新的子模块，因为我们会在这个项目里建立多个子项目，这样可以节省创建新项目的时间。</p>
-<p><img src="https://i.loli.net/2020/04/01/lT78fDtNyJVSWYL.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/lT78fDtNyJVSWYL.png"  alt="image.png"></p>
 <p>创建新的子模块如下：</p>
-<p><img src="https://i.loli.net/2020/04/01/YZmC1HD6sjoKF8W.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/YZmC1HD6sjoKF8W.png"  alt="image.png"></p>
 <p>创建完成如下：</p>
-<p><img src="https://i.loli.net/2020/04/01/lFzIarxZVQWRc3s.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/lFzIarxZVQWRc3s.png"  alt="image.png"></p>
 <h3 id="2-2-3-配置Pom-xml"><a href="#2-2-3-配置Pom-xml" class="headerlink" title="2.2.3 配置Pom.xml"></a>2.2.3 配置Pom.xml</h3><p>进行Pom.xml 的配置，主要就是一些dependecy的填充。</p>
 <ol>
 <li>mybatis的dependency可以在官网中找到<ul>
-<li><img src="https://i.loli.net/2020/04/01/NGRMBp5n4O87SDT.png" alt="image.png"></li>
+<li><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/NGRMBp5n4O87SDT.png"  alt="image.png"></li>
 </ul>
 </li>
 <li>junit 是单元测试</li>
@@ -1092,7 +1092,7 @@
 
 
 <p>同时将log4j 的配置文件添加到src下面，如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/01/5w4Ue2HoJCPpNrf.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/5w4Ue2HoJCPpNrf.png"  alt="image.png"></p>
 <p>lo4j 内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Set root category priority to INFO and its only appender to CONSOLE.</span><br><span class="line">#log4j.rootCategory&#x3D;INFO, CONSOLE            debug   info   warn error fatal</span><br><span class="line">log4j.rootCategory&#x3D;debug, CONSOLE, LOGFILE</span><br><span class="line"></span><br><span class="line"># Set the enterprise logger category to FATAL and its only appender to CONSOLE.</span><br><span class="line">log4j.logger.org.apache.axis.enterprise&#x3D;FATAL, CONSOLE</span><br><span class="line"></span><br><span class="line"># CONSOLE is set to be a ConsoleAppender using a PatternLayout.</span><br><span class="line">log4j.appender.CONSOLE&#x3D;org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.CONSOLE.layout&#x3D;org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.CONSOLE.layout.ConversionPattern&#x3D;%d&#123;ISO8601&#125; %-6r [%15.15t] %-5p %30.30c %x - %m\n</span><br><span class="line"></span><br><span class="line"># LOGFILE is set to be a File appender using a PatternLayout.</span><br><span class="line">log4j.appender.LOGFILE&#x3D;org.apache.log4j.FileAppender</span><br><span class="line">log4j.appender.LOGFILE.File&#x3D;d:\axis.log</span><br><span class="line">log4j.appender.LOGFILE.Append&#x3D;true</span><br><span class="line">log4j.appender.LOGFILE.layout&#x3D;org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.LOGFILE.layout.ConversionPattern&#x3D;%d&#123;ISO8601&#125; %-6r [%15.15t] %-5p %30.30c %x - %m\n</span><br></pre></td></tr></table></figure>
 
@@ -1100,7 +1100,7 @@
 
 <h2 id="2-3-配置-Mybatis-核心配置文件"><a href="#2-3-配置-Mybatis-核心配置文件" class="headerlink" title="2.3 配置 Mybatis 核心配置文件"></a>2.3 配置 Mybatis 核心配置文件</h2><p>我们使用官网提供的方法，官网中说明有两种方式可以构建 SqlSessionFactory，一种是使用XML，一种是不使用XML，<strong>这个Demo暂定选择使用XML来进行构建SqlSessionFactory</strong>。</p>
 <p>官网所给建议截图如下：</p>
-<p><img src="https://i.loli.net/2020/04/01/HOkQoJGInL41vE6.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/HOkQoJGInL41vE6.png"  alt="image.png"></p>
 <p>于是我们创建并编写 SqlMapConfig.xml 配置文件。</p>
 <ul>
 <li>注意：这个XML 配置文件，包含了对 MyBatis 系统的核心设置，包括获取数据库连接实例的数据源（DataSource）以及决定事务作用域和控制方式的事务管理器 （TransactionManager）。</li>
@@ -1113,7 +1113,7 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line">        </span><br><span class="line"><span class="comment">&lt;!-- mybaits的主配置文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置环境 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"mysql"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 配置Mysql的环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"mysql"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--  配置事物的类型 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 配置数据源（连接池） --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置连接数据库的4个基本信息 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis_demo"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>截图如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/01/LIOaz32UtsfQjbd.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/LIOaz32UtsfQjbd.png"  alt="image.png"></p>
 <h2 id="2-4-编写实体类"><a href="#2-4-编写实体类" class="headerlink" title="2.4 编写实体类"></a><strong>2.4 编写实体类</strong></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.garmen.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ID;</span><br><span class="line">    <span class="keyword">private</span> String NAME;</span><br><span class="line">    <span class="keyword">private</span> String PWD;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(<span class="keyword">int</span> ID, String NAME, String PWD)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.ID = ID;</span><br><span class="line">        <span class="keyword">this</span>.NAME = NAME;</span><br><span class="line">        <span class="keyword">this</span>.PWD = PWD;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 隐藏geter、seter、toString</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -1140,7 +1140,7 @@
 <li>select标签中，填写我们相应的语句。</li>
 </ol>
 <p>此时目录概括如下：</p>
-<p><img src="https://i.loli.net/2020/04/01/LnhbTOKlB2FCmso.png" alt="目录概括.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/LnhbTOKlB2FCmso.png"  alt="目录概括.png"></p>
 <h3 id="2-5-3-进行接口的绑定"><a href="#2-5-3-进行接口的绑定" class="headerlink" title="2.5.3 进行接口的绑定"></a><strong>2.5.3 进行接口的绑定</strong></h3><p>有一个问题就是，我们刚刚配置完的UserDao.xml添加到哪里呢？</p>
 <ul>
 <li>添加到SqlMapConfig.xml中，告诉它有这个UserDao.xml 东西！</li>
@@ -1152,11 +1152,11 @@
 
 <h2 id="2-6-创建测试文件"><a href="#2-6-创建测试文件" class="headerlink" title="2.6 创建测试文件"></a>2.6 创建测试文件</h2><p>根据官网提供给的工具，我们可以进行代码的编写了</p>
 <p>其实官网提供的也就是：从XML中构建了 SqlSessionFactory</p>
-<p><img src="https://i.loli.net/2020/04/01/NHB5j29XtcOirPY.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/NHB5j29XtcOirPY.png"  alt="image.png"></p>
 <p>然后从已经构建了的 SqlSessionFactory 中获取 SqlSession 的实例。SqlSession 提供了在数据库执行 SQL 命令所需的所有方法。你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。</p>
-<p><img src="https://i.loli.net/2020/04/01/SvPAdH63NkQLjME.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/SvPAdH63NkQLjME.png"  alt="image.png"></p>
 <p>在Test目录下创建测试文件，并进行代码填写：</p>
-<p><img src="https://i.loli.net/2020/04/01/oXKZYSgDGItnsHd.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/oXKZYSgDGItnsHd.png"  alt="image.png"></p>
 <p>代码如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1、读取配置文件</span></span><br><span class="line">        InputStream in = Resources.getResourceAsStream(<span class="string">"SqlMapConfig.xml"</span>);</span><br><span class="line">        <span class="comment">//2、创建SqlSessionFactory工厂</span></span><br><span class="line">        SqlSessionFactoryBuilder builder = <span class="keyword">new</span> SqlSessionFactoryBuilder();</span><br><span class="line">        SqlSessionFactory factory = builder.build(in);</span><br><span class="line">        <span class="comment">//3、使用工厂生产SqlSeesion对象</span></span><br><span class="line">        SqlSession session = factory.openSession();</span><br><span class="line">        <span class="comment">//4、使用SqlSession创建Dao接口的代理对象</span></span><br><span class="line">        UserDao userDao = session.getMapper(UserDao<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="comment">//5、使用代理对象执行方法</span></span><br><span class="line">        List&lt;User&gt; users = userDao.findAll();</span><br><span class="line">        <span class="keyword">for</span> (User user : users) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//6、释放资源</span></span><br><span class="line">        session.close();</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1176,7 +1176,7 @@
 
 <p>这些东西当然在后面我会进行深入解释一下的。</p>
 <h2 id="2-7-结果显示如下"><a href="#2-7-结果显示如下" class="headerlink" title="2.7 结果显示如下"></a>2.7 结果显示如下</h2><p>Test 所获得的结果如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/01/DjIO3RpSJv2zWqi.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/DjIO3RpSJv2zWqi.png"  alt="image.png"></p>
 <h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><p>只要遵循上面的这个做法，程序是可以跑起来并且去查询到我们数据库相关的信息的，这只是一个小Demo，主要是我们可以了解到了Mybatis 原来作用是这样，让Mybatis工作的方式还有很多种，这只是其中一种，关于Demo的展示我应该写得更加细致一点，因为这样比较方便我们进行重新观看的时候一头雾水：我写的究竟是什么东西？？？当然上面也了解到了一些零碎的知识，不理解的东西还有很多，需要接下来一点点展开深入了解一下其内部的机制流程，在接下来的几章会详细展开。</p>
 <p>关于这个Demo相关的内容已上传Github：<a href="https://github.com/dongxiem/Mybatis-Study" target="_blank" rel="noopener">https://github.com/dongxiem/Mybatis-Study</a></p>
 ]]></content>
@@ -1566,7 +1566,7 @@ d = e - f;    </code></pre>
     <title>Java 并发 - Synchronized 几种使用方式</title>
     <url>/2020/03/31/Java%20%E5%B9%B6%E5%8F%91%20-%20Synchronized%20%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-概括"><a href="#1-概括" class="headerlink" title="1.概括"></a>1.概括</h1><p>Synchronized 可以有几种修饰方法，总体使用如下图所示：</p>
-<p><img src="https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png"  alt="image.png"></p>
 <h1 id="2-具体使用"><a href="#2-具体使用" class="headerlink" title="2.具体使用"></a>2.具体使用</h1><h2 id="2-1-修饰代码块"><a href="#2-1-修饰代码块" class="headerlink" title="2.1 修饰代码块"></a>2.1 <strong>修饰代码块</strong></h2><p>指定加锁对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。</p>
 <ul>
 <li>注意：<u>它只作用于同一个对象，如果调用两个对象上的同步代码块，就不会进行同步</u>。和 synchronized 方法一样，synchronized(this)代码块也是锁定当前对象的。synchronized 关键字加到 static 静态方法和 synchronized(class)代码块上都是是给 Class 类上锁。这里再提一下：synchronized关键字加到非 static 静态方法上是给对象实例上锁。另外需要注意的是：尽量不要使用 synchronized(String a) 因为JVM中，字符串常量池具有缓冲功能！</li>
@@ -1619,7 +1619,7 @@ d = e - f;    </code></pre>
 <ul>
 <li>锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）</li>
 </ul>
-<p><img src="https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png" alt="Synchronized锁升级流程图"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png"  alt="Synchronized锁升级流程图"></p>
 <h1 id="2-Synchronized-锁升级流程分析"><a href="#2-Synchronized-锁升级流程分析" class="headerlink" title="2.Synchronized 锁升级流程分析"></a>2.Synchronized 锁升级流程分析</h1><h2 id="2-1-偏向锁"><a href="#2-1-偏向锁" class="headerlink" title="2.1 偏向锁"></a>2.1 <strong>偏向锁</strong></h2><ul>
 <li><p><strong>目的：</strong>引入偏向锁是为了在无多线程竞争的情况下尽量减少不必要的轻量级锁执行路径。但是不同是：轻量级锁在无竞争的情况下使用 <code>CAS</code> 操作去代替使用互斥量，而偏向锁在无竞争的情况下会把整个同步都消除掉。那么偏向锁是如何来减少不必要的<code>CAS</code>操作呢？我们可以查看<code>Mark work</code>的结构就明白了。只需要检查是否为偏向锁、锁标识为以及<code>ThreadID</code>即可。</p>
 </li>
@@ -1635,13 +1635,13 @@ d = e - f;    </code></pre>
 </li>
 </ul>
 <h3 id="2-1-1-Mark-Work-结构"><a href="#2-1-1-Mark-Work-结构" class="headerlink" title="2.1.1 Mark Work 结构"></a>2.1.1 Mark Work 结构</h3><p>关于<code>Mark work</code>结构，可以在任何一本关于Java内存结构的书中了解到很详细了，我们主要关注的是下面的几个字段：<code>thread id</code>、lock flag、biased lock flag。</p>
-<p><img src="https://i.loli.net/2020/03/31/tBr7NFPumz63acj.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/tBr7NFPumz63acj.png"  alt="image.png"></p>
 <h3 id="2-1-2-对象创建"><a href="#2-1-2-对象创建" class="headerlink" title="2.1.2 对象创建"></a>2.1.2 对象创建</h3><p>当 <code>JVM</code> 启用了偏向锁模式（1.6以上默认开启），当新创建一个对象的时候，如果该对象所属的class没有关闭偏向锁模式（默认所有class的偏向模式都是是开启的），那新创建对象的<code>mark word</code>将是可偏向状态，此时mark word中的thread id（参见上文偏向状态下的<code>mark word</code>格式）为0，表示未偏向任何线程，也叫做<u>匿名偏向(anonymously biased)</u>。</p>
 <h3 id="2-1-3-偏向锁加锁"><a href="#2-1-3-偏向锁加锁" class="headerlink" title="2.1.3 偏向锁加锁"></a>2.1.3 偏向锁加锁</h3><p>对于偏向锁的加锁，主要分为三种不同情况来看：</p>
 <ul>
 <li><code>case 1</code>：当该对象第一次被线程获得锁的时候，发现是匿名偏向状态（可偏向未锁定），则会用CAS指令，将<code>mark word</code>中的<code>thread id</code>由0改成当前线程Id。如果成功，则代表获得了偏向锁，继续执行同步块中的代码。否则，即<code>CAS</code>竞争锁失败，对象锁已经被其他线程占用，证明当前存在多线程竞争情况，当到达全局安全点（即为<code>safepoint</code>，<code>safepoint</code>是什么可以具体参考这篇文章：<a href="https://blog.csdn.net/iter_zc/article/details/41847887" target="_blank" rel="noopener">聊聊JVM（六）理解JVM的safepoint</a>），将偏向锁撤销，偏向锁升级为轻量级锁，然后被阻塞在安全点的线程继续往下执行同步代码块；</li>
 <li><code>case 2</code>：当被偏向的线程再次进入同步块时，发现锁对象偏向的就是当前线程（对象头Mark Word中Thread Id是当前线程ID），在通过一些额外的检查后（细节见后面的文章），会往当前线程的栈中添加一条Displaced Mark Word为空的Lock Record中，用来统计重入的次数（如图为当对象所处于偏向锁时，当前线程重入3次，线程栈帧中Lock Record记录）。然后继续执行同步块的代码，因为操纵的是线程私有的栈，因此不需要用到CAS指令；由此可见偏向锁模式下，当被偏向的线程再次尝试获得锁时，仅仅进行几个简单的操作就可以了，在这种情况下，synchronized关键字带来的性能开销基本可以忽略。<ul>
-<li><img src="https://i.loli.net/2020/03/31/AtEPUg6GSiOurk3.png" alt="线程栈帧"></li>
+<li><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/AtEPUg6GSiOurk3.png"  alt="线程栈帧"></li>
 </ul>
 </li>
 <li>case 3.当其他线程进入同步块时，发现已经有偏向的线程了，则会进入到撤销偏向锁的逻辑里，一般来说，会在<code>safepoint</code>中去查看偏向的线程是否还存活，如果存活且还在同步块中则将锁升级为轻量级锁，原偏向的线程继续拥有锁，当前线程则走入到锁升级的逻辑里；如果偏向的线程已经不存活或者不在同步块中，则将对象头的<code>mark word</code>改为无锁状态（<code>unlocked</code>），之后再升级为轻量级锁。</li>
@@ -1729,7 +1729,7 @@ d = e - f;    </code></pre>
 <li>唤醒暂停的线程，从安全点继续执行代码。</li>
 </ol>
 <p>偏向锁撤销的具体流程如下所示：</p>
-<p><img src="https://i.loli.net/2020/03/31/EUIOaiTgNluLqzw.png" alt="偏向锁撤销流程图"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/EUIOaiTgNluLqzw.png"  alt="偏向锁撤销流程图"></p>
 <p>偏向锁撤销的具体底层代码分析如下：</p>
 <h3 id="2-1-8-批量重偏向与撤销"><a href="#2-1-8-批量重偏向与撤销" class="headerlink" title="2.1.8 批量重偏向与撤销"></a>2.1.8 批量重偏向与撤销</h3><p>JVM中还增加了一种批量重偏向/撤销的机制，主要是解决如下两种情况：</p>
 <ol>
@@ -1747,9 +1747,9 @@ d = e - f;    </code></pre>
 <li>判断当前对象的<code>Mark Word</code>是否指向当前线程的栈帧，如果是则表示当前线程已经持有当前对象的锁，则直接执行同步代码块；否则只能说明该锁对象已经被其他线程抢占了，这时轻量级锁需要膨胀为重量级锁，锁标志位变成10，后面等待的线程将会进入阻塞状态；</li>
 </ol>
 <p>栈帧 与 <code>Mark Work</code> 关系图示如下：</p>
-<p><img src="https://i.loli.net/2020/03/31/pKTxoGV4clYetOL.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/pKTxoGV4clYetOL.png"  alt="image.png"></p>
 <p>整体流程图示如下：</p>
-<p><img src="https://i.loli.net/2020/03/31/dCB5fQcuU49j3Pn.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/dCB5fQcuU49j3Pn.png"  alt="image.png"></p>
 <p>轻量级锁的锁获取源码：</p>
 <h3 id="2-2-2-轻量级锁释放锁"><a href="#2-2-2-轻量级锁释放锁" class="headerlink" title="2.2.2 轻量级锁释放锁"></a>2.2.2 轻量级锁释放锁</h3><p>其释放锁步骤如下（轻量级锁的释放也是通过CAS操作来进行的）：</p>
 <ol>
@@ -1758,9 +1758,9 @@ d = e - f;    </code></pre>
 <li>如果<code>CAS</code>操作替换失败，说明有其他线程尝试获取该锁，则需要在释放锁的同时需要唤醒被挂起的线程。</li>
 </ol>
 <p>其过程流程图如下所示：</p>
-<p><img src="https://i.loli.net/2020/03/31/8WLE1HjunDXfxJO.png" alt="轻量级锁释放锁.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/8WLE1HjunDXfxJO.png"  alt="轻量级锁释放锁.png"></p>
 <h3 id="2-2-3-轻量级锁膨胀"><a href="#2-2-3-轻量级锁膨胀" class="headerlink" title="2.2.3 轻量级锁膨胀"></a>2.2.3 轻量级锁膨胀</h3><p>其过程流程图如下所示</p>
-<p><img src="https://i.loli.net/2020/03/31/QZesVDEtJqmHl9C.png" alt="轻量级锁膨胀.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/QZesVDEtJqmHl9C.png"  alt="轻量级锁膨胀.png"></p>
 <ul>
 <li><strong>一个问题：为什么在撤销轻量级锁的时候会有失败的可能？</strong><ul>
 <li>假设<code>thread1</code>拥有了轻量级锁，Mark Word指向<code>thread1</code>栈帧，<code>thread2</code>请求锁的时候，就会膨胀初始化<code>ObjectMonitor</code>对象，将Mark Word更新为指向<code>ObjectMonitor</code>的指针，那么在thread1退出的时候，<code>CAS</code>操作会失败，因为Mark Word不再指向<code>thread1</code>的栈帧，这个时候<code>thread1</code>自旋等待<code>infalte</code>完毕，执行重量级锁的退出操作</li>
@@ -1795,7 +1795,7 @@ d = e - f;    </code></pre>
 <li>第六步：进行重量级锁的状态，这个时候，自旋的线程进行阻塞，等待之前线程执行完成并唤醒自己。</li>
 </ol>
 <h2 id="4-2-几种锁的优缺点对比"><a href="#4-2-几种锁的优缺点对比" class="headerlink" title="4.2 几种锁的优缺点对比"></a>4.2 几种锁的优缺点对比</h2><p>下图摘自：并发编程的艺术</p>
-<p><img src="https://i.loli.net/2020/03/31/8U6mNSjGLeKMrEB.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/03/31/8U6mNSjGLeKMrEB.png"  alt="image.png"></p>
 <p>以上参考文章：</p>
 <ul>
 <li><a href="https://blog.dreamtobe.cn/2015/11/13/java_synchronized/" target="_blank" rel="noopener">Java Synchronised机制</a></li>
@@ -1823,8 +1823,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1835,8 +1835,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1847,8 +1847,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1859,8 +1859,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1871,8 +1871,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1883,8 +1883,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1895,8 +1895,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1907,8 +1907,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1919,8 +1919,8 @@ d = e - f;    </code></pre>
         <category>Java基础知识</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>基础</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1978,7 +1978,7 @@ d = e - f;    </code></pre>
 </ol>
 <hr>
 <h1 id="2-线程池核心设计与实现"><a href="#2-线程池核心设计与实现" class="headerlink" title="2.线程池核心设计与实现"></a>2.线程池核心设计与实现</h1><h2 id="2-1-线程池的总体设计"><a href="#2-1-线程池的总体设计" class="headerlink" title="2.1  线程池的总体设计"></a>2.1  线程池的总体设计</h2><p>Java中的线程池核心实现类是<code>ThreadPoolExecutor</code>，本章基于<code>JDK 1.8</code>的源码来分析Java线程池的核心设计与实现。我们首先来看一下<code>ThreadPoolExecutor</code>的UML类图，了解下<code>ThreadPoolExecutor</code>的继承关系。</p>
-<p><img src="https://i.loli.net/2020/04/03/GEHWRmfyZnB1u95.png" alt="线程池UML图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/GEHWRmfyZnB1u95.png"  alt="线程池UML图.png"></p>
 <p><code>ThreadPoolExecutor</code> 实现的顶层接口是<code>Executor</code>，顶层接口<code>Executor</code>提供了一种思想：将任务提交和任务执行进行解耦。用户无需关注如何创建线程，如何调度线程来执行任务，用户只需提供<code>Runnable</code>对象，将任务的运行逻辑提交到执行器(Executor)中，由Executor框架完成线程的调配和任务的执行部分。</p>
 <p><code>ExecutorService</code> 接口增加了一些能力：</p>
 <ol>
@@ -1987,7 +1987,7 @@ d = e - f;    </code></pre>
 </ol>
 <p><code>AbstractExecutorService</code> 则是上层的抽象类，将执行任务的流程串联了起来，保证下层的实现只需关注一个执行任务的方法即可。最下层的实现类<code>ThreadPoolExecutor</code> 实现最复杂的运行部分，<code>ThreadPoolExecutor</code> 将会一方面维护自身的生命周期，另一方面同时管理线程和任务，使两者良好的结合从而执行并行任务。</p>
 <p><code>ThreadPoolExecutor</code> 是如何运行，如何同时维护线程和执行任务的呢？其运行机制如下图所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/jrgxYTBGiMvQOnb.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/jrgxYTBGiMvQOnb.png"  alt="image.png"></p>
 <p>可以看出其实线程池就是绕着这个<code>ThreadPoolExecutor</code> 而运作的，那么我们主要进行解析的就是这个<code>ThreadPoolExecutor</code> 了，于是在下面我对<code>ThreadPoolExecutor</code>  进行了很细致的源码剖析。</p>
 <p>线程池在内部实际上构建了一个<strong>生产者消费者模型</strong>，将线程和任务两者解耦，并不直接关联，从而良好的缓冲任务，复用线程。线程池的运行主要分成两部分：任务管理、线程管理。</p>
 <ul>
@@ -2025,9 +2025,9 @@ d = e - f;    </code></pre>
 </li>
 </ol>
 <p>这五种状态如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/MKbLGHAohriWvJ2.png" alt="五种运行状态.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/MKbLGHAohriWvJ2.png"  alt="五种运行状态.png"></p>
 <p>下图为线程池的状态转换过程：</p>
-<p><img src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png" alt="线程池状态转换.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png"  alt="线程池状态转换.png"></p>
 <hr>
 <h2 id="2-3-线程池主要的任务执行机制"><a href="#2-3-线程池主要的任务执行机制" class="headerlink" title="2.3 线程池主要的任务执行机制"></a>2.3 线程池主要的任务执行机制</h2><p>主要分为四点进行解析：任务调度、任务缓存、任务申请、任务拒绝</p>
 <h3 id="2-3-1-任务调度"><a href="#2-3-1-任务调度" class="headerlink" title="2.3.1 任务调度"></a>2.3.1 任务调度</h3><p>任务调度是线程池的主要入口，当用户提交了一个任务，接下来这个任务将如何执行都是由这个阶段决定的。了解这部分就相当于了解了线程池的核心运行机制。</p>
@@ -2040,16 +2040,16 @@ d = e - f;    </code></pre>
 <li>如果<code>workerCount &gt;= maximumPoolSize</code>，并且线程池内的阻塞队列已满, 则根据拒绝策略来处理该任务, 默认的处理方式是直接抛异常。</li>
 </ol>
 <p>其执行流程如下图所示（参考的是美团团队所写的文章）：</p>
-<p><img src="https://i.loli.net/2020/04/03/yUDvVaOl3RWfFgh.png" alt="任务调度执行流程.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/yUDvVaOl3RWfFgh.png"  alt="任务调度执行流程.png"></p>
 <p>需要注意的是，看了很多博客的流程图都没有写有关于线程池状态监测是否为运行状态这一步，于是在上面很有必要补上，有一些博客的流程图画得也挺不错的，以下作为参考：</p>
-<p><img src="https://i.loli.net/2020/04/03/VFNAwKU6zLSdhIv.png" alt="线程池执行流程图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/VFNAwKU6zLSdhIv.png"  alt="线程池执行流程图.png"></p>
 <h3 id="2-3-2-任务缓冲"><a href="#2-3-2-任务缓冲" class="headerlink" title="2.3.2  任务缓冲"></a>2.3.2  任务缓冲</h3><p>任务缓冲模块是线程池能够管理任务的核心部分。线程池的本质是对任务和线程的管理，而做到这一点最关键的思想就是将任务和线程两者解耦，不让两者直接关联，才可以做后续的分配工作。线程池中是以生产者消费者模式，通过一个阻塞队列来实现的。阻塞队列缓存任务，工作线程从阻塞队列中获取任务。</p>
 <p>阻塞队列(<code>BlockingQueue</code>)是一个支持两个附加操作的队列。这两个附加的操作是：在队列为空时，获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。</p>
 <p>阻塞队列作为一个线程池必须要的参数之一，对阻塞队列的一些类别需要认识清楚，比如有界队列和无界队列的区别在哪里？使用无界队列会带来什么影响？这些都是一些使用线程池时候重点的知识点所在。</p>
 <p>下图中展示了线程1往阻塞队列中添加元素，而线程2从阻塞队列中移除元素：</p>
-<p><img src="https://i.loli.net/2020/04/03/93vot42lDnyAcpN.png" alt="阻塞队列.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/93vot42lDnyAcpN.png"  alt="阻塞队列.png"></p>
 <p>关于阻塞队列的一些知识，接下来我也会进行一个解析，对这几个队列还是需要有所了解的，这里有一个简单的描述表格：</p>
-<p><img src="https://i.loli.net/2020/04/03/fitBsSdm9EJQzqD.png" alt="阻塞队列.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/fitBsSdm9EJQzqD.png"  alt="阻塞队列.png"></p>
 <p>线程池主要涉及到的是以下几种阻塞队列：</p>
 <ol>
 <li>LinkedBlockingQueue：链式阻塞队列，底层数据结构是链表，默认大小是<code>Integer.MAX_VALUE</code>，也可以指定大小。</li>
@@ -2079,7 +2079,7 @@ d = e - f;    </code></pre>
 <p>小结：当然，最后还是那句话，就像Java中的各种<code>Comparable</code>和<code>Comparator</code>的对比、<code>synchronized</code>和<code>ReentrantLock</code>对比，再到线程池这里的无界队列和有界队列的对比，看似都有一个的优点稍微突出一些，有些东西的存在一定有他的道理，需要适应的地方去使用，各有各的长处，只是要看处于何处。</p>
 <h3 id="2-3-3-任务申请"><a href="#2-3-3-任务申请" class="headerlink" title="2.3.3  任务申请"></a>2.3.3  任务申请</h3><p>由上文的任务分配部分可知，任务的执行有两种可能：一种是任务直接由新创建的线程执行。另一种是线程从任务队列中获取任务然后执行，执行完任务的空闲线程会再次去从队列中申请任务再去执行。第一种情况仅出现在线程初始创建的时候，第二种是线程获取任务绝大多数的情况。</p>
 <p>线程需要从任务缓存模块中不断地取任务执行，帮助线程从阻塞队列中获取任务，实现线程管理模块和任务管理模块之间的通信。这部分策略由<code>getTask</code>方法实现，其执行流程如下图所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/ZUc6LKwbjSNyuWl.png" alt="任务申请.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/ZUc6LKwbjSNyuWl.png"  alt="任务申请.png"></p>
 <p><code>getTask</code>这部分进行了多次判断，为的是控制线程的数量，使其符合线程池的状态。如果线程池现在不应该持有那么多线程，则会返回null值。工作线程Worker会不断接收新任务去执行，而当工作线程Worker接收不到任务的时候，就会开始被回收。</p>
 <p>下面对<code>getTask</code> 会再一次贴上源码，这里只是抛出了这么一个思路，主要是介绍整个任务机制。</p>
 <h3 id="2-3-4-任务拒绝"><a href="#2-3-4-任务拒绝" class="headerlink" title="2.3.4  任务拒绝"></a>2.3.4  任务拒绝</h3><p>任务拒绝模块是线程池的保护部分，线程池有一个最大的容量，当线程池的任务缓存队列已满，并且线程池中的线程数目达到<code>maximumPoolSize</code>时，就需要拒绝掉该任务，采取任务拒绝策略，保护线程池。</p>
@@ -2116,7 +2116,7 @@ d = e - f;    </code></pre>
 <p><strong>3. 异步计算的结果(Future)</strong></p>
 <p>Future 接口以及 Future 接口的实现类 <code>FutureTask</code> 类都可以代表异步计算的结果。当我们把 <code>Runnable</code>接口 或 <code>Callable</code> 接口 的实现类提交给 <code>ThreadPoolExecutor</code> 或 <code>ScheduledThreadPoolExecutor</code> 执行。（调用 <code>submit()</code> 方法时会返回一个 <code>FutureTask</code> 对象）</p>
 <p><strong>Executor 框架的使用示意图</strong>（摘自 Java 并发编程的艺术）</p>
-<p><img src="https://i.loli.net/2020/04/03/IayJADbjuNfYGnx.png" alt="Executor 框架的使用示意图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/IayJADbjuNfYGnx.png"  alt="Executor 框架的使用示意图.png"></p>
 <p>其主要过程如下：</p>
 <ol>
 <li>主线程首先要创建实现 <code>Runnable</code> 或者 <code>Callable</code> 接口的任务对象。</li>
@@ -2135,11 +2135,11 @@ d = e - f;    </code></pre>
 <li>作用：<strong>用于提交需要返回值的任务</strong>。线程池会返回一个 Future 类型的对象，通过这个 Future 对象可以判断任务是否执行成功，并且可以通过 Future 的 get()方法来获取返回值，get()方法会阻塞当前线程直到任务完成，而使用 <code>get（long timeout，TimeUnit unit）</code>方法则会阻塞当前线程一段时间后立即返回，这时候有可能任务没有执行完。</li>
 </ul>
 <p>在<code>ExecutorService</code>中声明的方法，在<code>AbstractExecutorService</code>就已经有了具体的实现，在<code>ThreadPoolExecutor</code>中并没有对其进行重写，我们以<strong><code>AbstractExecutorService</code></strong>接口中的一个 submit 方法为例子来看看源代码：</p>
-<p><img src="https://i.loli.net/2020/04/04/HWAp2dEvkRDntef.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/04/HWAp2dEvkRDntef.png"  alt="image.png"></p>
 <p>上面方法调用的 <code>newTaskFor</code> 方法返回了一个 <code>FutureTask</code> 对象。</p>
-<p><img src="https://i.loli.net/2020/04/04/9E6utLUh1bKcsp3.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/04/9E6utLUh1bKcsp3.png"  alt="image.png"></p>
 <p><code>submit()</code>方法的实现，会发现它实际上还是调用的<code>execute()</code>方法，只不过它利用了Future来获取任务执行结果.</p>
-<p><img src="https://i.loli.net/2020/04/04/zTeBZmRNsYMJaco.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/04/zTeBZmRNsYMJaco.png"  alt="image.png"></p>
 <hr>
 <h2 id="2-5-ThreadPoolExecutor-分析"><a href="#2-5-ThreadPoolExecutor-分析" class="headerlink" title="2.5 ThreadPoolExecutor 分析"></a>2.5 ThreadPoolExecutor 分析</h2><h3 id="2-5-1-几个重要字段"><a href="#2-5-1-几个重要字段" class="headerlink" title="2.5.1 几个重要字段"></a>2.5.1 几个重要字段</h3><p>线程池运行的状态，并不是用户显式设置的，而是伴随着线程池的运行，由内部来维护。线程池内部使用一个变量维护两个值：运行状态(<code>runState</code>)和线程数量 (<code>workerCount</code>)。在具体实现中，线程池将运行状态(<code>runState</code>)、线程数量 (<code>workerCount</code>)两个关键参数的维护放在了一起，如下代码所示：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger ctl = <span class="keyword">new</span> AtomicInteger(ctlOf(RUNNING, <span class="number">0</span>));</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> COUNT_BITS = Integer.SIZE - <span class="number">3</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CAPACITY   = (<span class="number">1</span> &lt;&lt; COUNT_BITS) - <span class="number">1</span>;</span><br><span class="line"><span class="comment">// runState is stored in the high-order bits</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RUNNING    = -<span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SHUTDOWN   =  <span class="number">0</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STOP       =  <span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TIDYING    =  <span class="number">2</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TERMINATED =  <span class="number">3</span> &lt;&lt; COUNT_BITS;</span><br></pre></td></tr></table></figure>
@@ -2221,7 +2221,7 @@ d = e - f;    </code></pre>
 <li>如果<code>workerCount &gt;= maximumPoolSize</code>，并且线程池内的阻塞队列已满, 则根据拒绝策略来处理该任务, 默认的处理方式是直接抛异常。</li>
 </ol>
 <p>其流程图如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/4ZKr6ulWQMOTP3e.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/4ZKr6ulWQMOTP3e.png"  alt="image.png"></p>
 <hr>
 <h3 id="2-5-5-addWorker-方法"><a href="#2-5-5-addWorker-方法" class="headerlink" title="2.5.5 addWorker 方法"></a>2.5.5 addWorker 方法</h3><p><code>addWorker</code>方法的主要工作是<strong>在线程池中创建一个新的线程并执行</strong>。增加线程是通过线程池中的addWorker方法，该方法的功能就是增加一个线程，该方法不考虑线程池是在哪个阶段增加的该线程，这个分配线程的策略是在上个步骤完成的，该步骤仅仅完成增加线程，并使它运行，最后返回是否成功这个结果。</p>
 <p>其主要有两个参数：</p>
@@ -2235,7 +2235,7 @@ d = e - f;    </code></pre>
 
 
 <p>其主要流程如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/RdTa4IpEtJ9ighf.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/RdTa4IpEtJ9ighf.png"  alt="image.png"></p>
 <hr>
 <h3 id="2-5-6-Worker-类"><a href="#2-5-6-Worker-类" class="headerlink" title="2.5.6 Worker 类"></a>2.5.6 Worker 类</h3><p>线程池为了掌握线程的状态并维护线程的生命周期，设计了线程池内的工作线程Worker。线程池中的每一个线程被封装成一个Worker对象，<code>ThreadPool</code>维护的其实就是一组Worker对象，看一下Worker的定义：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span></span></span><br><span class="line"><span class="class">        <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * This class will never be serialized, but we provide a</span></span><br><span class="line"><span class="comment">     * serialVersionUID to suppress a javac warning.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">6138294804551838833L</span>;</span><br><span class="line">    <span class="comment">/** Thread this worker is running in.  Null if factory fails. */</span></span><br><span class="line">    <span class="keyword">final</span> Thread thread;</span><br><span class="line">    <span class="comment">/** Initial task to run.  Possibly null. */</span></span><br><span class="line">    Runnable firstTask;</span><br><span class="line">    <span class="comment">/** Per-thread task counter */</span></span><br><span class="line">    <span class="keyword">volatile</span> <span class="keyword">long</span> completedTasks;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates with given first task and thread from ThreadFactory.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> firstTask the first task (null if none)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    Worker(Runnable firstTask) &#123;</span><br><span class="line">        setState(-<span class="number">1</span>); <span class="comment">// inhibit interrupts until runWorker</span></span><br><span class="line">        <span class="keyword">this</span>.firstTask = firstTask;</span><br><span class="line">        <span class="keyword">this</span>.thread = getThreadFactory().newThread(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Delegates main run loop to outer runWorker  */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        runWorker(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Lock methods</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">// The value 0 represents the unlocked state.</span></span><br><span class="line">    <span class="comment">// The value 1 represents the locked state.</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isHeldExclusively</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getState() != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 注意次数的tryAcquire是不允许重入的，而ReentrantLock是允许重入的。</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> unused)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>)) &#123;</span><br><span class="line">            setExclusiveOwnerThread(Thread.currentThread());</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryRelease</span><span class="params">(<span class="keyword">int</span> unused)</span> </span>&#123;</span><br><span class="line">        setExclusiveOwnerThread(<span class="keyword">null</span>);</span><br><span class="line">        setState(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span>        </span>&#123; acquire(<span class="number">1</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span>  </span>&#123; <span class="keyword">return</span> tryAcquire(<span class="number">1</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span>      </span>&#123; release(<span class="number">1</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLocked</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> isHeldExclusively(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">interruptIfStarted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Thread t;</span><br><span class="line">        <span class="keyword">if</span> (getState() &gt;= <span class="number">0</span> &amp;&amp; (t = thread) != <span class="keyword">null</span> &amp;&amp; !t.isInterrupted()) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                t.interrupt();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SecurityException ignore) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2247,7 +2247,7 @@ d = e - f;    </code></pre>
 </ul>
 <p>在调用构造方法时，需要把任务传入，这里通过<code>getThreadFactory().newThread(this);</code>来新建一个线程，<code>newThread</code>方法传入的参数是this，因为Worker本身继承了Runnable接口，也就是一个线程，<u>所以一个Worker对象在启动的时候会调用Worker类中的run方法</u>。</p>
 <p>Worker执行任务的模型如下图所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/cXwlEDfIoe5pgF8.png" alt="worker 执行任务模型"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/cXwlEDfIoe5pgF8.png"  alt="worker 执行任务模型"></p>
 <p>Worker继承了<code>AbstractQueuedSynchronizer</code>，使用<code>AbstractQueuedSynchronizer</code>来实现独占锁的功能。为什么不使用<code>ReentrantLock</code>来实现呢？可以看到<code>tryAcquire</code>方法，它是不允许重入的，而<code>ReentrantLock</code>是允许重入的：</p>
 <ol>
 <li><p>lock方法一旦获取了独占锁，表示当前线程正在执行任务中；</p>
@@ -2263,7 +2263,7 @@ d = e - f;    </code></pre>
 </li>
 </ol>
 <p>在线程回收过程中就使用到了这种特性，回收过程如下图所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/aCo5DEI3pnYRN9Q.png" alt="线程回收.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/aCo5DEI3pnYRN9Q.png"  alt="线程回收.png"></p>
 <p>在构造方法中执行了<code>setState(-1);</code>，把state变量设置为-1，为什么这么做呢？</p>
 <p>其实人家源码中的注解也已经说明了：<code>inhibit interrupts until runWorker</code></p>
 <p>大概的原因是<code>AQS</code>中默认的state是0，<u>如果刚创建了一个Worker对象，还没有执行任务时，这时就不应该被中断</u>，查看上面的<code>tryAcquire</code>方法，发现其调用的是：<code>if (compareAndSetState(0, 1))</code>，其是根据state是否是0来判断的，所以，<code>setState(-1);</code>将state设置为-1是为了<u>禁止在执行任务前对线程进行中断</u>。</p>
@@ -2295,7 +2295,7 @@ d = e - f;    </code></pre>
 <p>这里的<code>beforeExecute</code>方法和<code>afterExecute</code>方法在<code>ThreadPoolExecutor</code>类中是空的，留给子类来实现。</p>
 <p><code>completedAbruptly</code>变量来表示在执行任务过程中是否出现了异常，在<code>processWorkerExit</code>方法中会对该变量的值进行判断。</p>
 <p>总结一下<code>runWorker</code>方法的执行过程如下图所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/YH9cdUgDVbnQN74.png" alt="runWorker执行过程.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/YH9cdUgDVbnQN74.png"  alt="runWorker执行过程.png"></p>
 <p>通过上图其实也可以看到<code>runWorker</code> 在线程复用是如何起作用的：</p>
 <ul>
 <li>首先去执行创建这个worker时就有的任务，当执行完这个任务后，worker的生命周期并没有结束，在<code>while</code>循环中，worker会不断地调用<code>getTask</code>方法从<strong>阻塞队列</strong>中获取任务然后调用<code>task.run()</code>执行任务,从而达到<strong>复用线程</strong>的目的。只要<code>getTask</code>方法不返回<code>null</code>,此线程就不会退出。</li>
@@ -2320,10 +2320,10 @@ d = e - f;    </code></pre>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">processWorkerExit</span><span class="params">(Worker w, <span class="keyword">boolean</span> completedAbruptly)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果completedAbruptly值为true，则说明线程执行时出现了异常，需要将workerCount减1；</span></span><br><span class="line">    <span class="comment">// 如果线程执行时没有出现异常，说明在getTask()方法中已经已经对workerCount进行了减1操作，这里就不必再减了。 </span></span><br><span class="line">    <span class="keyword">if</span> (completedAbruptly) <span class="comment">// If abrupt, then workerCount wasn't adjusted</span></span><br><span class="line">        decrementWorkerCount();</span><br><span class="line">    <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">    mainLock.lock();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 统计完成的任务数</span></span><br><span class="line">        completedTaskCount += w.completedTasks;</span><br><span class="line">        <span class="comment">// 从workers中移除，也就表示着从线程池中移除了一个工作线程</span></span><br><span class="line">        workers.remove(w);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        mainLock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据线程池状态进行判断是否结束线程池</span></span><br><span class="line">    <span class="comment">// 为什么需要判断呢？上面已经讲了。</span></span><br><span class="line">    tryTerminate();</span><br><span class="line">    <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 当线程池是RUNNING或SHUTDOWN状态时，如果worker是异常结束，那么会直接addWorker；</span></span><br><span class="line"><span class="comment">     * 	意思就是因为异常结束的话，会创建一个新的线程放到线程池中！</span></span><br><span class="line"><span class="comment">     * 如果allowCoreThreadTimeOut=true，并且等待队列有任务，至少保留一个worker；</span></span><br><span class="line"><span class="comment">     * 如果allowCoreThreadTimeOut=false，workerCount不少于corePoolSize。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (runStateLessThan(c, STOP)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!completedAbruptly) &#123;</span><br><span class="line">            <span class="keyword">int</span> min = allowCoreThreadTimeOut ? <span class="number">0</span> : corePoolSize;</span><br><span class="line">            <span class="keyword">if</span> (min == <span class="number">0</span> &amp;&amp; ! workQueue.isEmpty())</span><br><span class="line">                min = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (workerCountOf(c) &gt;= min)</span><br><span class="line">                <span class="keyword">return</span>; <span class="comment">// replacement not needed</span></span><br><span class="line">        &#125;</span><br><span class="line">        addWorker(<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以上的代码流程图如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/SZVNJKE7Tn9LRBP.png" alt="processWorkerExit执行过程.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/SZVNJKE7Tn9LRBP.png"  alt="processWorkerExit执行过程.png"></p>
 <p>其实在这个方法中，主要工作是<code>workers.remove(w)</code>将线程引用移出线程池就已经结束了线程销毁的部分。但我们还要去分析一下引起线程销毁的原因，分为几种情况，如果是异常结束的话，那么那么会直接<code>addWorker</code>，还有进行判断<code>allowCoreThreadTimeOut</code> ，根据不同情况，对线程进行一个重新的分配。</p>
 <p>至此，<code>processWorkerExit</code>执行完之后，工作线程被销毁，以上就是整个工作线程的生命周期，从execute方法开始，Worker使用<code>ThreadFactory</code>创建新的工作线程，<code>runWorker</code>通过<code>getTask</code>获取任务，然后执行任务，如果<code>getTask</code>返回null，进入<code>processWorkerExit</code>方法，整个线程结束，如图所示：</p>
-<p><img src="https://i.loli.net/2020/04/03/gulAMmVIwtQisC5.png" alt="工作线程的整个生命周期.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/gulAMmVIwtQisC5.png"  alt="工作线程的整个生命周期.png"></p>
 <hr>
 <h3 id="2-5-10-tryTerminater-方法"><a href="#2-5-10-tryTerminater-方法" class="headerlink" title="2.5.10 tryTerminater 方法"></a>2.5.10 tryTerminater 方法</h3><p>这个方法的作用是根据线程池状态进行判断是否结束线程池，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">tryTerminate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 当前线程池的状态为以下几种情况时，直接返回：</span></span><br><span class="line"><span class="comment">         * 1. RUNNING，因为还在运行中，不能停止；</span></span><br><span class="line"><span class="comment">         * 2. TIDYING或TERMINATED，因为线程池中已经没有正在运行的线程了；</span></span><br><span class="line"><span class="comment">         * 3. SHUTDOWN并且等待队列非空，这时要执行完workQueue中的task；</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">if</span> (isRunning(c) ||</span><br><span class="line">            runStateAtLeast(c, TIDYING) ||</span><br><span class="line">            (runStateOf(c) == SHUTDOWN &amp;&amp; ! workQueue.isEmpty()))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// 如果线程数量不为0，则中断一个空闲的工作线程，并返回</span></span><br><span class="line">        <span class="keyword">if</span> (workerCountOf(c) != <span class="number">0</span>) &#123; <span class="comment">// Eligible to terminate</span></span><br><span class="line">            interruptIdleWorkers(ONLY_ONE);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">        mainLock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 这里尝试设置状态为TIDYING，如果设置成功，则调用terminated方法</span></span><br><span class="line">            <span class="keyword">if</span> (ctl.compareAndSet(c, ctlOf(TIDYING, <span class="number">0</span>))) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">// terminated方法默认什么都不做，留给子类实现</span></span><br><span class="line">                    terminated();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    <span class="comment">// 设置状态为TERMINATED</span></span><br><span class="line">                    ctl.set(ctlOf(TERMINATED, <span class="number">0</span>));</span><br><span class="line">                    termination.signalAll();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            mainLock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// else retry on failed CAS</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2398,14 +2398,14 @@ d = e - f;    </code></pre>
 <li>线程池会把这个线程移除掉，并创建一个新的线程放到线程池中。</li>
 </ol>
 <p>主要的图示如下：</p>
-<p><img src="https://i.loli.net/2020/04/04/MIUmeaZ5E4zBb7o.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/04/MIUmeaZ5E4zBb7o.png"  alt="image.png"></p>
 <hr>
 <h2 id="2-7-四种线程池"><a href="#2-7-四种线程池" class="headerlink" title="2.7 四种线程池"></a>2.7 四种线程池</h2><h3 id="2-7-1-newCachedThreadPool"><a href="#2-7-1-newCachedThreadPool" class="headerlink" title="2.7.1 newCachedThreadPool"></a>2.7.1 newCachedThreadPool</h3><p>介绍：<code>CachedThreadPool</code> 是<strong>一个会根据需要创建新线程的线程池</strong>。下面通过源码来看看 <code>CachedThreadPool</code> 的实现：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>CachedThreadPool</code> 的 <code>corePoolSize</code> 被设置为空（0），<code>maximumPoolSize</code> 被设置为 <code>Integer.MAX.VALUE</code>，即它是无界的，这也就意味着如果主线程提交任务的速度高于 <code>maximumPool</code> 中线程处理任务的速度时，<code>CachedThreadPool</code> 会不断创建新的线程。极端情况下，这样会导致耗尽 cpu 和内存资源。</p>
 <p><strong><code>newCachedThreadPool</code> 执行任务过程介绍：</strong></p>
-<p><img src="https://i.loli.net/2020/04/03/9dF5A1UfK4RN83m.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/9dF5A1UfK4RN83m.png"  alt="image.png"></p>
 <p><code>CacheThreadPool</code>的<strong>运行流程</strong>如下：</p>
 <ol>
 <li>提交任务进线程池。</li>
@@ -2427,7 +2427,7 @@ d = e - f;    </code></pre>
 <p>核心线程数量和总线程数量相等，都是传入的参数<code>nThreads</code>，所以只能创建核心线程，不能创建非核心线程。因为<code>LinkedBlockingQueue</code>的默认大小是<code>Integer.MAX_VALUE</code>，故如果核心线程空闲，则交给核心线程处理；如果核心线程不空闲，则入列等待，直到核心线程空闲。</p>
 <p><strong><code>FixedThreadPool</code> 执行任务过程介绍：</strong></p>
 <p><code>FixedThreadPool</code> 的 <code>execute()</code> 方法运行示意图（该图片来源：《Java 并发编程的艺术》）：</p>
-<p><img src="https://i.loli.net/2020/04/03/ys3GoqdfXANMJIR.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/ys3GoqdfXANMJIR.png"  alt="image.png"></p>
 <p>上图说明：</p>
 <ol>
 <li>如果当前运行的线程数小于 corePoolSize， 如果再来新任务的话，就创建新的线程来执行任务；</li>
@@ -2459,7 +2459,7 @@ d = e - f;    </code></pre>
 <p>从上面源代码可以看出新创建的 <code>SingleThreadExecutor</code> 的 <code>corePoolSize</code> 和 <code>maximumPoolSize</code> 都被设置为 1.其他参数和 <code>FixedThreadPool</code> 相同。</p>
 <p><strong><code>newSingleThreadExecutor</code> 执行任务过程介绍：</strong></p>
 <p><code>SingleThreadExecutor</code> 的运行示意图（该图片来源：《Java 并发编程的艺术》）：</p>
-<p><img src="https://i.loli.net/2020/04/03/JAtXSsHNvQyw4dx.png" alt="SingleThreadExecutor 运行示意图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/JAtXSsHNvQyw4dx.png"  alt="SingleThreadExecutor 运行示意图.png"></p>
 <p>上图说明：</p>
 <ol>
 <li>如果当前运行的线程数少于 <code>corePoolSize</code>，则创建一个新的线程执行任务；</li>
@@ -2484,7 +2484,7 @@ d = e - f;    </code></pre>
 
 
 <p><code>newScheduledThreadPool</code> 的运行示意图（该图片来源：《Java 并发编程的艺术》）：</p>
-<p><img src="https://i.loli.net/2020/04/03/AuUxb6LqDC9OHKv.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/AuUxb6LqDC9OHKv.png"  alt="image.png"></p>
 <p><code>ScheduledThreadPoolExecutor</code>的执行主要分为两大部分</p>
 <ol>
 <li>当调用<code>ScheduledThreadPoolExecutor</code>的<code>scheduleAtFixedRate()</code>方法或者<code>scheduleWithFixedDelay()</code>方法时，会向<code>cheduledThreadPoolExecutor</code>的<code>DelayQueue</code>添加一个实现了<code>RunnableScheduledFutur</code>接口的<code>cheduledFutureTask</code>。</li>
@@ -2592,7 +2592,7 @@ d = e - f;    </code></pre>
 </li>
 <li>【强制】 必须回收自定义的 <code>ThreadLocal</code> 变量，尤其在线程池场景下，线程经常会被复用，如果不清理自定义的 <code>ThreadLocal</code> 变量，可能会影响后续业务逻辑和造成内存泄露等问题。尽量在代理中使用 <code>try-finally</code> 块进行回收。</li>
 </ul>
-<img src="https://i.loli.net/2020/04/03/McIv6xRuoEqQODY.png" alt="image.png"  />
+<img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/McIv6xRuoEqQODY.png"  alt="image.png"  />
 
 
 
@@ -2825,110 +2825,6 @@ d = e - f;    </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Java 集合框架 - HashMap 认识与理解</title>
-    <url>/2020/03/31/Java%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%20-%20HashMap%20%E8%AE%A4%E8%AF%86%E4%B8%8E%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>关于HashMap 其实还是有很多困惑的，</p>
-<h1 id="2-主要一些知识点"><a href="#2-主要一些知识点" class="headerlink" title="2.主要一些知识点"></a>2.主要一些知识点</h1><h2 id="2-1-HashMap-底层结构的一些问题与解答"><a href="#2-1-HashMap-底层结构的一些问题与解答" class="headerlink" title="2.1 HashMap 底层结构的一些问题与解答"></a>2.1 HashMap 底层结构的一些问题与解答</h2><p>关于HashMap 的底层数据结构，我有以下这么几个疑问，当时也是查看书籍和百度谷歌了好一会儿，然后连带着寻找到其他的一些问题，如下。</p>
-<hr>
-<p>关于底层数据结构为什么采用 数组+链表 这么一种组合的几个问题：</p>
-<p><strong>1.为什么用数组+链表？</strong></p>
-<ul>
-<li>我认为数组是用来确定桶的位置，利用元素的key的hash值对数组长度取模得到.</li>
-<li>链表是用来解决hash冲突问题，当出现hash值一样的情形，就在数组上的对应位置形成一条链表。</li>
-<li>注：这里的hash值并不是指hashcode，而是将hashcode高低十六位异或过的。</li>
-</ul>
-<p><strong>2.那使用LinkedList代替数组结构可以么？</strong></p>
-<ul>
-<li>这里的意思是，源码中是这样的：<code>Entry[] table = new Entry[capacity];</code><ul>
-<li>ps：Entry就是一个链表节点。</li>
-</ul>
-</li>
-<li>那我用下面这样表示：<ul>
-<li><code>List&lt;Entry&gt; table = new LinkedList&lt;Entry&gt;();</code></li>
-</ul>
-</li>
-<li>所以没毛病是可以使用LinkedList代替数组结构</li>
-</ul>
-<p><strong>3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?</strong></p>
-<ul>
-<li>因为用数组效率最高！在HashMap中，定位桶的位置是利用元素的key的哈希值对数组长度取模得到。此时，我们已得到桶的位置。显然数组的查找效率比LinkedList大。</li>
-</ul>
-<p><strong>4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?</strong></p>
-<ul>
-<li>因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。</li>
-<li>而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。</li>
-</ul>
-<hr>
-<p>关于树化为什么采用红黑树、及红黑树的一些特性的问题、：</p>
-<p><strong>1.如果进行树化了，为什么是红黑树？别的树不可以吗？</strong></p>
-<ul>
-<li>比如二叉查找树，是可以的。但是二叉查找树在特殊情况下会变成一条线性结构（这就跟原来使用链表结构一样了，造成很深的问题），遍历查找会非常慢。</li>
-<li>AVL树中，根到任何叶子的最短路径和最长路径之间的差异最多为1，而红黑树可以是两倍，虽然红黑树放弃了一定的平衡，但是当进行查找时AVL树可能需要O（Logn）次旋转，而红黑树只需要最多两次，红黑树更加适合插入修改密集型任务</li>
-</ul>
-<p><strong>2.为什么在解决hash冲突的时候，不直接用红黑树?而选择先用链表，再转红黑树?</strong></p>
-<ul>
-<li><strong>因为红黑树需要进行</strong>左旋，右旋，变色这些操作来保持平衡，而单链表不需要。当元素小于8个当时候，此时做查询操作，链表结构已经能保证查询性能。当元素大于8个的时候，此时需要红黑树来加快查询速度，但是新增节点的效率变慢了。因此，如果一开始就用红黑树结构，元素太少，新增效率又比较慢，无疑这是浪费性能的。</li>
-</ul>
-<p><strong>3.当链表转为红黑树后，什么时候退化为链表?</strong></p>
-<ul>
-<li>为6的时候退转为链表。中间有个差值7可以防止链表和树之间频繁的转换。假设一下，如果设计成链表个数超过8则链表转换成树结构，链表个数小于8则树结构转换成链表，如果一个HashMap不停的插入、删除元素，链表个数在8左右徘徊，就会频繁的发生树转链表、链表转树，效率会很低。</li>
-</ul>
-<p><strong>4.其实这样引出了一个问题：为什么链化阈值是 6 ，树化阈值是 8（为什么8的时候树化，4不可以吗？）？</strong></p>
-<ul>
-<li>8树化，是经测试，冲突链表个数符合<u>泊松分布</u>，为8时概率零点几，为6而不是7退化，是为了避免7 8来回变引入不可变开销。线程数其实在考cpu密集型和io密集型。</li>
-</ul>
-<hr>
-<p>还有HashMap 中的哈希的一些问题：</p>
-<p><strong>1.HashMap 中哈希方法，为什么要选择31？？？</strong></p>
-<ul>
-<li>首先看下String hashcode 的方法是如何实现的：</li>
-</ul>
-<p><img src="https://i.loli.net/2020/04/02/gCVO9duskcUS1TP.png" alt="image.png"></p>
-<p>我们可以由上面的 for 循环推导出一个计算公式，hashCode 方法注释中已经给出。如下：</p>
-<p><img src="https://i.loli.net/2020/04/02/GtJUCvLyr19lIHj.png" alt="image.png"></p>
-<p>这里说明一下，上面的 s 数组即源码中的 val 数组，是 String 内部维护的一个 char 类型数组。这里我来简单推导一下这个公式：</p>
-<p><img src="https://i.loli.net/2020/04/02/6lyFtYu9bM5pz81.png" alt="image.png"></p>
-<p>上面的公式包括公式的推导并不是本文的重点，大家了解了解即可。接下来来说说本文的重点，即选择31的理由。从网上的资料来看，一般有如下两个原因：</p>
-<ol>
-<li>第一，31是一个不大不小的质数，是作为 hashCode 乘子的优选质数之一。另外一些相近的质数，比如37、41、43等等，也都是不错的选择。那么为啥偏偏选中了31呢？请看第二个原因。<ul>
-<li><strong>第一点解释一下：31是一个不大不小的质数，是优选乘子。那为啥同是质数的2和101（或者更大的质数）就不是优选乘子呢？</strong></li>
-<li>这里先分析质数2。首先，假设 n = 6，然后把质数2和 n 带入上面的计算公式。并仅计算公式中次数最高的那一项，结果是2^5 = 32，是不是很小。所以这里可以断定，当字符串长度不是很长时，用质数2做为乘子算出的哈希值，数值不会很大。也就是说，哈希值会分布在一个较小的数值区间内，分布性不佳，最终可能会导致冲突率上升。</li>
-<li>那么如果用一个较大的大质数101会产生什么样的结果呢？根据上面的分析，我想大家应该可以猜出结果了。就是不用再担心哈希值会分布在一个小的区间内了，因为101^5 = 10,510,100,501。但是要注意的是，这个计算结果太大了。如果用 int 类型表示哈希值，结果会溢出，最终导致数值信息丢失。尽管数值信息丢失并不一定会导致冲突率上升，但是我们暂且先认为质数101（或者更大的质数）也不是很好的选择。</li>
-<li>最后，我们再来看看质数31的计算结果： 31^5 = 28629151，结果值相对于32和10,510,100,501来说。是不是很nice，不大不小。</li>
-<li>总的来说，是100以内的比较好的奇质数（既要是奇数，又要是质数的数）</li>
-</ul>
-</li>
-<li>第二、31可以被 JVM 优化，31 * i = (i &lt;&lt; 5) - i。</li>
-</ol>
-<p>Stack Overflow 上关于这个问题的讨论：Why does Java’s hashCode() in String use 31 as a multiplier?</p>
-<p>其中排名第一的答案引用了《Effective Java》中的一段话，这里也引用一下：</p>
-<blockquote>
-<p>The value 31 was chosen because it is an odd prime. If it were even and the multiplication overflowed, information would be lost, as multiplication by 2 is equivalent to shifting. The advantage of using a prime is less clear, but it is traditional. A nice property of 31 is that the multiplication can be replaced by a shift and a subtraction for better performance: 31 * i == (i &lt;&lt; 5) - i`. Modern VMs do this sort of optimization automatically.</p>
-</blockquote>
-<p>翻译过来是这么说的：</p>
-<ul>
-<li>选择数字31是因为它是一个奇质数，如果选择一个偶数会在乘法运算中产生溢出，导致数值信息丢失，因为乘二相当于移位运算。</li>
-<li>选择质数的优势并不是特别的明显，但这是一个传统。</li>
-<li>同时，数字31有一个很好的特性，即乘法运算可以被移位和减法运算取代，来获取更好的性能：31 * i == (i &lt;&lt; 5) - i，现代的 Java 虚拟机可以自动的完成这个优化。</li>
-</ul>
-<p>排名第二的答案是这样说的：</p>
-<blockquote>
-<p>As Goodrich and Tamassia point out, If you take over 50,000 English words (formed as the union of the word lists provided in two variants of Unix), using the constants 31, 33, 37, 39, and 41 will produce less than 7 collisions in each case. Knowing this, it should come as no surprise that many Java implementations choose one of these constants.</p>
-</blockquote>
-<p>翻译过来是这样的：</p>
-<ul>
-<li>正如 Goodrich 和 Tamassia 指出的那样，如果你对超过 50,000 个英文单词（由两个不同版本的 Unix 字典合并而成）进行 hash code 运算，并使用常数 31, 33, 37, 39 和 41 作为乘子，每个常数算出的哈希值冲突数都小于7个，所以在上面几个常数中，常数 31 被 Java 实现所选用也就不足为奇了。</li>
-</ul>
-<h2 id="2-2-HashMap-容量相关的一些问题"><a href="#2-2-HashMap-容量相关的一些问题" class="headerlink" title="2.2 HashMap 容量相关的一些问题"></a>2.2 HashMap 容量相关的一些问题</h2><h2 id="2-3-HashMap-并发相关的一些问题"><a href="#2-3-HashMap-并发相关的一些问题" class="headerlink" title="2.3 HashMap 并发相关的一些问题"></a>2.3 HashMap 并发相关的一些问题</h2><h2 id="2-4-HashMap与其他一些容器的比较"><a href="#2-4-HashMap与其他一些容器的比较" class="headerlink" title="2.4 HashMap与其他一些容器的比较"></a>2.4 HashMap与其他一些容器的比较</h2><h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1>]]></content>
-      <categories>
-        <category>Java集合</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>集合</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WTIM 简介</title>
     <url>/2020/03/30/WTIM%20%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>搭建一个基于分布式的IM（即时通讯）系统</p>
@@ -2968,7 +2864,7 @@ d = e - f;    </code></pre>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>具体继承如下所示：</p>
-<p><img src="https://i.loli.net/2020/04/02/fZVderRq2NO81Sc.png" alt="HashMap.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/02/fZVderRq2NO81Sc.png"  alt="HashMap.png"></p>
 <h2 id="3-2-HashMap的基本属性及内部类"><a href="#3-2-HashMap的基本属性及内部类" class="headerlink" title="3.2.HashMap的基本属性及内部类"></a>3.2.HashMap的基本属性及内部类</h2><h3 id="3-2-1-基本属性"><a href="#3-2-1-基本属性" class="headerlink" title="3.2.1 基本属性"></a>3.2.1 基本属性</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 哈希数组初始容量</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 哈希数组最大容量</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * HashMap默认装载因子（负载因子）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 当前 HashMap 所能容纳键值对数量的最大值，超过这个值，则需扩容</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 哈希槽（链）上的红黑树上的元素数量减少到此值时，将红黑树转换为链表</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 当桶的个数达到64的时候才进行树化</span></span><br><span class="line"><span class="comment">  * 即是说当桶数组容量小于该值时，优先进行扩容，而不是树化</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 哈希数组</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">transient</span> Node&lt;K,V&gt;[] table;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * entry集合</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">transient</span> Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * HashMap的元素数量</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">transient</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  *  HashMap结构的修改次数</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * (The javadoc description is true upon serialization.</span></span><br><span class="line"><span class="comment">  * Additionally, if the table array has not been allocated, this</span></span><br><span class="line"><span class="comment">  * field holds the initial array capacity, or zero signifying</span></span><br><span class="line"><span class="comment">  * DEFAULT_INITIAL_CAPACITY.)</span></span><br><span class="line"><span class="comment">  * HashMap扩容阈值，并没有默认阈值，原因是阈值可由容量乘上负载因子计算而来（注释中有说明）</span></span><br><span class="line"><span class="comment">  * 计算公式：threshold = capacity * loadFactor</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">int</span> threshold;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * HashMap当前使用的装载因子</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br></pre></td></tr></table></figure>
 
 <p>上面举例了一些HashMap的属性字段，比较有意思的是羡慕几个属性字段，在接下来中会单拎出来进行详细讲解。：</p>
@@ -3337,8 +3233,8 @@ d = e - f;    </code></pre>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Java集合</tag>
         <tag>导页</tag>
+        <tag>Java集合</tag>
       </tags>
   </entry>
   <entry>
