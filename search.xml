@@ -1207,6 +1207,7 @@
 
 
 <p>为了解决这么麻烦的一系列步骤，有人就提出来了MyBatis这个框架了！</p>
+<hr>
 <h2 id="1-2-MyBatis的大概介绍及其特点"><a href="#1-2-MyBatis的大概介绍及其特点" class="headerlink" title="1.2 MyBatis的大概介绍及其特点"></a>1.2 MyBatis的大概介绍及其特点</h2><p>Mybatis 是 JAVA 的一个<code>持久层框架</code>，什么是持久层？持久层就是能够长期保存数据的一层，例如我们的数据写在硬盘上，这说明我们的数据是持久的，如果写在内存当中，我们的数据就是不持久的。</p>
 <p>根据官方文档的介绍，MyBatis大概如下：</p>
 <ul>
@@ -1221,8 +1222,9 @@
 <li>提供对象关系映射标签，支持对象关系组建维护</li>
 <li>提供 xml 标签，支持编写动态 sql。</li>
 </ul>
+<hr>
 <h1 id="2-Mybatis-总体框架"><a href="#2-Mybatis-总体框架" class="headerlink" title="2.Mybatis 总体框架"></a>2.Mybatis 总体框架</h1><p>MyBatis的总体框架大体如下（图源文末注明出处）：</p>
-<p><img src="https://i.loli.net/2020/04/01/duibL3NkmMJGc27.png" alt="MyBatis的总体框架.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/duibL3NkmMJGc27.png"  alt="MyBatis的总体框架.png"></p>
 <p>其实了解Mybatis，可以了解其大体框架就知道它在做什么事情了。</p>
 <p>总体流程：</p>
 <p><strong>(1)加载配置并初始化</strong></p>
@@ -1260,10 +1262,10 @@
 <li>使用Mapper接口</li>
 </ol>
 <h3 id="2-1-1-使用传统的MyBatis提供的API"><a href="#2-1-1-使用传统的MyBatis提供的API" class="headerlink" title="2.1.1 使用传统的MyBatis提供的API"></a>2.1.1 使用传统的MyBatis提供的API</h3><p>这是传统的传递Statement Id 和查询参数给 SqlSession 对象，使用 SqlSession对象完成和数据库的交互；MyBatis 提供了非常方便和简单的API，供用户实现对数据库的增删改查数据操作，以及对数据库连接信息和MyBatis 自身配置信息的维护操作。</p>
-<p><img src="https://i.loli.net/2020/04/02/YnPoiOGlMk1Lg53.png" alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/02/YnPoiOGlMk1Lg53.png"  alt="image.png"></p>
 <p>上述使用MyBatis 的方法，是创建一个和数据库打交道的SqlSession对象，然后根据Statement Id 和参数来操作数据库，这种方式固然很简单和实用，但是它不符合面向对象语言的概念和面向接口编程的编程习惯。由于面向接口的编程是面向对象的大趋势，MyBatis 为了适应这一趋势，增加了第二种使用MyBatis 支持接口（Interface）调用方式。</p>
 <h3 id="2-1-2-使用Mapper接口"><a href="#2-1-2-使用Mapper接口" class="headerlink" title="2.1.2 使用Mapper接口"></a>2.1.2 使用Mapper接口</h3><p>MyBatis 将配置文件中的每一个<code>&lt;mapper&gt;</code> 节点抽象为一个 Mapper 接口，而这个接口中声明的方法和跟<mapper> 节点中的<code>&lt;select|update|delete|insert&gt;</code> 节点项对应，即<code>&lt;select|update|delete|insert&gt;</code> 节点的id值为Mapper 接口中的方法名称，<code>parameterType</code> 值表示Mapper 对应方法的入参类型，而<code>resultMap</code> 值则对应了Mapper 接口表示的返回值类型或者返回结果集的元素类型。</p>
-<p><img src="https://i.loli.net/2020/04/02/OjXWJ6Pw7gySeYU.png" alt="Mapper接口机制.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/02/OjXWJ6Pw7gySeYU.png"  alt="Mapper接口机制.png"></p>
 <p>根据<strong>MyBatis</strong> 的配置规范配置好后，通过<code>SqlSession.getMapper(XXXMapper.class)</code> 方法，MyBatis 会根据相应的接口声明的方法信息，通过<strong>动态代理机制</strong>生成一个Mapper 实例，我们使用Mapper 接口的某一个方法时，MyBatis 会根据这个方法的方法名和参数类型，确定Statement Id，底层还是通过<code>SqlSession.select(&quot;statementId&quot;,parameterObject);</code>或者<code>SqlSession.update(&quot;statementId&quot;,parameterObject);</code> 等等来实现对数据库的操作<br>MyBatis 引用Mapper 接口这种调用方式，纯粹是为了满足面向接口编程的需要。（其实还有一个原因是在于，面向接口的编程，使得用户在接口上可以使用注解来配置SQL语句，<strong>这样就可以脱离XML配置文件，实现“0配置”</strong>）。</p>
 <hr>
 <h2 id="2-2-数据处理层"><a href="#2-2-数据处理层" class="headerlink" title="2.2 数据处理层"></a>2.2 数据处理层</h2><p>数据处理层可以说是<strong>MyBatis</strong> 的核心，从大的方面上讲，它要完成两个功能：</p>
@@ -1300,6 +1302,7 @@
 <li>基于XML配置文件的方式</li>
 <li>基于Java API 的方式</li>
 </ol>
+<hr>
 <h1 id="3-主要深入方面"><a href="#3-主要深入方面" class="headerlink" title="3.主要深入方面"></a>3.主要深入方面</h1><p>对于Mybatis 的主要运行方式，给出两种Demo：</p>
 <ul>
 <li>Mybatis 基于DAO的传统开发方式</li>
