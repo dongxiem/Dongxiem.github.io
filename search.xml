@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mybatis 框架分析（2） - 基于注解方式的简单Demo</title>
+    <url>/2020/04/06/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E7%9A%84%E7%AE%80%E5%8D%95Demo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指Offer - 65 - 矩阵中的路径</title>
     <url>/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2065%20-%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
@@ -916,6 +927,21 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指Offer - 34 - 第一个只出现一次的字符</title>
+    <url>/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2034%20-%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
+<p>题目描述：</p>
+<p>解题思路：</p>
+<p>代码：</p>
+]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指Offer - 43 - 左旋转字符串</title>
     <url>/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2043%20-%20%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
@@ -933,21 +959,6 @@
   <entry>
     <title>剑指Offer - 50 - 数组中重复的数字</title>
     <url>/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2050%20-%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
-<p>题目描述：</p>
-<p>解题思路：</p>
-<p>代码：</p>
-]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指Offer - 34 - 第一个只出现一次的字符</title>
-    <url>/2020/04/02/%E5%89%91%E6%8C%87Offer%20-%2034%20-%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -1017,40 +1028,82 @@
     <title>Mybatis 源码分析（1） - 配置文件解析过程</title>
     <url>/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%881%EF%BC%89%20-%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mybatis 源码分析（2） - 映射文件解析过程</title>
     <url>/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mybatis 源码分析（3） - SQL执行过程</title>
     <url>/2020/04/01/Mybatis%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%883%EF%BC%89%20-%20SQL%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mybatis 框架分析（5） - 连接池管理机制</title>
     <url>/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%885%EF%BC%89%20-%20%E8%BF%9E%E6%8E%A5%E6%B1%A0%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mybatis 框架分析（6） - 缓存机制</title>
     <url>/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%886%EF%BC%89%20-%20%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mybatis 框架分析（4） - 事务管理机制</title>
     <url>/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%884%EF%BC%89%20-%20%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mybatis 框架分析（3） - 使用Mybatis进行CRUD</title>
     <url>/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%883%EF%BC%89%20-%20%E4%BD%BF%E7%94%A8Mybatis%E8%BF%9B%E8%A1%8CCRUD/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
-    <title>Mybatis 框架分析（2） - 基于XML配置文件的方式生成简单Demo</title>
-    <url>/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E5%9F%BA%E4%BA%8EXML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F%E7%94%9F%E6%88%90%E7%AE%80%E5%8D%95Demo/</url>
+    <title>Mybatis 框架分析（2） - 基于XML配置文件的方式的简单Demo</title>
+    <url>/2020/04/01/Mybatis%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%EF%BC%882%EF%BC%89%20-%20%E5%9F%BA%E4%BA%8EXML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F%E7%9A%84%E7%AE%80%E5%8D%95Demo/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1.环境配置"></a>1.环境配置</h1><p>目的：使用Mybatis 去查询数据库的表，并且打印出来</p>
 <p>IDEA：IDEA 2019.2.3</p>
 <p>MySql：Mysql 5.7.22</p>
@@ -1978,7 +2031,7 @@ d = e - f;    </code></pre>
 </ol>
 <hr>
 <h1 id="2-线程池核心设计与实现"><a href="#2-线程池核心设计与实现" class="headerlink" title="2.线程池核心设计与实现"></a>2.线程池核心设计与实现</h1><h2 id="2-1-线程池的总体设计"><a href="#2-1-线程池的总体设计" class="headerlink" title="2.1  线程池的总体设计"></a>2.1  线程池的总体设计</h2><p>Java中的线程池核心实现类是<code>ThreadPoolExecutor</code>，本章基于<code>JDK 1.8</code>的源码来分析Java线程池的核心设计与实现。我们首先来看一下<code>ThreadPoolExecutor</code>的UML类图，了解下<code>ThreadPoolExecutor</code>的继承关系。</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/GEHWRmfyZnB1u95.png"  alt="线程池UML图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/GEHWRmfyZnB1u95.png"  alt="线程池UML图"></p>
 <p><code>ThreadPoolExecutor</code> 实现的顶层接口是<code>Executor</code>，顶层接口<code>Executor</code>提供了一种思想：将任务提交和任务执行进行解耦。用户无需关注如何创建线程，如何调度线程来执行任务，用户只需提供<code>Runnable</code>对象，将任务的运行逻辑提交到执行器(Executor)中，由Executor框架完成线程的调配和任务的执行部分。</p>
 <p><code>ExecutorService</code> 接口增加了一些能力：</p>
 <ol>
@@ -1987,7 +2040,7 @@ d = e - f;    </code></pre>
 </ol>
 <p><code>AbstractExecutorService</code> 则是上层的抽象类，将执行任务的流程串联了起来，保证下层的实现只需关注一个执行任务的方法即可。最下层的实现类<code>ThreadPoolExecutor</code> 实现最复杂的运行部分，<code>ThreadPoolExecutor</code> 将会一方面维护自身的生命周期，另一方面同时管理线程和任务，使两者良好的结合从而执行并行任务。</p>
 <p><code>ThreadPoolExecutor</code> 是如何运行，如何同时维护线程和执行任务的呢？其运行机制如下图所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/jrgxYTBGiMvQOnb.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/jrgxYTBGiMvQOnb.png"  alt="TreadPoolExecutor运行机制"></p>
 <p>可以看出其实线程池就是绕着这个<code>ThreadPoolExecutor</code> 而运作的，那么我们主要进行解析的就是这个<code>ThreadPoolExecutor</code> 了，于是在下面我对<code>ThreadPoolExecutor</code>  进行了很细致的源码剖析。</p>
 <p>线程池在内部实际上构建了一个<strong>生产者消费者模型</strong>，将线程和任务两者解耦，并不直接关联，从而良好的缓冲任务，复用线程。线程池的运行主要分成两部分：任务管理、线程管理。</p>
 <ul>
@@ -2025,9 +2078,9 @@ d = e - f;    </code></pre>
 </li>
 </ol>
 <p>这五种状态如下所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/MKbLGHAohriWvJ2.png"  alt="五种运行状态.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/MKbLGHAohriWvJ2.png"  alt="五种运行状态"></p>
 <p>下图为线程池的状态转换过程：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png"  alt="线程池状态转换.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/nA6PoyfibGhe149.png"  alt="线程池状态转换"></p>
 <hr>
 <h2 id="2-3-线程池主要的任务执行机制"><a href="#2-3-线程池主要的任务执行机制" class="headerlink" title="2.3 线程池主要的任务执行机制"></a>2.3 线程池主要的任务执行机制</h2><p>主要分为四点进行解析：任务调度、任务缓存、任务申请、任务拒绝</p>
 <h3 id="2-3-1-任务调度"><a href="#2-3-1-任务调度" class="headerlink" title="2.3.1 任务调度"></a>2.3.1 任务调度</h3><p>任务调度是线程池的主要入口，当用户提交了一个任务，接下来这个任务将如何执行都是由这个阶段决定的。了解这部分就相当于了解了线程池的核心运行机制。</p>
@@ -2040,16 +2093,16 @@ d = e - f;    </code></pre>
 <li>如果<code>workerCount &gt;= maximumPoolSize</code>，并且线程池内的阻塞队列已满, 则根据拒绝策略来处理该任务, 默认的处理方式是直接抛异常。</li>
 </ol>
 <p>其执行流程如下图所示（参考的是美团团队所写的文章）：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/yUDvVaOl3RWfFgh.png"  alt="任务调度执行流程.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/yUDvVaOl3RWfFgh.png"  alt="任务调度执行流程"></p>
 <p>需要注意的是，看了很多博客的流程图都没有写有关于线程池状态监测是否为运行状态这一步，于是在上面很有必要补上，有一些博客的流程图画得也挺不错的，以下作为参考：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/VFNAwKU6zLSdhIv.png"  alt="线程池执行流程图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/VFNAwKU6zLSdhIv.png"  alt="线程池执行流程图"></p>
 <h3 id="2-3-2-任务缓冲"><a href="#2-3-2-任务缓冲" class="headerlink" title="2.3.2  任务缓冲"></a>2.3.2  任务缓冲</h3><p>任务缓冲模块是线程池能够管理任务的核心部分。线程池的本质是对任务和线程的管理，而做到这一点最关键的思想就是将任务和线程两者解耦，不让两者直接关联，才可以做后续的分配工作。线程池中是以生产者消费者模式，通过一个阻塞队列来实现的。阻塞队列缓存任务，工作线程从阻塞队列中获取任务。</p>
 <p>阻塞队列(<code>BlockingQueue</code>)是一个支持两个附加操作的队列。这两个附加的操作是：在队列为空时，获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。</p>
 <p>阻塞队列作为一个线程池必须要的参数之一，对阻塞队列的一些类别需要认识清楚，比如有界队列和无界队列的区别在哪里？使用无界队列会带来什么影响？这些都是一些使用线程池时候重点的知识点所在。</p>
 <p>下图中展示了线程1往阻塞队列中添加元素，而线程2从阻塞队列中移除元素：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/93vot42lDnyAcpN.png"  alt="阻塞队列.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/93vot42lDnyAcpN.png"  alt="阻塞队列"></p>
 <p>关于阻塞队列的一些知识，接下来我也会进行一个解析，对这几个队列还是需要有所了解的，这里有一个简单的描述表格：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/fitBsSdm9EJQzqD.png"  alt="阻塞队列.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/fitBsSdm9EJQzqD.png"  alt="阻塞队列介绍"></p>
 <p>线程池主要涉及到的是以下几种阻塞队列：</p>
 <ol>
 <li>LinkedBlockingQueue：链式阻塞队列，底层数据结构是链表，默认大小是<code>Integer.MAX_VALUE</code>，也可以指定大小。</li>
@@ -2079,7 +2132,7 @@ d = e - f;    </code></pre>
 <p>小结：当然，最后还是那句话，就像Java中的各种<code>Comparable</code>和<code>Comparator</code>的对比、<code>synchronized</code>和<code>ReentrantLock</code>对比，再到线程池这里的无界队列和有界队列的对比，看似都有一个的优点稍微突出一些，有些东西的存在一定有他的道理，需要适应的地方去使用，各有各的长处，只是要看处于何处。</p>
 <h3 id="2-3-3-任务申请"><a href="#2-3-3-任务申请" class="headerlink" title="2.3.3  任务申请"></a>2.3.3  任务申请</h3><p>由上文的任务分配部分可知，任务的执行有两种可能：一种是任务直接由新创建的线程执行。另一种是线程从任务队列中获取任务然后执行，执行完任务的空闲线程会再次去从队列中申请任务再去执行。第一种情况仅出现在线程初始创建的时候，第二种是线程获取任务绝大多数的情况。</p>
 <p>线程需要从任务缓存模块中不断地取任务执行，帮助线程从阻塞队列中获取任务，实现线程管理模块和任务管理模块之间的通信。这部分策略由<code>getTask</code>方法实现，其执行流程如下图所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/ZUc6LKwbjSNyuWl.png"  alt="任务申请.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/ZUc6LKwbjSNyuWl.png"  alt="任务申请流程"></p>
 <p><code>getTask</code>这部分进行了多次判断，为的是控制线程的数量，使其符合线程池的状态。如果线程池现在不应该持有那么多线程，则会返回null值。工作线程Worker会不断接收新任务去执行，而当工作线程Worker接收不到任务的时候，就会开始被回收。</p>
 <p>下面对<code>getTask</code> 会再一次贴上源码，这里只是抛出了这么一个思路，主要是介绍整个任务机制。</p>
 <h3 id="2-3-4-任务拒绝"><a href="#2-3-4-任务拒绝" class="headerlink" title="2.3.4  任务拒绝"></a>2.3.4  任务拒绝</h3><p>任务拒绝模块是线程池的保护部分，线程池有一个最大的容量，当线程池的任务缓存队列已满，并且线程池中的线程数目达到<code>maximumPoolSize</code>时，就需要拒绝掉该任务，采取任务拒绝策略，保护线程池。</p>
@@ -2116,7 +2169,7 @@ d = e - f;    </code></pre>
 <p><strong>3. 异步计算的结果(Future)</strong></p>
 <p>Future 接口以及 Future 接口的实现类 <code>FutureTask</code> 类都可以代表异步计算的结果。当我们把 <code>Runnable</code>接口 或 <code>Callable</code> 接口 的实现类提交给 <code>ThreadPoolExecutor</code> 或 <code>ScheduledThreadPoolExecutor</code> 执行。（调用 <code>submit()</code> 方法时会返回一个 <code>FutureTask</code> 对象）</p>
 <p><strong>Executor 框架的使用示意图</strong>（摘自 Java 并发编程的艺术）</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/IayJADbjuNfYGnx.png"  alt="Executor 框架的使用示意图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/IayJADbjuNfYGnx.png"  alt="Executor 框架的使用示意图"></p>
 <p>其主要过程如下：</p>
 <ol>
 <li>主线程首先要创建实现 <code>Runnable</code> 或者 <code>Callable</code> 接口的任务对象。</li>
@@ -2221,7 +2274,7 @@ d = e - f;    </code></pre>
 <li>如果<code>workerCount &gt;= maximumPoolSize</code>，并且线程池内的阻塞队列已满, 则根据拒绝策略来处理该任务, 默认的处理方式是直接抛异常。</li>
 </ol>
 <p>其流程图如下所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/4ZKr6ulWQMOTP3e.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/4ZKr6ulWQMOTP3e.png"  alt="execute 流程图"></p>
 <hr>
 <h3 id="2-5-5-addWorker-方法"><a href="#2-5-5-addWorker-方法" class="headerlink" title="2.5.5 addWorker 方法"></a>2.5.5 addWorker 方法</h3><p><code>addWorker</code>方法的主要工作是<strong>在线程池中创建一个新的线程并执行</strong>。增加线程是通过线程池中的addWorker方法，该方法的功能就是增加一个线程，该方法不考虑线程池是在哪个阶段增加的该线程，这个分配线程的策略是在上个步骤完成的，该步骤仅仅完成增加线程，并使它运行，最后返回是否成功这个结果。</p>
 <p>其主要有两个参数：</p>
@@ -2235,7 +2288,7 @@ d = e - f;    </code></pre>
 
 
 <p>其主要流程如下所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/RdTa4IpEtJ9ighf.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/RdTa4IpEtJ9ighf.png"  alt="addWorker机制流程图"></p>
 <hr>
 <h3 id="2-5-6-Worker-类"><a href="#2-5-6-Worker-类" class="headerlink" title="2.5.6 Worker 类"></a>2.5.6 Worker 类</h3><p>线程池为了掌握线程的状态并维护线程的生命周期，设计了线程池内的工作线程Worker。线程池中的每一个线程被封装成一个Worker对象，<code>ThreadPool</code>维护的其实就是一组Worker对象，看一下Worker的定义：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span></span></span><br><span class="line"><span class="class">        <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * This class will never be serialized, but we provide a</span></span><br><span class="line"><span class="comment">     * serialVersionUID to suppress a javac warning.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">6138294804551838833L</span>;</span><br><span class="line">    <span class="comment">/** Thread this worker is running in.  Null if factory fails. */</span></span><br><span class="line">    <span class="keyword">final</span> Thread thread;</span><br><span class="line">    <span class="comment">/** Initial task to run.  Possibly null. */</span></span><br><span class="line">    Runnable firstTask;</span><br><span class="line">    <span class="comment">/** Per-thread task counter */</span></span><br><span class="line">    <span class="keyword">volatile</span> <span class="keyword">long</span> completedTasks;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates with given first task and thread from ThreadFactory.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> firstTask the first task (null if none)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    Worker(Runnable firstTask) &#123;</span><br><span class="line">        setState(-<span class="number">1</span>); <span class="comment">// inhibit interrupts until runWorker</span></span><br><span class="line">        <span class="keyword">this</span>.firstTask = firstTask;</span><br><span class="line">        <span class="keyword">this</span>.thread = getThreadFactory().newThread(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Delegates main run loop to outer runWorker  */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        runWorker(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Lock methods</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">// The value 0 represents the unlocked state.</span></span><br><span class="line">    <span class="comment">// The value 1 represents the locked state.</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isHeldExclusively</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getState() != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 注意次数的tryAcquire是不允许重入的，而ReentrantLock是允许重入的。</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> unused)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>)) &#123;</span><br><span class="line">            setExclusiveOwnerThread(Thread.currentThread());</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryRelease</span><span class="params">(<span class="keyword">int</span> unused)</span> </span>&#123;</span><br><span class="line">        setExclusiveOwnerThread(<span class="keyword">null</span>);</span><br><span class="line">        setState(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span>        </span>&#123; acquire(<span class="number">1</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span>  </span>&#123; <span class="keyword">return</span> tryAcquire(<span class="number">1</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span>      </span>&#123; release(<span class="number">1</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLocked</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> isHeldExclusively(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">interruptIfStarted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Thread t;</span><br><span class="line">        <span class="keyword">if</span> (getState() &gt;= <span class="number">0</span> &amp;&amp; (t = thread) != <span class="keyword">null</span> &amp;&amp; !t.isInterrupted()) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                t.interrupt();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SecurityException ignore) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2263,7 +2316,7 @@ d = e - f;    </code></pre>
 </li>
 </ol>
 <p>在线程回收过程中就使用到了这种特性，回收过程如下图所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/aCo5DEI3pnYRN9Q.png"  alt="线程回收.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/aCo5DEI3pnYRN9Q.png"  alt="线程回收模型"></p>
 <p>在构造方法中执行了<code>setState(-1);</code>，把state变量设置为-1，为什么这么做呢？</p>
 <p>其实人家源码中的注解也已经说明了：<code>inhibit interrupts until runWorker</code></p>
 <p>大概的原因是<code>AQS</code>中默认的state是0，<u>如果刚创建了一个Worker对象，还没有执行任务时，这时就不应该被中断</u>，查看上面的<code>tryAcquire</code>方法，发现其调用的是：<code>if (compareAndSetState(0, 1))</code>，其是根据state是否是0来判断的，所以，<code>setState(-1);</code>将state设置为-1是为了<u>禁止在执行任务前对线程进行中断</u>。</p>
@@ -2295,7 +2348,7 @@ d = e - f;    </code></pre>
 <p>这里的<code>beforeExecute</code>方法和<code>afterExecute</code>方法在<code>ThreadPoolExecutor</code>类中是空的，留给子类来实现。</p>
 <p><code>completedAbruptly</code>变量来表示在执行任务过程中是否出现了异常，在<code>processWorkerExit</code>方法中会对该变量的值进行判断。</p>
 <p>总结一下<code>runWorker</code>方法的执行过程如下图所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/YH9cdUgDVbnQN74.png"  alt="runWorker执行过程.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/YH9cdUgDVbnQN74.png"  alt="runWorker执行流程图"></p>
 <p>通过上图其实也可以看到<code>runWorker</code> 在线程复用是如何起作用的：</p>
 <ul>
 <li>首先去执行创建这个worker时就有的任务，当执行完这个任务后，worker的生命周期并没有结束，在<code>while</code>循环中，worker会不断地调用<code>getTask</code>方法从<strong>阻塞队列</strong>中获取任务然后调用<code>task.run()</code>执行任务,从而达到<strong>复用线程</strong>的目的。只要<code>getTask</code>方法不返回<code>null</code>,此线程就不会退出。</li>
@@ -2320,10 +2373,10 @@ d = e - f;    </code></pre>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">processWorkerExit</span><span class="params">(Worker w, <span class="keyword">boolean</span> completedAbruptly)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果completedAbruptly值为true，则说明线程执行时出现了异常，需要将workerCount减1；</span></span><br><span class="line">    <span class="comment">// 如果线程执行时没有出现异常，说明在getTask()方法中已经已经对workerCount进行了减1操作，这里就不必再减了。 </span></span><br><span class="line">    <span class="keyword">if</span> (completedAbruptly) <span class="comment">// If abrupt, then workerCount wasn't adjusted</span></span><br><span class="line">        decrementWorkerCount();</span><br><span class="line">    <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">    mainLock.lock();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 统计完成的任务数</span></span><br><span class="line">        completedTaskCount += w.completedTasks;</span><br><span class="line">        <span class="comment">// 从workers中移除，也就表示着从线程池中移除了一个工作线程</span></span><br><span class="line">        workers.remove(w);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        mainLock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据线程池状态进行判断是否结束线程池</span></span><br><span class="line">    <span class="comment">// 为什么需要判断呢？上面已经讲了。</span></span><br><span class="line">    tryTerminate();</span><br><span class="line">    <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 当线程池是RUNNING或SHUTDOWN状态时，如果worker是异常结束，那么会直接addWorker；</span></span><br><span class="line"><span class="comment">     * 	意思就是因为异常结束的话，会创建一个新的线程放到线程池中！</span></span><br><span class="line"><span class="comment">     * 如果allowCoreThreadTimeOut=true，并且等待队列有任务，至少保留一个worker；</span></span><br><span class="line"><span class="comment">     * 如果allowCoreThreadTimeOut=false，workerCount不少于corePoolSize。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (runStateLessThan(c, STOP)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!completedAbruptly) &#123;</span><br><span class="line">            <span class="keyword">int</span> min = allowCoreThreadTimeOut ? <span class="number">0</span> : corePoolSize;</span><br><span class="line">            <span class="keyword">if</span> (min == <span class="number">0</span> &amp;&amp; ! workQueue.isEmpty())</span><br><span class="line">                min = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (workerCountOf(c) &gt;= min)</span><br><span class="line">                <span class="keyword">return</span>; <span class="comment">// replacement not needed</span></span><br><span class="line">        &#125;</span><br><span class="line">        addWorker(<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以上的代码流程图如下所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/SZVNJKE7Tn9LRBP.png"  alt="processWorkerExit执行过程.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/SZVNJKE7Tn9LRBP.png"  alt="processWorkerExit执行流程"></p>
 <p>其实在这个方法中，主要工作是<code>workers.remove(w)</code>将线程引用移出线程池就已经结束了线程销毁的部分。但我们还要去分析一下引起线程销毁的原因，分为几种情况，如果是异常结束的话，那么那么会直接<code>addWorker</code>，还有进行判断<code>allowCoreThreadTimeOut</code> ，根据不同情况，对线程进行一个重新的分配。</p>
 <p>至此，<code>processWorkerExit</code>执行完之后，工作线程被销毁，以上就是整个工作线程的生命周期，从execute方法开始，Worker使用<code>ThreadFactory</code>创建新的工作线程，<code>runWorker</code>通过<code>getTask</code>获取任务，然后执行任务，如果<code>getTask</code>返回null，进入<code>processWorkerExit</code>方法，整个线程结束，如图所示：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/gulAMmVIwtQisC5.png"  alt="工作线程的整个生命周期.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/gulAMmVIwtQisC5.png"  alt="工作线程的整个生命周期"></p>
 <hr>
 <h3 id="2-5-10-tryTerminater-方法"><a href="#2-5-10-tryTerminater-方法" class="headerlink" title="2.5.10 tryTerminater 方法"></a>2.5.10 tryTerminater 方法</h3><p>这个方法的作用是根据线程池状态进行判断是否结束线程池，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">tryTerminate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 当前线程池的状态为以下几种情况时，直接返回：</span></span><br><span class="line"><span class="comment">         * 1. RUNNING，因为还在运行中，不能停止；</span></span><br><span class="line"><span class="comment">         * 2. TIDYING或TERMINATED，因为线程池中已经没有正在运行的线程了；</span></span><br><span class="line"><span class="comment">         * 3. SHUTDOWN并且等待队列非空，这时要执行完workQueue中的task；</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">if</span> (isRunning(c) ||</span><br><span class="line">            runStateAtLeast(c, TIDYING) ||</span><br><span class="line">            (runStateOf(c) == SHUTDOWN &amp;&amp; ! workQueue.isEmpty()))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// 如果线程数量不为0，则中断一个空闲的工作线程，并返回</span></span><br><span class="line">        <span class="keyword">if</span> (workerCountOf(c) != <span class="number">0</span>) &#123; <span class="comment">// Eligible to terminate</span></span><br><span class="line">            interruptIdleWorkers(ONLY_ONE);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">        mainLock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 这里尝试设置状态为TIDYING，如果设置成功，则调用terminated方法</span></span><br><span class="line">            <span class="keyword">if</span> (ctl.compareAndSet(c, ctlOf(TIDYING, <span class="number">0</span>))) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">// terminated方法默认什么都不做，留给子类实现</span></span><br><span class="line">                    terminated();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    <span class="comment">// 设置状态为TERMINATED</span></span><br><span class="line">                    ctl.set(ctlOf(TERMINATED, <span class="number">0</span>));</span><br><span class="line">                    termination.signalAll();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            mainLock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// else retry on failed CAS</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2398,14 +2451,14 @@ d = e - f;    </code></pre>
 <li>线程池会把这个线程移除掉，并创建一个新的线程放到线程池中。</li>
 </ol>
 <p>主要的图示如下：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/04/MIUmeaZ5E4zBb7o.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/04/MIUmeaZ5E4zBb7o.png"  alt="线程池线程异常解析"></p>
 <hr>
 <h2 id="2-7-四种线程池"><a href="#2-7-四种线程池" class="headerlink" title="2.7 四种线程池"></a>2.7 四种线程池</h2><h3 id="2-7-1-newCachedThreadPool"><a href="#2-7-1-newCachedThreadPool" class="headerlink" title="2.7.1 newCachedThreadPool"></a>2.7.1 newCachedThreadPool</h3><p>介绍：<code>CachedThreadPool</code> 是<strong>一个会根据需要创建新线程的线程池</strong>。下面通过源码来看看 <code>CachedThreadPool</code> 的实现：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>CachedThreadPool</code> 的 <code>corePoolSize</code> 被设置为空（0），<code>maximumPoolSize</code> 被设置为 <code>Integer.MAX.VALUE</code>，即它是无界的，这也就意味着如果主线程提交任务的速度高于 <code>maximumPool</code> 中线程处理任务的速度时，<code>CachedThreadPool</code> 会不断创建新的线程。极端情况下，这样会导致耗尽 cpu 和内存资源。</p>
 <p><strong><code>newCachedThreadPool</code> 执行任务过程介绍：</strong></p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/9dF5A1UfK4RN83m.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/9dF5A1UfK4RN83m.png"  alt="CachedThreadPool 执行任务"></p>
 <p><code>CacheThreadPool</code>的<strong>运行流程</strong>如下：</p>
 <ol>
 <li>提交任务进线程池。</li>
@@ -2427,7 +2480,7 @@ d = e - f;    </code></pre>
 <p>核心线程数量和总线程数量相等，都是传入的参数<code>nThreads</code>，所以只能创建核心线程，不能创建非核心线程。因为<code>LinkedBlockingQueue</code>的默认大小是<code>Integer.MAX_VALUE</code>，故如果核心线程空闲，则交给核心线程处理；如果核心线程不空闲，则入列等待，直到核心线程空闲。</p>
 <p><strong><code>FixedThreadPool</code> 执行任务过程介绍：</strong></p>
 <p><code>FixedThreadPool</code> 的 <code>execute()</code> 方法运行示意图（该图片来源：《Java 并发编程的艺术》）：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/ys3GoqdfXANMJIR.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/ys3GoqdfXANMJIR.png"  alt="FixedThreadPool 执行任务"></p>
 <p>上图说明：</p>
 <ol>
 <li>如果当前运行的线程数小于 corePoolSize， 如果再来新任务的话，就创建新的线程来执行任务；</li>
@@ -2459,7 +2512,7 @@ d = e - f;    </code></pre>
 <p>从上面源代码可以看出新创建的 <code>SingleThreadExecutor</code> 的 <code>corePoolSize</code> 和 <code>maximumPoolSize</code> 都被设置为 1.其他参数和 <code>FixedThreadPool</code> 相同。</p>
 <p><strong><code>newSingleThreadExecutor</code> 执行任务过程介绍：</strong></p>
 <p><code>SingleThreadExecutor</code> 的运行示意图（该图片来源：《Java 并发编程的艺术》）：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/JAtXSsHNvQyw4dx.png"  alt="SingleThreadExecutor 运行示意图.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/JAtXSsHNvQyw4dx.png"  alt="SingleThreadExecutor 执行任务"></p>
 <p>上图说明：</p>
 <ol>
 <li>如果当前运行的线程数少于 <code>corePoolSize</code>，则创建一个新的线程执行任务；</li>
@@ -2484,7 +2537,7 @@ d = e - f;    </code></pre>
 
 
 <p><code>newScheduledThreadPool</code> 的运行示意图（该图片来源：《Java 并发编程的艺术》）：</p>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/AuUxb6LqDC9OHKv.png"  alt="image.png"></p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/03/AuUxb6LqDC9OHKv.png"  alt="ScheduledThreadPool 执行任务"></p>
 <p><code>ScheduledThreadPoolExecutor</code>的执行主要分为两大部分</p>
 <ol>
 <li>当调用<code>ScheduledThreadPoolExecutor</code>的<code>scheduleAtFixedRate()</code>方法或者<code>scheduleWithFixedDelay()</code>方法时，会向<code>cheduledThreadPoolExecutor</code>的<code>DelayQueue</code>添加一个实现了<code>RunnableScheduledFutur</code>接口的<code>cheduledFutureTask</code>。</li>
@@ -2723,6 +2776,13 @@ d = e - f;    </code></pre>
     <title>Spring 框架分析 - 设计模式</title>
     <url>/2020/03/31/Spring%20%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90%20-%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 并发 - 并发工具类：Exchanger 分析</title>
@@ -3011,7 +3071,7 @@ d = e - f;    </code></pre>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Spring IoC</tag>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -3172,8 +3232,8 @@ d = e - f;    </code></pre>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>并发</tag>
         <tag>导页</tag>
+        <tag>并发</tag>
       </tags>
   </entry>
   <entry>
