@@ -1913,7 +1913,41 @@
   <entry>
     <title>剑指Offer - 03 - 从尾到头打印链表</title>
     <url>/2020/04/02/jian-zhi-offer-03-cong-wei-dao-tou-da-yin-lian-biao/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-题目链接"><a href="#1-题目链接" class="headerlink" title="1.题目链接"></a>1.题目链接</h1><h1 id="2-题目描述"><a href="#2-题目描述" class="headerlink" title="2.题目描述"></a>2.题目描述</h1><h1 id="3-解题思路"><a href="#3-解题思路" class="headerlink" title="3.解题思路"></a>3.解题思路</h1><h1 id="4-代码"><a href="#4-代码" class="headerlink" title="4.代码"></a>4.代码</h1><script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-题目链接"><a href="#1-题目链接" class="headerlink" title="1.题目链接"></a>1.题目链接</h1><p>LeetCode：<a href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/" target="_blank" rel="noopener">从尾到头打印链表</a></p>
+<h1 id="2-题目描述"><a href="#2-题目描述" class="headerlink" title="2.题目描述"></a>2.题目描述</h1><p>输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">输入：head = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>]</span><br><span class="line">输出：[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>限制：</strong></p>
+<figure class="highlight basic"><table><tbody><tr><td class="code"><pre><span class="line"><span class="symbol">0 </span>&lt;= 链表长度 &lt;= <span class="number">10000</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="3-解题思路"><a href="#3-解题思路" class="headerlink" title="3.解题思路"></a>3.解题思路</h1><p>像这种倒来倒去的可以使用辅助栈法</p>
+<blockquote>
+<p><strong>链表特点：</strong> 只能从前至后访问每个节点。<br><strong>题目要求：</strong> 倒序输出节点值。<br>这种 <strong>先入后出</strong> 的需求可以借助 <strong>栈</strong> 来实现。</p>
+</blockquote>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>入栈： 遍历链表，将各节点值 push 入栈。（Java借助 <code>LinkedList</code> 的<code>addLast()</code>方法）。</li>
+<li>出栈： 将各节点值 pop 出栈，存储于数组并返回。（Java 新建一个数组，通过 <code>popLast()</code> 方法将各元素存入数组，实现倒序输出）。</li>
+</ol>
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度 O(N)： 入栈和出栈共使用 O(N) 时间。</li>
+<li>空间复杂度 O(N)： 辅助栈 stack 和数组 res 共使用 O(N) 的额外空间。</li>
+</ul>
+<h1 id="4-代码"><a href="#4-代码" class="headerlink" title="4.代码"></a>4.代码</h1><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] reversePrint(ListNode head) {</span><br><span class="line">        <span class="comment">// 常用LinkedList 来作为stack栈使用</span></span><br><span class="line">        LinkedList&lt;Integer&gt; stack = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        <span class="comment">// 遍历 逐个进栈</span></span><br><span class="line">        <span class="keyword">while</span>(head != <span class="keyword">null</span>) {</span><br><span class="line">            stack.addLast(head.val);</span><br><span class="line">            head = head.next;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 新建一个数组</span></span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[stack.size()];</span><br><span class="line">        <span class="comment">// 遍历 逐个出栈</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res.length; i++)</span><br><span class="line">            res[i] = stack.removeLast();</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+
+
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -2193,7 +2227,7 @@
 <p>给定 target = <code>20</code>，返回 <code>false</code>。</p>
 <p><strong>限制：</strong></p>
 <p><code>0 &lt;= n &lt;= 1000</code><br><code>0 &lt;= m &lt;= 1000</code></p>
-<h1 id="3-解题思路"><a href="#3-解题思路" class="headerlink" title="3.解题思路"></a>3.解题思路</h1><p>标志数引入： 此类矩阵中左下角和右上角元素有特殊性，称为标志数。</p>
+<h1 id="3-解题思路"><a href="#3-解题思路" class="headerlink" title="3.解题思路"></a>3.解题思路</h1><p><strong>标志数引入</strong>： 此类矩阵中左下角和右上角元素有特殊性，称为标志数。</p>
 <ul>
 <li>左下角元素： 为所在列最大元素，所在行最小元素。</li>
 <li>右上角元素： 为所在行最大元素，所在列最小元素。</li>
