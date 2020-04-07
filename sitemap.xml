@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/leetcode/index.html</loc>
+    
+    <lastmod>2020-04-07T15:57:10.703Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</loc>
+    
+    <lastmod>2020-04-07T15:47:08.179Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-shuang-zhi-zhen/</loc>
     
-    <lastmod>2020-04-07T15:24:55.788Z</lastmod>
+    <lastmod>2020-04-07T15:45:32.166Z</lastmod>
     
   </url>
   
@@ -100,23 +114,9 @@
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</loc>
-    
-    <lastmod>2020-04-07T15:24:23.153Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-ha-xi-biao/</loc>
     
     <lastmod>2020-04-07T15:24:07.560Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/leetcode/index.html</loc>
-    
-    <lastmod>2020-04-07T15:19:26.561Z</lastmod>
     
   </url>
   
