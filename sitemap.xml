@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongxiem.github.io/thinking/index.html</loc>
+    <loc>https://dongxiem.github.io/structure/index.html</loc>
     
-    <lastmod>2020-04-07T12:06:59.609Z</lastmod>
+    <lastmod>2020-04-07T14:12:50.210Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/structure/index.html</loc>
+    <loc>https://dongxiem.github.io/thinking/index.html</loc>
     
-    <lastmod>2020-04-07T12:06:58.021Z</lastmod>
+    <lastmod>2020-04-07T13:56:53.116Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/04/02/jian-zhi-offer-03-cong-wei-dao-tou-da-yin-lian-biao/</loc>
+    
+    <lastmod>2020-04-07T12:17:15.691Z</lastmod>
     
   </url>
   
@@ -754,13 +761,6 @@
     <loc>https://dongxiem.github.io/2020/04/02/jian-zhi-offer-04-chong-jian-er-cha-shu/</loc>
     
     <lastmod>2020-04-06T15:22:35.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/04/02/jian-zhi-offer-03-cong-wei-dao-tou-da-yin-lian-biao/</loc>
-    
-    <lastmod>2020-04-06T15:22:29.627Z</lastmod>
     
   </url>
   
