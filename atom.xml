@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-07T16:49:18.356Z</updated>
+  <updated>2020-04-08T14:53:57.660Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 并发 - 线程池实际使用中遇到的问题</title>
+    <link href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-shi-ji-shi-yong-zhong-yu-dao-de-wen-ti/"/>
+    <id>https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-shi-ji-shi-yong-zhong-yu-dao-de-wen-ti/</id>
+    <published>2020-04-08T14:51:31.004Z</published>
+    <updated>2020-04-08T14:53:57.660Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java并发" scheme="https://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="多线程" scheme="https://dongxiem.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 线程池的使用</title>
+    <link href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/"/>
+    <id>https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/</id>
+    <published>2020-04-08T11:40:29.117Z</published>
+    <updated>2020-04-08T14:52:10.445Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java并发" scheme="https://dongxiem.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="多线程" scheme="https://dongxiem.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode - 算法思想 - 海量数据</title>
@@ -535,62 +597,6 @@
       <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 算法思想 - 双指针</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-shuang-zhi-zhen/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-shuang-zhi-zhen/</id>
-    <published>2020-04-07T15:14:02.662Z</published>
-    <updated>2020-04-07T16:40:39.852Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis 框架分析（2） - 基于注解方式的简单Demo</title>
-    <link href="https://dongxiem.github.io/2020/04/06/mybatis-kuang-jia-fen-xi-2-ji-yu-zhu-jie-fang-shi-de-jian-dan-demo/"/>
-    <id>https://dongxiem.github.io/2020/04/06/mybatis-kuang-jia-fen-xi-2-ji-yu-zhu-jie-fang-shi-de-jian-dan-demo/</id>
-    <published>2020-04-06T14:30:20.181Z</published>
-    <updated>2020-04-06T14:58:06.483Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Mybatis" scheme="https://dongxiem.github.io/categories/Mybatis/"/>
-    
-    
-      <category term="Mybatis" scheme="https://dongxiem.github.io/tags/Mybatis/"/>
     
   </entry>
   
