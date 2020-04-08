@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 并发 - 上下文切换的理解</title>
+    <url>/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-什么是多线程的上下文切换？"><a href="#1-什么是多线程的上下文切换？" class="headerlink" title="1.什么是多线程的上下文切换？"></a>1.什么是多线程的上下文切换？</h1><p>多线程会共同使用一组计算机上的 CPU ，而线程数大于给程序分配的 CPU 数量时，为了让各个线程都有执行的机会，就需要轮转使用 CPU 。</p>
+<p>不同的线程切换使用 CPU 发生的切换数据等，就是上下文切换。</p>
+<ul>
+<li>在上下文切换过程中，CPU 会停止处理当前运行的程序，并保存当前程序运行的具体位置以便之后继续运行。从这个角度来看，上下文切换有点像我们同时阅读几本书，在来回切换书本的同时我们需要记住每本书当前读到的页码。在程序中，上下文切换过程中的“页码”信息是保存在进程控制块（PCB）中的。PCB还经常被称作“切换桢”（switchframe）。“页码”信息会一直保存到CPU的内存中，直到他们被再次使用。</li>
+<li>上下文切换是存储和恢复 CPU 状态的过程，它使得线程执行能够从中断点恢复执行。上下文切换是多任务操作系统和多线程环境的基本特征。</li>
+</ul>
+<p><strong>以下取自：Java并发编程的艺术：</strong></p>
+<ul>
+<li>即使是单核处理器也支持多线程执行代码，CPU通过给每个线程分配CPU时间片来实现这个机制。时间片是CPU分配给各个线程的时间，因为时间片非常短，所以CPU通过不停地切换线程执行，让我们感觉多个线程是同时执行的，时间片一般是几十毫秒（ms）。</li>
+<li>CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下次切换回这个任务时，可以再加载这个任务的状态。所以任务从保存到再加载的过程就是一次上下文切换。</li>
+<li>这就像我们同时读两本书，当我们在读一本英文的技术书时，发现某个单词不认识，于是便打开中英文字典，但是在放下英文技术书之前，大脑必须先记住这本书读到了多少页的第多少行，等查完单词之后，能够继续读这本书。这样的切换是会影响读书效率的，同样上下文切换也会影响多线程的执行速度。</li>
+</ul>
+<hr>
+<h1 id="2-如何减少上下文切换？"><a href="#2-如何减少上下文切换？" class="headerlink" title="2.如何减少上下文切换？"></a>2.如何减少上下文切换？</h1><p>减少上下文切换的方法有无锁并发编程、CAS算法、使用最少线程和使用协程。</p>
+<ol>
+<li>无锁并发编程。多线程竞争锁时，会引起上下文切换，所以多线程处理数据时，可以用一些办法来避免使用锁，如将数据的ID按照Hash算法取模分段，不同的线程处理不同段的数据。</li>
+<li>CAS算法。Java的Atomic包使用CAS算法来更新数据，而不需要加锁。</li>
+<li>使用最少线程。避免创建不需要的线程，比如任务很少，但是创建了很多线程来处理，这样会造成大量线程都处于等待状态。</li>
+<li>协程：在单线程里实现多任务的调度，并在单线程里维持多个任务间的切换</li>
+</ol>
+<p>注：文章中还显示了一种减少上下文切换实战的例子：</p>
+<hr>
+<h1 id="3-上下文切换相关问题"><a href="#3-上下文切换相关问题" class="headerlink" title="3.上下文切换相关问题"></a>3.上下文切换相关问题</h1><h2 id="3-1-多线程一定快吗？"><a href="#3-1-多线程一定快吗？" class="headerlink" title="3.1 多线程一定快吗？"></a>3.1 多线程一定快吗？</h2><p>答案是“不一定”</p>
+<p>当并发执行累加操作不超过百万次时，速度会比串行执行累加操作要慢。那么，为什么并发执行的速度会比串行慢呢？这是因为线程有创建和上下文切换的开销。</p>
+<hr>
+<p>以上引用的博客和文章：</p>
+<ol>
+<li>书籍：并发编程的艺术</li>
+<li>书籍：深入浅出Java多线程</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 并发 - 线程池的使用</title>
     <url>/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-如何配置线程池"><a href="#1-如何配置线程池" class="headerlink" title="1 如何配置线程池"></a>1 如何配置线程池</h1><p>如果我们设置的线程池数量太小的话，如果同一时间有大量任务/请求需要处理，可能会导致大量的请求/任务在任务队列中排队等待执行，甚至会出现任务队列满了之后任务/请求无法处理的情况，或者大量任务堆积在任务队列导致 OOM。这样很明显是有问题的！ CPU 根本没有得到充分利用。</p>
