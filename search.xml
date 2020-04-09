@@ -1,6 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Leetcode - 算法思想 - 回溯</title>
+    <url>/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><p><strong>解决一个回溯问题，实际上就是一个决策树的遍历过程</strong>。你只需要思考 3 个问题：</p>
+<ol>
+<li>路径：也就是已经做出的选择。</li>
+<li>选择列表：也就是你当前可以做的选择。</li>
+<li>结束条件：也就是到达决策树底层，无法再做选择的条件。</li>
+</ol>
+<p>代码方面，回溯算法的框架：</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(路径, 选择列表)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> 满足结束条件:</span><br><span class="line">        result.add(路径)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> 选择 <span class="keyword">in</span> 选择列表:</span><br><span class="line">        做选择</span><br><span class="line">        backtrack(路径, 选择列表)</span><br><span class="line">        撤销选择</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>其核心就是 for 循环里面的递归，在递归调用之前「做选择」，在递归调用之后「撤销选择」</strong>，特别简单。</p>
+<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h2 id="2-1-全排列"><a href="#2-1-全排列" class="headerlink" title="2.1 全排列"></a>2.1 全排列</h2><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. 全排列</a></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个 <strong>没有重复</strong> 数字的序列，返回其所有可能的全排列。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">输入: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>具体可以看如下这篇文章：<a href="[https://github.com/labuladong/fucking-algorithm/blob/master/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4%E7%B3%BB%E5%88%97/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3%E4%BF%AE%E8%AE%A2%E7%89%88.md](https://github.com/labuladong/fucking-algorithm/blob/master/算法思维系列/回溯算法详解修订版.md)">回溯算法详解</a></p>
+<p>怎么穷举全排列的呢？比方说给三个数 <code>[1,2,3]</code>，你肯定不会无规律地乱穷举，一般是这样：</p>
+<p>先固定第一位为 1，然后第二位可以是 2，那么第三位只能是 3；然后可以把第二位变成 3，第三位就只能是 2 了；然后就只能变化第一位，变成 2，然后再穷举后两位……</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/backtracking/1.jpg"  alt="img"></p>
+<p>只要从根遍历这棵树，记录路径上的数字，其实就是所有的全排列。<strong>我们不妨把这棵树称为回溯算法的「决策树」</strong>。</p>
+<p>我们理解全排列的这棵树可称为回溯算法的「决策树」<strong>，因为你在每个节点上其实都在做决策</strong>。比如说你站在下图的红色节点上：</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/backtracking/2.jpg"  alt="类似决策树模型"></p>
+<p>你现在就在做决策，可以选择 1 那条树枝，也可以选择 3 那条树枝。为啥只能在 1 和 3 之中选择呢？因为 2 这个树枝在你身后，这个选择你之前做过了，而全排列是不允许重复使用数字的。</p>
+<p>可以解答开头的几个名词：<code>[2]</code> 就是「路径」，记录你已经做过的选择；<code>[1,3]</code> 就是「选择列表」，表示你当前可以做出的选择；「结束条件」就是遍历到树的底层，在这里就是选择列表为空的时候。</p>
+<p><strong>可以把「路径」和「选择」列表作为决策树上每个节点的属性</strong>，比如下图列出了几个节点的属性：</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/backtracking/3.jpg"  alt="img"></p>
+<p><strong>我们定义的 <code>backtrack</code> 函数其实就像一个指针，在这棵树上游走，同时要正确维护每个节点的属性，每当走到树的底层，其「路径」就是一个全排列</strong>。</p>
+<p>再进一步，如何遍历一棵树？这个应该不难吧。回忆一下之前「学习数据结构的框架思维」写过，各种搜索问题其实都是树的遍历问题，而多叉树的遍历框架就是这样：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(TreeNode root)</span> </span>{</span><br><span class="line">    <span class="keyword">for</span> (TreeNode child : root.childern)</span><br><span class="line">        <span class="comment">// 前序遍历需要的操作</span></span><br><span class="line">        traverse(child);</span><br><span class="line">        <span class="comment">// 后序遍历需要的操作</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>而所谓的前序遍历和后序遍历，他们只是两个很有用的时间点，我给你画张图你就明白了：</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/backtracking/4.jpg"  alt="前序遍历与后序遍历"></p>
+<p><strong>前序遍历的代码在进入某一个节点之前的那个时间点执行，后序遍历代码在离开某个节点之后的那个时间点执行</strong>。</p>
+<p>回想我们刚才说的，「路径」和「选择」是每个节点的属性，函数在树上游走要正确维护节点的属性，那么就要在这两个特殊时间点搞点动作：</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/backtracking/5.jpg"  alt="选择的过程"></p>
+<p>所以回溯的核心框架：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 选择 in 选择列表:</span><br><span class="line">    # 做选择</span><br><span class="line">    将该选择从选择列表移除</span><br><span class="line">    路径.add(选择)</span><br><span class="line">    backtrack(路径, 选择列表)</span><br><span class="line">    # 撤销选择</span><br><span class="line">    路径.remove(选择)</span><br><span class="line">    将该选择再加入选择列表</span><br></pre></td></tr></tbody></table></figure>
+
+<p><u>这个框架要结合上面的那个前序遍历与后序遍历来理解！非常重要！！！</u></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 主函数，输入一组不重复的数字，返回它们的全排列 */</span></span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) {</span><br><span class="line">    <span class="comment">// 记录「路径」</span></span><br><span class="line">    LinkedList&lt;Integer&gt; track = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    backtrack(nums, track);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 路径：记录在 track 中</span></span><br><span class="line"><span class="comment">// 选择列表：nums 中不存在于 track 的那些元素</span></span><br><span class="line"><span class="comment">// 结束条件：nums 中的元素全都在 track 中出现</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span>[] nums, LinkedList&lt;Integer&gt; track)</span> </span>{</span><br><span class="line">    <span class="comment">// 触发结束条件</span></span><br><span class="line">    <span class="keyword">if</span> (track.size() == nums.length) {</span><br><span class="line">        res.add(<span class="keyword">new</span> LinkedList(track));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) {</span><br><span class="line">        <span class="comment">// 排除不合法的选择</span></span><br><span class="line">        <span class="keyword">if</span> (track.contains(nums[i]))</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 做选择</span></span><br><span class="line">        track.add(nums[i]);</span><br><span class="line">        <span class="comment">// 进入下一层决策树</span></span><br><span class="line">        backtrack(nums, track);</span><br><span class="line">        <span class="comment">// 取消选择</span></span><br><span class="line">        track.removeLast();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里稍微做了些变通，没有显式记录「选择列表」，而是通过 <code>nums</code> 和 <code>track</code> 推导出当前的选择列表：</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/backtracking/6.jpg"  alt="选择图"></p>
+<p>但是必须说明的是，不管怎么优化，都符合回溯框架，而且时间复杂度都不可能低于 O(N!)，因为穷举整棵决策树是无法避免的。<strong>这也是回溯算法的一个特点，不像动态规划存在重叠子问题可以优化，回溯算法就是纯暴力穷举，复杂度一般都很高</strong>。</p>
+<hr>
+<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发 - 锁相关：ReadWriteLock接口分析</title>
+    <url>/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java多线程与并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发 - 锁相关：Lock接口分析</title>
+    <url>/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java多线程与并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 并发 - Volatile 分析</title>
     <url>/2020/04/09/java-bing-fa-volatile-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
@@ -803,7 +942,33 @@
   <entry>
     <title>Leetcode - 算法思想 - 动态规划</title>
     <url>/2020/04/07/leetcode-suan-fa-si-xiang-dong-tai-gui-hua/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h2 id="2-1-零钱兑换"><a href="#2-1-零钱兑换" class="headerlink" title="2.1 零钱兑换"></a>2.1 零钱兑换</h2><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p>LeetCode：<a href="https://leetcode-cn.com/problems/coin-change/" target="_blank" rel="noopener">322. 零钱兑换</a></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">输入: coins = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>], amount = <span class="number">11</span></span><br><span class="line">输出: <span class="number">3</span> </span><br><span class="line">解释: <span class="number">11</span> = <span class="number">5</span> + <span class="number">5</span> + <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">输入: coins = [<span class="number">2</span>], amount = <span class="number">3</span></span><br><span class="line">输出: <span class="number">-1</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>使用以自底向上使用 dp table 来消除重叠子问题，<code>dp</code> 数组的定义：<strong><code>dp[i] = x</code> 表示，当目标金额为 <code>i</code> 时，至少需要 <code>x</code> 枚硬币</strong>。</p>
+<p>其实替换到现实的话估计会好理解一些：面值分别为 1，2，5，总金额 <code>amount = 11</code>。那么最少需要 3 枚硬币凑出，即 11 = 5 + 5 + 1。</p>
+<p>那么11要怎么凑出来呢，由下面一步一步往上凑，等到11的时候，就有条件支撑了。</p>
+<p><img src="/" class="lazyload" data-src="https://github.com/labuladong/fucking-algorithm/raw/master/pictures/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%AF%A6%E8%A7%A3%E8%BF%9B%E9%98%B6/6.jpg"  alt="图解dp结构"></p>
+<p>代码中为啥 <code>dp</code> 数组初始化为 <code>amount + 1</code> 呢？</p>
+<p>因为凑成 <code>amount</code> 金额的硬币数最多只可能等于 <code>amount</code>（全用 1 元面值的硬币），所以初始化为 <code>amount + 1</code> 就相当于初始化为正无穷，便于后续取最小值。</p>
+<p>具体可以看以下这篇文章：<a href="https://github.com/labuladong/fucking-algorithm/blob/master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%B3%BB%E5%88%97/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%AF%A6%E8%A7%A3%E8%BF%9B%E9%98%B6.md" target="_blank" rel="noopener">动态规划详解</a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">coinChange</span><span class="params">(<span class="keyword">int</span>[] coins, <span class="keyword">int</span> amount)</span> </span>{</span><br><span class="line">		<span class="comment">// 定义一个dp数组</span></span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[amount + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 数组填充，将dp数组中的所有元素都登记为amout + 1</span></span><br><span class="line">        Arrays.fill(dp, amount + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 因为这些数组的下标代表着金钱，0就是不可以算了</span></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 自底向上</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= amount; i++){</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; coins.length; j++){</span><br><span class="line">                <span class="comment">// 用i去减每个conis里面的成员，但凡其中有一个大于i，都不能继续下去</span></span><br><span class="line">                <span class="keyword">if</span> (i - coins[j] &gt;= <span class="number">0</span>)   </span><br><span class="line">                    <span class="comment">// 通过比较得出最小的那个组成</span></span><br><span class="line">                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + <span class="number">1</span>);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 看是否大于amount，是的话就无法分解（比如3、4、5和1），不是的话返回dp[amount]</span></span><br><span class="line">        <span class="keyword">return</span> dp[amount] &gt; amount ? -<span class="number">1</span> : dp[amount];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+<hr>
+<h1 id="3-记录面经试题"><a href="#3-记录面经试题" class="headerlink" title="3.记录面经试题"></a>3.记录面经试题</h1><ol>
 <li>最大子序和 （LC 53）</li>
 <li>爬楼梯 （ LC 70）</li>
 <li>打家劫舍 （ LC 198）</li>
@@ -815,7 +980,7 @@
 <li>最长不重复子序列长度（字节跳动）</li>
 <li>二维方格，从第一个到最后一个的多少路径 dp动态规划问题（字节跳动）</li>
 </ol>
-<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
+<h1 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -938,11 +1103,7 @@
   <entry>
     <title>Leetcode - 算法思想 - 分治</title>
     <url>/2020/04/07/leetcode-suan-fa-si-xiang-fen-zhi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
-<li>给表达式加括号</li>
-<li>不同的二叉搜索树</li>
-</ol>
-<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1049,8 +1210,7 @@
 <li>按颜色进行排序</li>
 </ol>
 <hr>
-<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h2 id="2-1-未分类"><a href="#2-1-未分类" class="headerlink" title="2.1 未分类"></a>2.1 未分类</h2><ol>
-<li>将数组中数字组合成最小的数（字节跳动）</li>
+<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h2 id="2-1-未分类"><a href="#2-1-未分类" class="headerlink" title="2.1 未分类"></a>2.1 未分类</h2><h3 id="2-1-1-将数组中数字组合成最小的数（字节跳动）"><a href="#2-1-1-将数组中数字组合成最小的数（字节跳动）" class="headerlink" title="2.1.1 将数组中数字组合成最小的数（字节跳动）"></a>2.1.1 将数组中数字组合成最小的数（字节跳动）</h3><ol start="2">
 <li>将数组中所有的零都放到数组末尾（字节跳动）</li>
 <li>洗牌算法</li>
 <li>一个数组，将大于0的数字排在数组前面，相对顺序不要求（字节跳动）</li>
@@ -2147,8 +2307,8 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 42 - 和为S的两个数字(排序数组)</title>
-    <url>/2020/04/02/jian-zhi-offer-42-he-wei-s-de-liang-ge-shu-zi-pai-xu-shu-zu/</url>
+    <title>剑指Offer - 32 - 把数组排成最小的数</title>
+    <url>/2020/04/02/jian-zhi-offer-32-ba-shu-zu-pai-cheng-zui-xiao-de-shu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -2180,8 +2340,8 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 32 - 把数组排成最小的数</title>
-    <url>/2020/04/02/jian-zhi-offer-32-ba-shu-zu-pai-cheng-zui-xiao-de-shu/</url>
+    <title>剑指Offer - 42 - 和为S的两个数字(排序数组)</title>
+    <url>/2020/04/02/jian-zhi-offer-42-he-wei-s-de-liang-ge-shu-zi-pai-xu-shu-zu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -6025,8 +6185,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 并发 - AQS：基本框架分析总括</title>
     <url>/2020/03/31/java-bing-fa-aqs-ji-ben-kuang-jia-fen-xi-zong-gua/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
-<script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -6810,7 +6969,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
 <hr>
 <h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
 <p>主要涉及的源码及原理分析如下：</p>
-<h2 id="并发基础原理分析"><a href="#并发基础原理分析" class="headerlink" title="并发基础原理分析"></a>并发基础原理分析</h2><ol>
+<h2 id="2-1-并发基础原理分析"><a href="#2-1-并发基础原理分析" class="headerlink" title="2.1 并发基础原理分析"></a>2.1 并发基础原理分析</h2><ol>
 <li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-guan-yu-zhi-ling-chong-pai-xu-de-ji-ge-yi-wen/">Java 并发 - 关于指令重排序的几个疑问</a></li>
 <li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/">Java 并发 - 上下文切换的理解</a></li>
 <li>Volatile 原理分析</li>
@@ -6819,26 +6978,30 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
 <li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/">Java 并发 - Synchronized 与其他一些锁机制的对比</a></li>
 <li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-ji-ben-kuang-jia-fen-xi-zong-gua/">Java 并发 - AQS：基本框架分析总括</a></li>
 </ol>
-<h2 id="多线程与线程池"><a href="#多线程与线程池" class="headerlink" title="多线程与线程池"></a>多线程与线程池</h2><ol>
+<h2 id="2-2-多线程与线程池"><a href="#2-2-多线程与线程池" class="headerlink" title="2.2 多线程与线程池"></a>2.2 多线程与线程池</h2><ol>
 <li><a href="https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/">线程创建的几种方式</a></li>
 <li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-ru-he-ting-zhi-yi-ge-xian-cheng/">如何停止一个线程</a></li>
 <li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">深入线程池原理</a></li>
 <li><a href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/">线程池的使用</a></li>
 </ol>
-<h2 id="锁相关接口与类"><a href="#锁相关接口与类" class="headerlink" title="锁相关接口与类"></a>锁相关接口与类</h2><ol>
+<h2 id="2-3-锁相关接口与类"><a href="#2-3-锁相关接口与类" class="headerlink" title="2.3 锁相关接口与类"></a>2.3 锁相关接口与类</h2><h3 id="2-3-1-锁的几个分类"><a href="#2-3-1-锁的几个分类" class="headerlink" title="2.3.1 锁的几个分类"></a>2.3.1 锁的几个分类</h3><ol>
 <li>锁的几种基本分类</li>
 </ol>
-<h3 id="锁的几个接口"><a href="#锁的几个接口" class="headerlink" title="锁的几个接口"></a>锁的几个接口</h3><ol>
-<li>Condition接口分析</li>
+<h3 id="2-3-2-锁相关的几个接口"><a href="#2-3-2-锁相关的几个接口" class="headerlink" title="2.3.2 锁相关的几个接口"></a>2.3.2 锁相关的几个接口</h3><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-fen-xi/">Java 并发 - 锁相关：Condition 分析</a></li>
 <li>Lock接口分析</li>
 <li>ReadWriteLock接口分析</li>
 </ol>
-<h3 id="锁的几个类"><a href="#锁的几个类" class="headerlink" title="锁的几个类"></a>锁的几个类</h3><ol>
-<li>ReentrantLock分析</li>
-<li>ReentrantReadWriteLock分析</li>
+<h3 id="2-3-3-锁相关的几个类"><a href="#2-3-3-锁相关的几个类" class="headerlink" title="2.3.3 锁相关的几个类"></a>2.3.3 锁相关的几个类</h3><ol>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/">ReentrantLock分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-reentrantreadwritelock-fen-xi/">Java 并发 - 锁相关：ReentrantReadWriteLock 分析</a></li>
 <li>StampedLock分析</li>
 </ol>
-<h2 id="通信工具类"><a href="#通信工具类" class="headerlink" title="通信工具类"></a>通信工具类</h2><ol>
+<h2 id="2-4-通信工具类"><a href="#2-4-通信工具类" class="headerlink" title="2.4 通信工具类"></a>2.4 通信工具类</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/">Java 并发 - 通信工具类：Semaphore 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-exchanger-fen-xi/">Java 并发 - 通信工具类：Exchanger 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-countdownlatch-fen-xi/">Java 并发 - 通信工具类：CountDownLatch 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-cyclibarrier-fen-xi/">Java 并发 - 通信工具类：Cyclibarrier 分析</a></li>
 <li></li>
 </ol>
 <hr>
@@ -6934,13 +7097,13 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 集合框架 - 导页</title>
     <url>/2020/03/29/java-ji-he-kuang-jia-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。<br>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。<br>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
 <p>工具与源码版本：</p>
 <ul>
 <li>IntelliJ IDEA 2019.2</li>
 <li>jdk-15+9 （直接从<a href="https://github.com/openjdk/jdk" target="_blank" rel="noopener">https://github.com/openjdk/jdk</a> Clone下来的）</li>
 </ul>
-<h2 id="二-知识的窥探"><a href="#二-知识的窥探" class="headerlink" title="二.知识的窥探"></a>二.知识的窥探</h2><p>如若按照Collection和Map的归类来分的话，可以分为以下几部分：</p>
+<h2 id="2-知识的窥探"><a href="#2-知识的窥探" class="headerlink" title="2.知识的窥探"></a>2.知识的窥探</h2><p>如若按照Collection和Map的归类来分的话，可以分为以下几部分：</p>
 <ul>
 <li><strong>Collection</strong> <ol>
 <li><strong>List</strong><ol>

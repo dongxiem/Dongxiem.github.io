@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-09T06:17:55.716Z</updated>
+  <updated>2020-04-09T15:09:05.801Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -15,6 +15,97 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode - 算法思想 - 回溯</title>
+    <link href="https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/"/>
+    <id>https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</id>
+    <published>2020-04-09T14:48:51.063Z</published>
+    <updated>2020-04-09T15:09:05.801Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 锁相关：ReadWriteLock接口分析</title>
+    <link href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/</id>
+    <published>2020-04-09T09:24:17.612Z</published>
+    <updated>2020-04-09T06:16:37.818Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 锁相关：Lock接口分析</title>
+    <link href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</id>
+    <published>2020-04-09T09:24:15.055Z</published>
+    <updated>2020-04-09T09:26:56.184Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 并发 - Volatile 分析</title>
@@ -170,17 +261,11 @@
     <link href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/"/>
     <id>https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/</id>
     <published>2020-04-08T11:40:29.117Z</published>
-    <updated>2020-04-09T06:44:50.655Z</updated>
+    <updated>2020-04-09T08:29:49.557Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
+      主要讲述了如何配置线程池、如何关闭线程池。最后给出了线程池使用的两个Demo。
     
     </summary>
     
@@ -492,93 +577,6 @@
     <id>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</id>
     <published>2020-04-07T15:16:28.617Z</published>
     <updated>2020-04-07T16:51:06.784Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 算法思想 - 数学</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-shu-xue/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-shu-xue/</id>
-    <published>2020-04-07T15:16:28.617Z</published>
-    <updated>2020-04-07T16:46:58.230Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 算法思想 - 动态规划</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-dong-tai-gui-hua/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-dong-tai-gui-hua/</id>
-    <published>2020-04-07T15:16:03.729Z</published>
-    <updated>2020-04-07T16:42:27.451Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 算法思想 - 搜索</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-sou-suo/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-sou-suo/</id>
-    <published>2020-04-07T15:16:03.357Z</published>
-    <updated>2020-04-07T16:45:41.892Z</updated>
     
     <summary type="html">
     
