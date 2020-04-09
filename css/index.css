@@ -1535,7 +1535,7 @@ canvas,
   overflow: auto;
   margin: 0 0 1rem;
   padding: 0;
-  background: #263238;
+  background: #2d2d2d;
   color: #eff;
   line-height: 20px;
 }
@@ -1641,7 +1641,7 @@ blockquote footer cite:before {
 #article-container figure.highlight .gutter pre {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  background-color: #263238;
+  background-color: #2d2d2d;
   color: #37474f;
   text-align: right;
 }
@@ -1649,7 +1649,7 @@ blockquote footer cite:before {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   width: 100%;
-  background-color: #263238;
+  background-color: #2d2d2d;
 }
 #article-container figure.highlight .line {
   height: 1rem;
@@ -1679,7 +1679,7 @@ blockquote footer cite:before {
   color: #c792ea;
 }
 #article-container pre .comment {
-  color: #f93;
+  color: #8e908c;
 }
 #article-container pre .comment::selection {
   background: rgba(128,203,196,0.125);
@@ -1818,7 +1818,7 @@ blockquote footer cite:before {
   overflow: hidden;
   width: 100%;
   height: 1.4rem;
-  background: #1c2429;
+  background: #202020;
   color: #eff;
   font-size: 14px;
 }
@@ -3833,7 +3833,7 @@ img {
   top: 0;
   right: 0;
   z-index: 1;
-  background: #1c2429;
+  background: #202020;
   color: #89ddff;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
