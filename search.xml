@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 并发 - 锁相关：可重入锁与非可重入锁</title>
+    <url>/2020/04/09/java-bing-fa-suo-xiang-guan-ke-chong-ru-suo-yu-fei-ke-chong-ru-suo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发 - 锁相关：读写锁与排他锁</title>
+    <url>/2020/04/09/java-bing-fa-suo-xiang-guan-du-xie-suo-yu-pai-ta-suo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发 - 锁相关：公平锁与非公平锁</title>
+    <url>/2020/04/09/java-bing-fa-suo-xiang-guan-gong-ping-suo-yu-fei-gong-ping-suo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发 - 锁相关：ReentrantLock 分析</title>
+    <url>/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>AQS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 并发 - 上下文切换的理解</title>
     <url>/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-什么是多线程的上下文切换？"><a href="#1-什么是多线程的上下文切换？" class="headerlink" title="1.什么是多线程的上下文切换？"></a>1.什么是多线程的上下文切换？</h1><p>多线程会共同使用一组计算机上的 CPU ，而线程数大于给程序分配的 CPU 数量时，为了让各个线程都有执行的机会，就需要轮转使用 CPU 。</p>
@@ -2320,8 +2448,8 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 22 - 从上往下打印二叉树</title>
-    <url>/2020/04/02/jian-zhi-offer-22-cong-shang-wang-xia-da-yin-er-cha-shu/</url>
+    <title>剑指Offer - 33 - 丑数</title>
+    <url>/2020/04/02/jian-zhi-offer-33-chou-shu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -2353,8 +2481,8 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 33 - 丑数</title>
-    <url>/2020/04/02/jian-zhi-offer-33-chou-shu/</url>
+    <title>剑指Offer - 22 - 从上往下打印二叉树</title>
+    <url>/2020/04/02/jian-zhi-offer-22-cong-shang-wang-xia-da-yin-er-cha-shu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -5554,8 +5682,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - AQS同步组件：ReentrantReadWriteLock 分析</title>
-    <url>/2020/03/31/java-bing-fa-aqs-tong-bu-zu-jian-reentrantreadwritelock-fen-xi/</url>
+    <title>Java 并发 - 锁相关：ReentrantReadWriteLock 分析</title>
+    <url>/2020/03/31/java-bing-fa-suo-xiang-guan-reentrantreadwritelock-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5586,8 +5714,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - AQS同步组件：ReentrantLock 分析</title>
-    <url>/2020/03/31/java-bing-fa-aqs-tong-bu-zu-jian-reentrantlock-fen-xi/</url>
+    <title>Java 并发 - 通信工具类：ReentrantLock 分析</title>
+    <url>/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-reentrantlock-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5618,8 +5746,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - AQS同步组件：Semaphore 分析</title>
-    <url>/2020/03/31/java-bing-fa-aqs-tong-bu-zu-jian-semaphore-fen-xi/</url>
+    <title>Java 并发 - 通信工具类：Semaphore 分析</title>
+    <url>/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5804,8 +5932,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 并发工具类：Exchanger 分析</title>
-    <url>/2020/03/31/java-bing-fa-bing-fa-gong-ju-lei-exchanger-fen-xi/</url>
+    <title>Java 并发 - 通信工具类：Exchanger 分析</title>
+    <url>/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-exchanger-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5835,8 +5963,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - AQS同步组件：CountDownLatch 分析</title>
-    <url>/2020/03/31/java-bing-fa-aqs-tong-bu-zu-jian-countdownlatch-fen-xi/</url>
+    <title>Java 并发 - 通信工具类：CountDownLatch 分析</title>
+    <url>/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-countdownlatch-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5867,8 +5995,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - AQS同步组件：Cyclibarrier 分析</title>
-    <url>/2020/03/31/java-bing-fa-aqs-tong-bu-zu-jian-cyclibarrier-fen-xi/</url>
+    <title>Java 并发 - 通信工具类：Cyclibarrier 分析</title>
+    <url>/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-cyclibarrier-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5931,8 +6059,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - Condition 分析</title>
-    <url>/2020/03/31/java-bing-fa-condition-fen-xi/</url>
+    <title>Java 并发 - 锁相关：Condition 分析</title>
+    <url>/2020/03/31/java-bing-fa-suo-xiang-guan-condition-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -6676,27 +6804,53 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 并发 - 导页</title>
     <url>/2020/03/29/java-bing-fa-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
 <p>在进行并发深入了解之前，先明白并发、并行、高并发的概念：</p>
 <ul>
 <li>并发：是指在某个时间段内，多任务交替的执行任务。当有多个线程在操作时，把CPU运行时间划分成若干个时间段,再将时间段分配给各个线程执行。 在一个时间段的线程代码运行时，其它线程处于挂起状。</li>
 <li>并行：是指同一时刻同时处理多任务的能力。当有多个线程在操作时，cpu同时处理这些线程请求的能力。</li>
 <li>高并发：它通常是指，通过设计保证系统能够同时并行处理很多请求。</li>
 </ul>
-<h1 id="二-文章的排序"><a href="#二-文章的排序" class="headerlink" title="二.文章的排序"></a>二.文章的排序</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
+<hr>
+<h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
 <p>主要涉及的源码及原理分析如下：</p>
-<ul>
-<li>Java 线程池分析</li>
-<li>Synchronized、Volatile 原理分析</li>
-<li>J.U.C AQS分析</li>
-<li>J.U.C 重入锁及读写锁分析</li>
-<li>J.U.C 并发工具类分析</li>
-<li>J.U.C 并发容器分析</li>
-<li>Java 阻塞队列分析</li>
-<li>Java CAS 原理分析</li>
+<h2 id="并发基础知识"><a href="#并发基础知识" class="headerlink" title="并发基础知识"></a>并发基础知识</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-guan-yu-zhi-ling-chong-pai-xu-de-ji-ge-yi-wen/">关于指令重排序的几个疑问</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/">上下文切换的理解</a></li>
 <li></li>
-</ul>
-<h1 id="三-内容窥探"><a href="#三-内容窥探" class="headerlink" title="三.内容窥探"></a>三.内容窥探</h1><ol>
+<li>Volatile 原理分析</li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">Synchronized 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/">Synchronized 几种使用方式</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/">Synchronized 与其他一些锁机制的对比</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-ji-ben-kuang-jia-fen-xi-zong-gua/">AQS：基本框架分析总括</a></li>
+</ol>
+<h2 id="多线程与线程池"><a href="#多线程与线程池" class="headerlink" title="多线程与线程池"></a>多线程与线程池</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/">线程创建的几种方式</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-ru-he-ting-zhi-yi-ge-xian-cheng/">如何停止一个线程</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">深入线程池原理</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/">线程池的使用</a></li>
+</ol>
+<h2 id="锁相关接口与类"><a href="#锁相关接口与类" class="headerlink" title="锁相关接口与类"></a>锁相关接口与类</h2><h3 id="锁的几种分类"><a href="#锁的几种分类" class="headerlink" title="锁的几种分类"></a>锁的几种分类</h3><ol>
+<li>可重入锁与非可重入锁</li>
+<li>公平锁与非公平锁</li>
+<li>读写锁与排他锁</li>
+</ol>
+<h3 id="锁的几个接口"><a href="#锁的几个接口" class="headerlink" title="锁的几个接口"></a>锁的几个接口</h3><ol>
+<li>Condition接口分析</li>
+<li>Lock接口分析</li>
+<li>ReadWriteLock接口分析</li>
+</ol>
+<h3 id="锁的几个类"><a href="#锁的几个类" class="headerlink" title="锁的几个类"></a>锁的几个类</h3><ol>
+<li>ReentrantLock分析</li>
+<li>ReentrantReadWriteLock分析</li>
+<li>StampedLock分析</li>
+</ol>
+<h2 id="通信工具类"><a href="#通信工具类" class="headerlink" title="通信工具类"></a>通信工具类</h2><ol>
+<li></li>
+</ol>
+<hr>
+<h1 id="3-学习框架脉络"><a href="#3-学习框架脉络" class="headerlink" title="3.学习框架脉络"></a>3.学习框架脉络</h1><p>以下是我对整个Java的多线程并发的理解，包括整个框架大概需要了解的地方大概在哪里，只有对大体框架脉络理清楚，才能更好的进行知识的掌握！</p>
+<ol>
 <li>线程与进程：<ol>
 <li>我们需要理解线程与进程的概念与联系、线程的底层数据结构源码的解析。</li>
 <li>线程的几种创建方式，这几种实现方式的源码的异同在哪里。</li>
@@ -6723,7 +6877,6 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
 <li>同步状态</li>
 <li>阻塞与幻想线程</li>
 <li>独占/共享模式</li>
-<li></li>
 </ol>
 </li>
 <li>J.U.C 重入锁ReentrantLock、读写锁ReentrantReadWriteLock<ol>
@@ -6738,7 +6891,6 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
 <li>CyclicBarrier</li>
 <li>Semaphore</li>
 <li>Exchanger</li>
-<li></li>
 </ol>
 </li>
 <li>J.U.C 并发容器：<ol>
@@ -6757,7 +6909,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
 </ol>
 </li>
 </ol>
-<h1 id="四-结束语"><a href="#四-结束语" class="headerlink" title="四.结束语"></a>四.结束语</h1><p>因为我觉得我还是对一些高并发、高可用的知识较为感兴趣，所以对这一章节的内容可能会深入的探究一下，最好的方法我觉得还是看官方文档，这就需要一定的英语知识，可以采取的措施即为多看一下计算机相关的专业英语，实在不行的话借助翻译器也是一个方法；多动手去完成一些demo，进行编译Debug，这对以后工作状态当中进行排查错误是一个很好的方法，很多人只是了解基础知识，并没有去实践，这是一个问题所在；</p>
+<h1 id="4-结束语"><a href="#4-结束语" class="headerlink" title="4.结束语"></a>4.结束语</h1><p>因为我觉得我还是对一些高并发、高可用的知识较为感兴趣，所以对这一章节的内容可能会深入的探究一下，最好的方法我觉得还是看官方文档，这就需要一定的英语知识，可以采取的措施即为多看一下计算机相关的专业英语，实在不行的话借助翻译器也是一个方法；多动手去完成一些demo，进行编译Debug，这对以后工作状态当中进行排查错误是一个很好的方法，很多人只是了解基础知识，并没有去实践，这是一个问题所在；</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
