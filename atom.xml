@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-09T15:09:05.801Z</updated>
+  <updated>2020-04-10T12:40:40.529Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Leetcode - 算法思想 - 回溯</title>
-    <link href="https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/"/>
-    <id>https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</id>
-    <published>2020-04-09T14:48:51.063Z</published>
-    <updated>2020-04-09T15:09:05.801Z</updated>
+    <title>Java 并发 - FutureTask源码分析</title>
+    <link href="https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</id>
+    <published>2020-04-10T11:29:28.949Z</published>
+    <updated>2020-04-10T12:40:40.529Z</updated>
     
     <summary type="html">
     
@@ -32,6 +32,29 @@
           &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
         
       
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode - 算法思想 - 回溯</title>
+    <link href="https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/"/>
+    <id>https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</id>
+    <published>2020-04-09T14:48:51.063Z</published>
+    <updated>2020-04-10T05:19:26.233Z</updated>
+    
+    <summary type="html">
+    
+      介绍了回溯算法的一个解题框架及流程，最重要是路径与选择的概念，对于回溯算法，主要理解前序与后序的差别，这样就能很好的理解其框架，同时对LeetCode回溯相关的题目进行了归纳。
     
     </summary>
     
@@ -232,17 +255,11 @@
     <link href="https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/"/>
     <id>https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/</id>
     <published>2020-04-08T16:37:50.951Z</published>
-    <updated>2020-04-09T06:16:51.653Z</updated>
+    <updated>2020-04-10T05:09:06.970Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
+      主要了解了一下什么是上下文切换，及如何减少上下文切换，同时对遇到的一些上下文切换的问题的总结。
     
     </summary>
     
@@ -548,35 +565,6 @@
     <id>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-shu/</id>
     <published>2020-04-07T15:16:54.236Z</published>
     <updated>2020-04-07T16:50:48.983Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 数据结构 - 链表</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</id>
-    <published>2020-04-07T15:16:28.617Z</published>
-    <updated>2020-04-07T16:51:06.784Z</updated>
     
     <summary type="html">
     
