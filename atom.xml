@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-09T06:17:55.716Z</updated>
+  <updated>2020-04-10T16:32:20.424Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 并发 - AQS：LockSupport阻塞唤醒线程</title>
+    <link href="https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/"/>
+    <id>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</id>
+    <published>2020-04-11T09:59:56.974Z</published>
+    <updated>2020-04-10T16:32:20.424Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 并发 - StampedLock分析</title>
@@ -50,7 +79,7 @@
     <link href="https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</id>
     <published>2020-04-10T11:29:28.949Z</published>
-    <updated>2020-04-10T12:40:40.529Z</updated>
+    <updated>2020-04-10T16:30:49.696Z</updated>
     
     <summary type="html">
     
@@ -209,35 +238,6 @@
     
     
       <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 锁相关：可重入锁与非可重入锁</title>
-    <link href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-ke-chong-ru-suo-yu-fei-ke-chong-ru-suo/"/>
-    <id>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-ke-chong-ru-suo-yu-fei-ke-chong-ru-suo/</id>
-    <published>2020-04-09T05:55:08.735Z</published>
-    <updated>2020-04-09T06:05:41.539Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
     
     
       <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>

@@ -2,18 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-ji-ben-kuang-jia-fen-xi-zong-gua/</loc>
-    <lastmod>2020-04-10</lastmod>
+    <lastmod>2020-04-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/29/java-bing-fa-dao-ye/</loc>
+    <lastmod>2020-04-10</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-cas-fen-xi/</loc>
+    <lastmod>2020-04-10</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</loc>
+    <lastmod>2020-04-10</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</loc>
     <lastmod>2020-04-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/01/mybatis-kuang-jia-fen-xi-2-ji-yu-xml-pei-zhi-wen-jian-de-fang-shi-de-jian-dan-demo/</loc>
     <lastmod>2020-04-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</loc>
-    <lastmod>2020-04-10</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</loc>
     <lastmod>2020-04-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</loc>
@@ -70,9 +76,6 @@
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-cas-fen-xi/</loc>
-    <lastmod>2020-04-09</lastmod>
-  </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
@@ -97,16 +100,13 @@
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-fen-xi/</loc>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/</loc>
-    <lastmod>2020-04-09</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-ke-chong-ru-suo-yu-fei-ke-chong-ru-suo/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/</loc>
