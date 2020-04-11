@@ -80,36 +80,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - StampedLock分析</title>
-    <url>/2020/04/10/java-bing-fa-stampedlock-fen-xi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java多线程与并发</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 并发 - FutureTask源码分析</title>
     <url>/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-什么是FutureTask？"><a href="#1-什么是FutureTask？" class="headerlink" title="1. 什么是FutureTask？"></a>1. 什么是FutureTask？</h1><p>前面的Blog介绍了<u><code>Future</code>接口。这个接口有一个实现类叫<code>FutureTask</code></u>。<code>FutureTask</code>类有什么用？为什么要有一个<code>FutureTask</code>类？前面说到了<code>Future</code>只是一个接口，而它里面的<code>cancel</code>，<code>get</code>，<code>isDone</code>等方法要自己实现起来都是<strong>非常复杂</strong>的。所以JDK提供了一个<code>FutureTask</code>类来供我们使用。</p>
