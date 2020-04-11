@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</loc>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/</loc>
     
-    <lastmod>2020-04-11T15:44:20.664Z</lastmod>
+    <lastmod>2020-04-11T16:19:52.260Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dongxiem.github.io/2020/03/29/java-bing-fa-dao-ye/</loc>
     
-    <lastmod>2020-04-11T15:43:07.491Z</lastmod>
+    <lastmod>2020-04-11T15:53:25.292Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-ji-ben-kuang-jia-fen-xi-zong-gua/</loc>
+    <loc>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</loc>
     
-    <lastmod>2020-04-11T15:38:31.696Z</lastmod>
+    <lastmod>2020-04-11T15:44:20.664Z</lastmod>
     
   </url>
   
@@ -187,13 +187,6 @@
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/</loc>
     
     <lastmod>2020-04-09T06:17:23.491Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-reentrantlock-fen-xi/</loc>
-    
-    <lastmod>2020-04-09T06:17:21.330Z</lastmod>
     
   </url>
   
