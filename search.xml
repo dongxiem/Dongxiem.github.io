@@ -432,8 +432,7 @@
   <entry>
     <title>Java 并发 - 锁相关：锁的几种基本分类</title>
     <url>/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
-<script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-可重入锁与非可重入锁"><a href="#1-可重入锁与非可重入锁" class="headerlink" title="1.可重入锁与非可重入锁"></a>1.可重入锁与非可重入锁</h1><h1 id="2-公平锁与非公平锁"><a href="#2-公平锁与非公平锁" class="headerlink" title="2.公平锁与非公平锁"></a>2.公平锁与非公平锁</h1><h1 id="3-读写锁与排他锁"><a href="#3-读写锁与排他锁" class="headerlink" title="3.读写锁与排他锁"></a>3.读写锁与排他锁</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -4159,6 +4158,7 @@
 
 
 
+<hr>
 <h2 id="2-3-配置-Mybatis-核心配置文件"><a href="#2-3-配置-Mybatis-核心配置文件" class="headerlink" title="2.3 配置 Mybatis 核心配置文件"></a>2.3 配置 Mybatis 核心配置文件</h2><p>我们使用官网提供的方法，官网中说明有两种方式可以构建 SqlSessionFactory，一种是使用XML，一种是不使用XML，<strong>这个Demo暂定选择使用XML来进行构建SqlSessionFactory</strong>。</p>
 <p>官网所给建议截图如下：</p>
 <p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/HOkQoJGInL41vE6.png"  alt="image.png"></p>
@@ -4175,12 +4175,12 @@
 
 <p>截图如下所示：</p>
 <p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/LIOaz32UtsfQjbd.png"  alt="image.png"></p>
+<hr>
 <h2 id="2-4-编写实体类"><a href="#2-4-编写实体类" class="headerlink" title="2.4 编写实体类"></a><strong>2.4 编写实体类</strong></h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.garmen.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ID;</span><br><span class="line">    <span class="keyword">private</span> String NAME;</span><br><span class="line">    <span class="keyword">private</span> String PWD;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>{</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(<span class="keyword">int</span> ID, String NAME, String PWD)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.ID = ID;</span><br><span class="line">        <span class="keyword">this</span>.NAME = NAME;</span><br><span class="line">        <span class="keyword">this</span>.PWD = PWD;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 隐藏geter、seter、toString</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
-
-
+<hr>
 <h2 id="2-5-编写持久层相关"><a href="#2-5-编写持久层相关" class="headerlink" title="2.5 编写持久层相关"></a><strong>2.5 编写持久层相关</strong></h2><p>其实这一步就是创建持久层Dao接口并且创建其映射文件，并在总的配置文件中进行绑定即可。</p>
 <ul>
 <li>此处有需要注意的一点就是：持久层接口 必须要和 持久层接口的映射文件的名称保持一致，下面便是一个很好的示范！</li>
@@ -4211,6 +4211,7 @@
 
 
 
+<hr>
 <h2 id="2-6-创建测试文件"><a href="#2-6-创建测试文件" class="headerlink" title="2.6 创建测试文件"></a>2.6 创建测试文件</h2><p>根据官网提供给的工具，我们可以进行代码的编写了</p>
 <p>其实官网提供的也就是：从XML中构建了 SqlSessionFactory</p>
 <p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/NHB5j29XtcOirPY.png"  alt="image.png"></p>
@@ -4238,6 +4239,7 @@
 <p>这些东西当然在后面我会进行深入解释一下的。</p>
 <h2 id="2-7-结果显示如下"><a href="#2-7-结果显示如下" class="headerlink" title="2.7 结果显示如下"></a>2.7 结果显示如下</h2><p>Test 所获得的结果如下所示：</p>
 <p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/01/DjIO3RpSJv2zWqi.png"  alt="image.png"></p>
+<hr>
 <h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><p>只要遵循上面的这个做法，程序是可以跑起来并且去查询到我们数据库相关的信息的，这只是一个小Demo，主要是我们可以了解到了Mybatis 原来作用是这样，让Mybatis工作的方式还有很多种，这只是其中一种，关于Demo的展示我应该写得更加细致一点，因为这样比较方便我们进行重新观看的时候一头雾水：我写的究竟是什么东西？？？当然上面也了解到了一些零碎的知识，不理解的东西还有很多，需要接下来一点点展开深入了解一下其内部的机制流程，在接下来的几章会详细展开。</p>
 <p>关于这个Demo相关的内容已上传Github：<a href="https://github.com/dongxiem/Mybatis-Study" target="_blank" rel="noopener">https://github.com/dongxiem/Mybatis-Study</a></p>
 <script>
@@ -5477,36 +5479,6 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 基础 - 关于泛型的一些认识</title>
     <url>/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 基础 - 一些认识与思考</title>
-    <url>/2020/03/31/java-ji-chu-yi-xie-ren-shi-yu-si-kao/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -6886,7 +6858,151 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 并发 - 锁相关：Condition接口分析</title>
     <url>/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Condition就是一接口，而在AQS 中的<code>ConditionObject</code>内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在<strong>生产者-消费者</strong>的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，然后再进行Condition的了解</p>
+<p>这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过<code>newCondition</code>方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的<code>wait()</code>, <code>notify()</code> 或 <code>notifyAll()</code> 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 <code>ReentrantLock</code>  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。</p>
+<h3 id="Demo开场"><a href="#Demo开场" class="headerlink" title="Demo开场"></a>Demo开场</h3><p>我们可以先从源码中给出的一个Demo来进行了解：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Condition;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Lock;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoundedBuffer</span> </span>{</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="comment">// condition 依赖于 lock 来产生</span></span><br><span class="line">    <span class="keyword">final</span> Condition notFull = lock.newCondition();</span><br><span class="line">    <span class="keyword">final</span> Condition notEmpty = lock.newCondition();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> Object[] items = <span class="keyword">new</span> Object[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">int</span> putptr, takeptr, count;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生产</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Object x)</span> <span class="keyword">throws</span> InterruptedException </span>{</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="keyword">while</span> (count == items.length)</span><br><span class="line">                notFull.await();  <span class="comment">// 队列已满，等待，直到 not full 才能继续生产</span></span><br><span class="line">            items[putptr] = x;</span><br><span class="line">            <span class="keyword">if</span> (++putptr == items.length) putptr = <span class="number">0</span>;</span><br><span class="line">            ++count;</span><br><span class="line">            notEmpty.signal(); <span class="comment">// 生产成功，队列已经 not empty 了，发个通知出去</span></span><br><span class="line">        } <span class="keyword">finally</span> {</span><br><span class="line">            lock.unlock();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 消费</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">take</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>{</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="keyword">while</span> (count == <span class="number">0</span>)</span><br><span class="line">                notEmpty.await(); <span class="comment">// 队列为空，等待，直到队列 not empty，才能继续消费</span></span><br><span class="line">            Object x = items[takeptr];</span><br><span class="line">            <span class="keyword">if</span> (++takeptr == items.length) takeptr = <span class="number">0</span>;</span><br><span class="line">            --count;</span><br><span class="line">            notFull.signal(); <span class="comment">// 被我消费掉一个，队列 not full 了，发个通知出去</span></span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        } <span class="keyword">finally</span> {</span><br><span class="line">            lock.unlock();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>这里创建两个线程让上面JDK给的Demo跑起来：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedBuffer</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="comment">// condition 依赖于 lock 来产生</span></span><br><span class="line">    <span class="keyword">final</span> Condition notFull = lock.newCondition();</span><br><span class="line">    <span class="keyword">final</span> Condition notEmpty = lock.newCondition();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> Object[] items = <span class="keyword">new</span> Object[<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> putptr, takeptr, count;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 省略put和take方法</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line"></span><br><span class="line">        BoundedBuffer boundedBuffer = <span class="keyword">new</span> BoundedBuffer();</span><br><span class="line"></span><br><span class="line">        ExecutorService executor1 = Executors.newCachedThreadPool();</span><br><span class="line">        executor1.execute(</span><br><span class="line">            <span class="keyword">new</span> Runnable() {</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">200</span>; i++) {</span><br><span class="line">                        <span class="keyword">try</span> {</span><br><span class="line">                            boundedBuffer.put(i);</span><br><span class="line">                            System.out.println(<span class="string">"放入了："</span> + i);</span><br><span class="line">                        } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        ExecutorService executor2 = Executors.newCachedThreadPool();</span><br><span class="line">        executor2.execute(</span><br><span class="line">            <span class="keyword">new</span> Runnable() {</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">200</span>; i++) {</span><br><span class="line">                        <span class="keyword">try</span> {</span><br><span class="line">                            <span class="comment">// Thread.sleep(200);</span></span><br><span class="line">                            System.out.println(<span class="string">"取出了："</span> + boundedBuffer.take());</span><br><span class="line">                        } <span class="keyword">catch</span> (InterruptedException e){</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">//终止线程池</span></span><br><span class="line">        executor1.shutdown();</span><br><span class="line">        <span class="keyword">while</span> (!executor1.isTerminated()) {</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">"Finished executor1"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//终止线程池</span></span><br><span class="line">        executor2.shutdown();</span><br><span class="line">        <span class="keyword">while</span> (!executor2.isTerminated()) {</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">"Finished executor2"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>因为设置了容量为5，所以会不断的生产和消费：</p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">放入了：<span class="number">0</span></span><br><span class="line">放入了：<span class="number">1</span></span><br><span class="line">放入了：<span class="number">2</span></span><br><span class="line">放入了：<span class="number">3</span></span><br><span class="line">放入了：<span class="number">4</span></span><br><span class="line">取出了：<span class="number">0</span></span><br><span class="line">取出了：<span class="number">1</span></span><br><span class="line">取出了：<span class="number">2</span></span><br><span class="line">取出了：<span class="number">3</span></span><br><span class="line">取出了：<span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>通过上面我们可以大概了解到：</p>
+<ol>
+<li>在使用Condition的时候，必须要先持有相对应的锁，而Object类也是差不多这样的一种机制，我们在Object类中，如果要使用<code>wait()</code>, <code>notify()</code> 或 <code>notifyAll()</code> 方法，则我们必须要先持有某个对象的监视器！</li>
+<li>还有一点：ArrayBlockingQueue 采用这种方式实现了生产者-消费者，所以请只把这个例子当做学习例子，<u>实际生产中可以直接使用 ArrayBlockingQueue！！！</u></li>
+</ol>
+<h3 id="Condition与ReentrantLock的联系"><a href="#Condition与ReentrantLock的联系" class="headerlink" title="Condition与ReentrantLock的联系"></a>Condition与ReentrantLock的联系</h3><p>上面的例子是要让我们清楚的知道，就是condition是与ReentrantLock是息息相关的，可以说他们一般都是结合在一起使用的，那么我们在使用condition的一些方法，比如<code>await()</code> 或者 <code>signale()</code>方法的时候，我们就应该获取到这个Lock才能进行使用！</p>
+<p>而每个 <code>ReentrantLock</code>  实例可以通过调用多次 <code>newCondition</code> 产生多个 <code>ConditionObject</code> 的实例：</p>
+<p>就如同我们上面的Demo中所示那样：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> Condition notFull = lock.newCondition();</span><br><span class="line"><span class="keyword">final</span> Condition notEmpty = lock.newCondition();</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在<code>ReentrantLock</code> 源码中可以看到：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> ConditionObject <span class="title">newCondition</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ConditionObject();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们再继续看看这个<code>ConditionObject</code>是个什么东西，进去源码发现，原来是个 Condition 的实现类 ，它存在于<code>AbstractQueuedSynchronizer</code>中：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConditionObject</span> <span class="keyword">implements</span> <span class="title">Condition</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>{</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1173984872572414699L</span>;</span><br><span class="line">        <span class="comment">// 条件队列的第一个节点</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">transient</span> Node firstWaiter;</span><br><span class="line">        <span class="comment">// 条件队列的最后一个节点</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">transient</span> Node lastWaiter;</span><br><span class="line">        ......</span><br></pre></td></tr></tbody></table></figure>
+
+<p>需要注意的是Condition就是一个接口，里面就是实现一些规范而已了：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Condition</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">await</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">awaitUninterruptibly</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">awaitNanos</span><span class="params">(<span class="keyword">long</span> nanosTimeout)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">await</span><span class="params">(<span class="keyword">long</span> time, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">awaitUntil</span><span class="params">(Date deadline)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">signal</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">signalAll</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们上面也看到了每个 <code>ReentrantLock</code>  实例可以通过调用多次 <code>newCondition</code> 产生多个 <code>ConditionObject</code> 的实例，那么该如何去管理这些实例呢？我们可以引入跟AQS中的阻塞队列相似的另一种概念，称之为条件队列或者同步队列，图示如下：</p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/12/XU31Grz9CI6FPfD.png"  alt="条件队列"></p>
+<p>其实这里差不多就代表了整个Condition的核心思想所在了：</p>
+<ol>
+<li>条件队列和阻塞队列的节点，都是 Node 的实例，因为条件队列的节点是需要转移到阻塞队列中去的；</li>
+<li>我们知道一个 ReentrantLock 实例可以通过多次调用 newCondition() 来产生多个 Condition 实例，这里对应 condition1 和 condition2。注意，ConditionObject 只有两个属性 firstWaiter 和 lastWaiter；</li>
+<li>每个 condition 有一个关联的<strong>条件队列</strong>，如线程 1 调用 <code>condition1.await()</code> 方法即可将当前线程 1 包装成 Node 后加入到条件队列中，然后阻塞在这里，不继续往下执行，条件队列是一个单向链表；</li>
+<li>调用<code>condition1.signal()</code> 触发一次唤醒，此时唤醒的是队头，会将condition1 对应的<strong>条件队列</strong>的 firstWaiter（队头） 移到<strong>阻塞队列的队尾</strong>，等待获取锁，获取锁后 await 方法才能返回，继续往下执行。</li>
+</ol>
+<p>可以先看一下这张图，了解一下简单的流程所在，具体的源码展开在下面。</p>
+<h3 id="Condition主要的方法："><a href="#Condition主要的方法：" class="headerlink" title="Condition主要的方法："></a>Condition主要的方法：</h3><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>await()</td>
+<td>当前线程进入等待状态直到被通知（signal）或者中断；当前线程进入运行状态并从await()方法返回的场景包括：（1）其他线程调用相同Condition对象的signal/signalAll方法，并且当前线程被唤醒；（2）其他线程调用interrupt方法中断当前线程；</td>
+</tr>
+<tr>
+<td>awaitUninterruptibly()</td>
+<td>当前线程进入等待状态直到被通知，在此过程中对中断信号不敏感，不支持中断当前线程</td>
+</tr>
+<tr>
+<td>awaitNanos(long)</td>
+<td>当前线程进入等待状态，直到被通知、中断或者超时。如果返回值小于等于0，可以认定就是超时了</td>
+</tr>
+<tr>
+<td>awaitUntil(Date)</td>
+<td>当前线程进入等待状态，直到被通知、中断或者超时。如果没到指定时间被通知，则返回true，否则返回false</td>
+</tr>
+<tr>
+<td>signal()</td>
+<td>唤醒一个等待在Condition上的线程，被唤醒的线程在方法返回前必须获得与Condition对象关联的锁</td>
+</tr>
+<tr>
+<td>signalAll()</td>
+<td>唤醒所有等待在Condition上的线程，能够从await()等方法返回的线程必须先获得与Condition对象关联的锁</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="2-源码分析"><a href="#2-源码分析" class="headerlink" title="2.源码分析"></a>2.源码分析</h1><h2 id="2-1-等待"><a href="#2-1-等待" class="headerlink" title="2.1 等待"></a>2.1 等待</h2><h2 id="2-2-通知"><a href="#2-2-通知" class="headerlink" title="2.2 通知"></a>2.2 通知</h2><hr>
+<h1 id="3-一些对比"><a href="#3-一些对比" class="headerlink" title="3.一些对比"></a>3.一些对比</h1><h2 id="3-1-Condition与Object监视器的对比"><a href="#3-1-Condition与Object监视器的对比" class="headerlink" title="3.1 Condition与Object监视器的对比"></a>3.1 Condition与Object监视器的对比</h2><p>每个对象都可以用继承自<code>Object</code>的<strong>wait/notify</strong>方法来实现<strong>等待/通知机制</strong>。而Condition接口也提供了类似Object监视器的方法，通过与<strong>Lock</strong>配合来实现等待/通知模式。</p>
+<p>那为什么既然有Object的监视器方法了，还要用Condition呢？这里有一个二者简单的对比：</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>Object监视器</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前置条件</td>
+<td>获取对象的锁</td>
+<td>调用Lock.lock获取锁，调用Lock.newCondition获取Condition对象</td>
+</tr>
+<tr>
+<td>调用方式</td>
+<td>直接调用，比如object.notify()</td>
+<td>直接调用，比如condition.await()</td>
+</tr>
+<tr>
+<td>等待队列的个数</td>
+<td>一个</td>
+<td>多个</td>
+</tr>
+<tr>
+<td>当前线程释放锁进入等待状态</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>当前线程释放锁进入等待状态，在等待状态中不中断</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>当前线程释放锁并进入超时等待状态</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>当前线程释放锁并进入等待状态直到将来的某个时间</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>唤醒等待队列中的一个线程</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>唤醒等待队列中的全部线程</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody></table>
+<p>Condition和Object的wait/notify基本相似。其中，Condition的await方法对应的是Object的wait方法，而Condition的<strong>signal/signalAll</strong>方法则对应Object的notify/notifyAll()。但Condition类似于Object的等待/通知机制的加强版。</p>
+<hr>
+<h1 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h1><hr>
+<p>以上参考：</p>
+<ol>
+<li><a href="https://www.javadoop.com/post/AbstractQueuedSynchronizer-2#toc_0" target="_blank" rel="noopener">一行一行源码分析清楚 AbstractQueuedSynchronizer (二)</a></li>
+<li><a href="http://www.tianxiaobo.com/2018/05/04/AbstractQueuedSynchronizer-%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90-Condition-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">AbstractQueuedSynchronizer 原理分析 - Condition 实现原理</a></li>
+<li><a href="http://cmsblogs.com/?p=2222" target="_blank" rel="noopener">【死磕Java并发】—–J.U.C之Condition</a></li>
+<li>Java并发编程的艺术</li>
+</ol>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -7630,54 +7746,24 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 集合框架 - 导页</title>
     <url>/2019/10/07/java-ji-he-kuang-jia-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。<br>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
-<p>工具与源码版本：</p>
-<ul>
-<li>IntelliJ IDEA 2019.2</li>
-<li>jdk-15+9 （直接从<a href="https://github.com/openjdk/jdk" target="_blank" rel="noopener">https://github.com/openjdk/jdk</a> Clone下来的）</li>
-</ul>
-<h2 id="2-知识的窥探"><a href="#2-知识的窥探" class="headerlink" title="2.知识的窥探"></a>2.知识的窥探</h2><p>如若按照Collection和Map的归类来分的话，可以分为以下几部分：</p>
-<ul>
-<li><strong>Collection</strong> <ol>
-<li><strong>List</strong><ol>
-<li>Arraylist： Object数。</li>
-<li>Vector： Object数组。</li>
-<li>LinkedList： 双向链表(JDK1.6之前为循环链表，JDK1.7取消了循环)。</li>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。</p>
+<p>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
+<h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-arraylist-fen-xi/">Java 集合框架 - ArrayList 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-copyonwritearraylist-fen-xi/">Java 集合框架 - CopyOnWriteArrayList 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-linkedlist-fen-xi/">Java 集合框架 - LinkedList 分析</a></li>
 </ol>
-</li>
-<li><strong>Set</strong><ol>
-<li>LinkedHashSet： LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 HashMap 实现一样，不过还是有一点点区别的。</li>
-<li>HashSet（无序，唯一）: 基于 HashMap 实现的，底层采用 HashMap 来保存元素。</li>
-<li>TreeSet（有序，唯一）： 红黑树(自平衡的排序二叉树)。</li>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashset-fen-xi/">Java 集合框架 - HashSet 分析</a></li>
 </ol>
-</li>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/">Java 集合框架 - HashMap 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/">Java 集合框架 - HashMap 认识与理解</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-treemap-fen-xi/">Java 集合框架 - TreeMap 分析</a></li>
 </ol>
-</li>
-<li><strong>Map</strong><ol>
-<li>HashMap： JDK1.8之前HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）。JDK1.8以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间。</li>
-<li>LinkedHashMap： LinkedHashMap 继承自 HashMap，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap 在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的插入顺序。同时通过对链表进行相应的操作，实现了访问顺序相关逻辑。详细可以查看：《LinkedHashMap 源码详细分析（JDK1.8）》</li>
-<li>Hashtable： 数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的</li>
-<li>TreeMap： 红黑树（自平衡的排序二叉树）</li>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashtable-fen-xi/">Java 集合框架 - HashTable 分析</a></li>
 </ol>
-</li>
-<li><strong>注：如何选用集合?</strong><ul>
-<li>主要根据集合的特点来选用，比如我们需要根据键值获取到元素值时就选用Map接口下的集合，需要排序时选择TreeMap，不需要排序时就选择HashMap，需要保证线程安全就选用ConcurrentHashMap.当我们只需要存放元素值时，就选择实现Collection接口的集合，需要保证元素唯一时选择实现Set接口的集合比如TreeSet或HashSet，不需要就选择实现List接口的比如ArrayList或LinkedList，然后再根据实现这些接口的集合的特点来选用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="三-源码分析的排序"><a href="#三-源码分析的排序" class="headerlink" title="三.源码分析的排序"></a>三.源码分析的排序</h2><p>主要涉及的源码及原理分析如下：</p>
-<ol>
-<li>ArrayList 源码分析</li>
-<li>LinkedList 源码分析</li>
-<li><a href="">HashMap 源码分析</a></li>
-<li>ConcurrentHashMap 源码分析</li>
-<li>HashSet源码分析</li>
-<li>LinkedHashMap 源码分析</li>
-<li>TreeMap 源码分析</li>
-<li>CopyOnWriteArrayList 源码分析</li>
-<li></li>
-</ol>
-<h2 id="四-结束语"><a href="#四-结束语" class="headerlink" title="四.结束语"></a>四.结束语</h2><p>对于这个模块的学习，看源码是最好的，稍后补充</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -7709,8 +7795,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 并发 - 导页</title>
     <url>/2019/10/05/java-bing-fa-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
-<hr>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；</p>
+<p>在这块当中是十分复杂的，一路过来看得有些头疼，不过发现一些知识内功心法掌握了之后，再回过头看看，好像就很好理解了好多，比如像AQS的源码看了一遍之后，再去看ReentrantLock等等就会简单很多，所以还是要戒骄戒躁，把该理清的思路理清，然后学习到的东西才会更加容易和深刻的进行掌握，路漫漫其修远兮，不可能一口吃成一个大胖子，在分析的过程中，有些内容我似乎还是有些快速的略过，记录的目的是为了不断地正视过去的认识，我觉得这就是Blog记录的好处所在了，只有不断的进行审查排除，才会进步！</p>
 <h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
 <p>主要涉及的源码及原理分析如下：</p>
 <h2 id="2-1-并发基础原理分析"><a href="#2-1-并发基础原理分析" class="headerlink" title="2.1 并发基础原理分析"></a>2.1 并发基础原理分析</h2><ol>
@@ -7782,12 +7868,16 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   <entry>
     <title>Java 基础 - 导页</title>
     <url>/2019/10/05/java-ji-chu-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
-<li></li>
-<li></li>
-</ol>
-<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3. 结束语"></a>3. 结束语</h2><p>语言的基础知识理解是最重要的，万丈高楼平地起，只有把基础知识解决了，后面的工作才会更好的进行下去，希望这个专辑能帮助我和大家更好的理解一下基础的语言知识</p>
-<h2 id="4-阅读书籍介绍"><a href="#4-阅读书籍介绍" class="headerlink" title="4. 阅读书籍介绍"></a>4. 阅读书籍介绍</h2><script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java基础是很重要的一些东西，除了集合和并发，基础也是相当需要重视的一块，对于基础我没怎么可以去记录一些认识，前人已经完成了大部分内容了，我所做的是将将自己的一些认识记录下来，方便自己日后的查阅，大部分都是一些琐碎的知识，并不能串联成线，基础这些方面的知识还是看书比较好些，因为书上能够更加详细的讲述出来。</p>
+<h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-string-de-yi-xie-ren-shi/">Java 基础 - String的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-int-he-integer-de-yi-xie-ren-shi/">Java 基础 - Int和Integer的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-object-de-yi-xie-ren-shi/">Java 基础 - 关于Object的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-static-guan-jian-zi-de-yi-xie-ren-shi/">Java 基础 - Static关键字的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-she-de-yi-xie-ren-shi/">Java 基础 - 关于反射的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/">Java 基础 - 关于泛型的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/">Java 基础 - 关于序列化的一些认识</a></p>
+<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-java8-de-yi-xie-ren-shi/">Java 基础 - Java8的一些认识</a></p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
+    <lastmod>2020-04-12</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/04/01/mybatis-kuang-jia-fen-xi-2-ji-yu-xml-pei-zhi-wen-jian-de-fang-shi-de-jian-dan-demo/</loc>
+    <lastmod>2020-04-12</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2019/10/07/java-ji-he-kuang-jia-dao-ye/</loc>
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
@@ -8,6 +14,9 @@
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2019/10/05/java-bing-fa-dao-ye/</loc>
+    <lastmod>2020-04-12</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/</loc>
@@ -27,9 +36,6 @@
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</loc>
     <lastmod>2020-04-12</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/01/mybatis-kuang-jia-fen-xi-2-ji-yu-xml-pei-zhi-wen-jian-de-fang-shi-de-jian-dan-demo/</loc>
-    <lastmod>2020-04-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</loc>
     <lastmod>2020-04-10</lastmod>
@@ -92,12 +98,6 @@
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-guan-yu-zhi-ling-chong-pai-xu-de-ji-ge-yi-wen/</loc>
-    <lastmod>2020-04-09</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
-    <lastmod>2020-04-09</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/</loc>
@@ -215,9 +215,6 @@
     <lastmod>2020-04-06</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-object-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-yi-xie-ren-shi-yu-si-kao/</loc>
     <lastmod>2020-04-06</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</loc>
