@@ -1002,6 +1002,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode - 数据结构 - 链表</title>
+    <url>/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
+<li>相交链表（LC 160）</li>
+<li>链表反转（LC 206）</li>
+<li>有序链表的合并（字节跳动）（LC 21）</li>
+<li>从有序链表中删除重复节点（LC 83）</li>
+<li>删除排序链表中的重复元素 II（LC 82）</li>
+<li>删除链表的倒数第 n 个节点（LC 19）</li>
+<li>交换链表中的相邻结点（LC 24）</li>
+<li>链表求和（LC 445）</li>
+<li>回文链表（LC 234）</li>
+<li>分割链表（LC 725）</li>
+<li>奇偶链表（LC 328）</li>
+<li>单链表的回文判断要求O1空间（字节跳动实习）</li>
+<li>单链表每k个翻转（字节跳动）/反转链表按k（字节跳动）（ LC 25）</li>
+<li>链表判环（入环点、环的长度）（京东）</li>
+<li>有序链表合并的升级版，合并n多和有序链表，并计算时间复杂度（字节跳动）</li>
+</ol>
+<hr>
+<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><hr>
+<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode - 算法思想 - 数学</title>
     <url>/2020/04/07/leetcode-suan-fa-si-xiang-shu-xue/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h3 id="素数分解及整除"><a href="#素数分解及整除" class="headerlink" title="素数分解及整除"></a>素数分解及整除</h3><ol>
@@ -1036,55 +1085,6 @@
 <li>乘积数组</li>
 </ol>
 <script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode - 数据结构 - 链表</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
-<li>相交链表（LC 160）</li>
-<li>链表反转（LC 206）</li>
-<li>有序链表的合并（字节跳动）（LC 21）</li>
-<li>从有序链表中删除重复节点（LC 83）</li>
-<li>删除排序链表中的重复元素 II（LC 82）</li>
-<li>删除链表的倒数第 n 个节点（LC 19）</li>
-<li>交换链表中的相邻结点（LC 24）</li>
-<li>链表求和（LC 445）</li>
-<li>回文链表（LC 234）</li>
-<li>分割链表（LC 725）</li>
-<li>奇偶链表（LC 328）</li>
-<li>单链表的回文判断要求O1空间（字节跳动实习）</li>
-<li>单链表每k个翻转（字节跳动）/反转链表按k（字节跳动）（ LC 25）</li>
-<li>链表判环（入环点、环的长度）（京东）</li>
-<li>有序链表合并的升级版，合并n多和有序链表，并计算时间复杂度（字节跳动）</li>
-</ol>
-<hr>
-<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><hr>
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -7488,79 +7488,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 导页</title>
-    <url>/2020/03/29/java-bing-fa-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
-<hr>
-<h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
-<p>主要涉及的源码及原理分析如下：</p>
-<h2 id="2-1-并发基础原理分析"><a href="#2-1-并发基础原理分析" class="headerlink" title="2.1 并发基础原理分析"></a>2.1 并发基础原理分析</h2><ol>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-guan-yu-zhi-ling-chong-pai-xu-de-ji-ge-yi-wen/">Java 并发 - 关于指令重排序的几个疑问</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/">Java 并发 - 上下文切换的理解</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-volatile-fen-xi/">Java 并发 - Volatile 分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-cas-fen-xi/">Java 并发 - CAS 分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">Java 并发 - 深入线程池原理</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/">Java 并发 - Synchronized 几种使用方式</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/">Java 并发 - Synchronized 与其他一些锁机制的对比</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/">Java 并发 - AQS：LockSupport阻塞唤醒线程</a></li>
-</ol>
-<h2 id="2-2-多线程与线程池"><a href="#2-2-多线程与线程池" class="headerlink" title="2.2 多线程与线程池"></a>2.2 多线程与线程池</h2><ol>
-<li><a href="https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/">Java 并发 - 线程创建的几种方式</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/#2-6-%E5%8F%96%E6%B6%88%E4%BB%BB%E5%8A%A1">Java 并发 - FutureTask源码分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-ru-he-ting-zhi-yi-ge-xian-cheng/">Java 并发 - 如何停止一个线程</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">Java 并发 - 深入线程池原理</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/">Java 并发 - 线程池的使用</a></li>
-</ol>
-<h2 id="2-3-锁相关接口与类"><a href="#2-3-锁相关接口与类" class="headerlink" title="2.3 锁相关接口与类"></a>2.3 锁相关接口与类</h2><h3 id="2-3-1-锁的几个分类"><a href="#2-3-1-锁的几个分类" class="headerlink" title="2.3.1 锁的几个分类"></a>2.3.1 锁的几个分类</h3><ol>
-<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/">Java 并发 - 锁相关：锁的几种基本分类</a></li>
-</ol>
-<h3 id="2-3-2-锁相关的几个接口"><a href="#2-3-2-锁相关的几个接口" class="headerlink" title="2.3.2 锁相关的几个接口"></a>2.3.2 锁相关的几个接口</h3><ol>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/">Java 并发 - 锁相关：Condition 接口分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/">Java 并发 - 锁相关：Lock接口分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/">Java 并发 - 锁相关：ReadWriteLock接口分析</a></li>
-</ol>
-<h3 id="2-3-3-锁相关的几个类"><a href="#2-3-3-锁相关的几个类" class="headerlink" title="2.3.3 锁相关的几个类"></a>2.3.3 锁相关的几个类</h3><ol>
-<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/">Java 并发 - 锁相关：ReentrantLock 分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-reentrantreadwritelock-fen-xi/">Java 并发 - 锁相关：ReentrantReadWriteLock 分析</a></li>
-</ol>
-<h2 id="2-4-通信工具类"><a href="#2-4-通信工具类" class="headerlink" title="2.4 通信工具类"></a>2.4 通信工具类</h2><ol>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/">Java 并发 - 通信工具类：Semaphore 分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-exchanger-fen-xi/">Java 并发 - 通信工具类：Exchanger 分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-countdownlatch-fen-xi/">Java 并发 - 通信工具类：CountDownLatch 分析</a></li>
-<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-cyclibarrier-fen-xi/">Java 并发 - 通信工具类：Cyclibarrier 分析</a></li>
-</ol>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java多线程与并发</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>导页</tag>
-        <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 集合框架 - 导页</title>
-    <url>/2020/03/29/java-ji-he-kuang-jia-dao-ye/</url>
+    <url>/2019/04/07/java-ji-he-kuang-jia-dao-ye/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。<br>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
 <p>工具与源码版本：</p>
 <ul>
@@ -7638,8 +7567,79 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
+    <title>Java 并发 - 导页</title>
+    <url>/2019/04/05/java-bing-fa-dao-ye/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；Java并发所涉及到的知识点大概为：线程的安全、线程调度、各种容器、AQS、J.U.C等等；</p>
+<hr>
+<h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
+<p>主要涉及的源码及原理分析如下：</p>
+<h2 id="2-1-并发基础原理分析"><a href="#2-1-并发基础原理分析" class="headerlink" title="2.1 并发基础原理分析"></a>2.1 并发基础原理分析</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-guan-yu-zhi-ling-chong-pai-xu-de-ji-ge-yi-wen/">Java 并发 - 关于指令重排序的几个疑问</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/">Java 并发 - 上下文切换的理解</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-volatile-fen-xi/">Java 并发 - Volatile 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-cas-fen-xi/">Java 并发 - CAS 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">Java 并发 - 深入线程池原理</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/">Java 并发 - Synchronized 几种使用方式</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/">Java 并发 - Synchronized 与其他一些锁机制的对比</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/">Java 并发 - AQS：LockSupport阻塞唤醒线程</a></li>
+</ol>
+<h2 id="2-2-多线程与线程池"><a href="#2-2-多线程与线程池" class="headerlink" title="2.2 多线程与线程池"></a>2.2 多线程与线程池</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/">Java 并发 - 线程创建的几种方式</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/#2-6-%E5%8F%96%E6%B6%88%E4%BB%BB%E5%8A%A1">Java 并发 - FutureTask源码分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-ru-he-ting-zhi-yi-ge-xian-cheng/">Java 并发 - 如何停止一个线程</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/">Java 并发 - 深入线程池原理</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/">Java 并发 - 线程池的使用</a></li>
+</ol>
+<h2 id="2-3-锁相关接口与类"><a href="#2-3-锁相关接口与类" class="headerlink" title="2.3 锁相关接口与类"></a>2.3 锁相关接口与类</h2><h3 id="2-3-1-锁的几个分类"><a href="#2-3-1-锁的几个分类" class="headerlink" title="2.3.1 锁的几个分类"></a>2.3.1 锁的几个分类</h3><ol>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/">Java 并发 - 锁相关：锁的几种基本分类</a></li>
+</ol>
+<h3 id="2-3-2-锁相关的几个接口"><a href="#2-3-2-锁相关的几个接口" class="headerlink" title="2.3.2 锁相关的几个接口"></a>2.3.2 锁相关的几个接口</h3><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/">Java 并发 - 锁相关：Condition 接口分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/">Java 并发 - 锁相关：Lock接口分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/">Java 并发 - 锁相关：ReadWriteLock接口分析</a></li>
+</ol>
+<h3 id="2-3-3-锁相关的几个类"><a href="#2-3-3-锁相关的几个类" class="headerlink" title="2.3.3 锁相关的几个类"></a>2.3.3 锁相关的几个类</h3><ol>
+<li><a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/">Java 并发 - 锁相关：ReentrantLock 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-reentrantreadwritelock-fen-xi/">Java 并发 - 锁相关：ReentrantReadWriteLock 分析</a></li>
+</ol>
+<h2 id="2-4-通信工具类"><a href="#2-4-通信工具类" class="headerlink" title="2.4 通信工具类"></a>2.4 通信工具类</h2><ol>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/">Java 并发 - 通信工具类：Semaphore 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-exchanger-fen-xi/">Java 并发 - 通信工具类：Exchanger 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-countdownlatch-fen-xi/">Java 并发 - 通信工具类：CountDownLatch 分析</a></li>
+<li><a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-cyclibarrier-fen-xi/">Java 并发 - 通信工具类：Cyclibarrier 分析</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java多线程与并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>导页</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 基础 - 导页</title>
-    <url>/2020/03/29/java-ji-chu-dao-ye/</url>
+    <url>/2019/04/05/java-ji-chu-dao-ye/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h2 id="2-文章的排序"><a href="#2-文章的排序" class="headerlink" title="2.文章的排序"></a>2.文章的排序</h2><ol>
 <li></li>
 <li></li>
