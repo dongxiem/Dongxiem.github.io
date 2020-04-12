@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2019/10/07/java-ji-he-kuang-jia-dao-ye/</loc>
+    
+    <lastmod>2020-04-12T11:43:55.085Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2019/10/05/java-ji-chu-dao-ye/</loc>
+    
+    <lastmod>2020-04-12T11:43:49.097Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2019/10/05/java-bing-fa-dao-ye/</loc>
+    
+    <lastmod>2020-04-12T11:43:36.482Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/</loc>
     
     <lastmod>2020-04-12T10:57:14.651Z</lastmod>
@@ -16,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2019/04/05/java-bing-fa-dao-ye/</loc>
-    
-    <lastmod>2020-04-12T10:39:53.662Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/</loc>
     
     <lastmod>2020-04-12T10:11:47.897Z</lastmod>
@@ -33,20 +47,6 @@
     <loc>https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</loc>
     
     <lastmod>2020-04-12T06:31:35.371Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2019/04/07/java-ji-he-kuang-jia-dao-ye/</loc>
-    
-    <lastmod>2020-04-12T05:52:17.789Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2019/04/05/java-ji-chu-dao-ye/</loc>
-    
-    <lastmod>2020-04-12T05:52:01.706Z</lastmod>
     
   </url>
   
