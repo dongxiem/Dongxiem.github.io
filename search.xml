@@ -4806,7 +4806,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
 </li>
 </ul>
 <hr>
-<h2 id="2-2-Synchronized-和-lock-的联系与区别："><a href="#2-2-Synchronized-和-lock-的联系与区别：" class="headerlink" title="2.2 Synchronized 和 lock 的联系与区别："></a>2.2 Synchronized 和 lock 的联系与区别：</h2><ul>
+<h2 id="2-2-Synchronized-和-Lock-的联系与区别："><a href="#2-2-Synchronized-和-Lock-的联系与区别：" class="headerlink" title="2.2 Synchronized 和 Lock 的联系与区别："></a>2.2 Synchronized 和 Lock 的联系与区别：</h2><ul>
 <li><strong>总的来说：</strong>Synchronized是 Java 内置关键字在 Jvm 层面，Lock是个 Java 类。Lock有比 Synchronized 更精确的线程语义和更好的性能。Lock的锁定是通过代码实现的，而Synchronized是在 JVM 层面上实现的。</li>
 <li><strong>区别</strong>：<ul>
 <li>是否可以获得锁状态：<ul>
@@ -7861,8 +7861,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
         <tag>并发</tag>
+        <tag>导页</tag>
       </tags>
   </entry>
   <entry>
