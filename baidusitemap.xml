@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
+    <lastmod>2020-04-14</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-treemap-fen-xi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
@@ -77,9 +80,6 @@
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
@@ -432,8 +432,5 @@
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/30/wtim-jian-jie/</loc>
     <lastmod>2020-03-31</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/29/guan-yu-dui-java-bian-cheng-de-yi-xie-li-jie/</loc>
-    <lastmod>2020-03-30</lastmod>
   </url>
 </urlset>
