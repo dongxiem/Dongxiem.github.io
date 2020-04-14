@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
+    
+    <lastmod>2020-04-14T16:51:15.771Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/</loc>
+    
+    <lastmod>2020-04-14T15:19:16.397Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
     
     <lastmod>2020-04-14T13:14:51.429Z</lastmod>
@@ -68,13 +82,6 @@
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-volatile-fen-xi/</loc>
     
     <lastmod>2020-04-13T14:12:31.882Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/</loc>
-    
-    <lastmod>2020-04-13T14:12:25.929Z</lastmod>
     
   </url>
   
@@ -187,13 +194,6 @@
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</loc>
     
     <lastmod>2020-04-13T14:09:55.087Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
-    
-    <lastmod>2020-04-13T14:09:44.375Z</lastmod>
     
   </url>
   
