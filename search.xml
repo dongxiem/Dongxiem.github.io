@@ -137,8 +137,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - FutureTask源码分析</title>
-    <url>/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</url>
+    <title>Java 并发 - 多线程：FutureTask源码分析</title>
+    <url>/2020/04/10/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-什么是FutureTask？"><a href="#1-什么是FutureTask？" class="headerlink" title="1. 什么是FutureTask？"></a>1. 什么是FutureTask？</h1><p>前面的Blog介绍了<u><code>Future</code>接口。这个接口有一个实现类叫<code>FutureTask</code></u>。<code>FutureTask</code>类有什么用？为什么要有一个<code>FutureTask</code>类？前面说到了<code>Future</code>只是一个接口，而它里面的<code>cancel</code>，<code>get</code>，<code>isDone</code>等方法要自己实现起来都是<strong>非常复杂</strong>的。所以JDK提供了一个<code>FutureTask</code>类来供我们使用。</p>
 <p>意思就是FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JCU提供的线程池实现用到的任务基本单元，线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而被提交的Runnable或Callable任务都会被包装成FutureTask，由线程池的工作线程去执行。</p>
 <p><code>FutureTask</code>是实现的<code>RunnableFuture</code>接口的，而<code>RunnableFuture</code>接口同时继承了<code>Runnable</code>接口和<code>Future</code>接口。因此，<code>FutureTask</code>可以交给Executor执行，也可以由调用线程直接执行（<code>FutureTask.run()</code>）。</p>
@@ -511,20 +511,59 @@
 </ul>
 <p>总体来说：悲观锁多用于”写多读少“的环境，避免频繁失败和重试影响性能；而乐观锁多用于“读多写少“的环境，避免频繁加锁影响性能。</p>
 <hr>
-<h2 id="2-2-自旋锁和自适应自旋"><a href="#2-2-自旋锁和自适应自旋" class="headerlink" title="2.2 自旋锁和自适应自旋"></a>2.2 <strong>自旋锁和自适应自旋</strong></h2><h3 id="2-2-1-自旋锁"><a href="#2-2-1-自旋锁" class="headerlink" title="2.2.1 自旋锁"></a>2.2.1 自旋锁</h3><ul>
-<li><strong>描述：</strong>一般线程持有锁的时间都不是太长，所以仅仅为了这一点时间去挂起线程/恢复线程是得不偿失的。 所以，虚拟机的开发团队就这样去考虑：“我们能不能让后面来的请求获取锁的线程等待一会而不被挂起呢？看看持有锁的线程是否很快就会释放锁”。为了让一个线程等待，我们只需要让线程执行一个忙循环（自旋），这项技术就叫做自旋。<ul>
-<li>百度百科对自旋锁的解释：何谓自旋锁？它是为实现保护共享资源而提出一种锁机制。其实，自旋锁与互斥锁比较类似，它们都是为了解决对某项资源的互斥使用。无论是互斥锁，还是自旋锁，在任何时刻，最多只能有一个保持者，也就说，在任何时刻最多只能有一个执行单元获得锁。但是两者在调度机制上略有不同。对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</li>
-</ul>
-</li>
-<li><strong>使用时机：</strong>轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段。<ul>
-<li>互斥同步对性能最大的影响就是阻塞的实现，因为挂起线程/恢复线程的操作都需要转入内核态中完成（用户态转换到内核态会耗费时间）。</li>
-</ul>
-</li>
-<li><strong>关闭与开启：</strong>自旋锁在 <code>JDK1.6</code> 之前其实就已经引入了，不过是默认关闭的，需要通过<code>--XX:+UseSpinning</code>参数来开启。<code>JDK1.6</code>及1.6之后，就改为默认开启的了。需要注意的是：自旋等待不能完全替代阻塞，因为它还是要占用处理器时间。如果锁被占用的时间短，那么效果当然就很好了！反之，相反！自旋等待的时间必须要有限度。如果自旋超过了限定次数任然没有获得锁，就应该挂起线程。自旋次数的默认值是10次，用户可以修改-<code>-XX:PreBlockSpin</code>来更改。</li>
-</ul>
+<h2 id="2-2-自旋锁和自适应自旋"><a href="#2-2-自旋锁和自适应自旋" class="headerlink" title="2.2 自旋锁和自适应自旋"></a>2.2 <strong>自旋锁和自适应自旋</strong></h2><h3 id="2-2-1-自旋锁"><a href="#2-2-1-自旋锁" class="headerlink" title="2.2.1 自旋锁"></a>2.2.1 自旋锁</h3><p><strong>背景：</strong></p>
+<p>一般来说，我们使用得较多的会是互斥锁，而<u>互斥同步对性能最大的影响就是阻塞的实现</u>，因为挂起线程/恢复线程的操作都需要转入内核态中完成（用户态转换到内核态会耗费时间）。</p>
+<p>非自旋锁在获取不到锁的时候会进入阻塞状态，从而进入内核态，<u>当获取到锁的时候需要从内核态恢复，需要线程上下文切换。</u> （线程被阻塞后便进入内核（Linux）调度状态，这个会导致系统在用户态与内核态之间来回切换，严重影响锁的性能）</p>
+<p>如果同步代码块中的内容过于简单，状态转换消耗的时间有可能比用户代码执行的时间还要长。</p>
+<p>那么在许多场景中，有时候同步资源的锁定时间其实很短，那么为了这一小段时间去切换线程，线程挂起和恢复现场的花费可能会让系统得不偿失。如果物理机器有多个处理器，能够让两个或以上的线程同时并行执行，我们就可以让后面那个请求锁的线程不放弃CPU的执行时间，看看持有锁的线程是否很快就会释放锁。</p>
+<p>而为了让当前线程“稍等一下”，我们需让当前线程进行自旋，如果在自旋完成后前面锁定同步资源的线程已经释放了锁，那么当前线程就可以不必阻塞而是直接获取同步资源，从而避免切换线程的开销。这就是自旋锁。</p>
+<p><strong>具体描述：</strong></p>
+<p>上面我们已经了解到了，一般线程持有锁的时间都不是太长，所以仅仅为了这一点时间去挂起线程/恢复线程是得不偿失的。 所以，虚拟机的开发团队就这样去考虑：“我们能不能让后面来的请求获取锁的线程等待一会而不被挂起呢？看看持有锁的线程是否很快就会释放锁”。<u>为了让一个线程等待，我们只需要让线程执行一个忙循环</u>（自旋），这项技术就叫做自旋。</p>
+<p>当一个线程在获取锁的时候，如果锁已经被其它线程获取，那么该线程将循环等待，然后不断的判断锁是否能够被成功获取，直到获取到锁才会退出循环。自旋锁等待期间，线程的状态不会改变，线程一直是用户态并且是活动的(active)，但是并没有执行任何有效的任务，使用这种锁会造成busy-waiting。自旋锁如果持有锁的时间太长，则会导致其它等待获取锁的线程耗尽CPU。</p>
+<p><strong>实现原理：</strong></p>
+<p><u>自旋锁的实现原理是CAS</u>，<code>AtomicInteger</code>中调用<code>unsafe</code>进行自增操作的源码中的<code>do-while</code>循环就是一个自旋操作，如果修改数值失败则通过循环来执行自旋，直至修改成功。</p>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/15/x4NAXeHjf9CGI3m.png"  alt="getAndAddInt源码"></p>
+<p><strong>自旋锁的优点：</strong></p>
+<p>自旋锁不会使线程状态发生切换，一直处于用户态，即线程一直都是active的；不会使线程进入阻塞状态，<u>减少了不必要的上下文切换</u>，执行速度快。</p>
+<p><strong>自旋锁的缺点：</strong></p>
+<p>自旋锁本身是有缺点的，它不能代替阻塞。<u>自旋等待虽然避免了线程切换的开销，但它要占用处理器时间</u>。如果锁被占用的时间很短，自旋等待的效果就会非常好。反之，如果锁被占用的时间很长，那么自旋的线程只会白浪费处理器资源。所以，自旋等待的时间必须要有一定的限度，如果自旋超过了限定次数（默认是10次，可以使用<code>-XX:PreBlockSpin</code>来更改）没有成功获得锁，就应当挂起线程。</p>
+<p><strong>使用时机：</strong></p>
+<p>分析Synchronized 源码的时候，会发现在锁升级的过程中，自旋锁会应用轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段。</p>
+<p><strong>关闭与开启：</strong></p>
+<p>自旋锁在 <code>JDK1.6</code> 之前其实就已经引入了（具体<code>JDK1.4.2</code>），不过是默认关闭的，需要通过<code>--XX:+UseSpinning</code>参数来开启。<code>JDK1.6</code>及1.6之后，就改为默认开启的了，并且引入了自适应的自旋锁（适应性自旋锁）。需要注意的是：自旋等待不能完全替代阻塞，因为它还是要占用处理器时间。如果锁被占用的时间短，那么效果当然就很好了！反之，相反！自旋等待的时间必须要有限度。如果自旋超过了限定次数任然没有获得锁，就应该挂起线程。自旋次数的默认值是10次，用户可以修改-<code>-XX:PreBlockSpin</code>来更改。</p>
+<p><strong>自旋锁与互斥锁的联系：</strong></p>
+<p>以下摘自百度百科</p>
+<blockquote>
+<p>自旋锁是为实现保护共享资源而提出一种锁机制。其实，自旋锁与互斥锁比较类似，它们都是为了解决对某项资源的互斥使用。无论是互斥锁，还是自旋锁，在任何时刻，最多只能有一个保持者，也就说，在任何时刻最多只能有一个执行单元获得锁。但是两者在调度机制上略有不同。对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
+</blockquote>
+<p>具体来说有三点：</p>
+<ol>
+<li>自旋锁与互斥锁都是为了实现保护资源共享的机制。</li>
+<li>无论是自旋锁还是互斥锁，在任意时刻，都最多只能有一个保持者。</li>
+<li>获取互斥锁的线程，如果锁已经被占用，则该线程将进入睡眠状态；获取自旋锁的线程则不会睡眠，而是一直循环等待锁释放。</li>
+</ol>
+<p><img src="/" class="lazyload" data-src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/452a3363.png"  alt="自旋锁与非自旋锁描述"></p>
+<p><strong>自旋锁的其他变种：</strong></p>
+<ol>
+<li>TicketLock：采用类似银行排号叫号的方式实现自旋锁的公平性，但是由于不停的读取serviceNum，每次读写操作都必须在多个处理器缓存之间进行缓存同步，这会<u>导致繁重的系统总线和内存的流量，大大降低系统整体的性能</u>。</li>
+<li>CLHLock和MCSLock：通过链表的方式避免了减少了处理器缓存同步，极大的提高了性能，<u>区别在于CLHLock是通过轮询其前驱节点的状态，而MCS则是查看当前节点的锁状态</u>。CLHLock 在 NUMA 架构下使用会存在问题。在没有cache的NUMA系统架构中，由于CLHLock是在当前节点的前一个节点上自旋，NUMA 架构中处理器访问本地内存的速度高于通过网络访问其他节点的内存，所以CLHLock在NUMA架构上不是最优的自旋锁。</li>
+</ol>
+<p><strong>自旋锁的Demo：</strong></p>
+<p>主要实现的过程是：</p>
+<p>在mian中进行一秒的等待，A线程先执行并使用<code>myLock()</code>尝试获得锁，初次进来发现<code>atomicReference</code>为null，，于是将一个线程给了<code>atomicReference</code>，然后进行五秒的休眠；</p>
+<p>此时线程B也进行<code>myLock()</code>的执行，然后因为比较并交换时<code>atomicReference</code> 不为null 所以一直循环等待，等到A休眠时间到了，执行<code>myUnlcok()</code>，将<code>atomicReference</code> 置为 null，然后线程B检测到<code>atomicReference</code> 为 null ，拿到锁，进行任务的执行，释放锁，程序结束。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySpinLock</span></span>{</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 原子引用线程 </span></span><br><span class="line">    AtomicReference&lt;Thread&gt; atomicReference = <span class="keyword">new</span> AtomicReference &lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myLock</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="comment">// 获取当前线程</span></span><br><span class="line">        Thread t1 = Thread.currentThread();</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"\t   come in "</span>);</span><br><span class="line">        <span class="comment">// 如果第一个线程读取atomicReference 为null，则将进来的线程给了 atomicReference</span></span><br><span class="line">        <span class="comment">// 如果后面的线程读取atomicReference 不为null，则一直等待</span></span><br><span class="line">        <span class="keyword">while</span> (!atomicReference.compareAndSet(<span class="keyword">null</span>,t1)){</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自旋锁释放锁</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">myUnlock</span><span class="params">()</span></span>{</span><br><span class="line">        Thread t1 = Thread.currentThread();</span><br><span class="line">        <span class="comment">// 进行一个修改，如果是相同的线程再次进来</span></span><br><span class="line">        <span class="comment">// 则会将atomicReference 置为null</span></span><br><span class="line">        atomicReference.compareAndSet(t1,<span class="keyword">null</span>);</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"\t     myUnlock "</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line"></span><br><span class="line">        MySpinLock spinLockDemo = newMySpinLock();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开启线程A</span></span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;{</span><br><span class="line">            spinLockDemo.myLock();</span><br><span class="line">            <span class="keyword">try</span> { TimeUnit.SECONDS.sleep(<span class="number">5</span>); } <span class="keyword">catch</span> (InterruptedException e) { e.printStackTrace(); }</span><br><span class="line">            spinLockDemo.myUnlock();</span><br><span class="line">        },<span class="string">"A"</span>).start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进行一个短暂的睡眠</span></span><br><span class="line">        <span class="keyword">try</span> { TimeUnit.SECONDS.sleep(<span class="number">1</span>); } <span class="keyword">catch</span> (InterruptedException e) { e.printStackTrace(); }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开启线程B</span></span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;{</span><br><span class="line">            <span class="comment">// 进行上锁</span></span><br><span class="line">            spinLockDemo.myLock();</span><br><span class="line">            <span class="comment">// your things</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 解锁</span></span><br><span class="line">            spinLockDemo.myUnlock();</span><br><span class="line">        },<span class="string">"B"</span>).start();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
 <h3 id="2-2-2-自适应自旋锁："><a href="#2-2-2-自适应自旋锁：" class="headerlink" title="2.2.2 自适应自旋锁："></a>2.2.2 <strong>自适应自旋锁：</strong></h3><ul>
-<li>描述：在 JDK1.6 中引入了自适应的自旋锁。自适应的自旋锁带来的改进就是：自旋的时间不再固定了，而是和前一次同一个锁上的自旋时间以及锁的拥有者的状态来决定，虚拟机变得越来越“聪明”了。</li>
-<li>实现原理：它怎么做呢？线程如果自旋成功了，那么下次自旋的次数会更加多，因为虚拟机认为既然上次成功了，那么此次自旋也很有可能会再次成功，那么它就会允许自旋等待持续的次数更多。反之，如果对于某个锁，很少有自旋能够成功的，那么在以后要或者这个锁的时候自旋的次数会减少甚至省略掉自旋过程，以免浪费处理器资源。 有了自适应自旋锁，随着程序运行和性能监控信息的不断完善，虚拟机对程序锁的状况预测会越来越准确，虚拟机会变得越来越聪明。</li>
+<li><strong>描述</strong>：在 JDK1.6 中引入了自适应的自旋锁。自适应的自旋锁带来的改进就是：自旋的时间不再固定了，而是和前一次同一个锁上的自旋时间以及锁的拥有者的状态来决定，虚拟机变得越来越“聪明”了。</li>
+<li><strong>实现原理</strong>：它怎么做呢？线程如果自旋成功了，那么下次自旋的次数会更加多，因为虚拟机认为既然上次成功了，那么此次自旋也很有可能会再次成功，那么它就会允许自旋等待持续的次数更多。反之，如果对于某个锁，很少有自旋能够成功的，那么在以后要或者这个锁的时候自旋的次数会减少甚至省略掉自旋过程，以免浪费处理器资源。 有了自适应自旋锁，随着程序运行和性能监控信息的不断完善，虚拟机对程序锁的状况预测会越来越准确，虚拟机会变得越来越聪明。</li>
 </ul>
 <hr>
 <h2 id="2-2-公平锁与非公平锁"><a href="#2-2-公平锁与非公平锁" class="headerlink" title="2.2 公平锁与非公平锁"></a>2.2 公平锁与非公平锁</h2><hr>
@@ -658,8 +697,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 线程池的使用</title>
-    <url>/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/</url>
+    <title>Java 并发 - 多线程：线程池的使用</title>
+    <url>/2020/04/08/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-如何配置线程池"><a href="#1-如何配置线程池" class="headerlink" title="1 如何配置线程池"></a>1 如何配置线程池</h1><p>如果我们设置的线程池数量太小的话，如果同一时间有大量任务/请求需要处理，可能会导致大量的请求/任务在任务队列中排队等待执行，甚至会出现任务队列满了之后任务/请求无法处理的情况，或者大量任务堆积在任务队列导致 OOM。这样很明显是有问题的！ CPU 根本没有得到充分利用。</p>
 <p>但是，如果我们设置线程数量太大，大量线程可能会同时在争取 CPU 资源，这样会导致大量的上下文切换，从而增加线程的执行时间，影响了整体执行效率。</p>
 <p>注：上下文切换的解释</p>
@@ -4544,8 +4583,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 线程创建的几种方式</title>
-    <url>/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</url>
+    <title>Java 并发 - 多线程：线程创建的几种方式</title>
+    <url>/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>在这阶段的学习过程中我会先抛出一系列：线程如何创建？这是一个很关键的问题，并发的关键在于多线程，那么如何创建线程呢？大概有几种方式呢？这几种方式的区别是什么？什么情况下应该使用这种创建方式？什么时候又不应该呢？那么具体的过程应该是如何呢？是否应该给出一两个例子会更好的说明一下？</p>
 <p>问题太多，搞得自己都乱了，最主要的还是要一点点的去了解，最后串成一根线，才能更好对知识的进行掌握。</p>
 <p>我想应该将这几种方式联系起来做一个对比，这样才能更好的理解这些创建线程方式的优点与缺点。</p>
@@ -5628,8 +5667,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 深入线程池原理</title>
-    <url>/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/</url>
+    <title>Java 并发 - 多线程：深入线程池原理</title>
+    <url>/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-线程池简介"><a href="#1-线程池简介" class="headerlink" title="1.线程池简介"></a>1.线程池简介</h1><h2 id="1-1-线程池是什么？"><a href="#1-1-线程池是什么？" class="headerlink" title="1.1 线程池是什么？"></a>1.1 线程池是什么？</h2><p>线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。</p>
 <p>线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。</p>
 <p>线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。</p>
@@ -7210,8 +7249,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - 如何停止一个线程</title>
-    <url>/2020/03/31/java-bing-fa-ru-he-ting-zhi-yi-ge-xian-cheng/</url>
+    <title>Java 并发 - 多线程：如何停止一个线程</title>
+    <url>/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h1><p>对于一个线程要如何去停止呢？还有不同情况下的线程要如何停止呢？停止一个线程是什么意思？就是让这个线程在它进行任务处理的时候进行停止，停掉当前的操作，之前有学习到一个<code>Thread.stop()</code>方法，好像已经被废弃了，是不安全的一个方法，那么除了这个方法，还有其他什么办法吗？</p>
 <p>总的来说，Java有如下几种方法去停止线程：</p>
 <ol>
@@ -7991,8 +8030,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
         <tag>并发</tag>
+        <tag>导页</tag>
       </tags>
   </entry>
   <entry>

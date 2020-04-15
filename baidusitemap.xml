@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-suo-de-ji-chong-ji-ben-fen-lei/</loc>
-    <lastmod>2020-04-14</lastmod>
+    <lastmod>2020-04-15</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/</loc>
     <lastmod>2020-04-14</lastmod>
@@ -43,7 +43,7 @@
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/10/java-bing-fa-futuretask-yuan-ma-fen-xi/</loc>
+    <loc>https://dongxiem.github.io/2020/04/10/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</loc>
@@ -55,10 +55,10 @@
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/01/java-bing-fa-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</loc>
+    <loc>https://dongxiem.github.io/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/08/java-bing-fa-xian-cheng-chi-de-shi-yong/</loc>
+    <loc>https://dongxiem.github.io/2020/04/08/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-tong-xin-gong-ju-lei-semaphore-fen-xi/</loc>
@@ -85,13 +85,13 @@
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-shen-ru-xian-cheng-chi-yuan-li/</loc>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-shang-xia-wen-qie-huan-de-li-jie/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-ru-he-ting-zhi-yi-ge-xian-cheng/</loc>
+    <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-guan-yu-zhi-ling-chong-pai-xu-de-ji-ge-yi-wen/</loc>
