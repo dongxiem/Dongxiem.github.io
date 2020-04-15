@@ -441,7 +441,6 @@
 <li>自旋锁与自适应自旋锁</li>
 <li>公平锁与非公平锁</li>
 <li>可重入锁与非可重入锁</li>
-<li>读写锁与排他锁</li>
 </ol>
 <p>进行对比分析的学习可能效果会好一些，所以对锁的分析大部分都是一个对比式的学习了，要了解各自的使用场合及区别，这样在实际开发过程中可以更好的进行运用。</p>
 <p>可以参考一下美团团队给出的一个总体分类：</p>
@@ -475,23 +474,31 @@
 <p>在乐观锁控制的table中增加一个字段，每次更新时检查数据库中数据的时间戳和自己更新前取得的时间戳是否一致，一致则更新，否则冲突。</p>
 <p><strong>乐观锁的缺点</strong></p>
 <p>1.ABA 问题（ABA 问题是乐观锁一个常见的问题）</p>
-<ul>
-<li>如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。这个问题被称为CAS操作的 “ABA”问题。</li>
-<li>JDK 1.5 以后的 <code>AtomicStampedReference</code> 类就提供了此种能力，其中的 compareAndSet 方法就是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。</li>
-</ul>
+<p>如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。这个问题被称为CAS操作的 “ABA”问题。</p>
+<p>解决思路：</p>
+<ol>
+<li>在变量前面追加上<strong>版本号或者时间戳</strong></li>
+<li>JDK 1.5 以后的 <code>AtomicStampedReference</code> 类就提供了此种能力，其中的 <code>compareAndSet</code> 方法就是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。</li>
+</ol>
 <p>2.循环时间长开销大</p>
+<p>自旋CAS（也就是不成功就一直循环执行直到成功）如果长时间不成功，会给CPU带来非常大的执行开销。</p>
+<p>解决思路：</p>
 <ul>
-<li>自旋CAS（也就是不成功就一直循环执行直到成功）如果长时间不成功，会给CPU带来非常大的执行开销。</li>
-<li>如果JVM能支持处理器提供的pause指令那么效率会有一定的提升，pause指令有两个作用，第一它可以延迟流水线执行指令（de-pipeline）,使CPU不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零。第二它可以避免在退出循环的时候因内存顺序冲突（memory order violation）而引起CPU流水线被清空（CPU pipeline flush），从而提高CPU的执行效率。</li>
+<li>让JVM支持处理器提供的<strong>pause指令</strong>。</li>
+<li>如果JVM能支持处理器提供的pause指令那么效率会有一定的提升，pause指令有两个作用：<ol>
+<li>第一它可以延迟流水线执行指令（<code>de-pipeline</code>）,使CPU不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零。</li>
+<li>第二它可以避免在退出循环的时候因内存顺序冲突（<code>memory order violation</code>）而引起CPU流水线被清空（<code>CPU pipeline flush</code>），从而提高CPU的执行效率。</li>
+</ol>
+</li>
 </ul>
 <p>3.只能保证一个共享变量的原子操作</p>
-<ul>
+<p>有两种解决方案：</p>
+<ol>
 <li>CAS 只对单个共享变量有效，当操作涉及跨多个共享变量时 CAS 无效。但是从 JDK 1.5开始，提供了<code>AtomicReference</code>类来保证引用对象之间的原子性，你可以把多个变量放在一个对象里来进行 CAS 操作。所以我们可以使用锁或者利用<code>AtomicReference</code>类把多个共享变量合并成一个共享变量来操作。</li>
-</ul>
-<p>乐观锁的调用方式常见如下：</p>
+<li>使用锁。锁内的临界区代码可以保证只有当前线程能操作。</li>
+</ol>
+<p><strong>乐观锁的调用方式常见如下：</strong></p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// 需要保证多个线程使用的是同一个AtomicInteger</span></span><br><span class="line"><span class="keyword">private</span> AtomicInteger atomicInteger = <span class="keyword">new</span> AtomicInteger(); </span><br><span class="line">atomicInteger.incrementAndGet(); <span class="comment">//执行自增1</span></span><br></pre></td></tr></tbody></table></figure>
-
-
 
 
 
@@ -523,12 +530,9 @@
 <p><strong>实现原理：</strong></p>
 <p><u>自旋锁的实现原理是CAS</u>，<code>AtomicInteger</code>中调用<code>unsafe</code>进行自增操作的源码中的<code>do-while</code>循环就是一个自旋操作，如果修改数值失败则通过循环来执行自旋，直至修改成功。</p>
 <p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/04/15/x4NAXeHjf9CGI3m.png"  alt="getAndAddInt源码"></p>
-<p><strong>自旋锁的优点：</strong></p>
-<p>自旋锁不会使线程状态发生切换，一直处于用户态，即线程一直都是active的；不会使线程进入阻塞状态，<u>减少了不必要的上下文切换</u>，执行速度快。</p>
-<p><strong>自旋锁的缺点：</strong></p>
-<p>自旋锁本身是有缺点的，它不能代替阻塞。<u>自旋等待虽然避免了线程切换的开销，但它要占用处理器时间</u>。如果锁被占用的时间很短，自旋等待的效果就会非常好。反之，如果锁被占用的时间很长，那么自旋的线程只会白浪费处理器资源。所以，自旋等待的时间必须要有一定的限度，如果自旋超过了限定次数（默认是10次，可以使用<code>-XX:PreBlockSpin</code>来更改）没有成功获得锁，就应当挂起线程。</p>
-<p><strong>使用时机：</strong></p>
-<p>分析Synchronized 源码的时候，会发现在锁升级的过程中，自旋锁会应用轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段。</p>
+<p><strong>自旋锁的优点：</strong>自旋锁不会使线程状态发生切换，一直处于用户态，即线程一直都是active的；不会使线程进入阻塞状态，<u>减少了不必要的上下文切换</u>，执行速度快。</p>
+<p><strong>自旋锁的缺点：</strong>自旋锁本身是有缺点的，它不能代替阻塞。<u>自旋等待虽然避免了线程切换的开销，但它要占用处理器时间</u>。如果锁被占用的时间很短，自旋等待的效果就会非常好。反之，如果锁被占用的时间很长，那么自旋的线程只会白浪费处理器资源。所以，自旋等待的时间必须要有一定的限度，如果自旋超过了限定次数（默认是10次，可以使用<code>-XX:PreBlockSpin</code>来更改）没有成功获得锁，就应当挂起线程。</p>
+<p><strong>使用时机：</strong>分析Synchronized 源码的时候，会发现在锁升级的过程中，自旋锁会应用轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段。</p>
 <p><strong>关闭与开启：</strong></p>
 <p>自旋锁在 <code>JDK1.6</code> 之前其实就已经引入了（具体<code>JDK1.4.2</code>），不过是默认关闭的，需要通过<code>--XX:+UseSpinning</code>参数来开启。<code>JDK1.6</code>及1.6之后，就改为默认开启的了，并且引入了自适应的自旋锁（适应性自旋锁）。需要注意的是：自旋等待不能完全替代阻塞，因为它还是要占用处理器时间。如果锁被占用的时间短，那么效果当然就很好了！反之，相反！自旋等待的时间必须要有限度。如果自旋超过了限定次数任然没有获得锁，就应该挂起线程。自旋次数的默认值是10次，用户可以修改-<code>-XX:PreBlockSpin</code>来更改。</p>
 <p><strong>自旋锁与互斥锁的联系：</strong></p>
@@ -548,7 +552,7 @@
 <li>TicketLock：采用类似银行排号叫号的方式实现自旋锁的公平性，但是由于不停的读取serviceNum，每次读写操作都必须在多个处理器缓存之间进行缓存同步，这会<u>导致繁重的系统总线和内存的流量，大大降低系统整体的性能</u>。</li>
 <li>CLHLock和MCSLock：通过链表的方式避免了减少了处理器缓存同步，极大的提高了性能，<u>区别在于CLHLock是通过轮询其前驱节点的状态，而MCS则是查看当前节点的锁状态</u>。CLHLock 在 NUMA 架构下使用会存在问题。在没有cache的NUMA系统架构中，由于CLHLock是在当前节点的前一个节点上自旋，NUMA 架构中处理器访问本地内存的速度高于通过网络访问其他节点的内存，所以CLHLock在NUMA架构上不是最优的自旋锁。</li>
 </ol>
-<p><strong>自旋锁的Demo：</strong></p>
+<p><strong>自旋锁的Demo</strong></p>
 <p>主要实现的过程是：</p>
 <p>在mian中进行一秒的等待，A线程先执行并使用<code>myLock()</code>尝试获得锁，初次进来发现<code>atomicReference</code>为null，，于是将一个线程给了<code>atomicReference</code>，然后进行五秒的休眠；</p>
 <p>此时线程B也进行<code>myLock()</code>的执行，然后因为比较并交换时<code>atomicReference</code> 不为null 所以一直循环等待，等到A休眠时间到了，执行<code>myUnlcok()</code>，将<code>atomicReference</code> 置为 null，然后线程B检测到<code>atomicReference</code> 为 null ，拿到锁，进行任务的执行，释放锁，程序结束。</p>
@@ -557,22 +561,53 @@
 
 
 
-
-
-
-
 <h3 id="2-2-2-自适应自旋锁："><a href="#2-2-2-自适应自旋锁：" class="headerlink" title="2.2.2 自适应自旋锁："></a>2.2.2 <strong>自适应自旋锁：</strong></h3><ul>
 <li><strong>描述</strong>：在 JDK1.6 中引入了自适应的自旋锁。自适应的自旋锁带来的改进就是：自旋的时间不再固定了，而是和前一次同一个锁上的自旋时间以及锁的拥有者的状态来决定，虚拟机变得越来越“聪明”了。</li>
 <li><strong>实现原理</strong>：它怎么做呢？线程如果自旋成功了，那么下次自旋的次数会更加多，因为虚拟机认为既然上次成功了，那么此次自旋也很有可能会再次成功，那么它就会允许自旋等待持续的次数更多。反之，如果对于某个锁，很少有自旋能够成功的，那么在以后要或者这个锁的时候自旋的次数会减少甚至省略掉自旋过程，以免浪费处理器资源。 有了自适应自旋锁，随着程序运行和性能监控信息的不断完善，虚拟机对程序锁的状况预测会越来越准确，虚拟机会变得越来越聪明。</li>
 </ul>
 <hr>
-<h2 id="2-2-公平锁与非公平锁"><a href="#2-2-公平锁与非公平锁" class="headerlink" title="2.2 公平锁与非公平锁"></a>2.2 公平锁与非公平锁</h2><hr>
-<h2 id="2-3-可重入锁与非可重入锁"><a href="#2-3-可重入锁与非可重入锁" class="headerlink" title="2.3 可重入锁与非可重入锁"></a>2.3 可重入锁与非可重入锁</h2><hr>
-<h2 id="2-4-读写锁与排他锁"><a href="#2-4-读写锁与排他锁" class="headerlink" title="2.4 读写锁与排他锁"></a>2.4 读写锁与排他锁</h2><hr>
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><hr>
-<p>以上参考：</p>
+<h2 id="2-2-公平锁与非公平锁"><a href="#2-2-公平锁与非公平锁" class="headerlink" title="2.2 公平锁与非公平锁"></a>2.2 公平锁与非公平锁</h2><p>通过一个例子来形象点的说明这两者的区别（摘自美团技术，但是他们也是摘自别人的。。。（能解释明白就好））</p>
+<p>假设有一口水井，有管理员看守，管理员有一把锁，只有拿到锁的人才能够打水，打完水要把锁还给管理员。每个过来打水的人都要管理员的允许并拿到锁之后才能去打水，如果前面有人正在打水，那么这个想要打水的人就必须排队。管理员会查看下一个要去打水的人是不是队伍里排最前面的人，如果是的话，才会给你锁让你去打水；如果你不是排第一的人，就必须去队尾排队，这就是公平锁。</p>
+<p><img src="/" class="lazyload" data-src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/a23d746a.png"  alt="公平锁打水"></p>
+<p>但是对于非公平锁，管理员对打水的人没有要求。即使等待队伍里有排队等待的人，但如果在上一个人刚打完水把锁还给管理员而且管理员还没有允许等待队伍里下一个人去打水时，刚好来了一个插队的人，这个插队的人是可以直接从管理员那里拿到锁去打水，不需要排队，原本排队等待的人只能继续等待。如下图所示：</p>
+<p><img src="/" class="lazyload" data-src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/4499559e.png"  alt="非公平锁打水"></p>
+<p>这里的“公平”，其实通俗意义来说就是“先来后到”，也就是FIFO。如果对一个锁来说，先对锁获取请求的线程一定会先被满足，后对锁获取请求的线程后被满足，那这个锁就是公平的。反之，那就是不公平的。</p>
+<p>一般情况下，非公平锁能提升一定的效率，<strong>非公平锁</strong> 效率比 <strong>公平锁</strong> 高 5-10 倍，因为公平锁需要在多核环境下维护一个队列。 synchronized 和 ReentrantLock 中默认的 lock() 方法都是非公平锁。但是非公平锁可能会发生线程饥饿（有一些线程长时间得不到锁）的情况。所以要根据实际的需求来选择非公平锁和公平锁。</p>
+<p>公平锁要维护一个队列，后来的线程要加锁，即使锁空闲，也要先检查有没有其他线程在 wait，如果有自己要挂起，加到队列后面，然后唤醒队列最前面的线程。<u>这种情况下公平锁相比较非公平锁多了一次挂起和唤醒</u>。说得再详细一点，就是对于非公平锁和公平锁，这两种锁都有等待队列，但是区别在于非公平锁允许线程不先出入队而是先尝试获得锁，这一点上公平锁需要扫描等待队列，源码上也直接反映了这一点。去掉这个功能的话公平锁和非公平锁也无甚差异。但是非公平锁可能导致等待队列中的线程饿死，或者等很久才会获得锁。</p>
+<p>ReentrantLock 支持非公平锁和公平锁两种。</p>
+<p>对于公平锁与非公平锁会在<a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/">Java 并发 - 锁相关：ReentrantLock 分析</a>这里进行一个详细的分析，所以这里只需要明白一个大概的意思即可。</p>
+<hr>
+<h2 id="2-3-可重入锁与非可重入锁"><a href="#2-3-可重入锁与非可重入锁" class="headerlink" title="2.3 可重入锁与非可重入锁"></a>2.3 可重入锁与非可重入锁</h2><p>通过一个例子讲解一下可重入锁和非可重入锁的区别（摘自美团技术，但是我觉得这个例子一般）</p>
+<p>打水的例子，有多个人在排队打水，此时管理员允许锁和同一个人的多个水桶绑定。这个人用多个水桶打水时，第一个水桶和锁绑定并打完水之后，第二个水桶也可以直接和锁绑定并开始打水，所有的水桶都打完水之后打水人才会将锁还给管理员。这个人的所有打水流程都能够成功执行，后续等待的人也能够打到水。这就是可重入锁。</p>
+<p><img src="/" class="lazyload" data-src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/58fc5bc9.png"  alt="可重入锁打水"></p>
+<p>但如果是非可重入锁的话，此时管理员只允许锁和同一个人的一个水桶绑定。第一个水桶和锁绑定打完水之后并不会释放锁，导致第二个水桶不能和锁绑定也无法打水。当前线程出现死锁，整个等待队列中的所有线程都无法被唤醒。</p>
+<p><img src="/" class="lazyload" data-src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/ea597a0c.png"  alt="非可重入锁打水"></p>
+<h3 id="2-3-1-可重入锁"><a href="#2-3-1-可重入锁" class="headerlink" title="2.3.1 可重入锁"></a>2.3.1 可重入锁</h3><p><strong>具体描述：</strong>所谓重入锁，又称为递归锁，顾名思义。就是支持重新进入的锁，也就是说这个锁支持一个<strong>线程对资源重复加锁</strong>。具体来讲就是：指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁（前提锁对象得是同一个对象或者class），不会因为之前已经获取过还没释放而阻塞。</p>
+<p>可重入锁是一种可以再次获得自己的内部锁。当某个线程 A 已经持有了一个锁(对象锁)，当线程 B 尝试进入被这个锁保护的代码段的时候，就会被阻塞。同一个线程再次进入同步代码的时候，可以使用自己已经获取到的锁，这就是可重入锁。 Java 里面 <strong>内置锁(synchronize)</strong> 和 <strong>Lock(ReentrantLock)</strong> 都具有可重入性。当存在父子继承关系时，子类可以通过可重入锁调用父类的同步方法。自旋锁是一种不可重入锁。</p>
+<p><code>ReentrantLock</code>的中文意思就是可重入锁，可见这个<code>ReentrantLock</code>有多重要了，好几个锁相关的特性都与他有关，在我的另一篇Blog中我有进行一个详细的记录：<a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/">Java 并发 - 锁相关：ReentrantLock 分析</a>。可以看这篇文章的介绍。</p>
+<p><strong>优点：</strong>可一定程度避免死锁</p>
+<p><strong>可重入锁的实现：</strong>为每个锁关联一个获取计数器和一个所有者线程,当计数值为 0 的时候，这个锁就没有被任何线程只有。当线程请求一个未被持有的锁时，JVM 将记下锁的持有者,并且将获取计数值置为 1 ，如果同一个线程再次获取这个锁，计数值将递增，退出一次同步代码块，计算值递减，当计数值为 0 时，这个锁就被释放。</p>
+<p><strong>具体代码分析：</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Widget</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">"方法1执行..."</span>);</span><br><span class="line">        doOthers();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">doOthers</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">"方法2执行..."</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在上面的代码中，类中的两个方法都是被内置锁synchronized修饰的，<code>doSomething()</code>方法中调用<code>doOthers()</code>方法。因为内置锁是可重入的，所以同一个线程在调用<code>doOthers()</code>时可以直接获得当前对象的锁，进入<code>doOthers()</code>进行操作。</p>
+<p>需要注意，<u>synchronized 是可重入的，所以上面才能这么进行一个调用</u>！如果是其他的不可重入锁，那么当前线程在调用<code>doOthers()</code>之前需要将执行<code>doSomething()</code>时获取当前对象的锁释放掉，实际上该对象锁已被当前线程所持有，且无法释放。所以此时会出现死锁。这也间接解释了一下为什么可重入锁能够一定程度地避免死锁，也能解释为什么不可重入锁容易造成一个死锁的发生。</p>
+<h3 id="2-3-2-非可重入锁"><a href="#2-3-2-非可重入锁" class="headerlink" title="2.3.2 非可重入锁"></a>2.3.2 非可重入锁</h3><p>所谓非可重入锁，顾名思义，就是和上面相反。即若当前线程执行某个方法已经获取了该锁，那么在方法中尝试再次获取锁时，就会获取不到被阻塞。</p>
+<h3 id="2-3-3-两者联系"><a href="#2-3-3-两者联系" class="headerlink" title="2.3.3 两者联系"></a>2.3.3 两者联系</h3><p>ReentrantLock和NonReentrantLock都继承父类AQS，其父类AQS中维护了一个同步状态status来计数重入次数，status初始值为0。</p>
+<p>分为两点进行分析：</p>
 <ol>
+<li>当线程尝试获取锁时，可重入锁先尝试获取并更新status值，如果status == 0表示没有其他线程在执行同步代码，则把status置为1，当前线程开始执行。如果status != 0，则判断当前线程是否是获取到这个锁的线程，如果是的话执行status+1，且当前线程可以再次获取锁。而非可重入锁是直接去获取并尝试更新当前status的值，如果status != 0的话会导致其获取锁失败，当前线程阻塞。</li>
+<li>释放锁时，可重入锁同样先获取当前status的值，在当前线程是持有锁的线程的前提下。如果status-1 == 0，则表示当前线程所有重复获取锁的操作都已经执行完毕，然后该线程才会真正释放锁。而非可重入锁则是在确定当前线程是持有锁的线程之后，直接将status置为0，将锁释放。</li>
+</ol>
+<p><img src="/" class="lazyload" data-src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/32536e7a.png"  alt="可重入锁与非可重入锁"></p>
+<hr>
+<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><p>通过以上的几种分类，能够比较好明白的对几种锁的大概了解，还有更深入的地方需要去了解，这里还只是浅显的讲明了一些而已了，对于大部分锁我都会进行一个深入点的学习，研究其内部代码了解其机制原理，特别是那么几个比较重要的比如：synchronized 和 ReentrantLock 这两个可以说是重中之重了，ReentrantLock 中包含了公平锁与非公平锁的概念，包含了可重入锁与非可重入锁的一些概念，所以需要重点对这个ReentrantLock 进行一个梳理，可能会花费好几天的时间，但是怎么说呢，过程还是挺开心的，只能说有所收获吧！</p>
+<p>以上方便快速理解一些锁相关的概念，对于锁升级流程相关的可以具体查看：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/">Java 并发 - Synchronized 原理分析</a>，这个Synchronized 相关的原理也是研究了很长一段时间了，而对于ReentrantLock 相关的公平锁与非公平锁、可重入锁与非可重入锁相关的查看：<a href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-reentrantlock-fen-xi/">Java 并发 - 锁相关：ReentrantLock 分析</a>，这个锁分类相关的内容到此结束。</p>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://blog.csdn.net/u013256816/article/details/51204385" target="_blank" rel="noopener">Java中的锁</a></li>
 <li><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></li>
+<li>Java 并发编程的艺术</li>
 </ol>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -8028,8 +8063,8 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>并发</tag>
         <tag>导页</tag>
+        <tag>并发</tag>
       </tags>
   </entry>
   <entry>
