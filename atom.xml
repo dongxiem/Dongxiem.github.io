@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-13T14:11:28.899Z</updated>
+  <updated>2020-04-13T14:09:55.087Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 并发 - 多线程：线程间通信交替dayi</title>
+    <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-dayi/"/>
+    <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-dayi/</id>
+    <published>2020-04-16T12:23:17.345Z</published>
+    <updated>2020-04-13T14:09:55.087Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - CAS 分析</title>
+    <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/</id>
+    <published>2020-04-16T04:14:14.000Z</published>
+    <updated>2020-04-16T13:14:45.936Z</updated>
+    
+    <summary type="html">
+    
+      主要解释了一下什么是CAS，及CAS会遇到的一些问题，还有其解决方法。
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 并发 - AQS：自定义同步工具</title>
@@ -483,64 +537,6 @@
     <id>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-shu-zu-he-ju-zhen/</id>
     <published>2020-04-07T15:16:54.949Z</published>
     <updated>2020-04-07T15:24:28.193Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 数据结构 - 图</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-tu/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-tu/</id>
-    <published>2020-04-07T15:16:54.685Z</published>
-    <updated>2020-04-07T16:37:58.911Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode - 数据结构 - 位运算</title>
-    <link href="https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-wei-yun-suan/"/>
-    <id>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-wei-yun-suan/</id>
-    <published>2020-04-07T15:16:54.484Z</published>
-    <updated>2020-04-07T15:24:32.914Z</updated>
     
     <summary type="html">
     
