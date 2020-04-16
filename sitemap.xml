@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</loc>
+    
+    <lastmod>2020-04-16T15:24:59.117Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/</loc>
     
     <lastmod>2020-04-16T13:14:45.936Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</loc>
+    
+    <lastmod>2020-04-16T12:23:44.651Z</lastmod>
     
   </url>
   
@@ -201,20 +215,6 @@
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-readwritelock-jie-kou-fen-xi/</loc>
     
     <lastmod>2020-04-13T14:09:59.202Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-dayi/</loc>
-    
-    <lastmod>2020-04-13T14:09:55.087Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</loc>
-    
-    <lastmod>2020-04-13T14:09:55.087Z</lastmod>
     
   </url>
   

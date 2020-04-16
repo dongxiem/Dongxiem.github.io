@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-04-13T14:09:55.087Z</updated>
+  <updated>2020-04-16T15:24:59.117Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Java 并发 - 多线程：线程间通信交替dayi</title>
-    <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-dayi/"/>
-    <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-dayi/</id>
+    <title>Java 并发 - 多线程：线程间通信交替打印</title>
+    <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/"/>
+    <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</id>
     <published>2020-04-16T12:23:17.345Z</published>
-    <updated>2020-04-13T14:09:55.087Z</updated>
+    <updated>2020-04-16T15:24:59.117Z</updated>
     
     <summary type="html">
     
@@ -198,7 +198,7 @@
     <link href="https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/04/09/java-bing-fa-suo-xiang-guan-lock-jie-kou-fen-xi/</id>
     <published>2020-04-09T09:24:15.055Z</published>
-    <updated>2020-04-13T14:09:55.087Z</updated>
+    <updated>2020-04-16T12:23:44.651Z</updated>
     
     <summary type="html">
     
