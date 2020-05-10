@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 并发 - 面试题集</title>
+    <url>/2020/05/10/java-bing-fa-mian-shi-ti-ji/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java多线程与并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 集合框架 - 面试题集</title>
+    <url>/2020/05/10/java-ji-he-kuang-jia-mian-shi-ti-ji/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id=""><a href="#" class="headerlink" title=""></a></h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java集合</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>导页</tag>
+        <tag>Java集合</tag>
+        <tag>面试题集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 基础 - 面试题集</title>
     <url>/2020/05/10/java-ji-chu-mian-shi-ti-ji/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
@@ -34,7 +96,7 @@
     <title>Java 并发 - 多线程：线程间通信交替打印</title>
     <url>/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>这一部分，我通过一个经典的问题来引出几个线程间通信的方法，即：三个线程如何实现交替打印ABC？</p>
-<h1 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2.代码实现"></a>2.代码实现</h1><h2 id="2-1-Synchronized"><a href="#2-1-Synchronized" class="headerlink" title="2.1 Synchronized"></a>2.1 Synchronized</h2><p>基本思路：使用同步块和wait、notify的方法控制三个线程的执行次序。具体方法如下：从大的方向上来讲，该问题为三线程间的同步唤醒操作，主要的目的就是<code>ThreadA-&gt;ThreadB-&gt;ThreadC-&gt;ThreadA</code>循环执行三个线程。为了控制线程执行的顺序，那么就必须要确定唤醒、等待的顺序，所以每一个线程必须同时持有两个对象锁，才能进行打印操作。一个对象锁是prev，就是前一个线程所对应的对象锁，其主要作用是保证当前线程一定是在前一个线程操作完成后（即前一个线程释放了其对应的对象锁）才开始执行。还有一个锁就是自身对象锁。主要的思想就是，为了控制执行的顺序，必须要先持有prev锁（也就前一个线程要释放其自身对象锁），然后当前线程再申请自己对象锁，两者兼备时打印。之后首先调用<code>self.notify()</code>唤醒下一个等待线程（注意notify不会立即释放对象锁，只有等到同步块代码执行完毕后才会释放），再<code>调用prev.wait()</code>立即释放prev对象锁，当前线程进入休眠，等待其他线程的notify操作再次唤醒。</p>
+<h1 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2.代码实现"></a>2.代码实现</h1><h2 id="2-1-Synchronized"><a href="#2-1-Synchronized" class="headerlink" title="2.1 Synchronized"></a>2.1 Synchronized</h2><p>基本思路：使用同步块和wait、notify的方法控制三个线程的执行次序。具体方法如下：从大的方向上来讲，该问题为三线程间的同步唤醒操作，主要的目的就是<code>ThreadA-&gt;ThreadB-&gt;ThreadC-&gt;ThreadA</code>循环执行三个线程。为了控制线程执行的顺序，那么就必须要确定唤醒、等待的顺序，所以每一个线程必须同时持有两个对象锁，才能进行打印操作。一个对象锁是prev，就是前一个线程所对应的对象锁，其主要作用是保证当前线程一定是在前一个线程操作完成后（即前一个线程释放了其对应的对象锁）才开始执行。还有一个锁就是自身对象锁。主要的思想就是，为了控制执行的顺序，必须要先持有prev锁（也就前一个线程要释放其自身对象锁），然后当前线程再申请自己对象锁，两者兼备时打印。之后首先调用<code>self.notify()</code>唤醒下一个等待线程（注意notify不会立即释放对象锁，只有等到同步块代码执行完毕后才会释放），再调用<code>prev.wait()</code>立即释放prev对象锁，当前线程进入休眠，等待其他线程的notify操作再次唤醒。</p>
 <p>下面程序可以看到程序一共定义了a,b,c三个对象锁，分别对应A、B、C三个线程。A线程最先运行，A线程按顺序申请c,a对象锁，打印操作后按顺序释放a,c对象锁，并且通过notify操作唤醒线程B。线程B首先等待获取A锁，再申请B锁，后打印B，再释放B，A锁，唤醒C。线程C等待B锁，再申请C锁，后打印C，再释放C,B锁，唤醒A。看起来似乎没什么问题，但如果你仔细想一下，就会发现有问题，就是初始条件，三个线程必须按照A,B,C的顺序来启动，但是这种假设依赖于JVM中线程调度、执行的顺序。</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseSynchronized</span> </span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPrinter</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="keyword">private</span> Object prev;</span><br><span class="line">        <span class="keyword">private</span> Object self;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">ThreadPrinter</span><span class="params">(String name, Object prev, Object self)</span> </span>{</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">            <span class="keyword">this</span>.prev = prev;</span><br><span class="line">            <span class="keyword">this</span>.self = self;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="keyword">int</span> count = <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">while</span> (count &gt; <span class="number">0</span>) {<span class="comment">// 多线程并发，不能用if，必须使用while循环</span></span><br><span class="line">                <span class="keyword">synchronized</span> (prev) { <span class="comment">// 先获取 prev 锁</span></span><br><span class="line">                    <span class="keyword">synchronized</span> (self) {<span class="comment">// 再获取 self 锁</span></span><br><span class="line">                        System.out.print(name);<span class="comment">// 打印</span></span><br><span class="line">                        count--;</span><br><span class="line">                        self.notifyAll();<span class="comment">// 唤醒其他线程竞争self锁，注意此时self锁并未立即释放。</span></span><br><span class="line">                    }</span><br><span class="line">                    <span class="comment">// 此时执行完self的同步块，这时self锁才释放。</span></span><br><span class="line">                    <span class="keyword">try</span> {</span><br><span class="line">                        <span class="keyword">if</span> (count == <span class="number">0</span>) { <span class="comment">// 如果count==0,表示这是最后一次打印操作，通过notifyAll操作释放对象锁。</span></span><br><span class="line">                            prev.notifyAll();</span><br><span class="line">                        } <span class="keyword">else</span> {</span><br><span class="line">                            prev.wait(); <span class="comment">// 立即释放 prev锁，当前线程休眠，等待唤醒</span></span><br><span class="line">                        }</span><br><span class="line">                    } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line">        Object a = <span class="keyword">new</span> Object();</span><br><span class="line">        Object b = <span class="keyword">new</span> Object();</span><br><span class="line">        Object c = <span class="keyword">new</span> Object();</span><br><span class="line">        ThreadPrinter pa = <span class="keyword">new</span> ThreadPrinter(<span class="string">"A"</span>, c, a);</span><br><span class="line">        ThreadPrinter pb = <span class="keyword">new</span> ThreadPrinter(<span class="string">"B"</span>, a, b);</span><br><span class="line">        ThreadPrinter pc = <span class="keyword">new</span> ThreadPrinter(<span class="string">"C"</span>, b, c);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(pa).start();</span><br><span class="line">        Thread.sleep(<span class="number">10</span>);<span class="comment">// 保证初始ABC的启动顺序</span></span><br><span class="line">        <span class="keyword">new</span> Thread(pb).start();</span><br><span class="line">        Thread.sleep(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">new</span> Thread(pc).start();</span><br><span class="line">        Thread.sleep(<span class="number">10</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -651,6 +713,7 @@
       <tags>
         <tag>Java</tag>
         <tag>并发</tag>
+        <tag>面试题集</tag>
       </tags>
   </entry>
   <entry>
