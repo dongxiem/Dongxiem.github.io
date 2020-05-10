@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/05/10/java-ji-chu-mian-shi-ti-ji/</loc>
+    <lastmod>2020-05-10</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-tu/</loc>
+    <lastmod>2020-05-10</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/08/leetcode-suan-fa-si-xiang-cha-zhao/</loc>
     <lastmod>2020-05-10</lastmod>
   </url>  <url>
@@ -62,9 +68,6 @@
     <lastmod>2020-05-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</loc>
-    <lastmod>2020-05-10</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/05/10/java-ji-chu-mian-shi-ti-ji/</loc>
     <lastmod>2020-05-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/</loc>
@@ -188,9 +191,6 @@
     <lastmod>2020-04-08</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-tan-xin-si-xiang/</loc>
-    <lastmod>2020-04-07</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-tu/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/02/jian-zhi-offer-03-cong-wei-dao-tou-da-yin-lian-biao/</loc>
