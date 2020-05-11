@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-treemap-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-linkedlist-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashtable-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashset-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-copyonwritearraylist-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-arraylist-fen-xi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/20/java-ji-he-kuang-jia-dao-ye/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
@@ -8,9 +35,6 @@
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-05-11</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/20/java-ji-he-kuang-jia-dao-ye/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/20/java-bing-fa-dao-ye/</loc>
@@ -108,30 +132,6 @@
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</loc>
     <lastmod>2020-04-14</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-treemap-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-linkedlist-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashtable-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashset-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-copyonwritearraylist-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-arraylist-fen-xi/</loc>
-    <lastmod>2020-04-13</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/</loc>
     <lastmod>2020-04-13</lastmod>
