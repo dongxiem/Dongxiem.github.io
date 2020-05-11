@@ -361,13 +361,98 @@
 <h2 id="String-字符串编码"><a href="#String-字符串编码" class="headerlink" title="String 字符串编码"></a>String 字符串编码</h2><h3 id="怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？"><a href="#怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？" class="headerlink" title="怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？"></a>怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？</h3><p>代码如下所示：</p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511113653.png"  alt="Sring字符串编码转换代码"></p>
 <hr>
-<h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h1 id="面对对象"><a href="#面对对象" class="headerlink" title="面对对象"></a>面对对象</h1><h2 id="面对对象概述"><a href="#面对对象概述" class="headerlink" title="面对对象概述"></a>面对对象概述</h2><h2 id="面对对象三大特性"><a href="#面对对象三大特性" class="headerlink" title="面对对象三大特性"></a>面对对象三大特性</h2><h2 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h2><h3 id="抽象类的相关特性"><a href="#抽象类的相关特性" class="headerlink" title="抽象类的相关特性"></a>抽象类的相关特性</h3><h3 id="接口的相关特性"><a href="#接口的相关特性" class="headerlink" title="接口的相关特性"></a>接口的相关特性</h3><h3 id="抽象类与接口的对比"><a href="#抽象类与接口的对比" class="headerlink" title="抽象类与接口的对比"></a>抽象类与接口的对比</h3><ol>
-<li>从设计层面上看，抽象类提供了一种 IS-A 关系，需要满足里式替换原则，即子类对象必须能够替换掉所有父类对象。而接口更像是一种 LIKE-A 关系，它只是提供一种方法实现契约，并不要求接口和实现接口的类具有 IS-A 关系。</li>
-<li>从使用上来看，一个类可以实现多个接口，但是不能继承多个抽象类。</li>
-<li>接口的字段只能是 static 和 final 类型的，而抽象类的字段没有这种限制。</li>
-<li>接口的成员只能是 public 的，而抽象类的成员可以有多种访问权限。</li>
-<li>接口使用implements，抽象使用extends。</li>
+<h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h1 id="面对对象"><a href="#面对对象" class="headerlink" title="面对对象"></a>面对对象</h1><h2 id="面向对象和面向过程的区别"><a href="#面向对象和面向过程的区别" class="headerlink" title="面向对象和面向过程的区别"></a>面向对象和面向过程的区别</h2><p>面向过程：</p>
+<ul>
+<li>优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、Linux/Unix等一般采用面向过程开发，性能是最重要的因素。</li>
+</ul>
+<ul>
+<li>缺点：没有面向对象易维护、易复用、易扩展</li>
+</ul>
+<p>面向对象：</p>
+<ul>
+<li>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护</li>
+</ul>
+<ul>
+<li>缺点：性能比面向过程低</li>
+</ul>
+<p>面向过程是具体化的，流程化的，解决一个问题，你需要一步一步的分析，一步一步的实现。</p>
+<p>面向对象是模型化的，你只需抽象出一个类，这是一个封闭的盒子，在这里你拥有数据也拥有解决问题的方法。需要什么功能直接使用就可以了，不必去一步一步的实现，至于这个功能是如何实现的，关我们什么事？我们会用就可以了。</p>
+<p>面向对象的底层其实还是面向过程，把面向过程抽象成类，然后封装，方便我们使用的就是面向对象了。</p>
+<h2 id="面对对象三大特性"><a href="#面对对象三大特性" class="headerlink" title="面对对象三大特性"></a>面对对象三大特性</h2><ol>
+<li>封装：封装把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法，如果属性不想被外界访问，我们大可不必提供方法给外界访问。但是如果一个类没有提供给外界访问的方法，那么这个类也没有什么意义了。</li>
+<li>继承：继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。通过使用继承我们能够非常方便地复用以前的代码。<ul>
+<li>关于继承如下 3 点请记住：<ol>
+<li>子类拥有父类非 private 的属性和方法。</li>
+<li>子类可以拥有自己属性和方法，即子类可以对父类进行扩展。</li>
+<li>子类可以用自己的方式实现父类的方法。</li>
 </ol>
+</li>
+</ul>
+</li>
+<li>多态：所谓多态就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量到底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。</li>
+</ol>
+<p>在Java中有两种形式可以实现多态：继承（多个子类对同一方法的重写）和接口（实现接口并覆盖接口中同一方法）。</p>
+<p>方法重载（overload）实现的是编译时的多态性（也称为前绑定），而方法重写（override）实现的是运行时的多态性（也称为后绑定）。</p>
+<p>一个引用变量到底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。运行时的多态是面向对象最精髓的东西，要实现多态需要做两件事：</p>
+<ul>
+<li>方法重写（子类继承父类并重写父类中已有的或抽象的方法）；</li>
+<li>对象造型（用父类型引用子类型对象，这样同样的引用调用同样的方法就会根据子类对象的不同而表现出不同的行为）。</li>
+</ul>
+<h3 id="什么是多态机制？Java语言是如何实现多态的？"><a href="#什么是多态机制？Java语言是如何实现多态的？" class="headerlink" title="什么是多态机制？Java语言是如何实现多态的？"></a>什么是多态机制？Java语言是如何实现多态的？</h3><p>所谓多态就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。因为在程序运行时才确定具体的类，这样，不用修改源程序代码，就可以让引用变量绑定到各种不同的类实现上，从而导致该引用调用的具体方法随之改变，即不修改程序代码就可以改变程序运行时所绑定的具体代码，让程序可以选择多个运行状态，这就是多态性。</p>
+<p>多态分为编译时多态和运行时多态。其中编辑时多态是静态的，主要是指方法的重载，它是根据参数列表的不同来区分不同的函数，通过编辑之后会变成两个不同的函数，在运行时谈不上多态。而运行时多态是动态的，它是通过动态绑定来实现的，也就是我们所说的多态性。</p>
+<p><strong>多态的实现</strong></p>
+<p>Java实现多态有三个必要条件：继承、重写、向上转型。</p>
+<ol>
+<li>继承：在多态中必须存在有继承关系的子类和父类。</li>
+<li>重写：子类对父类中某些方法进行重新定义，在调用这些方法时就会调用子类的方法。</li>
+<li>向上转型：在多态中需要将子类的引用赋给父类对象，只有这样该引用才能够具备技能调用父类的方法和子类的方法。</li>
+</ol>
+<p>只有满足了上述三个条件，我们才能够在同一个继承结构中使用统一的逻辑实现代码处理不同的对象，从而达到执行不同的行为。</p>
+<p>对于Java而言，它多态的实现机制遵循一个原则：当超类对象引用变量引用子类对象时，被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法，但是这个被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法。</p>
+<h3 id="面向对象五大基本原则是什么？"><a href="#面向对象五大基本原则是什么？" class="headerlink" title="面向对象五大基本原则是什么？"></a>面向对象五大基本原则是什么？</h3><ul>
+<li>单一职责原则SRP(Single Responsibility Principle)：类的功能要单一，不能包罗万象，跟杂货铺似的。</li>
+<li>开放封闭原则OCP(Open－Close Principle)：一个模块对于拓展是开放的，对于修改是封闭的，想要增加功能热烈欢迎，想要修改，哼，一万个不乐意。</li>
+<li>里式替换原则LSP(the Liskov Substitution Principle LSP)：子类可以替换父类出现在父类能够出现的任何地方。比如你能代表你爸去你姥姥家干活。哈哈~~</li>
+<li>依赖倒置原则DIP(the Dependency Inversion Principle DIP)：高层次的模块不应该依赖于低层次的模块，他们都应该依赖于抽象。抽象不应该依赖于具体实现，具体实现应该依赖于抽象。就是你出国要说你是中国人，而不能说你是哪个村子的。比如说中国人是抽象的，下面有具体的xx省，xx市，xx县。你要依赖的抽象是中国人，而不是你是xx村的。</li>
+<li>接口分离原则ISP(the Interface Segregation Principle ISP)：设计时采用多个与特定客户类有关的接口比采用一个通用的接口要好。就比如一个手机拥有打电话，看视频，玩游戏等功能，把这几个功能拆分成不同的接口，比在一个接口里要好的多。</li>
+</ul>
+<hr>
+<h2 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h2><h3 id="抽象类的相关特性"><a href="#抽象类的相关特性" class="headerlink" title="抽象类的相关特性"></a>抽象类的相关特性</h3><ul>
+<li>被 Abstract 关键字修饰</li>
+<li>含有抽象方法的类一定是抽象类，但是抽象类不一定含有抽象方法；且抽象方法必须是 public 或protected，否则不能被子类继承。默认修饰符根据 Java 版本而定</li>
+<li>抽象方法可以有具体数据和具体实现！</li>
+<li>抽象类中可以定义自己的成员变量权限没要求，private，protected，public(亲测通过)</li>
+<li>抽象类中的抽象方法要被实现，所以不能用 static 和 private 修饰。</li>
+<li>子类继承抽象类时，必须实现抽象类中的所有抽象方法，否则该子类也要被定义为抽象类</li>
+<li>抽象类不能被实例化，只能引用其非抽象子类的对象</li>
+<li>可以有构造器，初始化块，内部类</li>
+<li>Abstract 不能修饰成员，局部变量</li>
+</ul>
+<h3 id="接口的相关特性"><a href="#接口的相关特性" class="headerlink" title="接口的相关特性"></a>接口的相关特性</h3><ul>
+<li>接口中变量类型默认且只能是 public staic final</li>
+<li>接口中声明抽象方法，且只能是默认的public abstract，没有具体的实现。默认的方法没有方法体，但JDK1.8之后有默认方法，静态方法是要有方法体。</li>
+<li>子类必须实现所有接口函数</li>
+<li>不能定义构造器和初始化块</li>
+<li>接口可多继承</li>
+<li>接口的实现类必须全部实现接口中的方法，如果不实现，可以将子类变成一个抽象类</li>
+</ul>
+<h3 id="抽象类与接口的对比"><a href="#抽象类与接口的对比" class="headerlink" title="抽象类与接口的对比"></a>抽象类与接口的对比</h3><p>抽象类是用来捕捉子类的通用特性的。接口是抽象方法的集合。</p>
+<p>从设计层面来说，抽象类是对类的抽象，是一种模板设计，接口是行为的抽象，是一种行为的规范。</p>
+<p><strong>相同点</strong></p>
+<ul>
+<li>接口和抽象类都不能实例化</li>
+<li>都位于继承的顶端，用于被其他实现或继承</li>
+<li>都包含抽象方法，其子类都必须覆写这些抽象方法</li>
+</ul>
+<p><strong>不同点</strong></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511142749.png"  alt="抽象类与接口的不同点"></p>
+<p><strong>备注</strong>：Java8中接口中引入默认方法和静态方法，以此来减少抽象类和接口之间的差异。</p>
+<p>现在，我们可以为接口提供默认实现的方法了，并且不用强制子类来实现它。</p>
+<p>接口和抽象类各有优缺点，在接口和抽象类的选择上，必须遵守这样一个原则：</p>
+<ul>
+<li>行为模型应该总是通过接口而不是抽象类定义，所以通常是优先选用接口，尽量少用抽象类。</li>
+<li>选择抽象类的时候通常是如下情况：需要定义子类的行为，又要为子类提供通用的功能。</li>
+</ul>
 <h3 id="什么时候用抽象类什么时候用接口？"><a href="#什么时候用抽象类什么时候用接口？" class="headerlink" title="什么时候用抽象类什么时候用接口？"></a>什么时候用抽象类什么时候用接口？</h3><ol>
 <li>使用接口：<ul>
 <li>需要让不相关的类都实现一个方法，例如不相关的类都可以实现 Compareable 接口中的 <code>compareTo()</code> 方法；</li>
@@ -382,12 +467,164 @@
 </li>
 <li>在很多情况下，接口优先于抽象类。因为接口没有抽象类严格的类层次结构要求，可以灵活地为一个类添加行为。并且从 Java 8 开始，接口也可以有默认的方法实现，使得修改接口的成本也变的很低。</li>
 </ol>
-<h3 id="接口与抽象类在不同版本中的变化"><a href="#接口与抽象类在不同版本中的变化" class="headerlink" title="接口与抽象类在不同版本中的变化"></a>接口与抽象类在不同版本中的变化</h3><h3 id="抽象的（abstract）方法是否可同时是静态的（static）-是否可同时是本地方法（native），是否可同时被synchronized修饰？"><a href="#抽象的（abstract）方法是否可同时是静态的（static）-是否可同时是本地方法（native），是否可同时被synchronized修饰？" class="headerlink" title="抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？"></a>抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？</h3><p>都不能，主要原因如下：</p>
+<h3 id="接口与抽象类在不同版本中的变化"><a href="#接口与抽象类在不同版本中的变化" class="headerlink" title="接口与抽象类在不同版本中的变化"></a>接口与抽象类在不同版本中的变化</h3><ul>
+<li>抽象类在1.8以前，其方法的默认访问权限为protected；1.8后改为default</li>
+<li>接口在1.8以前，方法必须是public；1.8时可以使用default；1.9时可以是private</li>
+</ul>
+<h3 id="通过实例对象-方法名这种调用过程的流程"><a href="#通过实例对象-方法名这种调用过程的流程" class="headerlink" title="通过实例对象.方法名这种调用过程的流程"></a>通过实例对象.方法名这种调用过程的流程</h3><ul>
+<li>编译器查看对象的声明类型和方法名；如果有多个同名但参数类型不同的函数，那么编译器将一一列举所有该类中同名的方法和超类中同名的方法</li>
+<li>编译器查看调用方法时提供的参数类型。如果存在一个参数匹配的方法，那么就使用这个方法，这个过程称之为重载解析；如果未找到一个匹配的参数，那么就会报错</li>
+<li>如果该方法是 private 方法、 static 方法、 final 方法或者构造器，则编译器可以准确地知道应该调用哪种方法，被称之为静态绑定。与之对应的是，调用方法依赖于隐式参数的实际类型，并在运行时实现动态绑定</li>
+<li>当程序运行时并采用动态绑定调用方法时，虚拟机一定会调用最合适的那个类方法，否则层层向超类上搜索</li>
+</ul>
+<p>值得注意的是，在调用方法搜索时，时间开销相当大。<u>因此 ，虚拟机为每个类预先创建了一个方法表，其中列出了所有方法的签名和实际调用的方法。通过查表节省时间</u></p>
+<h3 id="抽象的（abstract）方法是否可同时是静态的（static）-是否可同时是本地方法（native），是否可同时被synchronized修饰？"><a href="#抽象的（abstract）方法是否可同时是静态的（static）-是否可同时是本地方法（native），是否可同时被synchronized修饰？" class="headerlink" title="抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？"></a>抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？</h3><p>都不能，主要原因如下：</p>
 <ol>
 <li>抽象方法需要子类重写，而静态的方法是无法被重写的，因此二者是矛盾的。</li>
-<li></li>
+<li>本地方法是由本地代码（如C代码）实现的方法，而抽象方法是没有实现的，也是矛盾的。</li>
+<li>synchronized和方法的实现细节有关，抽象方法不涉及实现细节，因此也是相互矛盾的。</li>
 </ol>
-<h3 id="普通类与抽象类的区别"><a href="#普通类与抽象类的区别" class="headerlink" title="普通类与抽象类的区别"></a>普通类与抽象类的区别</h3><h3 id="抽象类能够使用final修饰？"><a href="#抽象类能够使用final修饰？" class="headerlink" title="抽象类能够使用final修饰？"></a>抽象类能够使用final修饰？</h3><h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h3><h3 id="内部类的分类？"><a href="#内部类的分类？" class="headerlink" title="内部类的分类？"></a>内部类的分类？</h3><h3 id="内部类的优点"><a href="#内部类的优点" class="headerlink" title="内部类的优点"></a>内部类的优点</h3><h3 id="内部类的应用场景"><a href="#内部类的应用场景" class="headerlink" title="内部类的应用场景"></a>内部类的应用场景</h3><h3 id="局部内部类与匿名内部类"><a href="#局部内部类与匿名内部类" class="headerlink" title="局部内部类与匿名内部类"></a>局部内部类与匿名内部类</h3><h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h2><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><script>
+<h3 id="普通类与抽象类的区别"><a href="#普通类与抽象类的区别" class="headerlink" title="普通类与抽象类的区别"></a>普通类与抽象类的区别</h3><ol>
+<li>普通类不能包含抽象方法，抽象类可以包含抽象方法。</li>
+<li>抽象类不能直接实例化，普通类可以直接实例化。</li>
+</ol>
+<h3 id="抽象类能够使用final修饰？"><a href="#抽象类能够使用final修饰？" class="headerlink" title="抽象类能够使用final修饰？"></a>抽象类能够使用final修饰？</h3><p>不能，定义抽象类就是让其他类继承的，如果定义为 final 该类就不能被继承，这样彼此就会产生矛盾，所以 final 不能修饰抽象类</p>
+<h3 id="创建一个对象用什么关键字？对象实例与对象引用有何不同？"><a href="#创建一个对象用什么关键字？对象实例与对象引用有何不同？" class="headerlink" title="创建一个对象用什么关键字？对象实例与对象引用有何不同？"></a>创建一个对象用什么关键字？对象实例与对象引用有何不同？</h3><p>new关键字，new创建对象实例（对象实例在堆内存中），对象引用指向对象实例（对象引用存放在栈内存中）。一个对象引用可以指向0个或1个对象（一根绳子可以不系气球，也可以系一个气球）;一个对象可以有n个引用指向它（可以用n条绳子系住一个气球）</p>
+<hr>
+<h2 id="变量与方法"><a href="#变量与方法" class="headerlink" title="变量与方法"></a>变量与方法</h2><h3 id="简述静态类和单例的区别"><a href="#简述静态类和单例的区别" class="headerlink" title="简述静态类和单例的区别"></a>简述静态类和单例的区别</h3><ul>
+<li>单例可以继承类，实现接口，而静态类不能（可以集成类，但不能集成实例成员）</li>
+<li>单例可以被延迟初始化，静态类一般在第一次加载是初始化</li>
+<li>单例类可以被集成，他的方法可以被覆写</li>
+<li>单例类可以被用于多态而无需强迫用户只假定唯一的实例</li>
+<li>（静态方法）静态方法中产生的对象，会随着静态方法执行完毕而释放掉，而且执行类中的静态方法时，不会实例化静态方法所在的类。如果是用singleton，产生的那一个唯一的实例，会一直在内存中，不会被GC清除的(原因是静态的属性变量不会被GC清除)，除非整个JVM退出</li>
+</ul>
+<h3 id="成员变量与局部变量的区别有哪些"><a href="#成员变量与局部变量的区别有哪些" class="headerlink" title="成员变量与局部变量的区别有哪些"></a>成员变量与局部变量的区别有哪些</h3><ul>
+<li>变量：在程序执行的过程中，在某个范围内其值可以发生改变的量。从本质上讲，变量其实是内存中的一小块区域</li>
+<li>成员变量：方法外部，类内部定义的变量</li>
+<li>局部变量：类的方法中的变量。</li>
+</ul>
+<p><strong>成员变量和局部变量的区别</strong></p>
+<ol>
+<li>作用域<ul>
+<li>成员变量：针对整个类有效。</li>
+<li>局部变量：只在某个范围内有效。(一般指的就是方法,语句体内)</li>
+</ul>
+</li>
+<li>存储位置<ul>
+<li>成员变量：随着对象的创建而存在，随着对象的消失而消失，存储在堆内存中。</li>
+<li>局部变量：在方法被调用，或者语句被执行的时候存在，存储在栈内存中。当方法调用完，或者语句结束后，就自动释放。</li>
+</ul>
+</li>
+<li>生命周期<ul>
+<li>成员变量：随着对象的创建而存在，随着对象的消失而消失</li>
+<li>局部变量：当方法调用完，或者语句结束后，就自动释放。</li>
+</ul>
+</li>
+<li>初始值<ul>
+<li>成员变量：有默认初始值。</li>
+<li>局部变量：没有默认初始值，使用前必须赋值。</li>
+</ul>
+</li>
+<li>使用原则<ul>
+<li>在使用变量时需要遵循的原则为：就近原则</li>
+<li>首先在局部范围找，有就使用；接着在成员位置找。</li>
+</ul>
+</li>
+</ol>
+<h3 id="为什么在父类中要定义一个没有参数的空构造函数"><a href="#为什么在父类中要定义一个没有参数的空构造函数" class="headerlink" title="为什么在父类中要定义一个没有参数的空构造函数"></a>为什么在父类中要定义一个没有参数的空构造函数</h3><p>Java 程序在执行子类的构造方法之前，如果没有用 super() 来调用父类特定的构造方法，则会调用父类中“没有参数的构造方法”。因此，如果父类中只定义了有参数的构造方法，而在子类的构造方法中又没有用super()来调用父类中特定的构造方法，则编译时将发生错误，因为Java程序在父类中找不到没有参数的构造方法可供执行。解决办法是在父类里加上一个不做事且没有参数的构造方法。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        Parent dp = <span class="keyword">new</span> Son(<span class="number">12</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="comment">// 注释无参构造函数，无法通过编译</span></span><br><span class="line">    Parent() {}</span><br><span class="line">    Parent(<span class="keyword">int</span> age) {</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> height;</span><br><span class="line">    Son(<span class="keyword">int</span> height) {</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="在调用子类构造方法之前会先调用父类没有参数的构造方法，其目的是？"><a href="#在调用子类构造方法之前会先调用父类没有参数的构造方法，其目的是？" class="headerlink" title="在调用子类构造方法之前会先调用父类没有参数的构造方法，其目的是？"></a>在调用子类构造方法之前会先调用父类没有参数的构造方法，其目的是？</h3><p>帮助子类做初始化工作。</p>
+<h3 id="一个类的构造方法的作用是什么？若一个类没有声明构造方法，该程序能正确执行吗？为什么？"><a href="#一个类的构造方法的作用是什么？若一个类没有声明构造方法，该程序能正确执行吗？为什么？" class="headerlink" title="一个类的构造方法的作用是什么？若一个类没有声明构造方法，该程序能正确执行吗？为什么？"></a>一个类的构造方法的作用是什么？若一个类没有声明构造方法，该程序能正确执行吗？为什么？</h3><p>主要作用是完成对类对象的初始化工作。可以执行。因为一个类即使没有声明构造方法也会有默认的不带参数的构造方法。</p>
+<h3 id="构造方法有哪些特性？"><a href="#构造方法有哪些特性？" class="headerlink" title="构造方法有哪些特性？"></a>构造方法有哪些特性？</h3><ol>
+<li>名字与类名相同；</li>
+<li>没有返回值，但不能用void声明构造函数；</li>
+<li>生成类的对象时自动执行，无需调用。</li>
+</ol>
+<h3 id="静态变量和实例变量区别"><a href="#静态变量和实例变量区别" class="headerlink" title="静态变量和实例变量区别"></a>静态变量和实例变量区别</h3><p>静态变量： 静态变量由于不属于任何实例对象，属于类的，所以在内存中只会有一份，在类的加载过程中，JVM只为静态变量分配一次内存空间。</p>
+<p>实例变量： 每次创建对象，都会为每个对象分配成员变量内存空间，实例变量是属于实例对象的，在内存中，创建几次对象，就有几份成员变量。</p>
+<h3 id="静态变量与普通变量区别"><a href="#静态变量与普通变量区别" class="headerlink" title="静态变量与普通变量区别"></a>静态变量与普通变量区别</h3><p>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p>
+<p>还有一点就是static成员变量的初始化顺序按照定义的顺序进行初始化。</p>
+<h3 id="静态方法和实例方法有何不同？"><a href="#静态方法和实例方法有何不同？" class="headerlink" title="静态方法和实例方法有何不同？"></a>静态方法和实例方法有何不同？</h3><p>静态方法和实例方法的区别主要体现在两个方面：</p>
+<p>在外部调用静态方法时，可以使用”类名.方法名”的方式，也可以使用”对象名.方法名”的方式。而实例方法只有后面这种方式。也就是说，调用静态方法可以无需创建对象。<br>静态方法在访问本类的成员时，只允许访问静态成员（即静态成员变量和静态方法），而不允许访问实例成员变量和实例方法；实例方法则无此限制</p>
+<h3 id="成员变量与局部变量"><a href="#成员变量与局部变量" class="headerlink" title="成员变量与局部变量"></a>成员变量与局部变量</h3><ul>
+<li>成员变量可以使用 public，private，static等修饰符修饰；而局部变量不能被访问修饰符以及static 修饰。二者均可被final修饰</li>
+<li>成员变量在堆中，而局部变量在栈中</li>
+<li>成员变量如果未被赋初值，则会自动以默认值赋值，final修饰则需要显式地手动赋值；而局部变量不会被自动赋初值，直接拿来用会抛异常</li>
+</ul>
+<h3 id="静态方法和实例方法的区别"><a href="#静态方法和实例方法的区别" class="headerlink" title="静态方法和实例方法的区别"></a>静态方法和实例方法的区别</h3><ul>
+<li>在外部调用静态方法时，可以使用”类名.方法名”的方式，也可以使用”对象名.方法名”的方式。而实例方法只有后面这种方式。也就是说，调用静态方法可以无需创建对象</li>
+<li>静态方法在访问本类的成员时，只允许访问静态成员（即静态成员变量和静态方法），而不允许访问实例成员变量和实例方法；实例方法则无此限制</li>
+</ul>
+<h2 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h2><h3 id="为什么Java中只有值传递"><a href="#为什么Java中只有值传递" class="headerlink" title="为什么Java中只有值传递"></a>为什么Java中只有值传递</h3><p>在程序设计语言中存在两种传递方式，分别是传值调用和传址调用。传值调用指的是方法接收的是调用者提供的值，而传址调用指的是调用者提供变量的地址。一个方法可以修改传址调用所对应的变量值，而不能修改传值调用所对应的变量值。</p>
+<p>Java程序设计语言总是采用按值调用。也就是说，方法得到的是所有参数值的一个拷贝，也就是说，方法不能修改传递给它的任何参数变量的内容。所以得到如下结论：</p>
+<ul>
+<li>一个方法不能修改一个基本数据类型的参数（即数值型或布尔型）</li>
+<li>一个方法可以改变一个对象参数的状态</li>
+<li>一个方法不能让对象参数引用一个新的对象</li>
+</ul>
+<hr>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h3><p>在Java中，可以将一个类的定义放在另外一个类的定义内部，这就是<strong>内部类</strong>。内部类本身就是类的一个属性，与其他属性定义方式一致。</p>
+<h3 id="内部类的分类？"><a href="#内部类的分类？" class="headerlink" title="内部类的分类？"></a>内部类的分类？</h3><p>内部类可以分为四种：<strong>成员内部类、局部内部类、匿名内部类和静态内部类</strong>。</p>
+<h5 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h5><p>定义在类内部的静态类，就是静态内部类。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> radius = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInner</span> </span>{</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">()</span> </span>{</span><br><span class="line">            System.out.println(<span class="string">"visit outer static  variable:"</span> + radius);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>静态内部类可以访问外部类所有的静态变量，而不可访问外部类的非静态变量；静态内部类的创建方式，<code>new 外部类.静态内部类()</code>，如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Outer.StaticInner inner = <span class="keyword">new</span> Outer.StaticInner();</span><br><span class="line">inner.visit();</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h5><p>定义在类内部，成员位置上的非静态类，就是成员内部类。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span>  <span class="keyword">int</span> radius = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count =<span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">     <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{	<span class="comment">// 成员内部类</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">()</span> </span>{</span><br><span class="line">            System.out.println(<span class="string">"visit outer static  variable:"</span> + radius);</span><br><span class="line">            System.out.println(<span class="string">"visit outer   variable:"</span> + count);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>成员内部类可以访问外部类所有的变量和方法，包括静态和非静态，私有和公有。成员内部类依赖于外部类的实例，它的创建方式<code>外部类实例.new 内部类()</code>，如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">Outer.Inner inner = outer.<span class="keyword">new</span> Inner();</span><br><span class="line">inner.visit();</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h5><p>定义在方法中的内部类，就是局部内部类。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> out_a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> STATIC_b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFunctionClass</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">int</span> inner_c =<span class="number">3</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{	<span class="comment">// 局部内部类</span></span><br><span class="line">            <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>{</span><br><span class="line">                System.out.println(out_a);</span><br><span class="line">                System.out.println(STATIC_b);</span><br><span class="line">                System.out.println(inner_c);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        Inner  inner = <span class="keyword">new</span> Inner();</span><br><span class="line">        inner.fun();</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testStaticFunctionClass</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">int</span> d =<span class="number">3</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{</span><br><span class="line">            <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>{</span><br><span class="line">                <span class="comment">// System.out.println(out_a); 编译错误，定义在静态方法中的局部类不可以访问外部类的实例变量</span></span><br><span class="line">                System.out.println(STATIC_b);</span><br><span class="line">                System.out.println(d);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        Inner  inner = <span class="keyword">new</span> Inner();</span><br><span class="line">        inner.fun();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>定义在实例方法中的局部类可以访问外部类的所有变量和方法，定义在静态方法中的局部类只能访问外部类的静态变量和方法。局部内部类的创建方式，在对应方法内，<code>new 内部类()</code>，如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testStaticFunctionClass</span><span class="params">()</span></span>{</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{</span><br><span class="line">   }</span><br><span class="line">   Inner  inner = <span class="keyword">new</span> Inner();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h5><p>匿名内部类就是没有名字的内部类，日常开发中使用的比较多。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> i)</span> </span>{</span><br><span class="line">        <span class="keyword">new</span> Service() {</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) {</span><br><span class="line">                    System.out.println(<span class="string">"匿名内部类"</span> );</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }.method();</span><br><span class="line">    }</span><br><span class="line"> }</span><br><span class="line"> <span class="comment">//匿名内部类必须继承或实现一个已有的接口 </span></span><br><span class="line"> <span class="class"><span class="keyword">interface</span> <span class="title">Service</span></span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>除了没有名字，匿名内部类还有以下特点：</p>
+<ul>
+<li>匿名内部类必须继承一个抽象类或者实现一个接口。</li>
+<li>匿名内部类不能定义任何静态成员和静态方法。</li>
+<li>当所在的方法的形参需要被匿名内部类使用时，必须声明为 final。</li>
+<li>匿名内部类不能是抽象的，它必须要实现继承的类或者实现的接口的所有抽象方法。</li>
+</ul>
+<p>匿名内部类创建方式：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> 类/接口{ </span><br><span class="line">  <span class="comment">//匿名内部类实现部分</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="内部类的优点"><a href="#内部类的优点" class="headerlink" title="内部类的优点"></a>内部类的优点</h3><p>我们为什么要使用内部类呢？因为它有以下优点：</p>
+<ul>
+<li>一个内部类对象可以访问创建它的外部类对象的内容，包括私有数据！</li>
+<li>内部类不为同一包的其他类所见，具有很好的封装性；</li>
+<li>内部类有效实现了“多重继承”，优化 java 单继承的缺陷。</li>
+<li>匿名内部类可以很方便的定义回调。</li>
+</ul>
+<h3 id="内部类的应用场景"><a href="#内部类的应用场景" class="headerlink" title="内部类的应用场景"></a>内部类的应用场景</h3><ol>
+<li>一些多算法场合</li>
+<li>解决一些非面向对象的语句块。</li>
+<li>适当使用内部类，使得代码更加灵活和富有扩展性。</li>
+<li>当某个类除了它的外部类，不再被其他的类使用时。</li>
+</ol>
+<h3 id="局部内部类和匿名内部类访问局部变量的时候，为什么变量必须要加上final？"><a href="#局部内部类和匿名内部类访问局部变量的时候，为什么变量必须要加上final？" class="headerlink" title="局部内部类和匿名内部类访问局部变量的时候，为什么变量必须要加上final？"></a>局部内部类和匿名内部类访问局部变量的时候，为什么变量必须要加上final？</h3><p>局部内部类和匿名内部类访问局部变量的时候，为什么变量必须要加上final呢？它内部原理是什么呢？</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">outMethod</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> a =<span class="number">10</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{</span><br><span class="line">            <span class="function"><span class="keyword">void</span> <span class="title">innerMethod</span><span class="params">()</span></span>{</span><br><span class="line">                System.out.println(a);</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>以上例子，为什么要加final呢？是<u>因为生命周期不一致</u>， 局部变量直接存储在栈中，当方法执行结束后，非final的局部变量就被销毁。而局部内部类对局部变量的引用依然存在，如果局部内部类要调用局部变量时，就会出错。加了final，可以确保局部内部类使用的变量与外层的局部变量区分开，解决了这个问题。</p>
+<h3 id="局部内部类与匿名内部类"><a href="#局部内部类与匿名内部类" class="headerlink" title="局部内部类与匿名内部类"></a>局部内部类与匿名内部类</h3><h3 id="Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？"><a href="#Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？" class="headerlink" title="Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？"></a>Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？</h3><p>可以继承其他类或实现其他接口，在Swing编程和Android开发中常用此方式来实现事件监听和回调。</p>
+<h3 id="内部类相关，看程序说出运行结果"><a href="#内部类相关，看程序说出运行结果" class="headerlink" title="内部类相关，看程序说出运行结果"></a>内部类相关，看程序说出运行结果</h3><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">13</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="keyword">int</span> age = <span class="number">14</span>;</span><br><span class="line">            System.out.println(<span class="string">"局部变量："</span> + age);</span><br><span class="line">            System.out.println(<span class="string">"内部类变量："</span> + <span class="keyword">this</span>.age);</span><br><span class="line">            System.out.println(<span class="string">"外部类变量："</span> + Outer.<span class="keyword">this</span>.age);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        Outer.Inner in = <span class="keyword">new</span> Outer().<span class="keyword">new</span> Inner();</span><br><span class="line">        in.print();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">局部变量：<span class="number">14</span></span><br><span class="line">内部类变量：<span class="number">13</span></span><br><span class="line">外部类变量：<span class="number">12</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h1><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
