@@ -65,7 +65,120 @@
   <entry>
     <title>Java 基础 - 面试题集</title>
     <url>/2020/05/10/java-ji-chu-mian-shi-ti-ji/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Java-概述"><a href="#Java-概述" class="headerlink" title="Java 概述"></a>Java 概述</h1><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><hr>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Java-概述"><a href="#Java-概述" class="headerlink" title="Java 概述"></a>Java 概述</h1><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="Java有哪些数据类型"><a href="#Java有哪些数据类型" class="headerlink" title="Java有哪些数据类型"></a>Java有哪些数据类型</h2><p><strong>定义</strong>：Java语言是强类型语言，对于每一种数据都定义了明确的具体的数据类型，在内存中分配了不同大小的内存空间。</p>
+<p><strong>分类</strong></p>
+<ul>
+<li>基本数据类型<ul>
+<li>数值型<ul>
+<li>整数类型(byte,short,int,long)</li>
+<li>浮点类型(float,double)</li>
+</ul>
+</li>
+<li>字符型(char)</li>
+<li>布尔型(boolean)</li>
+</ul>
+</li>
+<li>引用数据类型<ul>
+<li>类(class)</li>
+<li>接口(interface)</li>
+<li>数组([])</li>
+</ul>
+</li>
+</ul>
+<p><strong>Java基本数据类型图</strong></p>
+<p><img src="/" class="lazyload" data-src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlOUYlQkElRTclQTElODAlRTglQUYlQUQlRTYlQjMlOTUvSmF2YSVFNSU5RiVCQSVFNiU5QyVBQyVFNiU5NSVCMCVFNiU4RCVBRSVFNyVCMSVCQiVFNSU5RSU4Qi5wbmc?x-oss-process=image/format,png"  alt="基本数据类型图"></p>
+<h2 id="使用基本类型的时候有什么注意事项吗？"><a href="#使用基本类型的时候有什么注意事项吗？" class="headerlink" title="使用基本类型的时候有什么注意事项吗？"></a>使用基本类型的时候有什么注意事项吗？</h2><ol>
+<li>基本类型均具有取值范围，在大数*大数的时候，有可能会出现越界的情况。</li>
+<li>基本类型转换时，使用声明的方式。例：long result= 1234567890 * 24 * 365；结果值一定不会是你所期望的那个值，因为1234567890 * 24已经超过了int的范围，如果修改为：long result= 1234567890L * 24 * 365；就正常了。</li>
+<li>慎用基本类型处理货币存储。如采用double常会带来差距，常采用BigDecimal、整型（如果要精确表示分，可将值扩大100倍转化为整型）解决该问题。</li>
+<li>优先使用基本类型。原则上，建议避免无意中的装箱、拆箱行为，尤其是在性能敏感的场合</li>
+<li>如果有线程安全的计算需要，建议考虑使用类型AtomicInteger、AtomicLong 这样的线程安全类。部分比较宽的基本数据类型，比如 float、double，甚至不能保证更新操作的原子性，可能出现程序读取到只更新了一半数据位的数值。</li>
+</ol>
+<h2 id="Java中基础数据类型是在栈上分配还是在堆上分配？"><a href="#Java中基础数据类型是在栈上分配还是在堆上分配？" class="headerlink" title="Java中基础数据类型是在栈上分配还是在堆上分配？"></a>Java中基础数据类型是在栈上分配还是在堆上分配？</h2><p>要解答这个问题，首先要看这个数据类型在哪里定义的，有以下三种情况。</p>
+<ul>
+<li>如果在方法体内定义的，这时候就是在栈上分配的</li>
+<li>如果是类的成员变量，这时候就是在堆上分配的</li>
+<li>如果是类的静态成员变量，在方法区上分配的</li>
+</ul>
+<h2 id="Java-两个整型相加怎么知道有没有溢出"><a href="#Java-两个整型相加怎么知道有没有溢出" class="headerlink" title="Java 两个整型相加怎么知道有没有溢出"></a>Java 两个整型相加怎么知道有没有溢出</h2><p>正数相加溢出会变成负数</p>
+<h2 id="拆箱与装箱"><a href="#拆箱与装箱" class="headerlink" title="拆箱与装箱"></a>拆箱与装箱</h2><h3 id="基本类型和包装类型的区别，涉及自动装箱和拆箱，怎么做的，原理？"><a href="#基本类型和包装类型的区别，涉及自动装箱和拆箱，怎么做的，原理？" class="headerlink" title="基本类型和包装类型的区别，涉及自动装箱和拆箱，怎么做的，原理？"></a>基本类型和包装类型的区别，涉及自动装箱和拆箱，怎么做的，原理？</h3><p>拆箱与装箱示例代码如下：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511154345.png"  alt="拆箱与装箱"></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511154403.png"  alt="测试"></p>
+<p>自动装箱实际上算是一种语法糖。什么是语法糖？可以简单理解为 Java 平台为我们自动进行了一些转换，保证不同的写法在运行时等价，它们发生在编译阶段，也就是生成的字节码是一致的。</p>
+<p>最常用的是通过new方法构建Integer对象。但是，基于大部分数据操作都是集中在有限的、较小的数值范围，在JDK1.5 中新增了静态工厂方法 valueOf，其背后实现是将int值为-128 到 127 之间的Integer对象进行缓存，在调用时候直接从缓存中获取，进而提升构建对象的性能，也就是说使用该方法后，如果两个对象的int值相同且落在缓存值范围内，那么这个两个对象就是同一个对象；当值较小且频繁使用时，推荐优先使用整型池方法（时间与空间性能俱佳）</p>
+<h3 id="integer和int的自动装箱和拆箱以及为什么要用integer类"><a href="#integer和int的自动装箱和拆箱以及为什么要用integer类" class="headerlink" title="integer和int的自动装箱和拆箱以及为什么要用integer类"></a>integer和int的自动装箱和拆箱以及为什么要用integer类</h3><p>Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，是为了能够将这些基本数据类型当成对象操作！</p>
+<p>Java为每一个基本数据类型都引入了对应的包装类型（wrapper class），int的包装类就是Integer，从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。</p>
+<h3 id="自动装箱与拆箱：引入内存池"><a href="#自动装箱与拆箱：引入内存池" class="headerlink" title="自动装箱与拆箱：引入内存池"></a>自动装箱与拆箱：引入内存池</h3><p><strong>示例代码如下</strong></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155601.png"  alt="示例代码"></p>
+<p>如果不明就里很容易认为两个输出要么都是true要么都是false。首先需要注意的是f1、f2、f3、f4四个变量都是Integer对象引用，所以下面的==运算比较的不是值而是引用。</p>
+<p>装箱的本质是什么呢？当我们给一个Integer对象赋一个int值的时候，会调用Integer类的静态方法valueOf，如果看看valueOf的源代码就知道发生了什么。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155624.png"  alt="valueOf源码"></p>
+<p>简单的说，如果整型字面量的值在-128到127之间，那么不会new新的Integer对象，而是直接引用常量池中的Integer对象，所以上面的面试题中<code>f1 == f2</code> 的结果是true，而<code>f3 == f4</code>的结果是false。</p>
+<p>深入解析如下：<strong>引入一个缓存池的概念</strong></p>
+<p><code>new Integer(123)</code> 与 <code>Integer.valueOf(123)</code> 的区别在于：</p>
+<ul>
+<li>new Integer(123) 每次都会新建一个对象；</li>
+<li>Integer.valueOf(123) 会使用缓存池中的对象，多次调用会取得同一个对象的引用。</li>
+</ul>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155739.png"  alt="两种创建方式的测试"></p>
+<p>编译器会在自动装箱过程调用 valueOf() 方法，因此多个值相同且值在缓存池范围内的 Integer 实例使用自动装箱来创建，那么就会引用相同的对象。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155809.png"  alt="测试用例"></p>
+<p>基本类型对应的缓冲池如下：</p>
+<ul>
+<li>boolean values true and false</li>
+<li>all byte values</li>
+<li>short values between -128 and 127</li>
+<li>int values between -128 and 127</li>
+<li>char in the range \u0000 to \u007F</li>
+<li>注：在使用这些基本类型对应的包装类型时，如果该数值范围在缓冲池范围内，就可以直接使用缓冲池中的对象。</li>
+</ul>
+<p>在 jdk 1.8 所有的数值类缓冲池中，Integer 的缓冲池 IntegerCache 很特殊，这个缓冲池的下界是 - 128，上界默认是 127，但是这个上界是可调的，在启动 jvm 的时候，通过 <code>-XX:AutoBoxCacheMax=&lt;size&gt;</code> 来指定这个缓冲池的大小，该选项在 JVM 初始化的时候会设定一个名为 <code>java.lang.IntegerCache.high</code> 系统属性，然后 IntegerCache 初始化的时候就会读取该系统属性来决定上界。</p>
+<p>IntegerCache是Integer的内部类，其代码如下所示：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155923.png"  alt="IntegerCache源码"></p>
+<h2 id="基本数据类型与字符串"><a href="#基本数据类型与字符串" class="headerlink" title="基本数据类型与字符串"></a>基本数据类型与字符串</h2><h3 id="如何将字符串转换为基本数据类型？"><a href="#如何将字符串转换为基本数据类型？" class="headerlink" title="如何将字符串转换为基本数据类型？"></a>如何将字符串转换为基本数据类型？</h3><p>调用基本数据类型对应的包装类中的方法parseXXX(String)或valueOf(String)即可返回相应基本类型；</p>
+<h3 id="如何将基本数据类型转换为字符串？"><a href="#如何将基本数据类型转换为字符串？" class="headerlink" title="如何将基本数据类型转换为字符串？"></a>如何将基本数据类型转换为字符串？</h3><p>一种方法是将基本数据类型与空字符串（””）连接（+）即可获得其所对应的字符串；</p>
+<p>另一种方法是调用String 类中的valueOf()方法返回相应字符串；</p>
+<h2 id="你知道对象的内存结构是什么样的吗？比如，对象头的结构。如何计算或者获取某个-Java-对象的大小"><a href="#你知道对象的内存结构是什么样的吗？比如，对象头的结构。如何计算或者获取某个-Java-对象的大小" class="headerlink" title="你知道对象的内存结构是什么样的吗？比如，对象头的结构。如何计算或者获取某个 Java 对象的大小?"></a>你知道对象的内存结构是什么样的吗？比如，对象头的结构。如何计算或者获取某个 Java 对象的大小?</h2><blockquote>
+<p>节选自《深入理解JAVA虚拟机》</p>
+</blockquote>
+<p>在HotSpot虚拟机中，对象在内存中存储的布局可以分为3块区域：<u>对象头（Header）、实例数据（Instance Data）和对齐填充（Padding）</u>。</p>
+<ol>
+<li>HotSpot虚拟机的对象头包括两部分信息<ul>
+<li>第一部分用于<u>存储对象自身的运行时数据</u>，如哈希码（HashCode）、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分数据的长度在32位和64位的虚拟机（未开启压缩指针）中分别为32bit和64bit，官方称它为<strong>“Mark Word”</strong>。<ul>
+<li>Hotspot虚拟机文档 “oops/oop.hp”有对Markword字段的定义：<ul>
+<li><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511160525.png"  alt="MarkWord定义"></li>
+<li>normal object，初始new出来的对象都是这种状态</li>
+<li>biased object，当某个对象被作为同步锁对象时，会有一个偏向锁，其实就是存储了持有该同步锁的线程id，关于偏向锁的知识这里就不再赘述了，大家可以自行查阅相关资料。</li>
+<li>CMS promoted object 和 CMS free block 我也不清楚到底是啥，但是看名字似乎跟CMS 垃圾回收器有关，这里我们也可以暂时忽略它们</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对象头的另外一部分是<u>类型指针</u>，即对象指向它的类元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例。并不是所有的虚拟机实现都必须在对象数据上保留类型指针，换句话说，查找对象的元数据信息并不一定要经过对象本身。另外，如果对象是一个Java数组，那在对象头中还必须有一块用于记录数组长度的数据，因为虚拟机可以通过普通Java对象的元数据信息确定Java对象的大小，但是从数组的元数据中却无法确定数组的大小。</li>
+</ul>
+</li>
+<li>接下来的实例数据部分是对象真正存储的有效信息，也是在程序代码中所定义的各种类型的字段内容。无论是从父类继承下来的，还是在子类中定义的，都需要记录起来。</li>
+<li>第三部分对齐填充并不是必然存在的，也没有特别的含义，它仅仅起着占位符的作用。由于HotSpot VM的自动内存管理系统要求对象起始地址必须是8字节的整数倍，换句话说，就是对象的大小必须是8字节的整数倍。</li>
+</ol>
+<p>计算对象大小可通过dump内存之后用memory analyze分析，也可以利用：jol，jmap，或者instrument api（Java agent）等等</p>
+<h2 id="那么Integer对象占用内存大小多少？"><a href="#那么Integer对象占用内存大小多少？" class="headerlink" title="那么Integer对象占用内存大小多少？"></a>那么Integer对象占用内存大小多少？</h2><p>基于64的虚拟机：</p>
+<ol>
+<li>Mark Word（对象头）：标记位 8字节，类似轻量级锁标记位，偏向锁标记位等。</li>
+<li>Class对象指针：如果是32G内存以下的，默认开启对象指针压缩，4个字节，指向对象对应class对象的内存地址。</li>
+<li>对象实际数据：对象所有成员变量。</li>
+<li>对齐：对齐填充字节，按照8个字节填充。</li>
+</ol>
+<p>故：8+4+4=16 字节；</p>
+<p>或者用以下代码方法：获取一个JAVA对象的大小，可以将一个对象进行序列化为二进制的Byte，便可以查看大小。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511160734.png"  alt="Integer大小查看"></p>
+<p>有一个Fruit类继承了Object类，我们分别新建一个object和fruit，那他们分别占用多大的内存呢？</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511160800.png"  alt="Fruit类"></p>
+<p>先来看object对象，通过上面的知识，它的Markword是8个字节，kclass是4个字节， 加起来是12个字节，加上4个字节的对齐填充，所以它占用的空间是16个字节。</p>
+<p>再来看fruit对象，同样的，它的Markword是8个字节，kclass是4个字节，但是它还有个size成员变量，int类型占4个字节，加起来刚好是16个字节，所以不需要对齐填充。</p>
+<p>详细见：</p>
+<p><a href="https://cloud.tencent.com/developer/article/1450250" target="_blank" rel="noopener">重学Java-一个对象到底占多少内存？</a></p>
+<p><a href="https://juejin.im/post/5e538d8d6fb9a07ccf303aca" target="_blank" rel="noopener">你写的Java对象究竟占多少内存？</a></p>
+<hr>
 <h1 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h1><hr>
 <h1 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 JDK8 中，String 类使用 char[] 数组保存值。这个 char 数组使用 final 修饰符修饰，意味着一旦确定就引用即不可修改；此外，String 类中也没有提供修改数组修改值的方法。上述两种方式保证了 String 值的不可变性。此外 String 类只用 final 修饰，表明其不可继承。</p>
 <p>版本的变化区别：</p>
@@ -417,7 +530,20 @@
 <li>接口分离原则ISP(the Interface Segregation Principle ISP)：设计时采用多个与特定客户类有关的接口比采用一个通用的接口要好。就比如一个手机拥有打电话，看视频，玩游戏等功能，把这几个功能拆分成不同的接口，比在一个接口里要好的多。</li>
 </ul>
 <hr>
-<h2 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h2><h3 id="抽象类的相关特性"><a href="#抽象类的相关特性" class="headerlink" title="抽象类的相关特性"></a>抽象类的相关特性</h3><ul>
+<h2 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h2><h3 id="讲讲借口与抽象类？"><a href="#讲讲借口与抽象类？" class="headerlink" title="讲讲借口与抽象类？"></a>讲讲借口与抽象类？</h3><p>抽象类和抽象方法都使用 abstract 关键字进行声明。如果一个类中包含抽象方法，那么这个类必须声明为抽象类。抽象类和普通类最大的区别是，抽象类<strong>不能被实例化，只能被继承</strong>。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511153452.png"  alt="抽象类"></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511153531.png"  alt="实现抽象类"></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511153544.png"  alt="抽象类的使用"></p>
+<p>接口是抽象类的延伸，在 Java 8 之前，它可以看成是一个完全抽象的类，也就是说它不能有任何的方法实现。</p>
+<ul>
+<li>从 Java 8 开始，接口也可以拥有默认的方法实现，这是因为不支持默认方法的接口的维护成本太高了。</li>
+<li>在 Java 8 之前，如果一个接口想要添加新的方法，那么要修改所有实现了该接口的类，让它们都实现新增的方法。</li>
+<li>接口的成员（字段 + 方法）默认都是 public 的，并且不允许定义为 private 或者 protected。接口的字段默认都是 static 和 final 的。</li>
+</ul>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511153730.png"  alt="接口的实现"></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511153743.png"  alt="继承接口"></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511153751.png"  alt="接口的实现"></p>
+<h3 id="抽象类的相关特性"><a href="#抽象类的相关特性" class="headerlink" title="抽象类的相关特性"></a>抽象类的相关特性</h3><ul>
 <li>被 Abstract 关键字修饰</li>
 <li>含有抽象方法的类一定是抽象类，但是抽象类不一定含有抽象方法；且抽象方法必须是 public 或protected，否则不能被子类继承。默认修饰符根据 Java 版本而定</li>
 <li>抽象方法可以有具体数据和具体实现！</li>
@@ -438,6 +564,14 @@
 </ul>
 <h3 id="抽象类与接口的对比"><a href="#抽象类与接口的对比" class="headerlink" title="抽象类与接口的对比"></a>抽象类与接口的对比</h3><p>抽象类是用来捕捉子类的通用特性的。接口是抽象方法的集合。</p>
 <p>从设计层面来说，抽象类是对类的抽象，是一种模板设计，接口是行为的抽象，是一种行为的规范。</p>
+<p>总的来说：</p>
+<ol>
+<li>从设计层面上看，抽象类提供了一种 IS-A 关系，需要满足里式替换原则，即子类对象必须能够替换掉所有父类对象。而接口更像是一种 LIKE-A 关系，它只是提供一种方法实现契约，并不要求接口和实现接口的类具有 IS-A 关系。</li>
+<li>从使用上来看，一个类可以实现多个接口，但是不能继承多个抽象类。</li>
+<li>接口的字段只能是 static 和 final 类型的，而抽象类的字段没有这种限制。</li>
+<li>接口的成员只能是 public 的，而抽象类的成员可以有多种访问权限。</li>
+<li>接口使用implements，抽象使用extends。</li>
+</ol>
 <p><strong>相同点</strong></p>
 <ul>
 <li>接口和抽象类都不能实例化</li>
@@ -563,6 +697,19 @@
 <li>一个方法可以改变一个对象参数的状态</li>
 <li>一个方法不能让对象参数引用一个新的对象</li>
 </ul>
+<h3 id="Java-的参数是值传递？还是引用传递？"><a href="#Java-的参数是值传递？还是引用传递？" class="headerlink" title="Java 的参数是值传递？还是引用传递？"></a>Java 的参数是值传递？还是引用传递？</h3><p>Java 的参数是以值传递的形式传入方法中，而不是引用传递。</p>
+<p>以下代码中 Dog dog 的 dog 是一个指针，存储的是对象的地址。在将一个参数传入一个方法时，本质上是将对象的地址以值的方式传递到形参中。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155154.png"  alt="Dog类创建"></p>
+<p>在方法中改变对象的字段值会改变原对象该字段值，因为引用的是同一个对象。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155250.png"  alt="修改方法1"></p>
+<p>重点：但是在方法中将指针引用了其它对象，那么此时方法里和方法外的两个指针指向了不同的对象，在一个指针改变其所指向对象的内容对另一个指针所指向的对象没有影响。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155310.png"  alt="修改方法2"></p>
+<h3 id="当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？"><a href="#当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？" class="headerlink" title="当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？"></a>当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？</h3><p>是值传递。Java语言的方法调用只支持参数的值传递。</p>
+<p>当一个对象实例作为一个参数被传递到方法中时，参数的值就是对该对象的引用。对象的属性可以在被调用过程中被改变，但对对象引用的改变是不会影响到调用者的。</p>
+<p>C++和C#中可以通过传引用或传输出参数来改变传入的参数的值。在C#中可以编写如下所示的代码，但是在Java中却做不到。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511155414.png"  alt="C++示例代码"></p>
+<p>说明：Java中没有传引用实在是非常的不方便，这一点在Java 8中仍然没有得到改进</p>
+<p>正是如此在Java编写的代码中才会出现大量的Wrapper类（将需要通过方法调用修改的引用置于一个Wrapper类中，再将Wrapper对象传入方法），这样的做法只会让代码变得臃肿，尤其是让从C和C++转型为Java程序员的开发者无法容忍。</p>
 <hr>
 <h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h3><p>在Java中，可以将一个类的定义放在另外一个类的定义内部，这就是<strong>内部类</strong>。内部类本身就是类的一个属性，与其他属性定义方式一致。</p>
 <h3 id="内部类的分类？"><a href="#内部类的分类？" class="headerlink" title="内部类的分类？"></a>内部类的分类？</h3><p>内部类可以分为四种：<strong>成员内部类、局部内部类、匿名内部类和静态内部类</strong>。</p>
@@ -624,7 +771,7 @@
 
 
 
-<h1 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h1><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><script>
+<h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h2><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -4724,8 +4871,8 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 43 - 左旋转字符串</title>
-    <url>/2020/04/02/jian-zhi-offer-43-zuo-xuan-zhuan-zi-fu-chuan/</url>
+    <title>剑指Offer - 50 - 数组中重复的数字</title>
+    <url>/2020/04/02/jian-zhi-offer-50-shu-zu-zhong-chong-fu-de-shu-zi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -4757,8 +4904,8 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 50 - 数组中重复的数字</title>
-    <url>/2020/04/02/jian-zhi-offer-50-shu-zu-zhong-chong-fu-de-shu-zi/</url>
+    <title>剑指Offer - 43 - 左旋转字符串</title>
+    <url>/2020/04/02/jian-zhi-offer-43-zuo-xuan-zhuan-zi-fu-chuan/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
