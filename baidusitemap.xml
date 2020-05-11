@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-treemap-fen-xi/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
@@ -28,10 +31,10 @@
     <loc>https://dongxiem.github.io/2020/03/20/java-ji-he-kuang-jia-dao-ye/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/</loc>
+    <loc>https://dongxiem.github.io/2020/05/11/java-ji-chu-mian-shi-ti-ji/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/05/11/java-ji-chu-mian-shi-ti-ji/</loc>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</loc>
@@ -95,9 +98,6 @@
     <lastmod>2020-05-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-pai-xu/</loc>
-    <lastmod>2020-05-10</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/16/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</loc>
     <lastmod>2020-05-10</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-volatile-fen-xi/</loc>
