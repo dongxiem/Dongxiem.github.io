@@ -169,7 +169,8 @@
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511003139.png"  alt="Jvm编译结果"></p>
 <p>我们可以看到 0 new，即是生成了一个对象，这个对象是在堆内存用创建的，之后4 Idc则是将常量池中创建的字符串abc压入栈中，invokespecial调用构造方法复制abc字符串到对象中，invokevirtual调用intern本地方法，返回常量池中的对象引用给s1。</p>
 <p><code>new String("abc")</code> 是会创建两个对象的，一个是堆对象，一个是常量池中的对象，intern会去判断常量池中是否有，这个时候是有的，所以不会创建，而是改变s1的引用。</p>
-<h3 id="不同创建方式对比问题三"><a href="#不同创建方式对比问题三" class="headerlink" title="不同创建方式对比问题三"></a>不同创建方式对比问题三</h3><p>问题：为什么下面代码输出的是True？</p>
+<h3 id="不同创建方式对比问题三"><a href="#不同创建方式对比问题三" class="headerlink" title="不同创建方式对比问题三"></a>不同创建方式对比问题三</h3><p><strong>问题如下</strong></p>
+<p>为什么下面代码输出的是True？</p>
 <p>为什么在第二段比较中会返回true,从字节码看s3应该就是生成了一个stringbuilder对象完成连接操作后执行了toString, s3不是应该仍然是堆内的对象地址吗?为什么会和常量池中的地址相等?</p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511112617.png"  alt="问题代码"></p>
 <p><strong>回答如下</strong></p>
@@ -4380,6 +4381,39 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指Offer - 34 - 第一个只出现一次的字符</title>
+    <url>/2020/04/02/jian-zhi-offer-34-di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
+<p>题目描述：</p>
+<p>解题思路：</p>
+<p>代码：</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指Offer - 43 - 左旋转字符串</title>
     <url>/2020/04/02/jian-zhi-offer-43-zuo-xuan-zhuan-zi-fu-chuan/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
@@ -4415,39 +4449,6 @@
   <entry>
     <title>剑指Offer - 50 - 数组中重复的数字</title>
     <url>/2020/04/02/jian-zhi-offer-50-shu-zu-zhong-chong-fu-de-shu-zi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
-<p>题目描述：</p>
-<p>解题思路：</p>
-<p>代码：</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指Offer - 34 - 第一个只出现一次的字符</title>
-    <url>/2020/04/02/jian-zhi-offer-34-di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -8468,7 +8469,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   </entry>
   <entry>
     <title>Java 集合框架 - 导页</title>
-    <url>/2019/10/07/java-ji-he-kuang-jia-dao-ye/</url>
+    <url>/2020/03/20/java-ji-he-kuang-jia-dao-ye/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>对于集合的学习，或者说对于所有知识的学习，总结一点我觉得非常重要的就是：假如可以带着问题去看知识的话那我觉得会更加深入，因为在这个过程当中我们会反复的推问原理为何，才能到达更深入的地步，所以在此系列文章的开头我都会尽量去整理问题的所在点，然后分析源代码，进行知识的总结，在最后再将思考所得写在下一篇文章当中，我觉得这样一来对知识的学习帮助或者更大。</p>
 <p>集合的内容也是繁多，跟并发结合在一起两大模块成为Java学习过程当中的拦路虎，消除恐惧最好的方法即为面对恐惧，我对各个知识点逐个进行解析，倒不是说为了出书之类的，自问没有那个本事，只是说可以在学习过程中记录一些知识点和思考所得，可以在后来反复进行探究，不要学了很多遍知识最后却一点东西都没有剩下，对于集合框架的源码分析，难度不算太高，但是我觉得这对我编程的提升有很大帮助，尽量去思考内在逻辑是最有帮助的，希望可以收获更多。</p>
 <h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ol>
@@ -8517,7 +8518,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   </entry>
   <entry>
     <title>Java 并发 - 导页</title>
-    <url>/2019/10/05/java-bing-fa-dao-ye/</url>
+    <url>/2020/03/20/java-bing-fa-dao-ye/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java并发是我在学习Java过程中涉及到的知识点较多的一块，里面的内容较杂乱，需要去好好的梳理一下，归纳总结一些基础的知识点，再对底层的实现原理进行逐一认识了解，在开展各个知识点的认识之前，应先要把基础的特性与概念先了解一下，这样会更好的帮助后面的了解；</p>
 <p>在这块当中是十分复杂的，一路过来看得有些头疼，不过发现一些知识内功心法掌握了之后，再回过头看看，好像就很好理解了好多，比如像AQS的源码看了一遍之后，再去看ReentrantLock等等就会简单很多，所以还是要戒骄戒躁，把该理清的思路理清，然后学习到的东西才会更加容易和深刻的进行掌握，路漫漫其修远兮，不可能一口吃成一个大胖子，在分析的过程中，有些内容我似乎还是有些快速的略过，记录的目的是为了不断地正视过去的认识，我觉得这就是Blog记录的好处所在了，只有不断的进行审查排除，才会进步！</p>
 <h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p>关于这个专辑里面的内容，先暂定如下几个内容进行分析，围着各个点进行开展深入学习，深入分析底层原理，弄清各个点之间的联系，联系到实际应用中去，想着如果在高并发状态该如何去解决问题、如何使用以下知识点去优化项目，以后再在实际工作中该如何使用，至少应该明白大体的工作原理及工作流程。</p>
@@ -8589,7 +8590,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
   </entry>
   <entry>
     <title>Java 基础 - 导页</title>
-    <url>/2019/10/05/java-ji-chu-dao-ye/</url>
+    <url>/2020/03/20/java-ji-chu-dao-ye/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java基础是很重要的一些东西，除了集合和并发，基础也是相当需要重视的一块，对于基础我没怎么可以去记录一些认识，前人已经完成了大部分内容了，我所做的是将将自己的一些认识记录下来，方便自己日后的查阅，大部分都是一些琐碎的知识，并不能串联成线，基础这些方面的知识还是看书比较好些，因为书上能够更加详细的讲述出来。</p>
 <h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-string-de-yi-xie-ren-shi/">Java 基础 - String的一些认识</a></p>
 <p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-int-he-integer-de-yi-xie-ren-shi/">Java 基础 - Int和Integer的一些认识</a></p>
