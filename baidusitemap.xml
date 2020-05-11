@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/05/10/java-ji-chu-mian-shi-ti-ji/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/20/java-ji-he-kuang-jia-dao-ye/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
@@ -11,9 +14,6 @@
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-tan-xin-si-xiang/</loc>
-    <lastmod>2020-05-11</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/05/10/java-ji-chu-mian-shi-ti-ji/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-java8-de-yi-xie-ren-shi/</loc>
