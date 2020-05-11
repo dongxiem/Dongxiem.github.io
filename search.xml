@@ -4865,18 +4865,6 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </tags>
   </entry>
   <entry>
-    <title>Java 基础 - 关于反射的一些认识</title>
-    <url>/2020/03/31/java-ji-chu-guan-yu-fan-she-de-yi-xie-ren-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2>]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 并发 - 多线程：深入线程池原理</title>
     <url>/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-线程池简介"><a href="#1-线程池简介" class="headerlink" title="1.线程池简介"></a>1.线程池简介</h1><h2 id="1-1-线程池是什么？"><a href="#1-1-线程池是什么？" class="headerlink" title="1.1 线程池是什么？"></a>1.1 线程池是什么？</h2><p>线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。</p>
@@ -6858,28 +6846,7 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
         <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 基础 - 导页</title>
-    <url>/2020/03/20/java-ji-chu-dao-ye/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Java基础是很重要的一些东西，除了集合和并发，基础也是相当需要重视的一块，对于基础我没怎么可以去记录一些认识，前人已经完成了大部分内容了，我所做的是将将自己的一些认识记录下来，方便自己日后的查阅，大部分都是一些琐碎的知识，并不能串联成线，基础这些方面的知识还是看书比较好些，因为书上能够更加详细的讲述出来。</p>
-<h1 id="2-已经分析过的知识"><a href="#2-已经分析过的知识" class="headerlink" title="2.已经分析过的知识"></a>2.已经分析过的知识</h1><p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-string-de-yi-xie-ren-shi/">Java 基础 - String的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-int-he-integer-de-yi-xie-ren-shi/">Java 基础 - Int和Integer的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-object-de-yi-xie-ren-shi/">Java 基础 - 关于Object的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-static-guan-jian-zi-de-yi-xie-ren-shi/">Java 基础 - Static关键字的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-she-de-yi-xie-ren-shi/">Java 基础 - 关于反射的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/">Java 基础 - 关于泛型的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/">Java 基础 - 关于序列化的一些认识</a></p>
-<p><a href="https://dongxiem.github.io/2020/03/31/java-ji-chu-java8-de-yi-xie-ren-shi/">Java 基础 - Java8的一些认识</a></p>
-]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
         <tag>导页</tag>
       </tags>
   </entry>
