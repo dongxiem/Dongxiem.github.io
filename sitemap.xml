@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/05/11/java-ji-chu-mian-shi-ti-ji/</loc>
+    
+    <lastmod>2020-05-11T13:07:54.571Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-volatile-fen-xi/</loc>
     
     <lastmod>2020-05-11T12:54:45.366Z</lastmod>
@@ -177,13 +184,6 @@
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/05/11/java-ji-chu-mian-shi-ti-ji/</loc>
-    
-    <lastmod>2020-05-11T12:52:16.197Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/</loc>
     
     <lastmod>2020-05-11T12:51:12.790Z</lastmod>
@@ -222,13 +222,6 @@
     <loc>https://dongxiem.github.io/2020/03/20/java-ji-he-kuang-jia-dao-ye/</loc>
     
     <lastmod>2020-05-11T12:39:15.925Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</loc>
-    
-    <lastmod>2020-05-11T12:27:54.211Z</lastmod>
     
   </url>
   
