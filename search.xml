@@ -688,6 +688,7 @@
 <p>说明：Java中没有传引用实在是非常的不方便，这一点在Java 8中仍然没有得到改进</p>
 <p>正是如此在Java编写的代码中才会出现大量的Wrapper类（将需要通过方法调用修改的引用置于一个Wrapper类中，再将Wrapper对象传入方法），这样的做法只会让代码变得臃肿，尤其是让从C和C++转型为Java程序员的开发者无法容忍。</p>
 <hr>
+<h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h2><hr>
 <h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h3><p>在Java中，可以将一个类的定义放在另外一个类的定义内部，这就是<strong>内部类</strong>。内部类本身就是类的一个属性，与其他属性定义方式一致。</p>
 <h3 id="内部类的分类？"><a href="#内部类的分类？" class="headerlink" title="内部类的分类？"></a>内部类的分类？</h3><p>内部类可以分为四种：<strong>成员内部类、局部内部类、匿名内部类和静态内部类</strong>。</p>
 <h5 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h5><p>定义在类内部的静态类，就是静态内部类。</p>
@@ -746,9 +747,6 @@
 <p>运行结果：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">局部变量：<span class="number">14</span></span><br><span class="line">内部类变量：<span class="number">13</span></span><br><span class="line">外部类变量：<span class="number">12</span></span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h2><hr>
 <h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="java-中-IO-流分为几种"><a href="#java-中-IO-流分为几种" class="headerlink" title="java 中 IO 流分为几种?"></a>java 中 IO 流分为几种?</h2><ul>
 <li>按照流的流向分，可以分为输入流和输出流；</li>
 <li>按照操作单元划分，可以划分为字节流和字符流；</li>
