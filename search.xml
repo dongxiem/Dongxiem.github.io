@@ -68,6 +68,11 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Java-概述"><a href="#Java-概述" class="headerlink" title="Java 概述"></a>Java 概述</h1><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><hr>
 <h1 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h1><hr>
 <h1 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 JDK8 中，String 类使用 char[] 数组保存值。这个 char 数组使用 final 修饰符修饰，意味着一旦确定就引用即不可修改；此外，String 类中也没有提供修改数组修改值的方法。上述两种方式保证了 String 值的不可变性。此外 String 类只用 final 修饰，表明其不可继承。</p>
+<p>版本的变化区别：</p>
+<p>在 Java 8 中，String 内部使用 char 数组存储数据。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511121122.png"  alt="Java 8中的String"></p>
+<p>在 Java 9 之后，String 类的实现改用 byte 数组存储字符串，同时使用 coder 来标识使用了哪种编码。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511121144.png"  alt="Java 9中的String"></p>
 <h2 id="JAVA-String对象是如何实现的？（摘自极客时间）"><a href="#JAVA-String对象是如何实现的？（摘自极客时间）" class="headerlink" title="JAVA String对象是如何实现的？（摘自极客时间）"></a>JAVA String对象是如何实现的？（摘自极客时间）</h2><p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/05/10/CVFcWBQpaKlzNqJ.png"  alt="String 对象变化"></p>
 <p><strong>在 Java6 以及之前的版本中</strong>，String 对象是对 char 数组进行了封装实现的对象，主要有四个成员变量：char 数组、偏移量 offset、字符数量 count、哈希值 hash。String 对象是通过 offset 和 count 两个属性来定位 char[]数组，获取字符串。这么做可以高效、快速地共享数组对象，同时节省内存空间，但这种方式很有可能会导致内存泄漏。</p>
 <p><strong>从 Java7 版本开始到 Java8 版本</strong>，Java 对 String 类做了一些改变。String 类中不再有 offset 和 count 两个变量了。这样的好处是 String 对象占用的内存稍微少了些，同时，String.substring 方法也不再共享 char[]，从而解决了使用该方法可能导致的内存泄漏问题。</p>
@@ -81,19 +86,37 @@
 <h2 id="String不可变性带来的好处"><a href="#String不可变性带来的好处" class="headerlink" title="String不可变性带来的好处"></a>String不可变性带来的好处</h2><ol>
 <li><strong>可以缓存 hash 值</strong>：因为 String 的 hash 值经常被使用，例如 String 用做 HashMap 的 key。不可变的特性可以使得 hash 值也不可变，因此只需要进行一次计算。</li>
 <li><strong>String Pool 的需要</strong>：如果一个 String 对象已经被创建过了，那么就会从 String Pool 中取得引用。只有 String 是不可变的，才可能使用 String Pool。<ul>
-<li>在 Java 中，通常有两种创建字符串对象的方式，一种是通过字符串常量的方式创建，如 String str=“abc”；另一种是字符串变量通过 new 形式的创建，如 String str = new String(“abc”)。</li>
+<li>在 Java 中，通常有两种创建字符串对象的方式，一种是通过字符串常量的方式创建，如 <code>String str=“abc”</code>；另一种是字符串变量通过 new 形式的创建，如 <code>String str = new String(“abc”)</code>。</li>
 <li>当代码中使用第一种方式创建字符串对象时，JVM 首先会检查该对象是否在字符串常量池中，如果在，就返回该对象引用，否则新的字符串将在常量池中被创建。这种方式可以减少同一个值的字符串对象的重复创建，节约内存。</li>
-<li>String str = new String(“abc”) 这种方式，首先在编译类文件时，”abc”常量字符串将会放入到常量结构中，在类加载时，“abc”将会在常量池中创建；其次，在调用 new 时，JVM 命令将会调用 String 的构造函数，同时引用常量池中的”abc” 字符串，在堆内存中创建一个 String 对象；最后，str 将引用 String 对象。</li>
+<li><code>String str = new String(“abc”)</code> 这种方式，首先在编译类文件时，”abc”常量字符串将会放入到常量结构中，在类加载时，“abc”将会在常量池中创建；其次，在调用 new 时，JVM 命令将会调用 String 的构造函数，同时引用常量池中的”abc” 字符串，在堆内存中创建一个 String 对象；最后，str 将引用 String 对象。</li>
 </ul>
 </li>
 <li><strong>安全性</strong>：String 经常作为参数，String 不可变性可以保证参数不可变。例如在作为网络连接参数的情况下如果 String 是可变的，那么在网络连接过程中，String 被改变，改变 String 的那一方以为现在连接的是其它主机，而实际情况却不一定是。</li>
 <li><strong>线程安全</strong>：String 不可变性天生具备线程安全，可以在多个线程中安全地使用。</li>
 </ol>
-<h2 id="不可变问题"><a href="#不可变问题" class="headerlink" title="不可变问题"></a>不可变问题</h2><p>对一个 String 对象 str 赋值“hello”，然后又让 str 值为“world”，这个时候 str 的值变成了“world”。那么 str 值确实改变了，为什么我还说 String 对象不可变呢？</p>
-<p>回答如下：</p>
+<h2 id="不可变问题"><a href="#不可变问题" class="headerlink" title="不可变问题"></a>不可变问题</h2><p><strong>问题如下：</strong></p>
+<p>对一个 String 对象 str 赋值“hello”，然后又让 str 值为“world”，这个时候 str 的值变成了“world”。那么 str 值确实改变了，为什么我还说 String 对象不可变呢？</p>
+<p><strong>回答如下：</strong></p>
 <p>首先，我来解释下什么是对象和对象引用。在 Java 中要比较两个对象是否相等，往往是用 ==，而要判断两个对象的值是否相等，则需要用 equals 方法来判断。</p>
 <p>这是因为 str 只是 String 对象的引用，并不是对象本身。对象在内存中是一块内存地址，str 则是一个指向该内存地址的引用。所以在刚刚我们说的这个例子中，第一次赋值的时候，创建了一个“hello”对象，str 引用指向“hello”地址；第二次赋值的时候，又重新创建了一个对象“world”，str 引用指向了“world”，但“hello”对象依然存在于内存中。</p>
 <p>也就是说 str 并不是对象，而只是一个对象引用。真正的对象依然还在内存中，没有被改变。</p>
+<h2 id="String-intern问题"><a href="#String-intern问题" class="headerlink" title="String.intern问题"></a>String.intern问题</h2><h3 id="如何使用-String-intern-节省内存？"><a href="#如何使用-String-intern-节省内存？" class="headerlink" title="如何使用 String.intern 节省内存？"></a>如何使用 String.intern 节省内存？</h3><blockquote>
+<p>摘自极客时间：如果能结合案例说出来就更好了！</p>
+</blockquote>
+<p>案例：</p>
+<p>Twitter 每次发布消息状态的时候，都会产生一个地址信息，以当时 Twitter 用户的规模预估，服务器需要 32G 的内存来存储地址信息。</p>
+<p>Twitter 每次发布消息状态的时候，都会产生一个地址信息，以当时 Twitter 用户的规模预估，服务器需要 32G 的内存来存储地址信息。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511112241.png"  alt="Location创建"></p>
+<p>考虑到其中有很多用户在地址信息上是有重合的，比如，国家、省份、城市等，这时就可以将这部分信息单独列出一个类，以减少重复，代码如下：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511112301.png"  alt="重新创建"></p>
+<p><strong>问题如下</strong></p>
+<p>通过优化，数据存储大小减到了 20G 左右。但对于内存存储这个数据来说，依然很大，怎么办呢？</p>
+<p>这个案例来自一位 Twitter 工程师在 QCon 全球软件开发大会上的演讲，他们想到的解决方法，就是使用 String.intern 来节省内存空间，从而优化 String 对象的存储。</p>
+<p>具体做法就是，在每次赋值的时候使用 String 的 intern 方法，如果常量池中有相同值，就会重复使用该对象，返回对象引用，这样一开始的对象就可以被回收掉。这种方式可以使重复性非常高的地址信息存储大小从 20G 降到几百兆。</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511112403.png"  alt="使用intern方法"></p>
+<p>总结就是：运行时创建的字符串对象只会在堆中创建一个对象。在这个前提下，如果有相同值的对象创建，使用intern可以减少重复字符串的创建。例如，有广东省/深圳市/南山区，如果有千万个人发布消息，创建了地址对象，这样导致千万个“广东省”对象在堆内存中创建，如果长时间引用，这些对象都没法释放，使用intern将“广东省”放到常量池中，其他对象引用常量池中的同一个“广东省”字符串，而堆中的千万个对象将被回收。</p>
+<p>追问：<code>String s1="123"</code>;字符串”123”已经被放入常量池，那要定义一个和s1一样的，用<code>String s2=s1;</code>不就好了，为什么还要用intern方法。推特的那个优化也一样，<code>setCity(messageInfo.getCity())</code>就好了，为什么要用intern呢？</p>
+<p>回答：我们在类对象中的String属性是在堆内存中开辟的地址空间，所以如果不用intern方法，新生产的对象中的String字段的属性是引用堆内存的地址，而堆内存中创建的字段即使value值一样也会开辟新地址空间。如果使用intern方法，则会引用常量池中的引用，而如果常量池中如果存在字符串对象，则复用，不会再创建了。</p>
 <h2 id="String的创建"><a href="#String的创建" class="headerlink" title="String的创建"></a>String的创建</h2><h3 id="说说new-String-“-“-的方式？"><a href="#说说new-String-“-“-的方式？" class="headerlink" title="说说new String(“ “)的方式？"></a>说说new String(“ “)的方式？</h3><p>new String(“abc”)，使用这种方式一共会创建两个字符串对象（前提是 String Pool 中还没有 “abc” 字符串对象）。</p>
 <ul>
 <li>“abc” 属于字符串字面量，因此编译时期会在 String Pool 中创建一个字符串对象，指向这个 “abc” 字符串字面量；</li>
@@ -117,25 +140,26 @@
 <li><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511000556.png"  alt="Sring 构造函数"></li>
 </ul>
 <h3 id="String到底创建几个对象？"><a href="#String到底创建几个对象？" class="headerlink" title="String到底创建几个对象？"></a>String到底创建几个对象？</h3><p><code>String s1=new String("11");</code> //在堆中创建对象，并且新建一个”11”对象放入常量池；</p>
+<p>即创建了两个对象，一个是静态区的”11”，一个是用new创建在堆上的对象。</p>
 <p>对比声明式拼接<code>String s1=new String("11")+new String("111");</code>//创建5个，分别是堆中的3个：”11” “111” “11111”，常量池2个： “11” “111”；</p>
 <p>看到不同了么，很多人认为，new出来的只在堆里，这就是最大的错误</p>
 <h3 id="不同创建方式对比问题一"><a href="#不同创建方式对比问题一" class="headerlink" title="不同创建方式对比问题一"></a>不同创建方式对比问题一</h3><p>通过三种不同的方式创建了三个对象，再依次两两匹配，每组被匹配的两个对象是否相等？</p>
-<p>创建如下：</p>
+<p><strong>创建如下</strong></p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511002015.png"  alt="三种String的创建方式"></p>
-<p>输出如下：</p>
+<p><strong>输出如下</strong></p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511002116.png"  alt="输出结果"></p>
-<p>原因：</p>
+<p><strong>原因</strong></p>
 <ol>
 <li><code>String str1 = "abc";</code>通过字面量的方式创建，abc存储于字符串常量池中；</li>
 <li><code>String str2 = new String("abc");</code>通过new对象的方式创建字符串对象，引用地址存放在堆内存中，abc则存放在字符串常量池中；所以str1 == str2?显然是false</li>
 <li><code>String str3 = str2.intern();</code>由于str2调用了intern()方法，会返回常量池中的数据，地址直接指向常量池，所以str1 == str3；</li>
 <li>而str2和str3地址值不等所以也是false（str2指向堆空间，str3直接指向字符串常量池）。</li>
 </ol>
-<h3 id="不同创建方式对比问题二"><a href="#不同创建方式对比问题二" class="headerlink" title="不同创建方式对比问题二"></a>不同创建方式对比问题二</h3><p>创建如下</p>
+<h3 id="不同创建方式对比问题二"><a href="#不同创建方式对比问题二" class="headerlink" title="不同创建方式对比问题二"></a>不同创建方式对比问题二</h3><p><strong>创建如下</strong></p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511002327.png"  alt="String创建代码"></p>
-<p>输出结果：</p>
+<p><strong>输出结果</strong></p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511002408.png"  alt="输出结果"></p>
-<p>原因：</p>
+<p><strong>原因</strong></p>
 <ol>
 <li>第一个通过加动态生成的“11”字符串由于在运行时常量中没有该字符串的引用，所以会在调用<code>s1.intern</code>时，在运行时常量池中生成一个s1的引用，当s2再次引用该字符串时，发现运行时常量池中存在相同值的字符串的引用，就直接返回s1的引用。所以<code>s1==s2</code>是返回的true。这也仅限于JDK1.7之后的版本。在JDK1.6版本运行的结果却为false：</li>
 <li>第二种，用于”11”在类加载时，已经存在静态常量池中，在<code>new string(“11”)</code>时，会在运行时常量池中创建一个“11”字符串的直接引用。而s3指向的并不是该引用，而是<code>new string</code>这个对象的引用。此时s3.intern()返回的是常量池字符串常量”11”的引用，而非堆中的。当<code>s4=“11”</code>时，返回的是运行时常量池中的引用。所以<code>s3==s4</code>返回false。</li>
@@ -145,7 +169,14 @@
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511003139.png"  alt="Jvm编译结果"></p>
 <p>我们可以看到 0 new，即是生成了一个对象，这个对象是在堆内存用创建的，之后4 Idc则是将常量池中创建的字符串abc压入栈中，invokespecial调用构造方法复制abc字符串到对象中，invokevirtual调用intern本地方法，返回常量池中的对象引用给s1。</p>
 <p><code>new String("abc")</code> 是会创建两个对象的，一个是堆对象，一个是常量池中的对象，intern会去判断常量池中是否有，这个时候是有的，所以不会创建，而是改变s1的引用。</p>
-<h3 id="不同创建方式对比问题三"><a href="#不同创建方式对比问题三" class="headerlink" title="不同创建方式对比问题三"></a>不同创建方式对比问题三</h3><p>创建如下：</p>
+<h3 id="不同创建方式对比问题三"><a href="#不同创建方式对比问题三" class="headerlink" title="不同创建方式对比问题三"></a>不同创建方式对比问题三</h3><p>问题：为什么下面代码输出的是True？</p>
+<p>为什么在第二段比较中会返回true,从字节码看s3应该就是生成了一个stringbuilder对象完成连接操作后执行了toString, s3不是应该仍然是堆内的对象地址吗?为什么会和常量池中的地址相等?</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511112617.png"  alt="问题代码"></p>
+<p><strong>回答如下</strong></p>
+<p>查了下资料，说是在jdk1.7之后，如果字符串在堆中有实例，那intern方法就会把这个字符串的引用放在字符串常量池里，所以，<code>String s3 = new String("12") + new String("34");</code>这里在字符串常量池里放了一个字符串“12”，一个字符串“34”，在堆里存放他们的运算结果“1234”，然后把“1234”的引用返回给s3，</p>
+<p><code>s3.intern()</code>这段代码运行时，jvm在堆里先到了字符串“1234”，所以就会把他的引用放到字符串常量池里，这个引用和s3相等，</p>
+<p><code>String s4 = "1234"</code>;这个代码时，因此会直接去常量池中创建，创建的时候发现已经有这个对象了，此时也就是指向 s3 引用对象的一个引用。所以 s4 引用就指向和 s3 一样了。因此最后的比较 <code>s3 == s4</code> 是 true。</p>
+<h3 id="不同创建方式对比问题四"><a href="#不同创建方式对比问题四" class="headerlink" title="不同创建方式对比问题四"></a>不同创建方式对比问题四</h3><p>创建如下：</p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511003224.png"  alt="两种String创建方式"></p>
 <p>输出结果：</p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511003251.png"  alt="输出结果"></p>
@@ -172,6 +203,91 @@
 
 
 
+<h2 id="String的compareTo方法"><a href="#String的compareTo方法" class="headerlink" title="String的compareTo方法"></a>String的compareTo方法</h2><ul>
+<li><p>compareTo()的返回值是整型，它是先比较对应字符的大小（ASCII码顺序），</p>
+</li>
+<li><ul>
+<li>如果第一个字符和参数的第一个字符不等，结束比较，返回他们之间的差值。</li>
+<li>如果第一个字符和参数的第一个字符相等，则以第二个字符和参数的第二个字符作比较，</li>
+<li>以此类推，直至比较的字符或被比较的字符有一方全比较完，这时就比较字符的长度。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/05/10/Om3W2vC4iSgFYN9.png"  alt="compareTo方法示例"></p>
+<h2 id="String、StringBuilder、StringBuffer"><a href="#String、StringBuilder、StringBuffer" class="headerlink" title="String、StringBuilder、StringBuffer"></a>String、StringBuilder、StringBuffer</h2><p><strong>String</strong> 是 Java 语言非常基础和重要的类，提供了构造和管理字符串的各种基本逻辑。它是典型的 Immutable 类，被声明成为 final class，所有属性也都是 final 的。也由于它的不可变性，类似拼接、裁剪字符串等动作，都会产生新的 String 对象。由于字符串操作的普遍性，所以相关操作的效率往往对应用性能有明显影响。</p>
+<ul>
+<li>通过字面量赋值创建字符串（如：<code>String str=”twm”</code>）时，会先在常量池中查找是否存在相同的字符串，若存在，则将栈中的引用直接指向该字符串；若不存在，则在常量池中生成一个字符串，再将栈中的引用指向该字符串。</li>
+<li>JDK 1.7后，intern方法还是会先去查询常量池中是否有已经存在，如果存在，则返回常量池中的引用，这一点与1.7之前没有区别，区别在于，如果在常量池找不到对应的字符串，则不会再将字符串拷贝到常量池，而只是在常量池中生成一个对原字符串的引用。简单的说，就是往常量池放的东西变了：原来在常量池中找不到时，复制一个副本放到常量池，1.7后则是将在堆上的地址引用复制到常量池。jdk1.7之后，常量池不仅仅可以存储对象，还可以存储对象的引用。</li>
+<li>在jdk1.7之前，字符串常量存储在方法区的PermGen Space（永久代）。在jdk1.7之后，字符串常量重新被移到了堆中。</li>
+</ul>
+<p><strong>StringBuffer</strong> 是为解决上面提到拼接产生太多中间对象的问题而提供的一个类，我们可以用 append 或者 add 方法，把字符串添加到已有序列的末尾或者指定位置。StringBuffer 本质是一个线程安全的可修改字符序列，它保证了线程安全，也随之带来了额外的性能开销，所以除非有线程安全的需要，不然还是推荐使用它的后继者，也就是 StringBuilder。</p>
+<p><strong>StringBuilder</strong> 是 Java 1.5 中新增的，在能力上和 StringBuffer 没有本质区别，但是它去掉了线程安全的部分，有效减小了开销，是绝大部分情况下进行字符串拼接的首选。</p>
+<ul>
+<li>注意：StringBuffer/StringBuilder对象的值是可以改变的，并且值改变以后，对象引用不会发生改变；两者对象在构造过程中，首先按照默认大小申请一个字符数组，由于会不断加入新数据，当超过默认大小后，会创建一个更大的数组，并将原先的数组内容复制过来，再丢弃旧的数组。因此，对于较大对象的扩容会涉及大量的内存复制操作，如果能够预先评估大小，可提升性能。</li>
+</ul>
+<p><strong>详细区分如下：</strong></p>
+<ol>
+<li>可变不可变<ul>
+<li>String：字符串常量,在修改时不会改变自身;若修改,等于重新生成新的字符串对象。String 是只读字符串，String类是 final 类,不可以被继承。</li>
+<li>StringBuffer：在修改时会改变对象自身,每次操作都是对 StringBuffer 对象本身进行修改,不是生成新的对象;使用场景:对字符串经常改变情况下,主要方法:<code>append()</code>,<code>insert()</code>等。</li>
+<li>StringBuilder：可变</li>
+</ul>
+</li>
+<li>线程是否安全<ul>
+<li>String：对象定义后不可变,线程安全。</li>
+<li>StringBuffer：是线程安全的(对调用方法加入同步锁),执行效率较慢,适用于多线程下操作字符串缓冲区大量数据。</li>
+<li>StringBuilder：是线程不安全的,适用于单线程下操作字符串缓冲区大量数据。</li>
+</ul>
+</li>
+<li>共同点<ul>
+<li>StringBuffer、StringBuilder其底层在内存中的存储方式与String相同，都是以一个有序的字符序列（char类型的数组）进行存储</li>
+<li>StringBuilder 与 StringBuffer 有公共父类 AbstractStringBuilder(抽象类)。</li>
+<li>StringBuilder、 StringBuffer 的方法都会调用 AbstractStringBuilder 中的公共方法,如 <code>super.append(...)</code>。只是 StringBuffer 会在方法上加 synchronized 关键字,进行同步。</li>
+<li>最后,如果程序不是多线程的,那么使用StringBuilder 效率高于 StringBuffer。因此,StringBuilder 的效率会更高。</li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>在字符串内容不经常发生变化的业务场景优先使用String类。例如：常量声明、少量的字符串拼接操作等。如果有大量的字符串内容拼接，避免使用String与String之间的“+”操作，因为这样会产生大量无用的中间对象，耗费空间且执行效率低下（新建对象、回收对象花费大量时间）。</li>
+<li>在频繁进行字符串的运算（如拼接、替换、删除等），并且运行在多线程环境下，建议使用StringBuffer，例如XML解析、HTTP参数解析与封装。</li>
+<li>在频繁进行字符串的运算（如拼接、替换、删除等），并且运行在单线程环境下，建议使用StringBuilder，例如SQL语句拼装、JSON封装等。</li>
+</ul>
+</li>
+</ol>
+<p><strong>知识拓展</strong>：</p>
+<ol>
+<li>字符串设计与实现考量<ul>
+<li>String 是 Immutable 类的典型实现，原生的保证了基础线程安全，因为你无法对它内部数据进行任何修改，这种便利甚至体现在拷贝构造函数中，由于不可变，Immutable 对象在拷贝时不需要额外复制数据。</li>
+<li>StringBuffer 实现的一些细节，它的线程安全是通过把各种修改数据的方法都加上 synchronized 关键字实现的，非常直白。其实，这种简单粗暴的实现方式，非常适合我们常见的线程安全类实现，不必纠结于 synchronized 性能之类的，有人说“过早优化是万恶之源”，考虑可靠性、正确性和代码可读性才是大多数应用开发最重要的因素。</li>
+<li>为了实现修改字符序列的目的，StringBuffer 和 StringBuilder 底层都是利用可修改的（char，JDK 9 以后是 byte）数组，二者都继承了 AbstractStringBuilder，里面包含了基本操作，区别仅在于最终的方法是否加了 synchronized。</li>
+<li><strong>另外，这个内部数组应该创建成多大的呢？</strong>如果太小，拼接的时候可能要重新创建足够大的数组；如果太大，又会浪费空间。目前的实现是，构建时初始字符串长度加 <u>16</u>（这意味着，如果没有构建对象时输入最初的字符串，那么初始值就是 16）。我们如果确定拼接会发生非常多次，而且大概是可预计的，那么就可以指定合适的大小，避免很多次扩容的开销。扩容会产生多重开销，因为要抛弃原有数组，创建新的（可以简单认为是倍数）数组，还要进行 arraycopy。</li>
+<li><strong>在没有线程安全问题的情况下，全部拼接操作是应该都用 StringBuilder 实现吗？</strong>我们在JDK8和JDK9分别进行反编译之后发现：非静态的拼接逻辑在 JDK 8 中会自动被 javac 转换为 StringBuilder 操作；而在 JDK 9 里面，则是体现了思路的变化。Java 9 利用 InvokeDynamic，将字符串拼接的优化与 javac 生成的字节码解耦，假设未来 JVM 增强相关运行时实现，将不需要依赖 javac 的任何修改</li>
+</ul>
+</li>
+<li>字符串缓存（关于Intern 与 String Pool相关）<ul>
+<li>String 在 Java 6 以后提供了 <code>intern() 方</code>法，目的是提示 JVM 把相应字符串缓存起来，以备重复使用。在我们创建字符串对象并调用 <code>intern()</code> 方法的时候，如果已经有缓存的字符串，就会返回缓存里的实例，否则将其缓存起来。一般来说，JVM 会将所有的类似“abc”这样的文本字符串，或者字符串常量之类缓存起来。看起来很不错是吧？但实际情况估计会让你大跌眼镜。一般使用 Java 6 这种历史版本，并不推荐大量使用 intern，为什么呢？魔鬼存在于细节中，被缓存的字符串是存在所谓 PermGen 里的，也就是臭名昭著的“永久代”，这个空间是很有限的，也基本不会被 FullGC 之外的垃圾收集照顾到。所以，如果使用不当，OOM 就会光顾。在后续版本中，这个缓存被放置在堆中，这样就极大避免了永久代占满的问题，甚至永久代在 JDK 8 中被 MetaSpace（元数据区）替代了。而且，默认缓存大小也在不断地扩大中，从最初的 1009，到 7u40 以后被修改为 60013。</li>
+<li><strong>Intern 是一种显式地排重机制</strong>，但是它也有一定的副作用，因为需要开发者写代码时明确调用，一是不方便，每一个都显式调用是非常麻烦的；另外就是我们很难保证效率，应用开发阶段很难清楚地预计字符串的重复情况，有人认为这是一种污染代码的实践。幸好在 Oracle JDK 8u20 之后，推出了一个新的特性，也就是 G1 GC 下的字符串排重。它是通过将相同数据的字符串指向同一份数据来做到的，是 JVM 底层的改变，并不需要 Java 类库做什么修改。注意这个功能目前是默认关闭的，你需要使用下面参数开启，并且记得指定使用 G1 GC：<ul>
+<li><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511120803.png"  alt="参数命令"></li>
+</ul>
+</li>
+<li>更多关于Intern，查看美团技术的文章： <a href="https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html" target="_blank" rel="noopener">https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html</a></li>
+<li>关于Intren我只说两句话：<ol>
+<li>直接使用双引号声明出来的String对象会直接存储在常量池中。</li>
+<li>如果不是用双引号声明的String对象，可以使用String提供的intern方法。intern 方法会从字符串常量池中查询当前字符串是否存在，若不存在就会将当前字符串放入常量池中。</li>
+</ol>
+</li>
+<li>Intern的大体实现结构就是：<u>JAVA 使用 jni 调用c++实现的StringTable的intern方法, StringTable的intern方法跟Java中的HashMap的实现是差不多的, 只是不能自动扩容</u>。默认大小是1009。要注意的是，String的String Pool是一个固定大小的Hashtable，默认值大小长度是1009，如果放进String Pool的String非常多，就会造成Hash冲突严重，从而导致链表会很长，而链表长了后直接会造成的影响就是当调用String.intern时性能会大幅下降（因为要一个一个找）。在 jdk6中StringTable是固定的，就是1009的长度，所以如果常量池中的字符串过多就会导致效率下降很快。在jdk7中，StringTable的长度可以通过一个参数指定：<ul>
+<li><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511120924.png"  alt="StringTalbe参数"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>String 自身的演化<ul>
+<li>在历史版本中，它是使用 char 数组来存数据的，这样非常直接。但是 Java 中的 char 是两个 bytes 大小，拉丁语系语言的字符，根本就不需要太宽的 char，这样无区别的实现就造成了一定的浪费。在 Java 9 中，我们引入了 Compact Strings 的设计，对字符串进行了大刀阔斧的改进。<u>将数据存储方式从 char 数组，改变为一个 byte 数组加上一个标识编码的所谓 coder，并且将相关字符串操作类都进行了修改</u>。另外，所有相关的 Intrinsic 之类也都进行了重写，以保证没有任何性能损失。</li>
+<li>在极端情况下，字符串也出现了一些能力退化，比如最大字符串的大小。你可以思考下，原来 char 数组的实现，字符串的最大长度就是数组本身的长度限制，但是替换成 byte 数组，同样数组长度下，存储能力是退化了一倍的！还好这是存在于理论中的极限，还没有发现现实应用受此影响。</li>
+<li>在通用的性能测试和产品实验中，我们能非常明显地看到紧凑字符串带来的优势，即更小的内存占用、更快的操作速度。</li>
+</ul>
+</li>
+</ol>
 <h2 id="关于-“-”-运算符问题"><a href="#关于-“-”-运算符问题" class="headerlink" title="关于 “+” 运算符问题"></a>关于 “+” 运算符问题</h2><p>什么情况下用+运算符进行字符串连接比调用StringBuffer/StringBuilder对象的append方法连接字符串性能更好？</p>
 <p>回答如下：</p>
 <p>String一旦赋值或实例化后就不可更改，如果赋予新值将会重新开辟内存地址进行存储。而StringBuffer类使用append和insert等方法改变字符串值时只是在原有对象存储的内存地址上进行连续操作，减少了资源的开销。</p>
@@ -184,17 +300,6 @@
 <li>所以平时做字符串拼接的时候，我建议你还是要显示地使用 String Builder 来提升系统性能。</li>
 <li>如果在多线程编程中，String 对象的拼接涉及到线程安全，你可以使用 StringBuffer。但是要注意，由于 StringBuffer 是线程安全的，涉及到锁竞争，所以从性能上来说，要比 StringBuilder 差一些。</li>
 </ul>
-<h2 id="String的compareTo方法："><a href="#String的compareTo方法：" class="headerlink" title="String的compareTo方法："></a>String的compareTo方法：</h2><ul>
-<li><p>compareTo()的返回值是整型，它是先比较对应字符的大小（ASCII码顺序），</p>
-</li>
-<li><ul>
-<li>如果第一个字符和参数的第一个字符不等，结束比较，返回他们之间的差值。</li>
-<li>如果第一个字符和参数的第一个字符相等，则以第二个字符和参数的第二个字符作比较，</li>
-<li>以此类推，直至比较的字符或被比较的字符有一方全比较完，这时就比较字符的长度。</li>
-</ul>
-</li>
-</ul>
-<p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/05/10/Om3W2vC4iSgFYN9.png"  alt="compareTo方法示例"></p>
 <h2 id="什么是String-Pool？"><a href="#什么是String-Pool？" class="headerlink" title="什么是String Pool？"></a>什么是String Pool？</h2><p>字符串常量池（String Pool）保存着所有字符串字面量（literal strings），这些字面量在编译时期就确定。不仅如此，还可以使用 String 的 intern() 方法在运行过程将字符串添加到 String Pool 中。当一个字符串调用 intern() 方法时，如果 String Pool 中已经存在一个字符串和该字符串值相等（使用 equals() 方法进行确定），那么就会返回 String Pool 中字符串的引用；否则，就会在 String Pool 中添加一个新的字符串，并返回这个新字符串的引用。常量池里不止是字面量常量，还有引用型常量。</p>
 <p>下面示例中，s1 和 s2 采用 new String() 的方式新建了两个不同字符串，而 s3 和 s4 是通过 s1.intern() 方法取得同一个字符串引用。</p>
 <p>intern() 首先把 s1 引用的字符串放到 String Pool 中，然后返回这个字符串引用。因此 s3 和 s4 引用的是同一个字符串。</p>
@@ -202,6 +307,11 @@
 <p>如果是采用 “bbb” 这种字面量的形式创建字符串，会自动地将字符串放入 String Pool 中。</p>
 <p><img src="/" class="lazyload" data-src="https://i.loli.net/2020/05/10/6ctILFp8UbKXWOe.png"  alt="intern 示例2"></p>
 <p>在 Java 7 之前，String Pool 被放在运行时常量池中，它属于永久代。而在 Java 7，String Pool 被移到堆中。这是因为永久代的空间有限，在大量使用字符串的场景下会导致 OutOfMemoryError 错误。</p>
+<h2 id="String-API"><a href="#String-API" class="headerlink" title="String API"></a>String API</h2><h3 id="共享char数组可能导致内存泄露问题？"><a href="#共享char数组可能导致内存泄露问题？" class="headerlink" title="共享char数组可能导致内存泄露问题？"></a>共享char数组可能导致内存泄露问题？</h3><p>String.substring 方法也不再共享 char[]，从而解决了使用该方法可能导致的内存泄漏问题。</p>
+<p>在Java6中substring方法会调用<code>new string</code>构造函数，此时会复用原来的char数组，而如果我们仅仅是用substring获取一小段字符，而原本string字符串非常大的情况下，substring的对象如果一直被引用，由于substring的里面的char数组仍然指向原字符串，此时string字符串也无法回收，从而导致内存泄露。</p>
+<p>试想下，如果有大量这种通过substring获取超大字符串中一小段字符串的操作，会因为内存泄露而导致内存溢出。</p>
+<h2 id="String-字符串编码"><a href="#String-字符串编码" class="headerlink" title="String 字符串编码"></a>String 字符串编码</h2><h3 id="怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？"><a href="#怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？" class="headerlink" title="怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？"></a>怎样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？</h3><p>代码如下所示：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200511113653.png"  alt="Sring字符串编码转换代码"></p>
 <hr>
 <h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h1 id="面对对象"><a href="#面对对象" class="headerlink" title="面对对象"></a>面对对象</h1><h2 id="面对对象概述"><a href="#面对对象概述" class="headerlink" title="面对对象概述"></a>面对对象概述</h2><h2 id="面对对象三大特性"><a href="#面对对象三大特性" class="headerlink" title="面对对象三大特性"></a>面对对象三大特性</h2><h2 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h2><h3 id="抽象类的相关特性"><a href="#抽象类的相关特性" class="headerlink" title="抽象类的相关特性"></a>抽象类的相关特性</h3><h3 id="接口的相关特性"><a href="#接口的相关特性" class="headerlink" title="接口的相关特性"></a>接口的相关特性</h3><h3 id="抽象类与接口的对比"><a href="#抽象类与接口的对比" class="headerlink" title="抽象类与接口的对比"></a>抽象类与接口的对比</h3><h3 id="接口与抽象类在不同版本中的变化"><a href="#接口与抽象类在不同版本中的变化" class="headerlink" title="接口与抽象类在不同版本中的变化"></a>接口与抽象类在不同版本中的变化</h3><h3 id="普通类与抽象类的区别"><a href="#普通类与抽象类的区别" class="headerlink" title="普通类与抽象类的区别"></a>普通类与抽象类的区别</h3><h3 id="抽象类能够使用final修饰？"><a href="#抽象类能够使用final修饰？" class="headerlink" title="抽象类能够使用final修饰？"></a>抽象类能够使用final修饰？</h3><h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h3><h3 id="内部类的分类？"><a href="#内部类的分类？" class="headerlink" title="内部类的分类？"></a>内部类的分类？</h3><h3 id="内部类的优点"><a href="#内部类的优点" class="headerlink" title="内部类的优点"></a>内部类的优点</h3><h3 id="内部类的应用场景"><a href="#内部类的应用场景" class="headerlink" title="内部类的应用场景"></a>内部类的应用场景</h3><h3 id="局部内部类与匿名内部类"><a href="#局部内部类与匿名内部类" class="headerlink" title="局部内部类与匿名内部类"></a>局部内部类与匿名内部类</h3><h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h2><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><script>
         document.querySelectorAll('.github-emoji')
@@ -4270,39 +4380,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指Offer - 34 - 第一个只出现一次的字符</title>
-    <url>/2020/04/02/jian-zhi-offer-34-di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
-<p>题目描述：</p>
-<p>解题思路：</p>
-<p>代码：</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指Offer - 43 - 左旋转字符串</title>
     <url>/2020/04/02/jian-zhi-offer-43-zuo-xuan-zhuan-zi-fu-chuan/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
@@ -4338,6 +4415,39 @@
   <entry>
     <title>剑指Offer - 50 - 数组中重复的数字</title>
     <url>/2020/04/02/jian-zhi-offer-50-shu-zu-zhong-chong-fu-de-shu-zi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
+<p>题目描述：</p>
+<p>解题思路：</p>
+<p>代码：</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指Offer - 34 - 第一个只出现一次的字符</title>
+    <url>/2020/04/02/jian-zhi-offer-34-di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>题目链接：</p>
 <p>题目描述：</p>
 <p>解题思路：</p>
@@ -5825,126 +5935,6 @@ d <span class="token operator">=</span> e <span class="token operator">-</span> 
       <tags>
         <tag>Java</tag>
         <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 基础 - Static关键字的一些认识</title>
-    <url>/2020/03/31/java-ji-chu-static-guan-jian-zi-de-yi-xie-ren-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 基础 - 关于Object的一些认识</title>
-    <url>/2020/03/31/java-ji-chu-guan-yu-object-de-yi-xie-ren-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 基础 - Int和Integer的一些认识</title>
-    <url>/2020/03/31/java-ji-chu-int-he-integer-de-yi-xie-ren-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 基础 - String的一些认识</title>
-    <url>/2020/03/31/java-ji-chu-string-de-yi-xie-ren-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Java基础知识</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>

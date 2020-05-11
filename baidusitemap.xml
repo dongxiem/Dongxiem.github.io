@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-java8-de-yi-xie-ren-shi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-she-de-yi-xie-ren-shi/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2019/10/05/java-ji-chu-dao-ye/</loc>
+    <lastmod>2020-05-11</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/05/10/java-ji-chu-mian-shi-ti-ji/</loc>
-    <lastmod>2020-05-10</lastmod>
+    <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-shu-ju-jie-gou-tu/</loc>
     <lastmod>2020-05-10</lastmod>
@@ -175,9 +190,6 @@
     <loc>https://dongxiem.github.io/2019/10/07/java-ji-he-kuang-jia-dao-ye/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2019/10/05/java-ji-chu-dao-ye/</loc>
-    <lastmod>2020-04-12</lastmod>
-  </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/01/mybatis-kuang-jia-fen-xi-2-ji-yu-xml-pei-zhi-wen-jian-de-fang-shi-de-jian-dan-demo/</loc>
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
@@ -186,9 +198,6 @@
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/29/spring-kuang-jia-fen-xi-dao-ye/</loc>
     <lastmod>2020-04-09</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-xu-lie-hua-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-08</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/07/leetcode-suan-fa-si-xiang-tan-xin-si-xiang/</loc>
     <lastmod>2020-04-07</lastmod>
@@ -216,27 +225,6 @@
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/spring-kuang-jia-fen-xi-she-ji-mo-shi/</loc>
     <lastmod>2020-04-07</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-string-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-static-guan-jian-zi-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-java8-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-int-he-integer-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-object-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-xing-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/03/31/java-ji-chu-guan-yu-fan-she-de-yi-xie-ren-shi/</loc>
-    <lastmod>2020-04-06</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/04/01/shu-ju-jie-gou-shi-me-shi-b-shu/</loc>
     <lastmod>2020-04-06</lastmod>
