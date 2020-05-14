@@ -7578,28 +7578,7 @@
   <entry>
     <title>Spring 框架分析 - 设计模式</title>
     <url>/2020/03/31/spring-kuang-jia-fen-xi-she-ji-mo-shi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <tags>
         <tag>Java</tag>
         <tag>Spring</tag>
@@ -8905,14 +8884,7 @@
   <entry>
     <title>Spring IoC源码分析 - 深入理解IoC</title>
     <url>/2020/03/29/spring-ioc-yuan-ma-fen-xi-shen-ru-li-jie-ioc/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在开始IOC源码之前先了解清楚一下理论知识，因为IOC和DI（即依赖注入）大概分为一下几点：</p>
-<ol>
-<li>IoC是什么？</li>
-<li>IoC能做什么？</li>
-<li>IoC的别名：DI(依赖注入)</li>
-<li>IoC和DI的关系是什么？</li>
-</ol>
-<h4 id="1-IoC是什么？"><a href="#1-IoC是什么？" class="headerlink" title="1.IoC是什么？"></a>1.IoC是什么？</h4><p>IoC 全称为 Inversion of Control，翻译为 “控制反转”，可以说这并不是一项技术，只是一种思想而已。<strong>在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong> 理解IoC主要的关键在于理解两个问题：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-是何物-IoC是什么"><a href="#1-是何物-IoC是什么" class="headerlink" title="1.是何物-IoC是什么"></a>1.是何物-IoC是什么</h1><p>IoC 全称为 Inversion of Control，翻译为 “控制反转”，可以说这并不是一项技术，只是一种思想而已。<strong>在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong> 理解IoC主要的关键在于理解两个问题：</p>
 <ol>
 <li><strong>谁控制谁，控制什么</strong>：<u>直接说明，是IoC容器控制了对象，控制了外部资源的获取（不只是对象，还有文件等等）</u><ul>
 <li>在传统Java SE程序设计中，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；</li>
@@ -8926,25 +8898,20 @@
 </li>
 </ol>
 <p>总的来说对于IoC一句话概括为：<strong>所谓IoC就是由 Spring IOC 容器来负责对象的生命周期和对象之间的关系。</strong> 其理念即为：让别人为你服务。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+<p>在一路看过来的文章和博客中，有一个比较好的比喻如下：</p>
+<blockquote>
+<p>Ioc 框架就是我们生活中的房屋中介，首先中介会收集市场上的房源，分别和各个房源的房东建立联系。当我们需要租房的时候，并不需要我们四处寻找各类，租房信息。我们直接找房屋中介，中介就会根据你的需求提供相应的房屋信息。大大提升了租房的效率，减少了你与各类房东之间的沟通次数。</p>
+</blockquote>
+<p>其实使用IoC的最主要的目的就是：解耦</p>
+<p>Java 是一门面向对象的语言，在 Java 中 Everything is Object，我们的程序就是由若干对象组成的。当我们的项目越来越大，合作的开发者越来越多的时候，我们的类就会越来越多，类与类之间的引用就会成指数级的增长。如下图所示：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200514223359.png"  alt="混乱的结构"></p>
+<p>但是如果我们引入 Ioc 框架。由框架来维护类的生命周期和类之间的引用。我们的系统就会变成这样：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200514223440.png"  alt="较为简洁的结构"></p>
+<p> IoC 框架很负责任，也很强大，把所有类直接的关系都进行了很好的维护了，同时将类注入到需要的类中。也就是类的使用者只负责使用，而不负责维护。把专业的事情交给专业的框架来完成。大大的减少开发的复杂度。</p>
+<hr>
+<h1 id="2-管中窥豹-Spring中的IoC如何实现"><a href="#2-管中窥豹-Spring中的IoC如何实现" class="headerlink" title="2.管中窥豹-Spring中的IoC如何实现"></a>2.管中窥豹-Spring中的IoC如何实现</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><hr>
+<h1 id="3-东施效颦-实现简单IoC"><a href="#3-东施效颦-实现简单IoC" class="headerlink" title="3.东施效颦-实现简单IoC"></a>3.东施效颦-实现简单IoC</h1><h2 id="3-1-基本容器创建"><a href="#3-1-基本容器创建" class="headerlink" title="3.1 基本容器创建"></a>3.1 基本容器创建</h2><h2 id="3-2-引入工厂BeanFactory"><a href="#3-2-引入工厂BeanFactory" class="headerlink" title="3.2 引入工厂BeanFactory"></a>3.2 引入工厂BeanFactory</h2><h2 id="3-3-Bean属性注入"><a href="#3-3-Bean属性注入" class="headerlink" title="3.3 Bean属性注入"></a>3.3 Bean属性注入</h2><h2 id="3-4-引入Xml配置初始化Bean"><a href="#3-4-引入Xml配置初始化Bean" class="headerlink" title="3.4 引入Xml配置初始化Bean"></a>3.4 引入Xml配置初始化Bean</h2><h2 id="3-5-在Bean中再注入Bean"><a href="#3-5-在Bean中再注入Bean" class="headerlink" title="3.5 在Bean中再注入Bean"></a>3.5 在Bean中再注入Bean</h2><h2 id="3-6-引入ApplicationContext"><a href="#3-6-引入ApplicationContext" class="headerlink" title="3.6 引入ApplicationContext"></a>3.6 引入ApplicationContext</h2><hr>
+<h1 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h1>]]></content>
       <categories>
         <category>Spring</category>
       </categories>
