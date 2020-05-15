@@ -1783,8 +1783,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 回溯</title>
-    <url>/2020/04/09/leetcode-suan-fa-si-xiang-hui-su/</url>
+    <title>算法思想 - 回溯</title>
+    <url>/2020/04/09/suan-fa-si-xiang-hui-su/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><p><strong>解决一个回溯问题，实际上就是一个决策树的遍历过程</strong>。你只需要思考 3 个问题：</p>
 <ol>
 <li>路径：也就是已经做出的选择。</li>
@@ -2091,8 +2091,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 海量数据</title>
-    <url>/2020/04/08/leetcode-suan-fa-si-xiang-hai-liang-shu-ju/</url>
+    <title>算法思想 - 海量数据</title>
+    <url>/2020/04/08/suan-fa-si-xiang-hai-liang-shu-ju/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>一个100g的大文件，如何进行排序。内存只有4g（哈啰）</li>
 <li>一道大数据量的题目，A文件有3T，里面放的是uid+uname，B文件2T，里面放的是uid+unage，找出相同的uid并写成uid+uname+uage的样子，限制内存2G。</li>
@@ -2134,8 +2134,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 递推</title>
-    <url>/2020/04/08/leetcode-suan-fa-si-xiang-di-tui/</url>
+    <title>算法思想 - 递推</title>
+    <url>/2020/04/08/suan-fa-si-xiang-di-tui/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>走台阶</li>
 <li>断钢筋</li>
@@ -2168,8 +2168,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 查找</title>
-    <url>/2020/04/08/leetcode-suan-fa-si-xiang-cha-zhao/</url>
+    <title>算法思想 - 查找</title>
+    <url>/2020/04/08/suan-fa-si-xiang-cha-zhao/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>数组中重复的数字（LC 3）</li>
 <li>二维数组的查找（LC 4）</li>
@@ -2209,8 +2209,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 栈和队列</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-zhan-he-dui-lie/</url>
+    <title>数据结构 - 栈和队列</title>
+    <url>/2020/04/07/shu-ju-jie-gou-zhan-he-dui-lie/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>用栈实现队列</li>
 <li>用队列实现栈</li>
@@ -2250,8 +2250,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 字符串</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-zi-fu-chuan/</url>
+    <title>数据结构 - 字符串</title>
+    <url>/2020/04/07/shu-ju-jie-gou-zi-fu-chuan/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
 <li>字符串循环移位包含</li>
 <li>字符串循环移位</li>
@@ -2291,8 +2291,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 哈希表</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-ha-xi-biao/</url>
+    <title>数据结构 - 哈希表</title>
+    <url>/2020/04/07/shu-ju-jie-gou-ha-xi-biao/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
 <li>数组中两个数的和为给定值</li>
 <li>判断数组是否含有重复元素</li>
@@ -2327,8 +2327,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 数组和矩阵</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-shu-zu-he-ju-zhen/</url>
+    <title>数据结构 - 数组和矩阵</title>
+    <url>/2020/04/07/shu-ju-jie-gou-shu-zu-he-ju-zhen/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -2358,8 +2358,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 图</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-tu/</url>
+    <title>数据结构 - 图</title>
+    <url>/2020/04/07/shu-ju-jie-gou-tu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="2-1-二分图"><a href="#2-1-二分图" class="headerlink" title="2.1 二分图"></a>2.1 二分图</h3><ol>
 <li>判断是否为二分图</li>
 </ol>
@@ -2398,8 +2398,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 位运算</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-wei-yun-suan/</url>
+    <title>数据结构 - 位运算</title>
+    <url>/2020/04/07/shu-ju-jie-gou-wei-yun-suan/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>占个坑</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -2429,8 +2429,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 树</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-shu/</url>
+    <title>数据结构 - 树</title>
+    <url>/2020/04/07/shu-ju-jie-gou-shu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><p><strong>递归</strong></p>
 <ol>
 <li>树的高度（LC 104）</li>
@@ -2508,8 +2508,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 数据结构 - 链表</title>
-    <url>/2020/04/07/leetcode-shu-ju-jie-gou-lian-biao/</url>
+    <title>数据结构 - 链表</title>
+    <url>/2020/04/07/shu-ju-jie-gou-lian-biao/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>相交链表（LC 160）</li>
 <li>链表反转（LC 206）</li>
@@ -2557,8 +2557,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 数学</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-shu-xue/</url>
+    <title>算法思想 - 数学</title>
+    <url>/2020/04/07/suan-fa-si-xiang-shu-xue/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h3 id="素数分解及整除"><a href="#素数分解及整除" class="headerlink" title="素数分解及整除"></a>素数分解及整除</h3><ol>
 <li>素数分解</li>
 <li>整除</li>
@@ -2618,8 +2618,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 动态规划</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-dong-tai-gui-hua/</url>
+    <title>算法思想 - 动态规划</title>
+    <url>/2020/04/07/suan-fa-si-xiang-dong-tai-gui-hua/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h2 id="2-1-零钱兑换"><a href="#2-1-零钱兑换" class="headerlink" title="2.1 零钱兑换"></a>2.1 零钱兑换</h2><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p>LeetCode：<a href="https://leetcode-cn.com/problems/coin-change/" target="_blank" rel="noopener">322. 零钱兑换</a></p>
 <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</p>
 <p><strong>示例 1:</strong></p>
@@ -2686,8 +2686,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 搜索</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-sou-suo/</url>
+    <title>算法思想 - 搜索</title>
+    <url>/2020/04/07/suan-fa-si-xiang-sou-suo/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><ol>
 <li>计算在网格中从原点到特定点的最短路径长度</li>
 <li>组成整数的最小平方数数量</li>
@@ -2745,8 +2745,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 贪心思想</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-tan-xin-si-xiang/</url>
+    <title>算法思想 - 贪心思想</title>
+    <url>/2020/04/07/suan-fa-si-xiang-tan-xin-si-xiang/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>覆盖问题</li>
 <li>时间问题</li>
@@ -2779,8 +2779,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 分治</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-fen-zhi/</url>
+    <title>算法思想 - 分治</title>
+    <url>/2020/04/07/suan-fa-si-xiang-fen-zhi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2809,8 +2809,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 二分查找</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-er-fen-cha-zhao/</url>
+    <title>算法思想 - 二分查找</title>
+    <url>/2020/04/07/suan-fa-si-xiang-er-fen-cha-zhao/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>求开方</li>
 <li>大于给定元素的最小元素</li>
@@ -2849,8 +2849,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 排序</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-pai-xu/</url>
+    <title>算法思想 - 排序</title>
+    <url>/2020/04/07/suan-fa-si-xiang-pai-xu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><p><strong>未分类</strong></p>
 <ol>
 <li>将数组中数字组合成最小的数（字节跳动）</li>
@@ -2945,8 +2945,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode - 算法思想 - 双指针</title>
-    <url>/2020/04/07/leetcode-suan-fa-si-xiang-shuang-zhi-zhen/</url>
+    <title>算法思想 - 双指针</title>
+    <url>/2020/04/07/suan-fa-si-xiang-shuang-zhi-zhen/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
 <li>有序数组的 Two Sum</li>
 <li>两数平方和</li>
