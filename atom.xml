@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-05-11T14:49:03.712Z</updated>
+  <updated>2020-05-15T07:01:17.087Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go 基础 - 关于go的环境变量</title>
+    <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/"/>
+    <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/</id>
+    <published>2020-05-15T15:11:25.000Z</published>
+    <updated>2020-05-15T07:01:17.087Z</updated>
+    
+    <summary type="html">
+    
+      主要对GO搭建过程的三个环境变量进行展开理解一下，还有搭建过程遇到的一些问题也进行总结
+    
+    </summary>
+    
+    
+      <category term="go基础" scheme="https://dongxiem.github.io/categories/go%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 基础 - 面试题集下</title>
@@ -279,27 +300,6 @@
       <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
       <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>go 基础 - 关于go的环境变量</title>
-    <link href="https://dongxiem.github.io/2020/04/09/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/"/>
-    <id>https://dongxiem.github.io/2020/04/09/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/</id>
-    <published>2020-04-09T06:06:47.050Z</published>
-    <updated>2020-05-15T06:33:50.330Z</updated>
-    
-    <summary type="html">
-    
-      主要对GO搭建过程的三个环境变量进行展开理解一下，还有搭建过程遇到的一些问题也进行总结
-    
-    </summary>
-    
-    
-      <category term="go基础" scheme="https://dongxiem.github.io/categories/go%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
     
   </entry>
   
