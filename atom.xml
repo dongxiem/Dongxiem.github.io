@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-05-15T07:01:17.087Z</updated>
+  <updated>2020-05-15T07:48:08.767Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -20,8 +20,29 @@
     <title>go 基础 - 关于go的环境变量</title>
     <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/"/>
     <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/</id>
-    <published>2020-05-15T15:11:25.000Z</published>
-    <updated>2020-05-15T07:01:17.087Z</updated>
+    <published>2020-05-15T07:48:25.000Z</published>
+    <updated>2020-05-15T07:48:08.767Z</updated>
+    
+    <summary type="html">
+    
+      Go的源码文件主要分为三种：命令源码文件、库源码文件和测试源码文件，这里进行一个简单的认识和介绍
+    
+    </summary>
+    
+    
+      <category term="go基础" scheme="https://dongxiem.github.io/categories/go%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go 基础 - go的三类文件</title>
+    <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-san-lei-wen-jian/"/>
+    <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-san-lei-wen-jian/</id>
+    <published>2020-05-15T04:11:25.000Z</published>
+    <updated>2020-05-15T07:49:04.953Z</updated>
     
     <summary type="html">
     
@@ -510,35 +531,6 @@
     <id>https://dongxiem.github.io/2020/04/07/shu-ju-jie-gou-ha-xi-biao/</id>
     <published>2020-04-07T15:17:07.621Z</published>
     <updated>2020-05-10T13:59:51.108Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="https://dongxiem.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="https://dongxiem.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构 - 数组和矩阵</title>
-    <link href="https://dongxiem.github.io/2020/04/07/shu-ju-jie-gou-shu-zu-he-ju-zhen/"/>
-    <id>https://dongxiem.github.io/2020/04/07/shu-ju-jie-gou-shu-zu-he-ju-zhen/</id>
-    <published>2020-04-07T15:16:54.949Z</published>
-    <updated>2020-05-10T13:59:57.991Z</updated>
     
     <summary type="html">
     

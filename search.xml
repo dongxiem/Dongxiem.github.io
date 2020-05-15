@@ -3,6 +3,35 @@
   <entry>
     <title>go 基础 - 关于go的环境变量</title>
     <url>/2020/05/15/go-ji-chu-guan-yu-go-de-huan-jing-bian-liang/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-命令源码文件"><a href="#1-命令源码文件" class="headerlink" title="1.命令源码文件"></a>1.命令源码文件</h1><h1 id="2-库源码文件"><a href="#2-库源码文件" class="headerlink" title="2.库源码文件"></a>2.库源码文件</h1><h1 id="3-测试源码文件"><a href="#3-测试源码文件" class="headerlink" title="3.测试源码文件"></a>3.测试源码文件</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>go基础</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go 基础 - go的三类文件</title>
+    <url>/2020/05/15/go-ji-chu-go-de-san-lei-wen-jian/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-三个环境变量"><a href="#1-三个环境变量" class="headerlink" title="1.三个环境变量"></a>1.三个环境变量</h1><p>刚接触go的时候很头疼，一下子需要我配置三个环境变量，这三个环境变量看起来很让人头疼，感觉起来三个环境变量的意思大致，区分度不高，这三个环境变量也就是 <code>GOROOT</code>、<code>GOPATH</code> 和 <code>GOBIN</code>。这里简单介绍一下。</p>
 <ul>
 <li>GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径。</li>
@@ -20,11 +49,11 @@
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"github.com/labstack/echo"</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>如果需要引用多个文件的话该如何使用呢？</p>
-<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"encoding/binary"</span></span><br><span class="line">	<span class="string">"encoding/gob"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/recoilme/slowpoke"</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"bytes"</span></span><br><span class="line">    <span class="string">"encoding/binary"</span></span><br><span class="line">    <span class="string">"encoding/gob"</span></span><br><span class="line">    <span class="string">"encoding/json"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">    <span class="string">"strconv"</span></span><br><span class="line"></span><br><span class="line">    <span class="string">"github.com/recoilme/slowpoke"</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这里随便给出一个示例，可以看见如果需要包含多个子包是使用import() 的方式，在工作区中，一个代码包的导入路径实际上就是从 src 子目录，到该包的实际存储位置的相对路径。</p>
 <p>这是怎么理解呢？我们可以看看在windows下面的GOPATH的截图：</p>
-<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200515144325.png"  alt=""></p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200515144325.png"  alt="GOPATH目录路径"></p>
 <p>进入GOPATH中的src目录下可以看见：</p>
 <p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200515144412.png"  alt="D:\GOPATH\src"></p>
 <p>我们再进入github.com，发现如下，这些都是我在浏览Go相关项目下自动导入或者我手动导入的一些github包。</p>
@@ -33,6 +62,64 @@
 <p>在浏览项目的过程中，我发现让我十分心急的一点就是，编译过程中需要导很多github的包，又因为特色的问题，网络速度上不去，有些包还被墙掉（比如：golang.org下面的文件几乎都导不进来），还好golang.org将他们的镜像上传到github上面，可以通过github上面的包下载到本地，再根据路径名进行配置好，这样方可通过。</p>
 <p>这样一来，也太麻烦了点，和之前使用C、Java、Python的感觉都完全不一样，这也是让我比较吃惊的一点，居然为了通过一个文件的编译，要手动下载好几个包文件。</p>
 <p>总的来说，Go 语言源码的组织方式就是以环境变量 GOPATH、工作区、src 目录和代码包为主线的。一般情况下，Go 语言的源码文件都需要被存放在环境变量 GOPATH 包含的某个工作区（目录）中的 src 目录下的某个代码包（目录）中。</p>
+<hr>
+<h2 id="2-2-归档文件"><a href="#2-2-归档文件" class="headerlink" title="2.2 归档文件"></a>2.2 归档文件</h2><p>上面的GOPATH路径下，我们已经了解到了，源码文件通常会被放在某个工作区的 src 子目录下。我们注意到除了src，还有另外一个文件夹是pkg，欸，这就有点意思，这个pkg是什么东西？</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200515144325.png"  alt="GOPATH目录路径"></p>
+<p>Go 语言源码在安装后如果产生了归档文件（以“.a”为扩展名的文件），就会放进该工作区的 pkg 子目录；如果产生了可执行文件，就可能会放进该工作区的 bin 子目录。</p>
+<blockquote>
+<p>归档文件在Linux下就是扩展名是.a的文件，也就是archive文件。写过C程序的朋友都知道，这是程序编译后生成的静态库文件。</p>
+</blockquote>
+<p>这里讲讲归档文件存放的具体位置和规则。</p>
+<p>源码文件会以代码包的形式组织起来，一个代码包其实就对应一个目录。安装某个代码包而产生的归档文件是与这个代码包同名的。</p>
+<p>放置它的相对目录就是该代码包的导入路径的直接父级。比如，一个已存在的代码包的导入路径是</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">github.com/dongxiem/xxx</span><br></pre></td></tr></tbody></table></figure>
+
+<p>那么执行命令</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> install github.com/dongxiem/xxx</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样一来就生成了归档文件，而归档文件的相对目录就是：github.com/dongxiem，其下面的文件名则会有一个：xxx.a</p>
+<p>需要注意到的是：归档文件的相对目录与 pkg 目录之间还有一级目录，叫做平台相关目录。</p>
+<p>平台相关目录的名称是由 build（也称“构建”）的目标操作系统、下划线和目标计算架构的代号组成的。比如，构建某个代码包时的目标操作系统是 Linux，目标计算架构是 64 位的，那么对应的平台相关目录就是 linux_amd64。</p>
+<p>比如我Windows下面的则为：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200515152211.png"  alt="D:\GOPATH\pkg"></p>
+<p>但是如果构建某个代码包时的目标操作系统是 Linux，目标计算架构是 64 位的，那么对应的平台相关目录就是 linux_amd64。</p>
+<p>其大概的目录架构如下：</p>
+<p><img src="/" class="lazyload" data-src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200515152331.png"  alt="GOPATH目录架构"></p>
+<hr>
+<h2 id="2-3-Go-程序构建与安装过程"><a href="#2-3-Go-程序构建与安装过程" class="headerlink" title="2.3 Go 程序构建与安装过程"></a>2.3 Go 程序构建与安装过程</h2><p>我们可以将这块的内容用两条命令进行归纳开来，觉得<code>go get</code>还挺重要的，于是也提及到一下。</p>
+<h3 id="2-3-1-go-build"><a href="#2-3-1-go-build" class="headerlink" title="2.3.1 go build"></a>2.3.1 go build</h3><p>对于构建，我们会使用<code>go builid</code>命令对程序进行构建，构建过程会执行编译、打包等操作，这些操作生成的任何文静都会先被保存到某个临时目录中。</p>
+<p>如果构建的是库源码文件，那么操作后产生的结果文件只会存在于临时目录中。这里的构建的主要意义在于检查和验证。如果构建的是命令源码文件，那么操作的结果文件会被搬运到源码文件所在的目录中。</p>
+<p>关于<code>go build</code>，这里需要注意的是：在运行go build命令的时候，<strong>默认不会编译目标代码包所依赖的那些代码包</strong>。当然，如果被依赖的代码包的归档文件不存在，或者源码文件有了变化，那它还是会被编译。</p>
+<p>这里注意一下两点：</p>
+<ol>
+<li>如果需要强制编译，可以在执行命令的时候加入标记-a。此时，不但目标代码包总是会被编译，它依赖的代码包也总会被编译，即使依赖的是标准库中的代码包也是如此。</li>
+<li>如果不但要编译依赖的代码包，还要安装它们的归档文件，那么可以加入标记-i</li>
+</ol>
+<p>那么我们<strong>怎么确定哪些代码包被编译了呢？</strong>有两种方法。</p>
+<ol>
+<li>运行go build命令时加入标记-x，这样可以看到go build命令具体都执行了哪些操作。另外也可以加入标记-n，这样可以只查看具体操作而不执行它们。</li>
+<li>运行go build命令时加入标记-v，这样可以看到go build命令编译的代码包的名称。它在与-a标记搭配使用时很有用。</li>
+</ol>
+<h3 id="2-3-2-go-install"><a href="#2-3-2-go-install" class="headerlink" title="2.3.2 go install"></a>2.3.2 go install</h3><p>对于安装，我们会使用<code>go install</code>命令进行安装，安装操作会先执行构建，然后还会进行链接操作，并且把结果文件搬运到指定目录。</p>
+<p>如果安装的是库源码文件，那么结果文件会被搬运到它所在工作区的 pkg 目录下的某个子目录中。如果安装的是命令源码文件，那么结果文件会被搬运到它所在工作区的 bin 目录中，或者环境变量GOBIN指向的目录中。</p>
+<h3 id="2-3-3-go-get"><a href="#2-3-3-go-get" class="headerlink" title="2.3.3 go get"></a>2.3.3 go get</h3><p>关于<code>go get</code>，这里也是插讲一下，因为其余Go 源码的安装关系挺大，命令<code>go get</code>会自动从一些主流公用代码仓库（比如 GitHub）下载目标代码包，并把它们安装到环境变量GOPATH包含的第 1 工作区的相应目录中。如果存在环境变量GOBIN，那么仅包含命令源码文件的代码包会被安装到GOBIN指向的那个目录。</p>
+<p>其主要的几个参数如下：</p>
+<ul>
+<li>-u：下载并安装代码包，不论工作区中是否已存在它们。</li>
+<li>-d：只下载代码包，不安装代码包。</li>
+<li>-fix：在下载代码包后先运行一个用于根据当前 Go 语言版本修正代码的工具，然后再安装代码包。</li>
+<li>-t：同时下载测试所需的代码包。</li>
+<li>-insecure：允许通过非安全的网络协议下载和安装代码包。HTTP 就是这样的协议。</li>
+</ul>
+<p>有时候，我们可能会出于某种目的变更存储源码的代码仓库或者代码包的相对路径。这时，为了让代码包的远程导入路径不受此类变更的影响，我们会使用自定义的代码包导入路径。</p>
+<p>对代码包的远程导入路径进行自定义的方法是：<strong>在该代码包中的库源码文件的包声明语句的右边加入导入注释</strong>，像这样：</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> semaphore <span class="comment">// import "golang.org/x/sync/semaphore"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>有没有很吃惊，这又和之前使用的一些编程语言不一样了，之前我们使用的一些编程语言例如Java，都是使用了“//”之后后面无论写什么都是不起作用的，起到的是一个注释的作用了，而现在居然还有这种做法，有点意思。</p>
+<p>这个代码包原本的完整导入路径是<code>github.com/golang/sync/semaphore</code>。这与实际存储它的网络地址对应的。该代码包的源码实际存在 GitHub 网站的 golang 组的 sync 代码仓库的 semaphore 目录下。而加入导入注释之后，用以下命令即可下载并安装该代码包了：</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> get golang.org/x/sync/semaphore</span><br></pre></td></tr></tbody></table></figure>
+
+<p>而 Go 语言官网 golang.org 下的路径 <code>/x/sync/semaphore</code> 并不是存放semaphore包的真实地址。我们称之为代码包的自定义导入路径。不过，这还需要在 golang.org 这个域名背后的服务端程序上，添加一些支持才能使这条命令成功。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2525,55 +2612,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构 - 链表</title>
-    <url>/2020/04/07/shu-ju-jie-gou-lian-biao/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
-<li>相交链表（LC 160）</li>
-<li>链表反转（LC 206）</li>
-<li>有序链表的合并（字节跳动）（LC 21）</li>
-<li>从有序链表中删除重复节点（LC 83）</li>
-<li>删除排序链表中的重复元素 II（LC 82）</li>
-<li>删除链表的倒数第 n 个节点（LC 19）</li>
-<li>交换链表中的相邻结点（LC 24）</li>
-<li>链表求和（LC 445）</li>
-<li>回文链表（LC 234）</li>
-<li>分割链表（LC 725）</li>
-<li>奇偶链表（LC 328）</li>
-<li>单链表的回文判断要求O1空间（字节跳动实习）</li>
-<li>单链表每k个翻转（字节跳动）/反转链表按k（字节跳动）（ LC 25）</li>
-<li>链表判环（入环点、环的长度）（京东）</li>
-<li>有序链表合并的升级版，合并n多和有序链表，并计算时间复杂度（字节跳动）</li>
-</ol>
-<hr>
-<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><hr>
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法思想 - 数学</title>
     <url>/2020/04/07/suan-fa-si-xiang-shu-xue/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><h3 id="素数分解及整除"><a href="#素数分解及整除" class="headerlink" title="素数分解及整除"></a>素数分解及整除</h3><ol>
@@ -2608,6 +2646,55 @@
 <li>乘积数组</li>
 </ol>
 <script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构 - 链表</title>
+    <url>/2020/04/07/shu-ju-jie-gou-lian-biao/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-开篇"><a href="#1-开篇" class="headerlink" title="1.开篇"></a>1.开篇</h1><ol>
+<li>相交链表（LC 160）</li>
+<li>链表反转（LC 206）</li>
+<li>有序链表的合并（字节跳动）（LC 21）</li>
+<li>从有序链表中删除重复节点（LC 83）</li>
+<li>删除排序链表中的重复元素 II（LC 82）</li>
+<li>删除链表的倒数第 n 个节点（LC 19）</li>
+<li>交换链表中的相邻结点（LC 24）</li>
+<li>链表求和（LC 445）</li>
+<li>回文链表（LC 234）</li>
+<li>分割链表（LC 725）</li>
+<li>奇偶链表（LC 328）</li>
+<li>单链表的回文判断要求O1空间（字节跳动实习）</li>
+<li>单链表每k个翻转（字节跳动）/反转链表按k（字节跳动）（ LC 25）</li>
+<li>链表判环（入环点、环的长度）（京东）</li>
+<li>有序链表合并的升级版，合并n多和有序链表，并计算时间复杂度（字节跳动）</li>
+</ol>
+<hr>
+<h1 id="2-拉开序幕"><a href="#2-拉开序幕" class="headerlink" title="2.拉开序幕"></a>2.拉开序幕</h1><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><hr>
+<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -9186,8 +9273,8 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>导页</tag>
         <tag>并发</tag>
+        <tag>导页</tag>
       </tags>
   </entry>
 </search>
