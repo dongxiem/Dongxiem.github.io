@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 并发 - Volatile 分析 (copy)</title>
+    <url>/2020/05/15/java-bing-fa-volatile-fen-xi-copy/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Java多线程与并发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>面试题集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go 基础 - </title>
+    <url>/2020/05/15/go-ji-chu/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
     <title>Java 基础 - 面试题集下</title>
     <url>/2020/05/11/java-ji-chu-mian-shi-ti-ji-xia/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="java-中-IO-流分为几种"><a href="#java-中-IO-流分为几种" class="headerlink" title="java 中 IO 流分为几种?"></a>java 中 IO 流分为几种?</h2><ul>
@@ -1924,34 +1942,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 并发 - Volatile 分析</title>
-    <url>/2020/04/09/java-bing-fa-volatile-fen-xi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+    <title>go 基础 - 什么是</title>
+    <url>/2020/04/09/go-ji-chu-shi-me-shi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
-        <category>Java多线程与并发</category>
+        <category>go基础</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>并发</tag>
-        <tag>面试题集</tag>
+        <tag>go</tag>
       </tags>
   </entry>
   <entry>

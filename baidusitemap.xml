@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/04/09/go-ji-chu-shi-me-shi/</loc>
+    <lastmod>2020-05-15</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/05/15/go-ji-chu/</loc>
+    <lastmod>2020-05-15</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/29/spring-ioc-yuan-ma-fen-xi-shen-ru-li-jie-ioc/</loc>
     <lastmod>2020-05-14</lastmod>
   </url>  <url>
@@ -13,7 +19,7 @@
     <loc>https://dongxiem.github.io/2020/05/11/java-ji-chu-mian-shi-ti-ji-shang/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/04/09/java-bing-fa-volatile-fen-xi/</loc>
+    <loc>https://dongxiem.github.io/2020/05/15/java-bing-fa-volatile-fen-xi-copy/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/</loc>
