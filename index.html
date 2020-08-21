@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:32:58" itemprop="dateModified" datetime="2020-08-21T20:32:58+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:40:45" itemprop="dateModified" datetime="2020-08-21T20:40:45+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -491,7 +491,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:35:11" itemprop="dateModified" datetime="2020-08-21T20:35:11+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:39:54" itemprop="dateModified" datetime="2020-08-21T20:39:54+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -586,7 +586,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:35:04" itemprop="dateModified" datetime="2020-08-21T20:35:04+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:40:05" itemprop="dateModified" datetime="2020-08-21T20:40:05+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -681,7 +681,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:35:07" itemprop="dateModified" datetime="2020-08-21T20:35:07+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:40:09" itemprop="dateModified" datetime="2020-08-21T20:40:09+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -776,7 +776,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:34:41" itemprop="dateModified" datetime="2020-08-21T20:34:41+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:40:31" itemprop="dateModified" datetime="2020-08-21T20:40:31+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -974,7 +974,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:34:23" itemprop="dateModified" datetime="2020-08-21T20:34:23+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:40:39" itemprop="dateModified" datetime="2020-08-21T20:40:39+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1011,10 +1011,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>主要讲述了两种实现线程（继承Thread类与实现Runnable接口）的方式，还提到了如何进行使用函数式编程进行实现，给出了一些相对应的Demo，可方便快速理解。然后我对Thread类进行了一个简单的源码分析，然后对比了submit和execute，最后还进行了一些相关的比较，更加清晰的进行各种方法之间的联系与差异。</p>
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>在这阶段的学习过程中我会先抛出一系列：线程如何创建？这是一个很关键的问题，并发的关键在于多线程，那么如何创建线程呢？大概有几种方式呢？这几种方式的区别是什么？什么情况下应该使用这种创建方式？什么时候又不应该呢？那么具体的过程应该是如何呢？是否应该给出一两个例子会更好的说明一下？</p>
+<p>问题太多，搞得自己都乱了，最主要的还是要一点点的去了解，最后串成一根线，才能更好对知识的进行掌握。</p>
+<p>我想应该将这几种方式联系起来做一个对比，这样才能更好的理解这些创建线程方式的优点与缺点。</p>
+<p>按照现有的认识，总的来说有两种实现线程的方式：</p>
+<ol>
+<li><strong>实现Runnable接口</strong></li>
+<li><strong>继承Thread类</strong></li>
+</ol>
+<p>其实按照我的理解的话，详细分一下的话可以分为三种，就是继承Thread类，实现Runnable接口，实现Callable接口（虽然其内部也是实现Runnable接口），主要就是实现Runnable接口没有返回值，而实现Callable接口可以有返回值，所以也可以按照这三种方式去思考实际开发过程中到底需要哪种创建方式。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/">
+              <a class="btn" href="/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
