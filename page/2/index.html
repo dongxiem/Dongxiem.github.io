@@ -163,6 +163,299 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/" class="post-title-link" itemprop="url">Java 并发 - Synchronized 与其他一些锁机制的对比</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 17:18:02" itemprop="dateCreated datePublished" datetime="2020-03-31T17:18:02+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 20:57:03" itemprop="dateModified" datetime="2020-08-21T20:57:03+08:00">2020-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>我们前面已经 Synchronized 在JDK1.6 进行哪一些方面的优化，通过这些底层的优化之后Synchronized  变得好用了很多，那么它究竟和其他锁机制有什么差别？换种方式说，我在进行编程的过程中，究竟要如何进行选择？什么时候应该选择Synchronized？而什么时候不选用Synchronized而选用其他的锁机制。</p>
+<p>总感觉学习了Synchronized之后，对于其内部原理熟悉了，不知道有没有其他人跟我一样困惑，我究竟该何时进行使用它呢？在哪个场景下我该第一时间想到这货？我觉得进行选择还应该先进行对比，将和我们之前学习到的一些同步机制进行联系起来，有对比才有总结，尽量多进行比较，多点思考，才有更深入的理解与认识。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/" class="post-title-link" itemprop="url">Java 并发 - Synchronized 几种使用方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 17:17:42" itemprop="dateCreated datePublished" datetime="2020-03-31T17:17:42+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 20:56:52" itemprop="dateModified" datetime="2020-08-21T20:56:52+08:00">2020-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-概括"><a href="#1-概括" class="headerlink" title="1.概括"></a>1.概括</h1><p>Synchronized 可以有几种修饰方法，总体使用如下图所示：</p>
+<p><img src="https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png" alt="image.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - Synchronized 原理分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 17:16:59" itemprop="dateCreated datePublished" datetime="2020-03-31T17:16:59+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 23:36:19" itemprop="dateModified" datetime="2020-08-21T23:36:19+08:00">2020-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>JDK1.6 之后 Synchronized  的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。锁主要存在四中状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。</p>
+<p>Java中的<code>synchronized</code> 的偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&gt;轻量级锁-&gt;重量级锁 的顺序升级。JVM种的锁也是能降级的，只不过条件很苛刻，可以相当于没有了，策略是为了提高获得锁和释放锁的效率。</p>
+<p>所以对Synchronized 的重点分析应该是其升级流程，以前是我觉得So easy，不就这几个状态升上去而已，不过在某天看了 <a href="https://github.com/farmerjohngit/myblog/issues/12" target="_blank" rel="noopener">死磕Synchronized底层实现</a> 之后，发现我还是太嫩了，这才是真正的深入，也许对知识的求知就该如此不断的进行深入，对于Synchronized 还是有很多值得发现的知识，以下记录了学习到的一些笔记，大概对一整个锁的升级流程有了一些认识和了解。</p>
+<ul>
+<li>锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）</li>
+</ul>
+<p><img src="https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png" alt="Synchronized锁升级流程图"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,102 +530,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - 锁相关：Condition接口分析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-31 15:46:37" itemprop="dateCreated datePublished" datetime="2020-03-31T15:46:37+08:00">2020-03-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:57:00" itemprop="dateModified" datetime="2020-08-21T20:57:00+08:00">2020-08-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>17k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>16 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Condition就是一接口，而在AQS 中的<code>ConditionObject</code>内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在<strong>生产者-消费者</strong>的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，然后再进行Condition的了解</p>
-<p>这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过<code>newCondition</code>方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的<code>wait()</code>, <code>notify()</code> 或 <code>notifyAll()</code> 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 <code>ReentrantLock</code>  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -433,6 +630,102 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - 锁相关：Condition接口分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 15:46:37" itemprop="dateCreated datePublished" datetime="2020-03-31T15:46:37+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 20:57:00" itemprop="dateModified" datetime="2020-08-21T20:57:00+08:00">2020-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>16 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Condition就是一接口，而在AQS 中的<code>ConditionObject</code>内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在<strong>生产者-消费者</strong>的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，然后再进行Condition的了解</p>
+<p>这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过<code>newCondition</code>方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的<code>wait()</code>, <code>notify()</code> 或 <code>notifyAll()</code> 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 <code>ReentrantLock</code>  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -855,7 +1148,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -905,13 +1198,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">192k</span>
+    <span title="站点总字数">195k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:54</span>
+    <span title="站点阅读时长">2:58</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

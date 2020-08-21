@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-08-21T12:56:06.309Z</updated>
+  <updated>2020-08-21T15:25:51.256Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -17,11 +17,88 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>go 基础 - go的命令源码文件</title>
-    <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/"/>
-    <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</id>
+    <title>golang - 深入Channel源码解析</title>
+    <link href="https://dongxiem.github.io/2020/08/21/golang-shen-ru-channel-yuan-ma-jie-xi/"/>
+    <id>https://dongxiem.github.io/2020/08/21/golang-shen-ru-channel-yuan-ma-jie-xi/</id>
+    <published>2020-08-21T14:34:56.196Z</published>
+    <updated>2020-08-21T15:25:51.256Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>golang - 关于Channel的一些实现</title>
+    <link href="https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/"/>
+    <id>https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/</id>
+    <published>2020-05-29T08:21:14.000Z</published>
+    <updated>2020-08-21T14:38:20.984Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang - 关于Channel的一些认识</title>
+    <link href="https://dongxiem.github.io/2020/05/25/golang-guan-yu-channel-de-yi-xie-ren-shi/"/>
+    <id>https://dongxiem.github.io/2020/05/25/golang-guan-yu-channel-de-yi-xie-ren-shi/</id>
+    <published>2020-05-25T03:41:15.000Z</published>
+    <updated>2020-08-21T15:36:55.303Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang - go的命令源码文件</title>
+    <link href="https://dongxiem.github.io/2020/05/15/golang-go-de-ming-ling-yuan-ma-wen-jian/"/>
+    <id>https://dongxiem.github.io/2020/05/15/golang-go-de-ming-ling-yuan-ma-wen-jian/</id>
     <published>2020-05-15T07:48:25.000Z</published>
-    <updated>2020-08-21T12:56:06.309Z</updated>
+    <updated>2020-08-21T14:26:13.136Z</updated>
     
     <summary type="html">
     
@@ -35,7 +112,7 @@
     </summary>
     
     
-      <category term="go基础" scheme="https://dongxiem.github.io/categories/go%E5%9F%BA%E7%A1%80/"/>
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
     
     
       <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
@@ -43,11 +120,11 @@
   </entry>
   
   <entry>
-    <title>go 基础 - go的环境变量</title>
-    <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-huan-jing-bian-liang/"/>
-    <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-huan-jing-bian-liang/</id>
+    <title>golang - go的环境变量</title>
+    <link href="https://dongxiem.github.io/2020/05/15/golang-go-de-huan-jing-bian-liang/"/>
+    <id>https://dongxiem.github.io/2020/05/15/golang-go-de-huan-jing-bian-liang/</id>
     <published>2020-05-15T04:11:25.000Z</published>
-    <updated>2020-08-21T12:57:08.051Z</updated>
+    <updated>2020-08-21T14:26:14.533Z</updated>
     
     <summary type="html">
     
@@ -66,7 +143,7 @@
     </summary>
     
     
-      <category term="go基础" scheme="https://dongxiem.github.io/categories/go%E5%9F%BA%E7%A1%80/"/>
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
     
     
       <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
@@ -317,7 +394,7 @@
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/</id>
     <published>2020-03-31T09:16:59.531Z</published>
-    <updated>2020-08-21T12:56:51.303Z</updated>
+    <updated>2020-08-21T15:36:19.854Z</updated>
     
     <summary type="html">
     
@@ -367,30 +444,6 @@
   </entry>
   
   <entry>
-    <title>Java 并发 - 锁相关：Condition接口分析</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
-    <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-08-21T12:57:00.579Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
-&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java 并发 - AQS：框架分析</title>
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/</id>
@@ -417,6 +470,30 @@
       <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
       <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 锁相关：Condition接口分析</title>
+    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
+    <published>2020-03-31T07:46:37.472Z</published>
+    <updated>2020-08-21T12:57:00.579Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
+&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -499,30 +576,6 @@
 &lt;li&gt;因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。&lt;/li&gt;
 &lt;li&gt;而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Java集合" scheme="https://dongxiem.github.io/categories/Java%E9%9B%86%E5%90%88/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="集合" scheme="https://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合框架 - HashMap 分析</title>
-    <link href="https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/</id>
-    <published>2020-03-29T12:00:56.331Z</published>
-    <updated>2020-08-21T12:56:50.372Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-HashMap实现原理&quot;&gt;&lt;a href=&quot;#1-HashMap实现原理&quot; class=&quot;headerlink&quot; title=&quot;1.HashMap实现原理&quot;&gt;&lt;/a&gt;1.HashMap实现原理&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;简述HashMap的工作原理：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;HashMap是&lt;strong&gt;基于散列法（又称哈希法）的原理&lt;/strong&gt;，使用&lt;code&gt;put(key, value)&lt;/code&gt;存储对象到HashMap中，使用&lt;code&gt;get(key)&lt;/code&gt;从HashMap中获取对象。使用HashMap进行查询和修改的速度都很快，平均时间复杂度O(1)。HashMap非线程安全，如果需要考虑并发，则需要使用ConcurrentHashMap，且HashMap不保证存储元素的序列；&lt;/p&gt;
     
     </summary>
     
