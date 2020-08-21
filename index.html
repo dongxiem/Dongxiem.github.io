@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:40:45" itemprop="dateModified" datetime="2020-08-21T20:40:45+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:56:06" itemprop="dateModified" datetime="2020-08-21T20:56:06+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,10 +231,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Go的源码文件主要分为三种：命令源码文件、库源码文件和测试源码文件，这里对Go的命令源码文件进行一个简单的认识和介绍</p>
+          <h1 id="1-命令源码文件"><a href="#1-命令源码文件" class="headerlink" title="1.命令源码文件"></a>1.命令源码文件</h1><p><strong>命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的</strong>。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。</p>
+<p><strong>如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件</strong>。 就像下面这段代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"Hello, world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这其实就是就简单的可以运行go的一个文件了，刚开始搭建的时候我也是使用这么一段测试代码，随便创建了一个文件之后，然后敲上这么一段代码之后发现控制台可以打印出来“Hello World!”，瞬间感觉就学会了这门语言了，可是事情并没有那么简单，有多难？很难很难。</p>
+<p>但是这里让我挺困惑的地方就是，<strong>这<code>func main()</code>，没有接收参数入口啊？？？</strong>难道我就只能进行打印了？这不科学，无论在C/C++，还是Java中，main方法都不是这么写的，那么问题就来了，如果进行接收参数呢？</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/15/go-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/">
+              <a class="btn" href="/2020/05/15/go-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -289,7 +294,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:32:47" itemprop="dateModified" datetime="2020-08-21T20:32:47+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:57:08" itemprop="dateModified" datetime="2020-08-21T20:57:08+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -491,7 +496,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:39:54" itemprop="dateModified" datetime="2020-08-21T20:39:54+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:56:37" itemprop="dateModified" datetime="2020-08-21T20:56:37+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -528,10 +533,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>主要解释了一下什么是CAS，及CAS会遇到的一些问题，还有其解决方法。</p>
+          <h1 id="1-CAS-介绍"><a href="#1-CAS-介绍" class="headerlink" title="1.CAS 介绍"></a>1.CAS 介绍</h1><p><strong>什么是CAS？</strong></p>
+<p>CAS，全称：Compare and Swap，即比较-替换；CAS是一种无锁算法<strong>，</strong>通过无锁的方式实现了多个线程间变量的同步；CAS 是乐观锁的一种实现方式，是一种轻量级锁，JUC 中很多工具类的实现就是基于 CAS 的。</p>
+<p>注意：JVM中的CAS操作正是利用了处理器提供的<strong>CMPXCHG指令实现</strong>的。</p>
+<p><strong>具体内容：</strong></p>
+<p>假设有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，才会将内存值修改为B并返回true，否则什么都不做并返回false。<strong>当然CAS一定要volatile变量配合</strong>，这样才能保证每次拿到的变量是主内存中最新的那个值，否则旧的预期值A对某条线程来说，永远是一个不会变的值A，只要某次CAS操作失败，永远都不可能成功。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/16/java-bing-fa-cas-fen-xi/">
+              <a class="btn" href="/2020/04/16/java-bing-fa-cas-fen-xi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -586,7 +595,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:40:05" itemprop="dateModified" datetime="2020-08-21T20:40:05+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:56:31" itemprop="dateModified" datetime="2020-08-21T20:56:31+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -623,10 +632,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>了解AQS之后，自己尝试根据AQS的框架写出一个同步工具。</p>
+          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>通过前面的AQS的基本原理了解:之后：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，我了解了大概的AQS的一整个流程，也明白了大部分的同步工具都是基于AQS来实现的，好像比较重要的就是重写tryAcquire 和 tryRelease 两个方法而已，那么我借鉴了其他同步工具的写法，试了试尝试自己实现一个基于AQS的同步工具，看看能不能正常跑起来。</p>
+<p>以下是基于独占式的写法，并不是共享式的，所以实现的也是<code>tryAcquire</code>和<code>tryRelease</code>。主要想做的事情就是同一个时刻只能让一个线程一直抱有资源做一件事情，直到这件事情做完了之后，才可以让其他线程去做一些事情，这不就是同步的概念嘛！</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/">
+              <a class="btn" href="/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -681,7 +691,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:40:09" itemprop="dateModified" datetime="2020-08-21T20:40:09+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:57:02" itemprop="dateModified" datetime="2020-08-21T20:57:02+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -718,10 +728,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>主要了解了一下LockSupport是什么，几个方法，及其源码的实现。</p>
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>LockSupport在AQS中经常被调用，可以经常看到LockSupport的出现，看了很久也不清楚大概是个什么作用，总结了一些，它大概就是AQS用来实现线程的阻塞和唤醒的，分别通过<code>LockSupport .park()</code>和 <code>LockSupport .unpark()</code>进行实现的。</p>
+<p>使用LockSupport的线程会与一个许可关联，其实就像是一个二元信号量（意思就是只有一个许可证可以使用），如果这个许可没有被占用，那么当前线程可以获得许可并继续执行，如果许可以已经被占用，则当前线程就会被阻塞，然后等待许可的获取。注意：<strong>许可默认是被占用的！</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/">
+              <a class="btn" href="/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -776,7 +787,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:40:31" itemprop="dateModified" datetime="2020-08-21T20:40:31+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:56:16" itemprop="dateModified" datetime="2020-08-21T20:56:16+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -813,10 +824,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这篇文章主要分析了什么是FutureTask，还对其源码进行了分析。</p>
+          <h1 id="1-什么是FutureTask？"><a href="#1-什么是FutureTask？" class="headerlink" title="1. 什么是FutureTask？"></a>1. 什么是FutureTask？</h1><p>前面的Blog介绍了<u><code>Future</code>接口。这个接口有一个实现类叫<code>FutureTask</code></u>。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的<code>cancel</code>，<code>get</code>，<code>isDone</code>等方法要自己实现起来都是<strong>非常复杂</strong>的。所以JDK提供了一个<code>FutureTask</code>类来供我们使用。</p>
+<p>FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，<u>线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务</u>。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而<u>被提交的Runnable或Callable任务都会被包装成FutureTask</u>，由线程池的工作线程去执行。</p>
+<p>还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的<code>RunnableFuture</code>接口的，而<code>RunnableFuture</code>接口同时继承了<code>Runnable</code>接口和<code>Future</code>接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（<code>FutureTask.run()</code>）。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/10/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/">
+              <a class="btn" href="/2020/04/10/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1077,7 +1090,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:35:42" itemprop="dateModified" datetime="2020-08-21T20:35:42+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:57:03" itemprop="dateModified" datetime="2020-08-21T20:57:03+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1173,7 +1186,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:35:30" itemprop="dateModified" datetime="2020-08-21T20:35:30+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:56:52" itemprop="dateModified" datetime="2020-08-21T20:56:52+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1269,7 +1282,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:35:48" itemprop="dateModified" datetime="2020-08-21T20:35:48+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:56:51" itemprop="dateModified" datetime="2020-08-21T20:56:51+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">

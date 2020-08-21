@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-08-21T12:40:45.380Z</updated>
+  <updated>2020-08-21T12:56:06.309Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -21,11 +21,16 @@
     <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/"/>
     <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</id>
     <published>2020-05-15T07:48:25.000Z</published>
-    <updated>2020-08-21T12:40:45.380Z</updated>
+    <updated>2020-08-21T12:56:06.309Z</updated>
     
     <summary type="html">
     
-      Go的源码文件主要分为三种：命令源码文件、库源码文件和测试源码文件，这里对Go的命令源码文件进行一个简单的认识和介绍
+      &lt;h1 id=&quot;1-命令源码文件&quot;&gt;&lt;a href=&quot;#1-命令源码文件&quot; class=&quot;headerlink&quot; title=&quot;1.命令源码文件&quot;&gt;&lt;/a&gt;1.命令源码文件&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的&lt;/strong&gt;。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件&lt;/strong&gt;。 就像下面这段代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;Hello, world!&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;这其实就是就简单的可以运行go的一个文件了，刚开始搭建的时候我也是使用这么一段测试代码，随便创建了一个文件之后，然后敲上这么一段代码之后发现控制台可以打印出来“Hello World!”，瞬间感觉就学会了这门语言了，可是事情并没有那么简单，有多难？很难很难。&lt;/p&gt;
+&lt;p&gt;但是这里让我挺困惑的地方就是，&lt;strong&gt;这&lt;code&gt;func main()&lt;/code&gt;，没有接收参数入口啊？？？&lt;/strong&gt;难道我就只能进行打印了？这不科学，无论在C/C++，还是Java中，main方法都不是这么写的，那么问题就来了，如果进行接收参数呢？&lt;/p&gt;
     
     </summary>
     
@@ -42,7 +47,7 @@
     <link href="https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-huan-jing-bian-liang/"/>
     <id>https://dongxiem.github.io/2020/05/15/go-ji-chu-go-de-huan-jing-bian-liang/</id>
     <published>2020-05-15T04:11:25.000Z</published>
-    <updated>2020-08-21T12:32:47.474Z</updated>
+    <updated>2020-08-21T12:57:08.051Z</updated>
     
     <summary type="html">
     
@@ -100,11 +105,15 @@
     <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/</id>
     <published>2020-04-16T04:14:14.000Z</published>
-    <updated>2020-08-21T12:39:54.289Z</updated>
+    <updated>2020-08-21T12:56:37.244Z</updated>
     
     <summary type="html">
     
-      主要解释了一下什么是CAS，及CAS会遇到的一些问题，还有其解决方法。
+      &lt;h1 id=&quot;1-CAS-介绍&quot;&gt;&lt;a href=&quot;#1-CAS-介绍&quot; class=&quot;headerlink&quot; title=&quot;1.CAS 介绍&quot;&gt;&lt;/a&gt;1.CAS 介绍&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;什么是CAS？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CAS，全称：Compare and Swap，即比较-替换；CAS是一种无锁算法&lt;strong&gt;，&lt;/strong&gt;通过无锁的方式实现了多个线程间变量的同步；CAS 是乐观锁的一种实现方式，是一种轻量级锁，JUC 中很多工具类的实现就是基于 CAS 的。&lt;/p&gt;
+&lt;p&gt;注意：JVM中的CAS操作正是利用了处理器提供的&lt;strong&gt;CMPXCHG指令实现&lt;/strong&gt;的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体内容：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，才会将内存值修改为B并返回true，否则什么都不做并返回false。&lt;strong&gt;当然CAS一定要volatile变量配合&lt;/strong&gt;，这样才能保证每次拿到的变量是主内存中最新的那个值，否则旧的预期值A对某条线程来说，永远是一个不会变的值A，只要某次CAS操作失败，永远都不可能成功。&lt;/p&gt;
     
     </summary>
     
@@ -123,11 +132,12 @@
     <link href="https://dongxiem.github.io/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/"/>
     <id>https://dongxiem.github.io/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/</id>
     <published>2020-04-14T06:13:45.000Z</published>
-    <updated>2020-08-21T12:40:05.939Z</updated>
+    <updated>2020-08-21T12:56:31.731Z</updated>
     
     <summary type="html">
     
-      了解AQS之后，自己尝试根据AQS的框架写出一个同步工具。
+      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;通过前面的AQS的基本原理了解:之后：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，我了解了大概的AQS的一整个流程，也明白了大部分的同步工具都是基于AQS来实现的，好像比较重要的就是重写tryAcquire 和 tryRelease 两个方法而已，那么我借鉴了其他同步工具的写法，试了试尝试自己实现一个基于AQS的同步工具，看看能不能正常跑起来。&lt;/p&gt;
+&lt;p&gt;以下是基于独占式的写法，并不是共享式的，所以实现的也是&lt;code&gt;tryAcquire&lt;/code&gt;和&lt;code&gt;tryRelease&lt;/code&gt;。主要想做的事情就是同一个时刻只能让一个线程一直抱有资源做一件事情，直到这件事情做完了之后，才可以让其他线程去做一些事情，这不就是同步的概念嘛！&lt;/p&gt;
     
     </summary>
     
@@ -146,11 +156,12 @@
     <link href="https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/"/>
     <id>https://dongxiem.github.io/2020/04/11/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</id>
     <published>2020-04-11T09:59:56.974Z</published>
-    <updated>2020-08-21T12:40:09.141Z</updated>
+    <updated>2020-08-21T12:57:02.576Z</updated>
     
     <summary type="html">
     
-      主要了解了一下LockSupport是什么，几个方法，及其源码的实现。
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;LockSupport在AQS中经常被调用，可以经常看到LockSupport的出现，看了很久也不清楚大概是个什么作用，总结了一些，它大概就是AQS用来实现线程的阻塞和唤醒的，分别通过&lt;code&gt;LockSupport .park()&lt;/code&gt;和 &lt;code&gt;LockSupport .unpark()&lt;/code&gt;进行实现的。&lt;/p&gt;
+&lt;p&gt;使用LockSupport的线程会与一个许可关联，其实就像是一个二元信号量（意思就是只有一个许可证可以使用），如果这个许可没有被占用，那么当前线程可以获得许可并继续执行，如果许可以已经被占用，则当前线程就会被阻塞，然后等待许可的获取。注意：&lt;strong&gt;许可默认是被占用的！&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -169,11 +180,13 @@
     <link href="https://dongxiem.github.io/2020/04/10/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/04/10/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/</id>
     <published>2020-04-10T11:29:28.949Z</published>
-    <updated>2020-08-21T12:40:31.198Z</updated>
+    <updated>2020-08-21T12:56:16.974Z</updated>
     
     <summary type="html">
     
-      这篇文章主要分析了什么是FutureTask，还对其源码进行了分析。
+      &lt;h1 id=&quot;1-什么是FutureTask？&quot;&gt;&lt;a href=&quot;#1-什么是FutureTask？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是FutureTask？&quot;&gt;&lt;/a&gt;1. 什么是FutureTask？&lt;/h1&gt;&lt;p&gt;前面的Blog介绍了&lt;u&gt;&lt;code&gt;Future&lt;/code&gt;接口。这个接口有一个实现类叫&lt;code&gt;FutureTask&lt;/code&gt;&lt;/u&gt;。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的&lt;code&gt;cancel&lt;/code&gt;，&lt;code&gt;get&lt;/code&gt;，&lt;code&gt;isDone&lt;/code&gt;等方法要自己实现起来都是&lt;strong&gt;非常复杂&lt;/strong&gt;的。所以JDK提供了一个&lt;code&gt;FutureTask&lt;/code&gt;类来供我们使用。&lt;/p&gt;
+&lt;p&gt;FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，&lt;u&gt;线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务&lt;/u&gt;。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而&lt;u&gt;被提交的Runnable或Callable任务都会被包装成FutureTask&lt;/u&gt;，由线程池的工作线程去执行。&lt;/p&gt;
+&lt;p&gt;还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的&lt;code&gt;RunnableFuture&lt;/code&gt;接口的，而&lt;code&gt;RunnableFuture&lt;/code&gt;接口同时继承了&lt;code&gt;Runnable&lt;/code&gt;接口和&lt;code&gt;Future&lt;/code&gt;接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（&lt;code&gt;FutureTask.run()&lt;/code&gt;）。&lt;/p&gt;
     
     </summary>
     
@@ -256,7 +269,7 @@
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/</id>
     <published>2020-03-31T09:18:02.720Z</published>
-    <updated>2020-08-21T12:35:42.864Z</updated>
+    <updated>2020-08-21T12:57:03.878Z</updated>
     
     <summary type="html">
     
@@ -280,7 +293,7 @@
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/</id>
     <published>2020-03-31T09:17:42.429Z</published>
-    <updated>2020-08-21T12:35:30.768Z</updated>
+    <updated>2020-08-21T12:56:52.022Z</updated>
     
     <summary type="html">
     
@@ -304,7 +317,7 @@
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-synchronized-yuan-li-fen-xi/</id>
     <published>2020-03-31T09:16:59.531Z</published>
-    <updated>2020-08-21T12:35:48.544Z</updated>
+    <updated>2020-08-21T12:56:51.303Z</updated>
     
     <summary type="html">
     
@@ -354,15 +367,44 @@
   </entry>
   
   <entry>
+    <title>Java 并发 - 锁相关：Condition接口分析</title>
+    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
+    <published>2020-03-31T07:46:37.472Z</published>
+    <updated>2020-08-21T12:57:00.579Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
+&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java 并发 - AQS：框架分析</title>
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/</id>
     <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-08-21T12:40:12.843Z</updated>
+    <updated>2020-08-21T12:57:01.823Z</updated>
     
     <summary type="html">
     
-      AbstractQueuedSynchronizer 整个流程的分析，并深入了解了一下其源码，主要分为独占模式和共享模式。
+      &lt;h1 id=&quot;1-介绍AQS&quot;&gt;&lt;a href=&quot;#1-介绍AQS&quot; class=&quot;headerlink&quot; title=&quot;1.介绍AQS&quot;&gt;&lt;/a&gt;1.介绍AQS&lt;/h1&gt;&lt;p&gt;AbstractQueuedSynchronizer （抽象队列同步器，以下简称 AQS）出现在 JDK 1.5 中，AQS 这个东西在Java的并发中是很重要的一部分，因为他是很多同步器的基础框架，比如 ReentrantLock、CountDownLatch 和 Semaphore 等等都是基于 AQS 实现的。基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作，而且也不必处理在多个位置上发生的竞争问题。 &lt;/p&gt;
+&lt;p&gt;在基于AQS构建的同步器中，&lt;u&gt;只能在一个时刻发生阻塞，从而降低上下文切换的开销，提高了吞吐量&lt;/u&gt;。同时在设计AQS时充分考虑了可伸缩行，因此J.U.C中所有基于AQS构建的同步器均可以获得这个优势。 &lt;/p&gt;
+&lt;p&gt;AQS的主要使用方式是继承，子类通过继承同步器并实现它的抽象方法来管理同步状态。&lt;/p&gt;
+&lt;p&gt;AQS使用一个int类型的成员变量state来表示同步状态，&lt;u&gt;当state&amp;gt;0时表示已经获取了锁，当state = 0时表示释放了锁&lt;/u&gt;。它提供了三个方法（&lt;code&gt;getState()&lt;/code&gt;、&lt;code&gt;setState(int newState)&lt;/code&gt;、&lt;code&gt;compareAndSetState(int expect,int update)&lt;/code&gt;）来对同步状态state进行操作，当然AQS可以确保对state的操作是安全的。&lt;/p&gt;
+&lt;p&gt;AQS通过内置的&lt;strong&gt;FIFO同步队列&lt;/strong&gt;（这个会重点分析一下）来完成资源获取线程的排队工作，如果当前线程获取同步状态失败（锁）时，AQS则会将当前线程以及等待状态等信息构造成一个节点（Node）并将其加入同步队列，同时会阻塞当前线程，当同步状态释放时，则会把节点中的线程唤醒，使其再次尝试获取同步状态。 &lt;/p&gt;
+&lt;p&gt;一句话：AQS使用一个Volatile的int类型的成员变量来表示同步状态，通过内置的FIFO队列来完成资源获取的排队工作，通过CAS完成对State值的修改。&lt;/p&gt;
     
     </summary>
     
@@ -379,38 +421,35 @@
   </entry>
   
   <entry>
-    <title>Java 并发 - 锁相关：Condition接口分析</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
-    <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-08-21T12:40:18.567Z</updated>
-    
-    <summary type="html">
-    
-      主要讲述了一些Condition接口的方法左右及源码分析，同时进行了一些比较分析
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java 并发 - 多线程：如何停止一个线程</title>
     <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/"/>
     <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/</id>
     <published>2020-03-31T07:40:36.399Z</published>
-    <updated>2020-08-21T12:42:54.313Z</updated>
+    <updated>2020-08-21T12:55:59.885Z</updated>
     
     <summary type="html">
     
-      总结了一些停止线程的方法及对比了两种判断是否中断方法(interrupted和isInterrupted)的区别，主要讲述了两种利用interrupt进行停止线程工作的方法（interrupt配合异常抛出及interrupt配合退出标志），接着讲述了sleep状态下停止线程会发生什么，最后讲述了stop这个方法为什么被摒弃。
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1 简介&quot;&gt;&lt;/a&gt;1 简介&lt;/h1&gt;&lt;p&gt;对于一个线程要如何去停止呢？还有不同情况下的线程要如何停止呢？停止一个线程是什么意思？就是让这个线程在它进行任务处理的时候进行停止，停掉当前的操作，之前有学习到一个&lt;code&gt;Thread.stop()&lt;/code&gt;方法，好像已经被废弃了，是不安全的一个方法，那么除了这个方法，还有其他什么办法吗？&lt;/p&gt;
+&lt;p&gt;总的来说，Java有如下几种方法去停止线程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用stop方法强行终止，但是不推荐这个方法，因为stop是过期作废的方法&lt;ul&gt;
+&lt;li&gt;stop()方法作废的原因：如果强制让线程停止有可能使一些清理性的工作得不到完成。另外一个情况就是对锁定的对象进行了解锁，导致数据得不到同步的处理，出现数据不一致的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;interrupt方法中断线程&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;停止不了的线程，interrupt()方法的使用效果并不像for+break语句那样，马上就停止循环。调用interrupt方法是&lt;strong&gt;在当前线程中打了一个停止标志，并不是真的停止线程&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;可以用查看线程是否中断，并抛出异常的方式来停止执行线程中的函数&lt;/li&gt;
+&lt;li&gt;如果线程在&lt;code&gt;sleep()&lt;/code&gt;函数的时间范围内被interrupted就会中断线程，置状态位为false并抛出sleep interrupted异常。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;退出标志&lt;/strong&gt;，使线程正常退出，也就是当run方法完成后线程终止&lt;ul&gt;
+&lt;li&gt;使用return，配合interrupt标志可以直接中断线程&lt;/li&gt;
+&lt;li&gt;但是还是建议使用异常中断线程，因为可以使用catch向上抛出异常，从而使线程停止事件得以传播&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;线程池使用&lt;strong&gt;shutDownAll()&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;Looper的&lt;strong&gt;quit方法或quitSafely方法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -478,7 +517,7 @@
     <link href="https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/</id>
     <published>2020-03-29T12:00:56.331Z</published>
-    <updated>2020-08-21T12:35:51.177Z</updated>
+    <updated>2020-08-21T12:56:50.372Z</updated>
     
     <summary type="html">
     

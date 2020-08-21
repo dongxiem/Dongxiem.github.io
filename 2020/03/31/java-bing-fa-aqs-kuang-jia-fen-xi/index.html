@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"dongxiem.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="AbstractQueuedSynchronizer 整个流程的分析，并深入了解了一下其源码，主要分为独占模式和共享模式。">
+  <meta name="description" content="1.介绍AQSAbstractQueuedSynchronizer （抽象队列同步器，以下简称 AQS）出现在 JDK 1.5 中，AQS 这个东西在Java的并发中是很重要的一部分，因为他是很多同步器的基础框架，比如 ReentrantLock、CountDownLatch 和 Semaphore 等等都是基于 AQS 实现的。基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 并发 - AQS：框架分析">
 <meta property="og:url" content="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
-<meta property="og:description" content="AbstractQueuedSynchronizer 整个流程的分析，并深入了解了一下其源码，主要分为独占模式和共享模式。">
+<meta property="og:description" content="1.介绍AQSAbstractQueuedSynchronizer （抽象队列同步器，以下简称 AQS）出现在 JDK 1.5 中，AQS 这个东西在Java的并发中是很重要的一部分，因为他是很多同步器的基础框架，比如 ReentrantLock、CountDownLatch 和 Semaphore 等等都是基于 AQS 实现的。基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/04/12/W2c1Kex85fz3Z6V.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/11/1k73AyCUJz9lVTd.png">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/12/v6EI48NwXt9Hsx3.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/11/LKxausrV8qbcQm6.png">
 <meta property="article:published_time" content="2020-03-31T07:46:37.472Z">
-<meta property="article:modified_time" content="2020-08-21T12:40:12.843Z">
+<meta property="article:modified_time" content="2020-08-21T12:57:01.823Z">
 <meta property="article:author" content="Garmen Lee">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="并发">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:40:12" itemprop="dateModified" datetime="2020-08-21T20:40:12+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 20:57:01" itemprop="dateModified" datetime="2020-08-21T20:57:01+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,7 +245,6 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>25 分钟</span>
             </span>
-            <div class="post-description">AbstractQueuedSynchronizer 整个流程的分析，并深入了解了一下其源码，主要分为独占模式和共享模式。</div>
 
         </div>
       </header>
@@ -625,12 +624,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/" rel="prev" title="Java 并发 - 锁相关：Condition接口分析">
-      <i class="fa fa-chevron-left"></i> Java 并发 - 锁相关：Condition接口分析
+    <a href="/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/" rel="prev" title="Java 并发 - 多线程：如何停止一个线程">
+      <i class="fa fa-chevron-left"></i> Java 并发 - 多线程：如何停止一个线程
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/" rel="next" title="Java 并发 - 多线程：深入线程池原理">
-      Java 并发 - 多线程：深入线程池原理 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/" rel="next" title="Java 并发 - 锁相关：Condition接口分析">
+      Java 并发 - 锁相关：Condition接口分析 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
