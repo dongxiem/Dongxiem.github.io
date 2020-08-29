@@ -22,8 +22,8 @@
 
   <meta name="description" content="1.使用无缓存Channel进行goroutine通信在前面的关于Channel的一些认识当中，我们了解基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作，故无缓存Channels有时候也被称为同步Channels，那么我们就可以使用无缓存的Channel进行简单的goroutine通信了，代码如下： 1234567891011121314151617181920">
 <meta property="og:type" content="article">
-<meta property="og:title" content="golang - 关于Channel的一些实现">
-<meta property="og:url" content="https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/index.html">
+<meta property="og:title" content="golang 并发 - Channel的一些实现">
+<meta property="og:url" content="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
 <meta property="og:description" content="1.使用无缓存Channel进行goroutine通信在前面的关于Channel的一些认识当中，我们了解基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作，故无缓存Channels有时候也被称为同步Channels，那么我们就可以使用无缓存的Channel进行简单的goroutine通信了，代码如下： 1234567891011121314151617181920">
 <meta property="og:locale" content="zh_CN">
@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200823234824.png">
 
-<link rel="canonical" href="https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/">
+<link rel="canonical" href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>golang - 关于Channel的一些实现 | 桃花岛杂货铺</title>
+  <title>golang 并发 - Channel的一些实现 | 桃花岛杂货铺</title>
   
 
 
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          golang - 关于Channel的一些实现
+          golang 并发 - Channel的一些实现
         </h1>
 
         <div class="post-meta">
@@ -365,12 +365,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/25/golang-guan-yu-channel-de-yi-xie-ren-shi/" rel="prev" title="golang - 关于Channel的一些认识">
-      <i class="fa fa-chevron-left"></i> golang - 关于Channel的一些认识
+    <a href="/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/" rel="prev" title="golang 并发 - Channel的深入了解">
+      <i class="fa fa-chevron-left"></i> golang 并发 - Channel的深入了解
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/08/21/golang-shen-ru-channel-yuan-ma-jie-xi/" rel="next" title="golang - 深入Channel源码解析">
-      golang - 深入Channel源码解析 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/" rel="next" title="golang 并发 - 深入Channel源码解析">
+      golang 并发 - 深入Channel源码解析 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -446,7 +446,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-08-21T15:25:51.256Z</updated>
+  <updated>2020-08-29T09:13:09.948Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -17,9 +17,78 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>golang - 深入Channel源码解析</title>
-    <link href="https://dongxiem.github.io/2020/08/21/golang-shen-ru-channel-yuan-ma-jie-xi/"/>
-    <id>https://dongxiem.github.io/2020/08/21/golang-shen-ru-channel-yuan-ma-jie-xi/</id>
+    <title>golang 基础 - Slice的几个疑惑</title>
+    <link href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-slice-de-ji-ge-yi-huo/"/>
+    <id>https://dongxiem.github.io/2020/08/29/golang-ji-chu-slice-de-ji-ge-yi-huo/</id>
+    <published>2020-08-29T09:13:09.948Z</published>
+    <updated>2020-08-29T09:13:09.948Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
+    <link href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/"/>
+    <id>https://dongxiem.github.io/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</id>
+    <published>2020-08-29T09:10:25.434Z</published>
+    <updated>2020-08-29T09:10:25.434Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>golang 基础 - 数组与切片的一些认识</title>
+    <link href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/"/>
+    <id>https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/</id>
+    <published>2020-08-29T09:08:19.225Z</published>
+    <updated>2020-08-29T09:08:19.225Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>golang 并发 - 深入Channel源码解析</title>
+    <link href="https://dongxiem.github.io/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/"/>
+    <id>https://dongxiem.github.io/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/</id>
     <published>2020-08-21T14:34:56.196Z</published>
     <updated>2020-08-21T15:25:51.256Z</updated>
     
@@ -40,9 +109,9 @@
   </entry>
   
   <entry>
-    <title>golang - 关于Channel的一些实现</title>
-    <link href="https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/"/>
-    <id>https://dongxiem.github.io/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/</id>
+    <title>golang 并发 - Channel的一些实现</title>
+    <link href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/"/>
+    <id>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</id>
     <published>2020-05-29T08:21:14.000Z</published>
     <updated>2020-08-23T15:53:12.075Z</updated>
     
@@ -62,9 +131,9 @@
   </entry>
   
   <entry>
-    <title>golang - 关于Channel的一些认识</title>
-    <link href="https://dongxiem.github.io/2020/05/25/golang-guan-yu-channel-de-yi-xie-ren-shi/"/>
-    <id>https://dongxiem.github.io/2020/05/25/golang-guan-yu-channel-de-yi-xie-ren-shi/</id>
+    <title>golang 并发 - Channel的深入了解</title>
+    <link href="https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/"/>
+    <id>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</id>
     <published>2020-05-25T03:41:15.000Z</published>
     <updated>2020-08-23T15:05:18.758Z</updated>
     
@@ -91,9 +160,9 @@
   </entry>
   
   <entry>
-    <title>golang - go的命令源码文件</title>
-    <link href="https://dongxiem.github.io/2020/05/15/golang-go-de-ming-ling-yuan-ma-wen-jian/"/>
-    <id>https://dongxiem.github.io/2020/05/15/golang-go-de-ming-ling-yuan-ma-wen-jian/</id>
+    <title>golang 基础 - go的命令源码文件</title>
+    <link href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/"/>
+    <id>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</id>
     <published>2020-05-15T07:48:25.000Z</published>
     <updated>2020-08-21T14:26:13.136Z</updated>
     
@@ -117,9 +186,9 @@
   </entry>
   
   <entry>
-    <title>golang - go的环境变量</title>
-    <link href="https://dongxiem.github.io/2020/05/15/golang-go-de-huan-jing-bian-liang/"/>
-    <id>https://dongxiem.github.io/2020/05/15/golang-go-de-huan-jing-bian-liang/</id>
+    <title>golang 基础 - go的环境变量</title>
+    <link href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/"/>
+    <id>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/</id>
     <published>2020-05-15T04:11:25.000Z</published>
     <updated>2020-08-21T14:26:14.533Z</updated>
     
@@ -467,122 +536,6 @@
       <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
       <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 锁相关：Condition接口分析</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
-    <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-08-21T12:57:00.579Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
-&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：如何停止一个线程</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/</id>
-    <published>2020-03-31T07:40:36.399Z</published>
-    <updated>2020-08-21T12:55:59.885Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1 简介&quot;&gt;&lt;/a&gt;1 简介&lt;/h1&gt;&lt;p&gt;对于一个线程要如何去停止呢？还有不同情况下的线程要如何停止呢？停止一个线程是什么意思？就是让这个线程在它进行任务处理的时候进行停止，停掉当前的操作，之前有学习到一个&lt;code&gt;Thread.stop()&lt;/code&gt;方法，好像已经被废弃了，是不安全的一个方法，那么除了这个方法，还有其他什么办法吗？&lt;/p&gt;
-&lt;p&gt;总的来说，Java有如下几种方法去停止线程：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;使用stop方法强行终止，但是不推荐这个方法，因为stop是过期作废的方法&lt;ul&gt;
-&lt;li&gt;stop()方法作废的原因：如果强制让线程停止有可能使一些清理性的工作得不到完成。另外一个情况就是对锁定的对象进行了解锁，导致数据得不到同步的处理，出现数据不一致的问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;使用&lt;strong&gt;interrupt方法中断线程&lt;/strong&gt;：&lt;ul&gt;
-&lt;li&gt;停止不了的线程，interrupt()方法的使用效果并不像for+break语句那样，马上就停止循环。调用interrupt方法是&lt;strong&gt;在当前线程中打了一个停止标志，并不是真的停止线程&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;可以用查看线程是否中断，并抛出异常的方式来停止执行线程中的函数&lt;/li&gt;
-&lt;li&gt;如果线程在&lt;code&gt;sleep()&lt;/code&gt;函数的时间范围内被interrupted就会中断线程，置状态位为false并抛出sleep interrupted异常。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;使用&lt;strong&gt;退出标志&lt;/strong&gt;，使线程正常退出，也就是当run方法完成后线程终止&lt;ul&gt;
-&lt;li&gt;使用return，配合interrupt标志可以直接中断线程&lt;/li&gt;
-&lt;li&gt;但是还是建议使用异常中断线程，因为可以使用catch向上抛出异常，从而使线程停止事件得以传播&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;线程池使用&lt;strong&gt;shutDownAll()&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;Looper的&lt;strong&gt;quit方法或quitSafely方法&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合框架 - HashMap 认识与理解</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/</id>
-    <published>2020-03-31T07:29:58.483Z</published>
-    <updated>2020-08-21T12:36:01.219Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;关于HashMap 其实还是有很多困惑的，学习了这么长时间，一边记录遇到的一些问题，一边整理笔记，如下所示。&lt;/p&gt;
-&lt;h1 id=&quot;2-主要一些知识点&quot;&gt;&lt;a href=&quot;#2-主要一些知识点&quot; class=&quot;headerlink&quot; title=&quot;2.主要一些知识点&quot;&gt;&lt;/a&gt;2.主要一些知识点&lt;/h1&gt;&lt;h2 id=&quot;2-1-HashMap-底层结构的一些问题与解答&quot;&gt;&lt;a href=&quot;#2-1-HashMap-底层结构的一些问题与解答&quot; class=&quot;headerlink&quot; title=&quot;2.1 HashMap 底层结构的一些问题与解答&quot;&gt;&lt;/a&gt;2.1 HashMap 底层结构的一些问题与解答&lt;/h2&gt;&lt;p&gt;关于HashMap 的底层数据结构，我有以下这么几个疑问，当时也是查看书籍和百度谷歌了好一会儿，然后连带着寻找到其他的一些问题，如下。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;数组与链表相关&quot;&gt;&lt;a href=&quot;#数组与链表相关&quot; class=&quot;headerlink&quot; title=&quot;数组与链表相关&quot;&gt;&lt;/a&gt;数组与链表相关&lt;/h3&gt;&lt;p&gt;关于底层数据结构为什么采用 数组+链表 这么一种组合的几个问题：&lt;/p&gt;
-&lt;h4 id=&quot;1-为什么用数组-链表？&quot;&gt;&lt;a href=&quot;#1-为什么用数组-链表？&quot; class=&quot;headerlink&quot; title=&quot;1.为什么用数组+链表？&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.为什么用数组+链表？&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;我认为数组是用来确定桶的位置，利用元素的key的hash值对数组长度取模得到.&lt;/li&gt;
-&lt;li&gt;链表是用来解决hash冲突问题，当出现hash值一样的情形，就在数组上的对应位置形成一条链表。&lt;/li&gt;
-&lt;li&gt;注：这里的hash值并不是指hashcode，而是将hashcode高低十六位异或过的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;2-那使用LinkedList代替数组结构可以么？&quot;&gt;&lt;a href=&quot;#2-那使用LinkedList代替数组结构可以么？&quot; class=&quot;headerlink&quot; title=&quot;2.那使用LinkedList代替数组结构可以么？&quot;&gt;&lt;/a&gt;&lt;strong&gt;2.那使用LinkedList代替数组结构可以么？&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;这里的意思是，源码中是这样的：&lt;code&gt;Entry[] table = new Entry[capacity];&lt;/code&gt;&lt;ul&gt;
-&lt;li&gt;ps：Entry就是一个链表节点。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;那我用下面这样表示：&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;List&amp;lt;Entry&amp;gt; table = new LinkedList&amp;lt;Entry&amp;gt;();&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;所以没毛病是可以使用LinkedList代替数组结构&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;3-那既然是可以的，为什么HashMap不用LinkedList，而选用数组&quot;&gt;&lt;a href=&quot;#3-那既然是可以的，为什么HashMap不用LinkedList，而选用数组&quot; class=&quot;headerlink&quot; title=&quot;3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?&quot;&gt;&lt;/a&gt;&lt;strong&gt;3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;因为用数组效率最高！在HashMap中，定位桶的位置是利用元素的key的哈希值对数组长度取模得到。此时，我们已得到桶的位置。显然数组的查找效率比LinkedList大。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;4-继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList&quot;&gt;&lt;a href=&quot;#4-继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList&quot; class=&quot;headerlink&quot; title=&quot;4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?&quot;&gt;&lt;/a&gt;&lt;strong&gt;4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。&lt;/li&gt;
-&lt;li&gt;而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Java集合" scheme="https://dongxiem.github.io/categories/Java%E9%9B%86%E5%90%88/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="集合" scheme="https://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
     
   </entry>
   

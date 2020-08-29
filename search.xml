@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>golang - 深入Channel源码解析</title>
-    <url>/2020/08/21/golang-shen-ru-channel-yuan-ma-jie-xi/</url>
+    <title>golang 基础 - Slice的几个疑惑</title>
+    <url>/2020/08/29/golang-ji-chu-slice-de-ji-ge-yi-huo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
+    <url>/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>golang 基础 - 数组与切片的一些认识</title>
+    <url>/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>golang 并发 - 深入Channel源码解析</title>
+    <url>/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Channel有锁还是无锁？</p>
 ]]></content>
   </entry>
   <entry>
-    <title>golang - 关于Channel的一些实现</title>
-    <url>/2020/05/29/golang-guan-yu-channel-de-yi-xie-shi-xian/</url>
+    <title>golang 并发 - Channel的一些实现</title>
+    <url>/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-使用无缓存Channel进行goroutine通信"><a href="#1-使用无缓存Channel进行goroutine通信" class="headerlink" title="1.使用无缓存Channel进行goroutine通信"></a>1.使用无缓存Channel进行goroutine通信</h1><p>在前面的关于Channel的一些认识当中，我们了解基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作，故无缓存Channels有时候也被称为同步Channels，那么我们就可以使用无缓存的Channel进行简单的goroutine通信了，代码如下：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// make一个无缓存channel</span></span><br><span class="line">    ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">"三秒之后开始启动！"</span>)</span><br><span class="line">        <span class="comment">// 等待三秒</span></span><br><span class="line">        time.Sleep(<span class="number">3</span> * time.Second)</span><br><span class="line">        ch &lt;- <span class="number">1</span> <span class="comment">// 信号发送</span></span><br><span class="line">    &#125;()</span><br><span class="line">    &lt;- ch <span class="comment">// 信号接收</span></span><br><span class="line">    <span class="built_in">close</span>(ch) <span class="comment">// 关闭通道</span></span><br><span class="line">    fmt.Println(<span class="string">"收到通知！"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -122,8 +137,8 @@
       </tags>
   </entry>
   <entry>
-    <title>golang - 关于Channel的一些认识</title>
-    <url>/2020/05/25/golang-guan-yu-channel-de-yi-xie-ren-shi/</url>
+    <title>golang 并发 - Channel的深入了解</title>
+    <url>/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Channels是什么？"><a href="#1-Channels是什么？" class="headerlink" title="1.Channels是什么？"></a>1.Channels是什么？</h1><p>这里又可以搬出知乎名言了，在认识一件事物之前，先问问是什么，再回答为什么！直接来说，一个Channel 是一个通信机制，它<strong>可以让一个Goroutine 通过它给另一个Goroutine 发送值信息</strong>。每个Channel 都有一个特殊的类型，也就是Channels可发送数据的类型（例如：一个可以发送int类型数据的Channel 一般写为chan int）。</p>
 <p>在我们常见的一些语言中，多个线程传递数据的方式一般都是共享内存，<u>为了解决线程冲突的问题，我们需要限制同一时间能够读写这些变量的线程数量</u>。而Golang 语言提供了一种不同与使用使用共享内存加互斥锁也能进行通信的并发模型，也就是<strong>通信顺序进程（Communicating sequential processes，CSP）</strong>。其中Goroutine 和 Channel 分别对应 CSP 中的实体和传递信息的媒介，Go 语言中的 Goroutine 会通过 Channel 传递数据。这也是Golang一直提倡的<strong>不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存</strong>。</p>
 <p>目前的 Channel 收发操作均遵循了先入先出（FIFO）的设计，而且<strong>带缓存区和不带缓存区的 Channel 都会遵循先入先出对数据进行接收和发送</strong>（关于带缓存区与不带缓存区在下面会提及），具体规则如下：</p>
@@ -303,8 +318,8 @@ val, ok := <-ch
       </tags>
   </entry>
   <entry>
-    <title>golang - go的命令源码文件</title>
-    <url>/2020/05/15/golang-go-de-ming-ling-yuan-ma-wen-jian/</url>
+    <title>golang 基础 - go的命令源码文件</title>
+    <url>/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-命令源码文件"><a href="#1-命令源码文件" class="headerlink" title="1.命令源码文件"></a>1.命令源码文件</h1><p><strong>命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的</strong>。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。</p>
 <p><strong>如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件</strong>。 就像下面这段代码：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"Hello, world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -410,8 +425,8 @@ val, ok := <-ch
       </tags>
   </entry>
   <entry>
-    <title>golang - go的环境变量</title>
-    <url>/2020/05/15/golang-go-de-huan-jing-bian-liang/</url>
+    <title>golang 基础 - go的环境变量</title>
+    <url>/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-三个环境变量"><a href="#1-三个环境变量" class="headerlink" title="1.三个环境变量"></a>1.三个环境变量</h1><p>刚接触go的时候很头疼，一下子需要我配置三个环境变量，这三个环境变量看起来很让人头疼，感觉起来三个环境变量的意思大致，区分度不高，这三个环境变量也就是 <code>GOROOT</code>、<code>GOPATH</code> 和 <code>GOBIN</code>。这里简单介绍一下。</p>
 <ul>
 <li>GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径。</li>
