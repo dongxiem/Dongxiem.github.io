@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongxiem.github.io/2020/08/29/golang-ji-chu-slice-de-ji-ge-yi-huo/</loc>
+    <loc>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
     
-    <lastmod>2020-08-29T09:13:09.948Z</lastmod>
+    <lastmod>2020-09-04T06:22:24.667Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
+    <loc>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</loc>
     
-    <lastmod>2020-08-29T09:10:25.434Z</lastmod>
+    <lastmod>2020-09-04T05:42:31.952Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/08/29/golang-ji-chu-slice-de-ji-ge-yi-huo/</loc>
+    
+    <lastmod>2020-08-29T09:13:09.948Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</loc>
     
     <lastmod>2020-08-23T15:53:12.075Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</loc>
-    
-    <lastmod>2020-08-23T15:05:18.758Z</lastmod>
     
   </url>
   

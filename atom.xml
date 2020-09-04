@@ -40,29 +40,6 @@
   </entry>
   
   <entry>
-    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
-    <link href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/"/>
-    <id>https://dongxiem.github.io/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</id>
-    <published>2020-08-29T09:10:25.434Z</published>
-    <updated>2020-08-29T09:10:25.434Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>golang 基础 - 数组与切片的一些认识</title>
     <link href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/"/>
     <id>https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/</id>
@@ -109,6 +86,29 @@
   </entry>
   
   <entry>
+    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
+    <link href="https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/"/>
+    <id>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</id>
+    <published>2020-06-04T03:11:04.000Z</published>
+    <updated>2020-09-04T06:22:24.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从一道题目开始入手Type的一些具体知识，可以想想打印结果是什么？&lt;/p&gt;
+&lt;p&gt;这里涉及到的是一些golang语言中的Type的一些基础知识，不要再犯迷糊了，好好地加深一下认识~&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 1--&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; T &lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 2--&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; X &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 3--&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; Y = &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; t T = &lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x X = &lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y Y = &lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == x)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(x))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(y))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>golang 并发 - Channel的一些实现</title>
     <link href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/"/>
     <id>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</id>
@@ -135,7 +135,7 @@
     <link href="https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/"/>
     <id>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</id>
     <published>2020-05-25T03:41:15.000Z</published>
-    <updated>2020-08-23T15:05:18.758Z</updated>
+    <updated>2020-09-04T05:42:31.952Z</updated>
     
     <summary type="html">
     

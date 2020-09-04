@@ -6,11 +6,6 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
   </entry>
   <entry>
-    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
-    <url>/2020/08/29/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-  </entry>
-  <entry>
     <title>golang 基础 - 数组与切片的一些认识</title>
     <url>/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -20,6 +15,89 @@
     <url>/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Channel有锁还是无锁？</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
+    <url>/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>从一道题目开始入手Type的一些具体知识，可以想想打印结果是什么？</p>
+<p>这里涉及到的是一些golang语言中的Type的一些基础知识，不要再犯迷糊了，好好地加深一下认识~</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 1--</span></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line"><span class="comment">// 2--</span></span><br><span class="line"><span class="keyword">type</span> X <span class="keyword">string</span></span><br><span class="line"><span class="comment">// 3--</span></span><br><span class="line"><span class="keyword">type</span> Y = <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> t T = <span class="string">"abc"</span></span><br><span class="line">    <span class="keyword">var</span> x X = <span class="string">"abc"</span></span><br><span class="line">    <span class="keyword">var</span> y Y = <span class="string">"abc"</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(t == x)</span><br><span class="line">    fmt.Println(t == <span class="keyword">string</span>(x))</span><br><span class="line"></span><br><span class="line">    fmt.Println(t == y)</span><br><span class="line">    fmt.Println(t == <span class="keyword">string</span>(y))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<a id="more"></a>
+
+<p>输出结果如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>不知道你是不是跟我一样错了两个，上面涉及的知识点接下来一一展开~</p>
+<p>在第7、9、11行中：</p>
+<ol>
+<li>第7行, 使用type<u>定义</u>自定义类型T, <u><strong>底层为interface接口类型</strong></u></li>
+<li>第9行, 使用type<strong><u>定义</u></strong>自定义类型X, <u><strong>底层为string</strong></u>，X 和 string 是不同的类型！</li>
+<li>第11行, 使用type<strong><u>申明</u></strong>类型别名Y, 为string类型的<u><strong>别名</strong></u>，Y和 string 是一样的！</li>
+</ol>
+<p>通过上面的Type我们可以了解到，<u><strong>Type有两种格式：申明别名 和 定义类型</strong></u></p>
+<p>需要注意的是使用type定义的所有类型(非类型别名)都是不同的, 如：</p>
+<ul>
+<li>type A string</li>
+<li>type B string</li>
+<li>type C string</li>
+</ul>
+<p>那么A, B, C 的类型是不同的！</p>
+<p>在第14、15、16行中：申明特定类型的变量, 并使用各类型的字面值进行赋值(不同类型的字面值可能不一样)，但是T、X 和 Y 虽然都赋值为字符串 abc，但含义不一样：</p>
+<ol>
+<li><p><u><strong>T 是空接口</strong></u>，可以存放任意类型值；</p>
+</li>
+<li><p><strong><u>X 的底层类型是 string</u></strong>，因此字符串字面量 abc 可以直接赋值给 x</p>
+<ul>
+<li><p>但下面的情况是不允许的：</p>
+<ul>
+<li><pre class=" language-go"><span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string"><code class="language-go"><span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"abc"</span>
+<span class="keyword">var</span> x X = s
+<!--￼<span class="number">2</span>--></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><u><strong>Y 是 string 的别名，自然可以直接赋值</strong></u>；</p>
+</li>
+</ol>
+<p>接下来涉及到了比较了，先说明接口类型值和非接口类型值比较的一些问题：</p>
+<p>Go 语言规范里有这样的说明：</p>
+<blockquote>
+<p>A value x of non-interface type X and a value t of interface type T are comparable when values of type X are comparable and X implements T. They are equal if t’s dynamic type is identical to X and t’s dynamic value is equal to x.</p>
+</blockquote>
+<p>翻译如下：</p>
+<blockquote>
+<p>当非接口类型 <code>X</code> 的值是可比较的且 <code>X</code> 实现了接口类型 <code>T</code> ，那么 <code>X</code> 的值 <code>x</code> 和 <code>T</code> 的值 <code>t</code> 是可比较的。如果 <code>t</code>的动态类型和 <code>X</code> 一致并且 <code>t</code> 的动态值等于 <code>x</code> 的话，那么它们相等。</p>
+</blockquote>
+<p>那么再对题目进行细细解剖：</p>
+<p>第18行为什么输出false？</p>
+<ul>
+<li>这一行中, 接口值t的动态类型为string, 动态值为”abc”(第12行), <strong>而非接口值x的类型为X, 类型都不相同, 动态值就不用比较了</strong></li>
+</ul>
+<p>第19行为什么输出true?</p>
+<ul>
+<li>把==号后面的值转换为string类型, 再与接口值t的动态类型和动态值比较, <strong>类型相同, 值相等</strong>, 返回true</li>
+</ul>
+<p>第21行为什么输出true？</p>
+<ul>
+<li><strong>接口值t的动态类型和非接口值y的类型比较, 相同, 动态值与非接口值y的值比较, 相等</strong>, 返回true</li>
+</ul>
+<p>第22行为什么输出true?</p>
+<ul>
+<li><strong>Y是string类型的别名, 所以string(y)和第19行的y一样, 都是string类型, 此行中的string()没有必要</strong></li>
+</ul>
+<p>至此，关于Type关键字的几个知识点应该可以了解到一些，还有对于接口类型值和非接口类型值比较应该也比较清晰了！</p>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
   </entry>
   <entry>
     <title>golang 并发 - Channel的一些实现</title>
@@ -227,7 +305,7 @@ val, ok := <-ch
 <p>这里看到了一幅很具体的图展示了什么叫无缓存的Channel：</p>
 <p><img src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200822000155.png" alt="不带缓存的Channels"></p>
 <p>需要注意的是<u>无缓存的Channel 必须再有人接收值的时候才能发送值，否则会产生deallock</u>，代码如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    <span class="comment">// 只有发送，并没有接收！</span></span><br><span class="line">	ch &lt;- <span class="number">10</span></span><br><span class="line">	fmt.Println(<span class="string">"发送成功"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    <span class="comment">// 只有发送，并没有接收！</span></span><br><span class="line">    ch &lt;- <span class="number">10</span></span><br><span class="line">    fmt.Println(<span class="string">"发送成功"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行之后发生错误：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">fatal error: all goroutines are asleep - deadlock!</span><br></pre></td></tr></table></figure>

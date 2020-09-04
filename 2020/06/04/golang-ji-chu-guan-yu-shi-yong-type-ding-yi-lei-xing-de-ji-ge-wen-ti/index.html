@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"dongxiem.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="golang 基础 - 数组与切片的一些认识">
-<meta property="og:url" content="https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/index.html">
+  <meta name="description" content="从一道题目开始入手Type的一些具体知识，可以想想打印结果是什么？ 这里涉及到的是一些golang语言中的Type的一些基础知识，不要再犯迷糊了，好好地加深一下认识~ 1234567891011121314151617181920212223package mainimport (    &quot;fmt&quot;)&#x2F;&#x2F; 1--type T interface&amp;#123;&amp;#125;&#x2F;&#x2F; 2--type X st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang 基础 - 关于使用Type定义类型的几个问题">
+<meta property="og:url" content="https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
+<meta property="og:description" content="从一道题目开始入手Type的一些具体知识，可以想想打印结果是什么？ 这里涉及到的是一些golang语言中的Type的一些基础知识，不要再犯迷糊了，好好地加深一下认识~ 1234567891011121314151617181920212223package mainimport (    &quot;fmt&quot;)&#x2F;&#x2F; 1--type T interface&amp;#123;&amp;#125;&#x2F;&#x2F; 2--type X st">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-29T09:08:19.225Z">
-<meta property="article:modified_time" content="2020-08-29T09:08:19.225Z">
+<meta property="article:published_time" content="2020-06-04T03:11:04.000Z">
+<meta property="article:modified_time" content="2020-09-04T06:22:24.667Z">
 <meta property="article:author" content="Garmen Lee">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/">
+<link rel="canonical" href="https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/">
 
 
 <script id="page-configurations">
@@ -43,7 +46,7 @@
   };
 </script>
 
-  <title>golang 基础 - 数组与切片的一些认识 | 桃花岛杂货铺</title>
+  <title>golang 基础 - 关于使用Type定义类型的几个问题 | 桃花岛杂货铺</title>
   
 
 
@@ -164,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/08/29/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -177,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          golang 基础 - 数组与切片的一些认识
+          golang 基础 - 关于使用Type定义类型的几个问题
         </h1>
 
         <div class="post-meta">
@@ -187,7 +190,23 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-29 17:08:19" itemprop="dateCreated datePublished" datetime="2020-08-29T17:08:19+08:00">2020-08-29</time>
+              <time title="创建时间：2020-06-04 11:11:04" itemprop="dateCreated datePublished" datetime="2020-06-04T11:11:04+08:00">2020-06-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-04 14:22:24" itemprop="dateModified" datetime="2020-09-04T14:22:24+08:00">2020-09-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
             </span>
 
           
@@ -203,7 +222,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -222,7 +241,79 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>从一道题目开始入手Type的一些具体知识，可以想想打印结果是什么？</p>
+<p>这里涉及到的是一些golang语言中的Type的一些基础知识，不要再犯迷糊了，好好地加深一下认识~</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 1--</span></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line"><span class="comment">// 2--</span></span><br><span class="line"><span class="keyword">type</span> X <span class="keyword">string</span></span><br><span class="line"><span class="comment">// 3--</span></span><br><span class="line"><span class="keyword">type</span> Y = <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> t T = <span class="string">"abc"</span></span><br><span class="line">    <span class="keyword">var</span> x X = <span class="string">"abc"</span></span><br><span class="line">    <span class="keyword">var</span> y Y = <span class="string">"abc"</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(t == x)</span><br><span class="line">    fmt.Println(t == <span class="keyword">string</span>(x))</span><br><span class="line"></span><br><span class="line">    fmt.Println(t == y)</span><br><span class="line">    fmt.Println(t == <span class="keyword">string</span>(y))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<a id="more"></a>
+
+<p>输出结果如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>不知道你是不是跟我一样错了两个，上面涉及的知识点接下来一一展开~</p>
+<p>在第7、9、11行中：</p>
+<ol>
+<li>第7行, 使用type<u>定义</u>自定义类型T, <u><strong>底层为interface接口类型</strong></u></li>
+<li>第9行, 使用type<strong><u>定义</u></strong>自定义类型X, <u><strong>底层为string</strong></u>，X 和 string 是不同的类型！</li>
+<li>第11行, 使用type<strong><u>申明</u></strong>类型别名Y, 为string类型的<u><strong>别名</strong></u>，Y和 string 是一样的！</li>
+</ol>
+<p>通过上面的Type我们可以了解到，<u><strong>Type有两种格式：申明别名 和 定义类型</strong></u></p>
+<p>需要注意的是使用type定义的所有类型(非类型别名)都是不同的, 如：</p>
+<ul>
+<li>type A string</li>
+<li>type B string</li>
+<li>type C string</li>
+</ul>
+<p>那么A, B, C 的类型是不同的！</p>
+<p>在第14、15、16行中：申明特定类型的变量, 并使用各类型的字面值进行赋值(不同类型的字面值可能不一样)，但是T、X 和 Y 虽然都赋值为字符串 abc，但含义不一样：</p>
+<ol>
+<li><p><u><strong>T 是空接口</strong></u>，可以存放任意类型值；</p>
+</li>
+<li><p><strong><u>X 的底层类型是 string</u></strong>，因此字符串字面量 abc 可以直接赋值给 x</p>
+<ul>
+<li><p>但下面的情况是不允许的：</p>
+<ul>
+<li><pre class=" language-go"><span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string"><code class="language-go"><span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"abc"</span>
+<span class="keyword">var</span> x X = s
+<!--￼<span class="number">2</span>--></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><u><strong>Y 是 string 的别名，自然可以直接赋值</strong></u>；</p>
+</li>
+</ol>
+<p>接下来涉及到了比较了，先说明接口类型值和非接口类型值比较的一些问题：</p>
+<p>Go 语言规范里有这样的说明：</p>
+<blockquote>
+<p>A value x of non-interface type X and a value t of interface type T are comparable when values of type X are comparable and X implements T. They are equal if t’s dynamic type is identical to X and t’s dynamic value is equal to x.</p>
+</blockquote>
+<p>翻译如下：</p>
+<blockquote>
+<p>当非接口类型 <code>X</code> 的值是可比较的且 <code>X</code> 实现了接口类型 <code>T</code> ，那么 <code>X</code> 的值 <code>x</code> 和 <code>T</code> 的值 <code>t</code> 是可比较的。如果 <code>t</code>的动态类型和 <code>X</code> 一致并且 <code>t</code> 的动态值等于 <code>x</code> 的话，那么它们相等。</p>
+</blockquote>
+<p>那么再对题目进行细细解剖：</p>
+<p>第18行为什么输出false？</p>
+<ul>
+<li>这一行中, 接口值t的动态类型为string, 动态值为”abc”(第12行), <strong>而非接口值x的类型为X, 类型都不相同, 动态值就不用比较了</strong></li>
+</ul>
+<p>第19行为什么输出true?</p>
+<ul>
+<li>把==号后面的值转换为string类型, 再与接口值t的动态类型和动态值比较, <strong>类型相同, 值相等</strong>, 返回true</li>
+</ul>
+<p>第21行为什么输出true？</p>
+<ul>
+<li><strong>接口值t的动态类型和非接口值y的类型比较, 相同, 动态值与非接口值y的值比较, 相等</strong>, 返回true</li>
+</ul>
+<p>第22行为什么输出true?</p>
+<ul>
+<li><strong>Y是string类型的别名, 所以string(y)和第19行的y一样, 都是string类型, 此行中的string()没有必要</strong></li>
+</ul>
+<p>至此，关于Type关键字的几个知识点应该可以了解到一些，还有对于接口类型值和非接口类型值比较应该也比较清晰了！</p>
+
     </div>
 
     
@@ -230,6 +321,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/go/" rel="tag"># go</a>
+          </div>
 
         
 
@@ -237,12 +331,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/" rel="prev" title="golang 并发 - 深入Channel源码解析">
-      <i class="fa fa-chevron-left"></i> golang 并发 - 深入Channel源码解析
+    <a href="/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/" rel="prev" title="golang 并发 - Channel的一些实现">
+      <i class="fa fa-chevron-left"></i> golang 并发 - Channel的一些实现
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/08/29/golang-ji-chu-slice-de-ji-ge-yi-huo/" rel="next" title="golang 基础 - Slice的几个疑惑">
-      golang 基础 - Slice的几个疑惑 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/08/21/golang-bing-fa-shen-ru-channel-yuan-ma-jie-xi/" rel="next" title="golang 并发 - 深入Channel源码解析">
+      golang 并发 - 深入Channel源码解析 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
