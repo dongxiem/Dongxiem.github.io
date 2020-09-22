@@ -89,6 +89,8 @@
 <li>可扩展性：新建一个中间件非常简单，去查看示例代码吧。</li>
 </ol>
 <p>注：以下代码有下横线的地方，我将源码地址链接上了，使用<code>ctrl+鼠标左键</code>即可在浏览器中展开相对应的代码片段，如果Chrome安装插件 <a href="https://chrome.google.com/webstore/detail/sourcegraph/dgjhfomjieaadpoljlnidmbgkdffpack" target="_blank" rel="noopener">Sourcegraph</a> 会发现更加便捷地查看 Github 中的代码。</p>
+<a id="more"></a>
+
 <hr>
 <h1 id="2-快速入门"><a href="#2-快速入门" class="headerlink" title="2.快速入门"></a>2.快速入门</h1><p>我们可以从官网给的一个简单的入门程序来看看其大概是如何工作的！</p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/ping"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> {</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H{</span><br><span class="line">			<span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line">		})</span><br><span class="line">	})</span><br><span class="line">	r.Run() <span class="comment">// 监听并在 0.0.0.0:8080 上启动服务</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
