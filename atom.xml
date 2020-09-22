@@ -131,6 +131,33 @@
   </entry>
   
   <entry>
+    <title>golang gin - 整体框架分析</title>
+    <link href="https://dongxiem.github.io/2020/05/25/golang-gin-zheng-ti-kuang-jia-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/05/25/golang-gin-zheng-ti-kuang-jia-fen-xi/</id>
+    <published>2020-05-25T12:41:25.000Z</published>
+    <updated>2020-09-22T02:34:12.889Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>golang 并发 - Channel的深入了解</title>
     <link href="https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/"/>
     <id>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</id>
@@ -506,36 +533,6 @@
       <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
     
       <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - AQS：框架分析</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/</id>
-    <published>2020-03-31T07:46:37.472Z</published>
-    <updated>2020-08-21T12:57:01.823Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-介绍AQS&quot;&gt;&lt;a href=&quot;#1-介绍AQS&quot; class=&quot;headerlink&quot; title=&quot;1.介绍AQS&quot;&gt;&lt;/a&gt;1.介绍AQS&lt;/h1&gt;&lt;p&gt;AbstractQueuedSynchronizer （抽象队列同步器，以下简称 AQS）出现在 JDK 1.5 中，AQS 这个东西在Java的并发中是很重要的一部分，因为他是很多同步器的基础框架，比如 ReentrantLock、CountDownLatch 和 Semaphore 等等都是基于 AQS 实现的。基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作，而且也不必处理在多个位置上发生的竞争问题。 &lt;/p&gt;
-&lt;p&gt;在基于AQS构建的同步器中，&lt;u&gt;只能在一个时刻发生阻塞，从而降低上下文切换的开销，提高了吞吐量&lt;/u&gt;。同时在设计AQS时充分考虑了可伸缩行，因此J.U.C中所有基于AQS构建的同步器均可以获得这个优势。 &lt;/p&gt;
-&lt;p&gt;AQS的主要使用方式是继承，子类通过继承同步器并实现它的抽象方法来管理同步状态。&lt;/p&gt;
-&lt;p&gt;AQS使用一个int类型的成员变量state来表示同步状态，&lt;u&gt;当state&amp;gt;0时表示已经获取了锁，当state = 0时表示释放了锁&lt;/u&gt;。它提供了三个方法（&lt;code&gt;getState()&lt;/code&gt;、&lt;code&gt;setState(int newState)&lt;/code&gt;、&lt;code&gt;compareAndSetState(int expect,int update)&lt;/code&gt;）来对同步状态state进行操作，当然AQS可以确保对state的操作是安全的。&lt;/p&gt;
-&lt;p&gt;AQS通过内置的&lt;strong&gt;FIFO同步队列&lt;/strong&gt;（这个会重点分析一下）来完成资源获取线程的排队工作，如果当前线程获取同步状态失败（锁）时，AQS则会将当前线程以及等待状态等信息构造成一个节点（Node）并将其加入同步队列，同时会阻塞当前线程，当同步状态释放时，则会把节点中的线程唤醒，使其再次尝试获取同步状态。 &lt;/p&gt;
-&lt;p&gt;一句话：AQS使用一个Volatile的int类型的成员变量来表示同步状态，通过内置的FIFO队列来完成资源获取的排队工作，通过CAS完成对State值的修改。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
     
   </entry>
   

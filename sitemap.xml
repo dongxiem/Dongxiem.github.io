@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/05/25/golang-gin-zheng-ti-kuang-jia-fen-xi/</loc>
+    
+    <lastmod>2020-09-22T02:34:12.889Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
     
     <lastmod>2020-09-04T06:22:24.667Z</lastmod>
