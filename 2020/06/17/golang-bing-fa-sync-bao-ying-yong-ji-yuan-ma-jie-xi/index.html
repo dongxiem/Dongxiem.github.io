@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"dongxiem.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="document.querySelectorAll(&#39;.github-emoji&#39;)           .forEach(el &#x3D;&gt; {             if (!el.dataset.src) { return; }             const img &#x3D; document.createElement(&#39;img&#39;);             img.style">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WTIM">
-<meta property="og:url" content="https://dongxiem.github.io/WTIM/index.html">
+  <meta name="description" content="1.Sync包 简明介绍 2.sync.Mutex 3.sync.RWMutex 4.sync.WaitGroup 5.sync.Map 6.sync.Pool 7.sync.Once 8.sync.Cond         document.querySelectorAll(&#39;.github-emoji&#39;)           .forEach(el &#x3D;&gt; {             if (!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang 并发 - Sync包应用及源码解析">
+<meta property="og:url" content="https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong-ji-yuan-ma-jie-xi/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
-<meta property="og:description" content="document.querySelectorAll(&#39;.github-emoji&#39;)           .forEach(el &#x3D;&gt; {             if (!el.dataset.src) { return; }             const img &#x3D; document.createElement(&#39;img&#39;);             img.style">
+<meta property="og:description" content="1.Sync包 简明介绍 2.sync.Mutex 3.sync.RWMutex 4.sync.WaitGroup 5.sync.Map 6.sync.Pool 7.sync.Once 8.sync.Cond         document.querySelectorAll(&#39;.github-emoji&#39;)           .forEach(el &#x3D;&gt; {             if (!">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-31T07:12:33.707Z">
-<meta property="article:modified_time" content="2020-03-31T07:12:33.707Z">
+<meta property="article:published_time" content="2020-06-17T14:12:25.000Z">
+<meta property="article:modified_time" content="2020-09-23T13:10:50.914Z">
 <meta property="article:author" content="Garmen Lee">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dongxiem.github.io/WTIM/">
+<link rel="canonical" href="https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong-ji-yuan-ma-jie-xi/">
 
 
 <script id="page-configurations">
@@ -40,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>WTIM | 桃花岛杂货铺
-</title>
+  <title>golang 并发 - Sync包应用及源码解析 | 桃花岛杂货铺</title>
   
 
 
@@ -159,33 +159,96 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">WTIM
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong-ji-yuan-ma-jie-xi/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          golang 并发 - Sync包应用及源码解析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-17 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-17T22:12:25+08:00">2020-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 21:10:50" itemprop="dateModified" datetime="2020-09-23T21:10:50+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>96</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <script>
+        <h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><hr>
+<h1 id="2-sync-Mutex"><a href="#2-sync-Mutex" class="headerlink" title="2.sync.Mutex"></a>2.sync.Mutex</h1><hr>
+<h1 id="3-sync-RWMutex"><a href="#3-sync-RWMutex" class="headerlink" title="3.sync.RWMutex"></a>3.sync.RWMutex</h1><hr>
+<h1 id="4-sync-WaitGroup"><a href="#4-sync-WaitGroup" class="headerlink" title="4.sync.WaitGroup"></a>4.sync.WaitGroup</h1><hr>
+<h1 id="5-sync-Map"><a href="#5-sync-Map" class="headerlink" title="5.sync.Map"></a>5.sync.Map</h1><hr>
+<h1 id="6-sync-Pool"><a href="#6-sync-Pool" class="headerlink" title="6.sync.Pool"></a>6.sync.Pool</h1><hr>
+<h1 id="7-sync-Once"><a href="#7-sync-Once" class="headerlink" title="7.sync.Once"></a>7.sync.Once</h1><hr>
+<h1 id="8-sync-Cond"><a href="#8-sync-Cond" class="headerlink" title="8.sync.Cond"></a>8.sync.Cond</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -204,16 +267,38 @@
             document.body.appendChild(img);
           });
       </script>
-      </div>
-      
-      
-      
     </div>
-    
 
     
     
     
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/go/" rel="tag"># go</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/" rel="prev" title="golang 基础 - 关于使用Type定义类型的几个问题">
+      <i class="fa fa-chevron-left"></i> golang 基础 - 关于使用Type定义类型的几个问题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/" rel="next" title="golang gin（1） - 整体框架分析">
+      golang gin（1） - 整体框架分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
 
 
           </div>
@@ -264,6 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Sync包-简明介绍"><span class="nav-text">1.Sync包 简明介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-sync-Mutex"><span class="nav-text">2.sync.Mutex</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-sync-RWMutex"><span class="nav-text">3.sync.RWMutex</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-sync-WaitGroup"><span class="nav-text">4.sync.WaitGroup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-sync-Map"><span class="nav-text">5.sync.Map</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-sync-Pool"><span class="nav-text">6.sync.Pool</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-sync-Once"><span class="nav-text">7.sync.Once</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-sync-Cond"><span class="nav-text">8.sync.Cond</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -73,7 +73,8 @@
   <entry>
     <title>golang gin（1） - 整体框架分析</title>
     <url>/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Gin-简明介绍"><a href="#1-Gin-简明介绍" class="headerlink" title="1.Gin 简明介绍"></a>1.Gin 简明介绍</h1><blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Gin-简明介绍"><a href="#1-Gin-简明介绍" class="headerlink" title="1.Gin 简明介绍"></a>1.Gin 简明介绍</h1><p>gin 是什么？官方给的解释为：Gin 是一个用 Go (Golang) 编写的 HTTP web 框架。 它是一个类似于 <a href="https://github.com/go-martini/martini" target="_blank" rel="noopener">martini</a> 但拥有更好性能的 API 框架, 优于 <a href="https://github.com/julienschmidt/httprouter" target="_blank" rel="noopener">httprouter</a>，速度提高了近 40 倍。</p>
+<blockquote>
 <p>Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance – up to 40 times faster. If you need smashing performance, get yourself some Gin.</p>
 </blockquote>
 <p><img src="https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200922104010.jpeg" alt="Gin"></p>
@@ -88,9 +89,22 @@
 <li>内置渲染：Gin 为 JSON，XML 和 HTML 渲染提供了易于使用的 API。</li>
 <li>可扩展性：新建一个中间件非常简单，去查看示例代码吧。</li>
 </ol>
-<p>注：以下代码有下横线的地方，我将源码地址链接上了，使用<code>ctrl+鼠标左键</code>即可在浏览器中展开相对应的代码片段，如果Chrome安装插件 <a href="https://chrome.google.com/webstore/detail/sourcegraph/dgjhfomjieaadpoljlnidmbgkdffpack" target="_blank" rel="noopener">Sourcegraph</a> 会发现更加便捷地查看 Github 中的代码。</p>
 <a id="more"></a>
 
+<p>在学习 gin 之前我也用过 golang 自带的<code>net/http</code>来实现一个HTTP服务。，虽然<code>net/http</code>看着很便捷、很简单，但是它也存在很多不足：</p>
+<ol>
+<li>不能单独的对请求方法(POST,GET等)注册特定的处理函数</li>
+<li>不支持Path变量参数</li>
+<li>不能很很好的获取参数</li>
+<li>不支持参数校验</li>
+<li>不支持参数绑定</li>
+<li>不能更好的多种格式输出</li>
+<li>性能一般</li>
+<li>扩展性不足</li>
+<li>……</li>
+</ol>
+<p>而 gin 作为这么一个那么优秀的 web 框架，弥补了<code>net/http</code>的一些不足，同时还增加了很多日常Web开发使用的功能，性能也这么好，可以让我们更好的进行Web开发，这就让人很有理由去学习这个框架了啊！</p>
+<p>注：以下代码有下横线的地方，我将源码地址链接上了，使用<code>ctrl+鼠标左键</code>即可在浏览器中展开相对应的代码片段，如果Chrome安装插件 <a href="https://chrome.google.com/webstore/detail/sourcegraph/dgjhfomjieaadpoljlnidmbgkdffpack" target="_blank" rel="noopener">Sourcegraph</a> 会发现更加便捷地查看 Github 中的代码。</p>
 <hr>
 <h1 id="2-快速入门"><a href="#2-快速入门" class="headerlink" title="2.快速入门"></a>2.快速入门</h1><p>我们可以从官网给的一个简单的入门程序来看看其大概是如何工作的！</p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/ping"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> {</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H{</span><br><span class="line">			<span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line">		})</span><br><span class="line">	})</span><br><span class="line">	r.Run() <span class="comment">// 监听并在 0.0.0.0:8080 上启动服务</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -219,7 +233,7 @@
 <li>使用完 <code>context</code> 对象, 将其归还给 <code>pool</code>。</li>
 </ol>
 <p>关于 Context 的一些具体我在以后会具体单独拉出来讲，这是 <code>golang</code> 中很重要的一个部分，也是这个 gin 中很重要的一部分了。这里先对第二步请求 <code>Http</code> 请求的方法 <a href="https://sourcegraph.com/github.com/gin-gonic/gin@master/-/blob/gin.go#L392:15" target="_blank" rel="noopener">gin.handleHTTPRequest()</a> 重点了解一下，其代码稍长，代码片段如下：</p>
-<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span> <span class="title">handleHTTPRequest</span><span class="params">(c *Context)</span></span> {</span><br><span class="line">    httpMethod := c.Request.Method</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 为给定的 HTTP 方法查找树的根 </span></span><br><span class="line">    t := engine.trees</span><br><span class="line">    <span class="keyword">for</span> i, tl := <span class="number">0</span>, <span class="built_in">len</span>(t); i &lt; tl; i++ {</span><br><span class="line">        root := t[i].root</span><br><span class="line">        <span class="comment">// 找到树中的路由</span></span><br><span class="line">        value := root.getValue(rPath, c.params, unescape)</span><br><span class="line">        <span class="keyword">if</span> value.params != <span class="literal">nil</span> {</span><br><span class="line">            c.Params = *value.params</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> value.handlers != <span class="literal">nil</span> {</span><br><span class="line">            c.handlers = value.handlers</span><br><span class="line">            c.fullPath = value.fullPath</span><br><span class="line">            <span class="comment">// 这里是最关键的调用，具体的执行在这个方法当中！</span></span><br><span class="line">            c.Next()</span><br><span class="line">            c.writermem.WriteHeaderNow()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> httpMethod != <span class="string">"CONNECT"</span> &amp;&amp; rPath != <span class="string">"/"</span> {</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span> <span class="title">handleHTTPRequest</span><span class="params">(c *Context)</span></span> {</span><br><span class="line">	httpMethod := c.Request.Method</span><br><span class="line">	rPath := c.Request.URL.Path</span><br><span class="line">	unescape := <span class="literal">false</span></span><br><span class="line">	<span class="keyword">if</span> engine.UseRawPath &amp;&amp; <span class="built_in">len</span>(c.Request.URL.RawPath) &gt; <span class="number">0</span> {</span><br><span class="line">		rPath = c.Request.URL.RawPath</span><br><span class="line">		unescape = engine.UnescapePathValues</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> engine.RemoveExtraSlash {</span><br><span class="line">		rPath = cleanPath(rPath)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Find root of the tree for the given HTTP method</span></span><br><span class="line">	t := engine.trees</span><br><span class="line">	<span class="keyword">for</span> i, tl := <span class="number">0</span>, <span class="built_in">len</span>(t); i &lt; tl; i++ {</span><br><span class="line">		<span class="keyword">if</span> t[i].method != httpMethod {</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		}</span><br><span class="line">		root := t[i].root</span><br><span class="line">		<span class="comment">// Find route in tree</span></span><br><span class="line">		value := root.getValue(rPath, c.params, unescape)</span><br><span class="line">		<span class="keyword">if</span> value.params != <span class="literal">nil</span> {</span><br><span class="line">			c.Params = *value.params</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> value.handlers != <span class="literal">nil</span> {</span><br><span class="line">			c.handlers = value.handlers</span><br><span class="line">			c.fullPath = value.fullPath</span><br><span class="line">			c.Next()</span><br><span class="line">			c.writermem.WriteHeaderNow()</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> httpMethod != <span class="string">"CONNECT"</span> &amp;&amp; rPath != <span class="string">"/"</span> {</span><br><span class="line">			<span class="keyword">if</span> value.tsr &amp;&amp; engine.RedirectTrailingSlash {</span><br><span class="line">				redirectTrailingSlash(c)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">if</span> engine.RedirectFixedPath &amp;&amp; redirectFixedPath(c, root, engine.RedirectFixedPath) {</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> engine.HandleMethodNotAllowed {</span><br><span class="line">		<span class="keyword">for</span> _, tree := <span class="keyword">range</span> engine.trees {</span><br><span class="line">			<span class="keyword">if</span> tree.method == httpMethod {</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">if</span> value := tree.root.getValue(rPath, <span class="literal">nil</span>, unescape); value.handlers != <span class="literal">nil</span> {</span><br><span class="line">				c.handlers = engine.allNoMethod</span><br><span class="line">				serveError(c, http.StatusMethodNotAllowed, default405Body)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	c.handlers = engine.allNoRoute</span><br><span class="line">	serveError(c, http.StatusNotFound, default404Body)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>其中，<a href="https://sourcegraph.com/github.com/gin-gonic/gin@master/-/blob/context.go#L162:19" target="_blank" rel="noopener">c.Next()</a> 是最核心的代码： c是 <code>Context</code> 对象，这就引出了 <code>Context</code> 的实现细节。没办法，只能继续查看 <a href="https://sourcegraph.com/github.com/gin-gonic/gin@master/-/blob/context.go#L162:19" target="_blank" rel="noopener">c.Next()</a> 完成了一些什么事情，其相对于的代码片段如下：</p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// Next 应该只在中间件内部使用 </span></span><br><span class="line"><span class="comment">// Next 在正在调用中的 handler 执行在链中(in the chain)挂起的处理程序(pending handlers)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Context)</span> <span class="title">Next</span><span class="params">()</span></span> {</span><br><span class="line">	c.index++</span><br><span class="line">    <span class="comment">// 逐个遍历，根据不同的参数 c 执行 handle 方法</span></span><br><span class="line">	<span class="keyword">for</span> c.index &lt; <span class="keyword">int8</span>(<span class="built_in">len</span>(c.handlers)) {</span><br><span class="line">		c.handlers[c.index](c)</span><br><span class="line">		c.index++</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -228,12 +242,10 @@
 
 <p>可以知道，主要的进行处理的代码就在这一块了。最开始的时候 <code>c.index</code> 为0值，所以会执行 <code>c.handlers</code> 里面的第一个handler，然后一个个执行下去。</p>
 <hr>
-<h1 id="4-最后思考"><a href="#4-最后思考" class="headerlink" title="4.最后思考"></a>4.最后思考</h1><p>经过上面的一些认识，但是我还是对一些问题没有彻底的认识了解，接下来我会一边抛出一些问题，自己对该 gin 框架的疑惑及尝试着去解决这些问题。</p>
-<p>问题一：我们可以从 gin 的官方文档中了解到其各种性能都非常好，但是究竟是一种怎样的机制可以让他如此的快速？所说的这个基于 Radix 树的路由究竟是个什么东西？</p>
-<hr>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
 <li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">gin</a></li>
 <li><a href="https://gin-gonic.com/zh-cn/docs/" target="_blank" rel="noopener">gin中文文档</a></li>
+<li><a href="https://www.flysnow.org/2019/12/10/golang-gin-quick-start.html" target="_blank" rel="noopener">Golang Gin 实战（一）| 快速安装入门</a></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -260,6 +272,42 @@
       <tags>
         <tag>go</tag>
         <tag>gin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang 并发 - Sync包应用及源码解析</title>
+    <url>/2020/06/17/golang-bing-fa-sync-bao-ying-yong-ji-yuan-ma-jie-xi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><hr>
+<h1 id="2-sync-Mutex"><a href="#2-sync-Mutex" class="headerlink" title="2.sync.Mutex"></a>2.sync.Mutex</h1><hr>
+<h1 id="3-sync-RWMutex"><a href="#3-sync-RWMutex" class="headerlink" title="3.sync.RWMutex"></a>3.sync.RWMutex</h1><hr>
+<h1 id="4-sync-WaitGroup"><a href="#4-sync-WaitGroup" class="headerlink" title="4.sync.WaitGroup"></a>4.sync.WaitGroup</h1><hr>
+<h1 id="5-sync-Map"><a href="#5-sync-Map" class="headerlink" title="5.sync.Map"></a>5.sync.Map</h1><hr>
+<h1 id="6-sync-Pool"><a href="#6-sync-Pool" class="headerlink" title="6.sync.Pool"></a>6.sync.Pool</h1><hr>
+<h1 id="7-sync-Once"><a href="#7-sync-Once" class="headerlink" title="7.sync.Once"></a>7.sync.Once</h1><hr>
+<h1 id="8-sync-Cond"><a href="#8-sync-Cond" class="headerlink" title="8.sync.Cond"></a>8.sync.Cond</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
       </tags>
   </entry>
   <entry>

@@ -90,11 +90,12 @@
     <link href="https://dongxiem.github.io/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
     <published>2020-06-25T12:41:25.000Z</published>
-    <updated>2020-09-22T03:43:03.220Z</updated>
+    <updated>2020-09-22T11:47:08.275Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;1-Gin-简明介绍&quot;&gt;&lt;a href=&quot;#1-Gin-简明介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Gin 简明介绍&quot;&gt;&lt;/a&gt;1.Gin 简明介绍&lt;/h1&gt;&lt;blockquote&gt;
+      &lt;h1 id=&quot;1-Gin-简明介绍&quot;&gt;&lt;a href=&quot;#1-Gin-简明介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Gin 简明介绍&quot;&gt;&lt;/a&gt;1.Gin 简明介绍&lt;/h1&gt;&lt;p&gt;gin 是什么？官方给的解释为：Gin 是一个用 Go (Golang) 编写的 HTTP web 框架。 它是一个类似于 &lt;a href=&quot;https://github.com/go-martini/martini&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;martini&lt;/a&gt; 但拥有更好性能的 API 框架, 优于 &lt;a href=&quot;https://github.com/julienschmidt/httprouter&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;httprouter&lt;/a&gt;，速度提高了近 40 倍。&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance – up to 40 times faster. If you need smashing performance, get yourself some Gin.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&quot;https://garmen-imgsubmit.oss-cn-shenzhen.aliyuncs.com/img/20200922104010.jpeg&quot; alt=&quot;Gin&quot;&gt;&lt;/p&gt;
@@ -109,7 +110,6 @@
 &lt;li&gt;内置渲染：Gin 为 JSON，XML 和 HTML 渲染提供了易于使用的 API。&lt;/li&gt;
 &lt;li&gt;可扩展性：新建一个中间件非常简单，去查看示例代码吧。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;注：以下代码有下横线的地方，我将源码地址链接上了，使用&lt;code&gt;ctrl+鼠标左键&lt;/code&gt;即可在浏览器中展开相对应的代码片段，如果Chrome安装插件 &lt;a href=&quot;https://chrome.google.com/webstore/detail/sourcegraph/dgjhfomjieaadpoljlnidmbgkdffpack&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sourcegraph&lt;/a&gt; 会发现更加便捷地查看 Github 中的代码。&lt;/p&gt;
     
     </summary>
     
@@ -120,6 +120,33 @@
       <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
     
       <category term="gin" scheme="https://dongxiem.github.io/tags/gin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 并发 - Sync包应用及源码解析</title>
+    <link href="https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong-ji-yuan-ma-jie-xi/"/>
+    <id>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong-ji-yuan-ma-jie-xi/</id>
+    <published>2020-06-17T14:12:25.000Z</published>
+    <updated>2020-09-23T13:10:50.914Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
     
   </entry>
   
@@ -509,31 +536,6 @@
 &lt;li&gt;锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png&quot; alt=&quot;Synchronized锁升级流程图&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：深入线程池原理</title>
-    <link href="https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/"/>
-    <id>https://dongxiem.github.io/2020/03/31/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</id>
-    <published>2020-03-31T08:37:47.116Z</published>
-    <updated>2020-08-21T12:33:14.836Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-线程池简介&quot;&gt;&lt;a href=&quot;#1-线程池简介&quot; class=&quot;headerlink&quot; title=&quot;1.线程池简介&quot;&gt;&lt;/a&gt;1.线程池简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-线程池是什么？&quot;&gt;&lt;a href=&quot;#1-1-线程池是什么？&quot; class=&quot;headerlink&quot; title=&quot;1.1 线程池是什么？&quot;&gt;&lt;/a&gt;1.1 线程池是什么？&lt;/h2&gt;&lt;p&gt;线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。&lt;/p&gt;
-&lt;p&gt;线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。&lt;/p&gt;
-&lt;p&gt;线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。&lt;/p&gt;
     
     </summary>
     
