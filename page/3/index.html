@@ -163,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -177,7 +177,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/" class="post-title-link" itemprop="url">Java 集合框架 - HashMap 认识与理解</a>
+            <a href="/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/" class="post-title-link" itemprop="url">golang 基础 - go的命令源码文件</a>
         </h2>
 
         <div class="post-meta">
@@ -187,14 +187,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-31 15:29:58" itemprop="dateCreated datePublished" datetime="2020-03-31T15:29:58+08:00">2020-03-31</time>
+              <time title="创建时间：2020-05-15 15:48:25" itemprop="dateCreated datePublished" datetime="2020-05-15T15:48:25+08:00">2020-05-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:36:01" itemprop="dateModified" datetime="2020-08-21T20:36:01+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 22:26:13" itemprop="dateModified" datetime="2020-08-21T22:26:13+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -202,7 +202,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E9%9B%86%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">Java集合</span></a>
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
                 </span>
             </span>
 
@@ -212,14 +212,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -231,36 +231,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>关于HashMap 其实还是有很多困惑的，学习了这么长时间，一边记录遇到的一些问题，一边整理笔记，如下所示。</p>
-<h1 id="2-主要一些知识点"><a href="#2-主要一些知识点" class="headerlink" title="2.主要一些知识点"></a>2.主要一些知识点</h1><h2 id="2-1-HashMap-底层结构的一些问题与解答"><a href="#2-1-HashMap-底层结构的一些问题与解答" class="headerlink" title="2.1 HashMap 底层结构的一些问题与解答"></a>2.1 HashMap 底层结构的一些问题与解答</h2><p>关于HashMap 的底层数据结构，我有以下这么几个疑问，当时也是查看书籍和百度谷歌了好一会儿，然后连带着寻找到其他的一些问题，如下。</p>
-<hr>
-<h3 id="数组与链表相关"><a href="#数组与链表相关" class="headerlink" title="数组与链表相关"></a>数组与链表相关</h3><p>关于底层数据结构为什么采用 数组+链表 这么一种组合的几个问题：</p>
-<h4 id="1-为什么用数组-链表？"><a href="#1-为什么用数组-链表？" class="headerlink" title="1.为什么用数组+链表？"></a><strong>1.为什么用数组+链表？</strong></h4><ul>
-<li>我认为数组是用来确定桶的位置，利用元素的key的hash值对数组长度取模得到.</li>
-<li>链表是用来解决hash冲突问题，当出现hash值一样的情形，就在数组上的对应位置形成一条链表。</li>
-<li>注：这里的hash值并不是指hashcode，而是将hashcode高低十六位异或过的。</li>
-</ul>
-<h4 id="2-那使用LinkedList代替数组结构可以么？"><a href="#2-那使用LinkedList代替数组结构可以么？" class="headerlink" title="2.那使用LinkedList代替数组结构可以么？"></a><strong>2.那使用LinkedList代替数组结构可以么？</strong></h4><ul>
-<li>这里的意思是，源码中是这样的：<code>Entry[] table = new Entry[capacity];</code><ul>
-<li>ps：Entry就是一个链表节点。</li>
-</ul>
-</li>
-<li>那我用下面这样表示：<ul>
-<li><code>List&lt;Entry&gt; table = new LinkedList&lt;Entry&gt;();</code></li>
-</ul>
-</li>
-<li>所以没毛病是可以使用LinkedList代替数组结构</li>
-</ul>
-<h4 id="3-那既然是可以的，为什么HashMap不用LinkedList，而选用数组"><a href="#3-那既然是可以的，为什么HashMap不用LinkedList，而选用数组" class="headerlink" title="3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?"></a><strong>3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?</strong></h4><ul>
-<li>因为用数组效率最高！在HashMap中，定位桶的位置是利用元素的key的哈希值对数组长度取模得到。此时，我们已得到桶的位置。显然数组的查找效率比LinkedList大。</li>
-</ul>
-<h4 id="4-继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList"><a href="#4-继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList" class="headerlink" title="4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?"></a><strong>4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?</strong></h4><ul>
-<li>因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。</li>
-<li>而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。</li>
-</ul>
+          <h1 id="1-命令源码文件"><a href="#1-命令源码文件" class="headerlink" title="1.命令源码文件"></a>1.命令源码文件</h1><p><strong>命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的</strong>。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。</p>
+<p><strong>如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件</strong>。 就像下面这段代码：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">  fmt.Println(<span class="string">"Hello, world!"</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这其实就是就简单的可以运行go的一个文件了，刚开始搭建的时候我也是使用这么一段测试代码，随便创建了一个文件之后，然后敲上这么一段代码之后发现控制台可以打印出来“Hello World!”，瞬间感觉就学会了这门语言了，可是事情并没有那么简单，有多难？很难很难。</p>
+<p>但是这里让我挺困惑的地方就是，<strong>这<code>func main()</code>，没有接收参数入口啊？？？</strong>难道我就只能进行打印了？这不科学，无论在C/C++，还是Java中，main方法都不是这么写的，那么问题就来了，如果进行接收参数呢？</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/03/31/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/#more" rel="contents">
+              <a class="btn" href="/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -284,7 +263,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -298,7 +277,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/" class="post-title-link" itemprop="url">Java 集合框架 - HashMap 分析</a>
+            <a href="/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/" class="post-title-link" itemprop="url">golang 基础 - go的环境变量</a>
         </h2>
 
         <div class="post-meta">
@@ -308,14 +287,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-29 20:00:56" itemprop="dateCreated datePublished" datetime="2020-03-29T20:00:56+08:00">2020-03-29</time>
+              <time title="创建时间：2020-05-15 12:11:25" itemprop="dateCreated datePublished" datetime="2020-05-15T12:11:25+08:00">2020-05-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 20:56:50" itemprop="dateModified" datetime="2020-08-21T20:56:50+08:00">2020-08-21</time>
+                <time title="修改时间：2020-08-21 22:26:14" itemprop="dateModified" datetime="2020-08-21T22:26:14+08:00">2020-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,7 +302,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E9%9B%86%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">Java集合</span></a>
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
                 </span>
             </span>
 
@@ -333,14 +312,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>14k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -352,11 +331,215 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-HashMap实现原理"><a href="#1-HashMap实现原理" class="headerlink" title="1.HashMap实现原理"></a>1.HashMap实现原理</h1><p><strong>简述HashMap的工作原理：</strong></p>
-<p>HashMap是<strong>基于散列法（又称哈希法）的原理</strong>，使用<code>put(key, value)</code>存储对象到HashMap中，使用<code>get(key)</code>从HashMap中获取对象。使用HashMap进行查询和修改的速度都很快，平均时间复杂度O(1)。HashMap非线程安全，如果需要考虑并发，则需要使用ConcurrentHashMap，且HashMap不保证存储元素的序列；</p>
+          <h1 id="1-三个环境变量"><a href="#1-三个环境变量" class="headerlink" title="1.三个环境变量"></a>1.三个环境变量</h1><p>刚接触go的时候很头疼，一下子需要我配置三个环境变量，这三个环境变量看起来很让人头疼，感觉起来三个环境变量的意思大致，区分度不高，这三个环境变量也就是 <code>GOROOT</code>、<code>GOPATH</code> 和 <code>GOBIN</code>。这里简单介绍一下。</p>
+<ul>
+<li>GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径。</li>
+<li>GOPATH：若干工作区目录的路径。是我们自己定义的工作空间。</li>
+<li>GOBIN：GO 程序生成的可执行文件（executable file）的路径。</li>
+</ul>
+<p>其中最让人头疼的就是这个GOROOT，看起来似是而非的感觉，那么GOPATH 有什么意义吗？</p>
+<p>这里可以把 GOPATH 简单理解成 Go 语言的工作目录，它的值是一个目录的路径，也可以是多个目录路径，每个目录都代表 Go 语言的一个工作区（workspace）。</p>
+<p>我们需要利于这些工作区，去放置 Go 语言的源码文件（source file），以及安装（install）后的归档文件（archive file，也就是以“.a”为扩展名的文件）和可执行文件（executable file）。</p>
+<p><strong>这个GOPATH 其实很重要，为什么这么说呢？</strong></p>
+<p>因为Go 语言项目在其<u>生命周期内的所有操作（编码、依赖管理、构建、测试、安装等）</u>基本上都是围绕着 GOPATH 和工作区进行的。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/03/29/java-ji-he-kuang-jia-hashmap-fen-xi/#more" rel="contents">
+              <a class="btn" href="/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/16/java-bing-fa-cas-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - CAS 分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-16 12:14:14" itemprop="dateCreated datePublished" datetime="2020-04-16T12:14:14+08:00">2020-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 20:56:37" itemprop="dateModified" datetime="2020-08-21T20:56:37+08:00">2020-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-CAS-介绍"><a href="#1-CAS-介绍" class="headerlink" title="1.CAS 介绍"></a>1.CAS 介绍</h1><p><strong>什么是CAS？</strong></p>
+<p>CAS，全称：Compare and Swap，即比较-替换；CAS是一种无锁算法<strong>，</strong>通过无锁的方式实现了多个线程间变量的同步；CAS 是乐观锁的一种实现方式，是一种轻量级锁，JUC 中很多工具类的实现就是基于 CAS 的。</p>
+<p>注意：JVM中的CAS操作正是利用了处理器提供的<strong>CMPXCHG指令实现</strong>的。</p>
+<p><strong>具体内容：</strong></p>
+<p>假设有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，才会将内存值修改为B并返回true，否则什么都不做并返回false。<strong>当然CAS一定要volatile变量配合</strong>，这样才能保证每次拿到的变量是主内存中最新的那个值，否则旧的预期值A对某条线程来说，永远是一个不会变的值A，只要某次CAS操作失败，永远都不可能成功。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/16/java-bing-fa-cas-fen-xi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/" class="post-title-link" itemprop="url">Java 并发 - AQS：自定义同步工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-14 14:13:45" itemprop="dateCreated datePublished" datetime="2020-04-14T14:13:45+08:00">2020-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 20:56:31" itemprop="dateModified" datetime="2020-08-21T20:56:31+08:00">2020-08-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>通过前面的AQS的基本原理了解:之后：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，我了解了大概的AQS的一整个流程，也明白了大部分的同步工具都是基于AQS来实现的，好像比较重要的就是重写tryAcquire 和 tryRelease 两个方法而已，那么我借鉴了其他同步工具的写法，试了试尝试自己实现一个基于AQS的同步工具，看看能不能正常跑起来。</p>
+<p>以下是基于独占式的写法，并不是共享式的，所以实现的也是<code>tryAcquire</code>和<code>tryRelease</code>。主要想做的事情就是同一个时刻只能让一个线程一直抱有资源做一件事情，直到这件事情做完了之后，才可以让其他线程去做一些事情，这不就是同步的概念嘛！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/14/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -447,7 +630,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
