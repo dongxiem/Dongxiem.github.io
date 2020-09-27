@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dongxiem.github.io/2020/09/26/golang-yuan-ma-pou-xi-sync-package/</loc>
-    <lastmod>2020-09-26</lastmod>
+    <loc>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/</loc>
+    <lastmod>2020-09-27</lastmod>
   </url>  <url>
-    <loc>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-package-yi-xie-ren-shi/</loc>
-    <lastmod>2020-09-24</lastmod>
+    <loc>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong/</loc>
+    <lastmod>2020-09-27</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</loc>
     <lastmod>2020-09-22</lastmod>
