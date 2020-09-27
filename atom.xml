@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-08-08T07:56:28.000Z</updated>
+  <updated>2020-09-27T13:40:48.540Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -17,515 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>golang 源码剖析 - Map</title>
-    <link href="https://dongxiem.github.io/2020/09/26/golang-yuan-ma-pou-xi-map/"/>
-    <id>https://dongxiem.github.io/2020/09/26/golang-yuan-ma-pou-xi-map/</id>
-    <published>2020-09-26T08:40:55.952Z</published>
-    <updated>2020-08-08T07:56:28.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合框架 - HashMap 认识与理解</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/</id>
-    <published>2020-09-26T03:47:14.518Z</published>
-    <updated>2020-08-21T12:36:01.219Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;关于HashMap 其实还是有很多困惑的，学习了这么长时间，一边记录遇到的一些问题，一边整理笔记，如下所示。&lt;/p&gt;
-&lt;h1 id=&quot;2-主要一些知识点&quot;&gt;&lt;a href=&quot;#2-主要一些知识点&quot; class=&quot;headerlink&quot; title=&quot;2.主要一些知识点&quot;&gt;&lt;/a&gt;2.主要一些知识点&lt;/h1&gt;&lt;h2 id=&quot;2-1-HashMap-底层结构的一些问题与解答&quot;&gt;&lt;a href=&quot;#2-1-HashMap-底层结构的一些问题与解答&quot; class=&quot;headerlink&quot; title=&quot;2.1 HashMap 底层结构的一些问题与解答&quot;&gt;&lt;/a&gt;2.1 HashMap 底层结构的一些问题与解答&lt;/h2&gt;&lt;p&gt;关于HashMap 的底层数据结构，我有以下这么几个疑问，当时也是查看书籍和百度谷歌了好一会儿，然后连带着寻找到其他的一些问题，如下。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;数组与链表相关&quot;&gt;&lt;a href=&quot;#数组与链表相关&quot; class=&quot;headerlink&quot; title=&quot;数组与链表相关&quot;&gt;&lt;/a&gt;数组与链表相关&lt;/h3&gt;&lt;p&gt;关于底层数据结构为什么采用 数组+链表 这么一种组合的几个问题：&lt;/p&gt;
-&lt;h4 id=&quot;1-为什么用数组-链表？&quot;&gt;&lt;a href=&quot;#1-为什么用数组-链表？&quot; class=&quot;headerlink&quot; title=&quot;1.为什么用数组+链表？&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.为什么用数组+链表？&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;我认为数组是用来确定桶的位置，利用元素的key的hash值对数组长度取模得到.&lt;/li&gt;
-&lt;li&gt;链表是用来解决hash冲突问题，当出现hash值一样的情形，就在数组上的对应位置形成一条链表。&lt;/li&gt;
-&lt;li&gt;注：这里的hash值并不是指hashcode，而是将hashcode高低十六位异或过的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;2-那使用LinkedList代替数组结构可以么？&quot;&gt;&lt;a href=&quot;#2-那使用LinkedList代替数组结构可以么？&quot; class=&quot;headerlink&quot; title=&quot;2.那使用LinkedList代替数组结构可以么？&quot;&gt;&lt;/a&gt;&lt;strong&gt;2.那使用LinkedList代替数组结构可以么？&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;这里的意思是，源码中是这样的：&lt;code&gt;Entry[] table = new Entry[capacity];&lt;/code&gt;&lt;ul&gt;
-&lt;li&gt;ps：Entry就是一个链表节点。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;那我用下面这样表示：&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;List&amp;lt;Entry&amp;gt; table = new LinkedList&amp;lt;Entry&amp;gt;();&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;所以没毛病是可以使用LinkedList代替数组结构&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;3-那既然是可以的，为什么HashMap不用LinkedList，而选用数组&quot;&gt;&lt;a href=&quot;#3-那既然是可以的，为什么HashMap不用LinkedList，而选用数组&quot; class=&quot;headerlink&quot; title=&quot;3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?&quot;&gt;&lt;/a&gt;&lt;strong&gt;3.那既然是可以的，为什么HashMap不用LinkedList，而选用数组?&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;因为用数组效率最高！在HashMap中，定位桶的位置是利用元素的key的哈希值对数组长度取模得到。此时，我们已得到桶的位置。显然数组的查找效率比LinkedList大。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;4-继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList&quot;&gt;&lt;a href=&quot;#4-继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList&quot; class=&quot;headerlink&quot; title=&quot;4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?&quot;&gt;&lt;/a&gt;&lt;strong&gt;4.继续挖一下，那ArrayList，底层也是数组，查找也快啊，为什么不用ArrayList?&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;因为采用基本数组结构，扩容机制可以自己定义，HashMap中数组扩容刚好是2的次幂，在做取模运算的效率高。而ArrayList的扩容机制是1.5倍扩容。&lt;/li&gt;
-&lt;li&gt;而为什么需要两倍扩容，现在此处存疑，在下面我会进行展开分析一下。&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Java集合" scheme="https://dongxiem.github.io/categories/Java%E9%9B%86%E5%90%88/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="集合" scheme="https://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合框架 - HashMap 分析</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-ji-he-kuang-jia-hashmap-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-ji-he-kuang-jia-hashmap-fen-xi/</id>
-    <published>2020-09-26T03:47:14.516Z</published>
-    <updated>2020-08-21T12:56:50.372Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-HashMap实现原理&quot;&gt;&lt;a href=&quot;#1-HashMap实现原理&quot; class=&quot;headerlink&quot; title=&quot;1.HashMap实现原理&quot;&gt;&lt;/a&gt;1.HashMap实现原理&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;简述HashMap的工作原理：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;HashMap是&lt;strong&gt;基于散列法（又称哈希法）的原理&lt;/strong&gt;，使用&lt;code&gt;put(key, value)&lt;/code&gt;存储对象到HashMap中，使用&lt;code&gt;get(key)&lt;/code&gt;从HashMap中获取对象。使用HashMap进行查询和修改的速度都很快，平均时间复杂度O(1)。HashMap非线程安全，如果需要考虑并发，则需要使用ConcurrentHashMap，且HashMap不保证存储元素的序列；&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java集合" scheme="https://dongxiem.github.io/categories/Java%E9%9B%86%E5%90%88/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="集合" scheme="https://dongxiem.github.io/tags/%E9%9B%86%E5%90%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 锁相关：Condition接口分析</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
-    <published>2020-09-26T03:47:14.513Z</published>
-    <updated>2020-08-21T12:57:00.579Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
-&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：线程间通信交替打印</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</id>
-    <published>2020-09-26T03:47:14.511Z</published>
-    <updated>2020-08-21T12:34:36.378Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;这一部分，我通过一个经典的问题来引出几个线程间通信的方法，即：三个线程如何实现交替打印ABC？&lt;/p&gt;
-&lt;h1 id=&quot;2-代码实现&quot;&gt;&lt;a href=&quot;#2-代码实现&quot; class=&quot;headerlink&quot; title=&quot;2.代码实现&quot;&gt;&lt;/a&gt;2.代码实现&lt;/h1&gt;&lt;h2 id=&quot;2-1-Synchronized&quot;&gt;&lt;a href=&quot;#2-1-Synchronized&quot; class=&quot;headerlink&quot; title=&quot;2.1 Synchronized&quot;&gt;&lt;/a&gt;2.1 Synchronized&lt;/h2&gt;&lt;p&gt;基本思路：使用同步块和wait、notify的方法控制三个线程的执行次序。具体方法如下：从大的方向上来讲，该问题为三线程间的同步唤醒操作，主要的目的就是&lt;code&gt;ThreadA-&amp;gt;ThreadB-&amp;gt;ThreadC-&amp;gt;ThreadA&lt;/code&gt;循环执行三个线程。为了控制线程执行的顺序，那么就必须要确定唤醒、等待的顺序，所以每一个线程必须同时持有两个对象锁，才能进行打印操作。一个对象锁是prev，就是前一个线程所对应的对象锁，其主要作用是保证当前线程一定是在前一个线程操作完成后（即前一个线程释放了其对应的对象锁）才开始执行。还有一个锁就是自身对象锁。主要的思想就是，为了控制执行的顺序，必须要先持有prev锁（也就前一个线程要释放其自身对象锁），然后当前线程再申请自己对象锁，两者兼备时打印。之后首先调用&lt;code&gt;self.notify()&lt;/code&gt;唤醒下一个等待线程（注意notify不会立即释放对象锁，只有等到同步块代码执行完毕后才会释放），再调用&lt;code&gt;prev.wait()&lt;/code&gt;立即释放prev对象锁，当前线程进入休眠，等待其他线程的notify操作再次唤醒。&lt;/p&gt;
-&lt;p&gt;下面程序可以看到程序一共定义了a,b,c三个对象锁，分别对应A、B、C三个线程。A线程最先运行，A线程按顺序申请c,a对象锁，打印操作后按顺序释放a,c对象锁，并且通过notify操作唤醒线程B。线程B首先等待获取A锁，再申请B锁，后打印B，再释放B，A锁，唤醒C。线程C等待B锁，再申请C锁，后打印C，再释放C,B锁，唤醒A。看起来似乎没什么问题，但如果你仔细想一下，就会发现有问题，就是初始条件，三个线程必须按照A,B,C的顺序来启动，但是这种假设依赖于JVM中线程调度、执行的顺序。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：线程池的使用</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/</id>
-    <published>2020-09-26T03:47:14.509Z</published>
-    <updated>2020-08-21T12:33:35.218Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-如何配置线程池&quot;&gt;&lt;a href=&quot;#1-如何配置线程池&quot; class=&quot;headerlink&quot; title=&quot;1 如何配置线程池&quot;&gt;&lt;/a&gt;1 如何配置线程池&lt;/h1&gt;&lt;p&gt;如果我们设置的线程池数量太小的话，如果同一时间有大量任务/请求需要处理，可能会导致大量的请求/任务在任务队列中排队等待执行，甚至会出现任务队列满了之后任务/请求无法处理的情况，或者大量任务堆积在任务队列导致 OOM。这样很明显是有问题的！ CPU 根本没有得到充分利用。&lt;/p&gt;
-&lt;p&gt;但是，如果我们设置线程数量太大，大量线程可能会同时在争取 CPU 资源，这样会导致大量的上下文切换，从而增加线程的执行时间，影响了整体执行效率。&lt;/p&gt;
-&lt;p&gt;注：上下文切换的解释&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;多线程编程中一般线程的个数都大于 CPU 核心的个数，而一个 CPU 核心在任意时刻只能被一个线程使用，为了让这些线程都能得到有效执行，CPU 采取的策略是为每个线程分配时间片并轮转的形式。当一个线程的时间片用完的时候就会重新处于就绪状态让给其他线程使用，这个过程就属于一次上下文切换。概括来说就是：当前任务在执行完 CPU 时间片切换到另一个任务之前会先保存自己的状态，以便下次再切换回这个任务时，可以再加载这个任务的状态。任务从保存到再加载的过程就是一次上下文切换。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;上下文切换通常是计算密集型的&lt;/strong&gt;。也就是说，它需要相当可观的处理器时间，在每秒几十上百次的切换中，每次切换都需要纳秒量级的时间。所以，上下文切换对系统来说意味着消耗大量的 CPU 时间，事实上，可能是操作系统中时间消耗最大的操作。&lt;/li&gt;
-&lt;li&gt;Linux 相比与其他操作系统（包括其他类 Unix 系统）有很多的优点，其中有一项就是，其上下文切换和模式切换的时间消耗非常少。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;需要肯定的一点是：线程池肯定是不是越大越好。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="多线程" scheme="https://dongxiem.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：线程创建的几种方式</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</id>
-    <published>2020-09-26T03:47:14.507Z</published>
-    <updated>2020-08-21T12:40:39.345Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;在这阶段的学习过程中我会先抛出一系列：线程如何创建？这是一个很关键的问题，并发的关键在于多线程，那么如何创建线程呢？大概有几种方式呢？这几种方式的区别是什么？什么情况下应该使用这种创建方式？什么时候又不应该呢？那么具体的过程应该是如何呢？是否应该给出一两个例子会更好的说明一下？&lt;/p&gt;
-&lt;p&gt;问题太多，搞得自己都乱了，最主要的还是要一点点的去了解，最后串成一根线，才能更好对知识的进行掌握。&lt;/p&gt;
-&lt;p&gt;我想应该将这几种方式联系起来做一个对比，这样才能更好的理解这些创建线程方式的优点与缺点。&lt;/p&gt;
-&lt;p&gt;按照现有的认识，总的来说有两种实现线程的方式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;实现Runnable接口&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;继承Thread类&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;其实按照我的理解的话，详细分一下的话可以分为三种，就是继承Thread类，实现Runnable接口，实现Callable接口（虽然其内部也是实现Runnable接口），主要就是实现Runnable接口没有返回值，而实现Callable接口可以有返回值，所以也可以按照这三种方式去思考实际开发过程中到底需要哪种创建方式。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：深入线程池原理</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</id>
-    <published>2020-09-26T03:47:14.504Z</published>
-    <updated>2020-08-21T12:33:14.836Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-线程池简介&quot;&gt;&lt;a href=&quot;#1-线程池简介&quot; class=&quot;headerlink&quot; title=&quot;1.线程池简介&quot;&gt;&lt;/a&gt;1.线程池简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-线程池是什么？&quot;&gt;&lt;a href=&quot;#1-1-线程池是什么？&quot; class=&quot;headerlink&quot; title=&quot;1.1 线程池是什么？&quot;&gt;&lt;/a&gt;1.1 线程池是什么？&lt;/h2&gt;&lt;p&gt;线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。&lt;/p&gt;
-&lt;p&gt;线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。&lt;/p&gt;
-&lt;p&gt;线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：如何停止一个线程</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/</id>
-    <published>2020-09-26T03:47:14.501Z</published>
-    <updated>2020-08-21T12:55:59.885Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1 简介&quot;&gt;&lt;/a&gt;1 简介&lt;/h1&gt;&lt;p&gt;对于一个线程要如何去停止呢？还有不同情况下的线程要如何停止呢？停止一个线程是什么意思？就是让这个线程在它进行任务处理的时候进行停止，停掉当前的操作，之前有学习到一个&lt;code&gt;Thread.stop()&lt;/code&gt;方法，好像已经被废弃了，是不安全的一个方法，那么除了这个方法，还有其他什么办法吗？&lt;/p&gt;
-&lt;p&gt;总的来说，Java有如下几种方法去停止线程：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;使用stop方法强行终止，但是不推荐这个方法，因为stop是过期作废的方法&lt;ul&gt;
-&lt;li&gt;stop()方法作废的原因：如果强制让线程停止有可能使一些清理性的工作得不到完成。另外一个情况就是对锁定的对象进行了解锁，导致数据得不到同步的处理，出现数据不一致的问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;使用&lt;strong&gt;interrupt方法中断线程&lt;/strong&gt;：&lt;ul&gt;
-&lt;li&gt;停止不了的线程，interrupt()方法的使用效果并不像for+break语句那样，马上就停止循环。调用interrupt方法是&lt;strong&gt;在当前线程中打了一个停止标志，并不是真的停止线程&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;可以用查看线程是否中断，并抛出异常的方式来停止执行线程中的函数&lt;/li&gt;
-&lt;li&gt;如果线程在&lt;code&gt;sleep()&lt;/code&gt;函数的时间范围内被interrupted就会中断线程，置状态位为false并抛出sleep interrupted异常。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;使用&lt;strong&gt;退出标志&lt;/strong&gt;，使线程正常退出，也就是当run方法完成后线程终止&lt;ul&gt;
-&lt;li&gt;使用return，配合interrupt标志可以直接中断线程&lt;/li&gt;
-&lt;li&gt;但是还是建议使用异常中断线程，因为可以使用catch向上抛出异常，从而使线程停止事件得以传播&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;线程池使用&lt;strong&gt;shutDownAll()&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;Looper的&lt;strong&gt;quit方法或quitSafely方法&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：FutureTask源码分析</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/</id>
-    <published>2020-09-26T03:47:14.499Z</published>
-    <updated>2020-08-21T12:56:16.974Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-什么是FutureTask？&quot;&gt;&lt;a href=&quot;#1-什么是FutureTask？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是FutureTask？&quot;&gt;&lt;/a&gt;1. 什么是FutureTask？&lt;/h1&gt;&lt;p&gt;前面的Blog介绍了&lt;u&gt;&lt;code&gt;Future&lt;/code&gt;接口。这个接口有一个实现类叫&lt;code&gt;FutureTask&lt;/code&gt;&lt;/u&gt;。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的&lt;code&gt;cancel&lt;/code&gt;，&lt;code&gt;get&lt;/code&gt;，&lt;code&gt;isDone&lt;/code&gt;等方法要自己实现起来都是&lt;strong&gt;非常复杂&lt;/strong&gt;的。所以JDK提供了一个&lt;code&gt;FutureTask&lt;/code&gt;类来供我们使用。&lt;/p&gt;
-&lt;p&gt;FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，&lt;u&gt;线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务&lt;/u&gt;。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而&lt;u&gt;被提交的Runnable或Callable任务都会被包装成FutureTask&lt;/u&gt;，由线程池的工作线程去执行。&lt;/p&gt;
-&lt;p&gt;还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的&lt;code&gt;RunnableFuture&lt;/code&gt;接口的，而&lt;code&gt;RunnableFuture&lt;/code&gt;接口同时继承了&lt;code&gt;Runnable&lt;/code&gt;接口和&lt;code&gt;Future&lt;/code&gt;接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（&lt;code&gt;FutureTask.run()&lt;/code&gt;）。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - Synchronized 原理分析</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-synchronized-yuan-li-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-synchronized-yuan-li-fen-xi/</id>
-    <published>2020-09-26T03:47:14.493Z</published>
-    <updated>2020-08-21T15:36:19.854Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.概述&quot;&gt;&lt;/a&gt;1.概述&lt;/h1&gt;&lt;p&gt;JDK1.6 之后 Synchronized  的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。锁主要存在四中状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。&lt;/p&gt;
-&lt;p&gt;Java中的&lt;code&gt;synchronized&lt;/code&gt; 的偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&amp;gt;轻量级锁-&amp;gt;重量级锁 的顺序升级。JVM种的锁也是能降级的，只不过条件很苛刻，可以相当于没有了，策略是为了提高获得锁和释放锁的效率。&lt;/p&gt;
-&lt;p&gt;所以对Synchronized 的重点分析应该是其升级流程，以前是我觉得So easy，不就这几个状态升上去而已，不过在某天看了 &lt;a href=&quot;https://github.com/farmerjohngit/myblog/issues/12&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;死磕Synchronized底层实现&lt;/a&gt; 之后，发现我还是太嫩了，这才是真正的深入，也许对知识的求知就该如此不断的进行深入，对于Synchronized 还是有很多值得发现的知识，以下记录了学习到的一些笔记，大概对一整个锁的升级流程有了一些认识和了解。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png&quot; alt=&quot;Synchronized锁升级流程图&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - Synchronized 几种使用方式</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/</id>
-    <published>2020-09-26T03:47:14.491Z</published>
-    <updated>2020-08-21T12:56:52.022Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-概括&quot;&gt;&lt;a href=&quot;#1-概括&quot; class=&quot;headerlink&quot; title=&quot;1.概括&quot;&gt;&lt;/a&gt;1.概括&lt;/h1&gt;&lt;p&gt;Synchronized 可以有几种修饰方法，总体使用如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - Synchronized 与其他一些锁机制的对比</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/</id>
-    <published>2020-09-26T03:47:14.489Z</published>
-    <updated>2020-08-21T12:57:03.878Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;我们前面已经 Synchronized 在JDK1.6 进行哪一些方面的优化，通过这些底层的优化之后Synchronized  变得好用了很多，那么它究竟和其他锁机制有什么差别？换种方式说，我在进行编程的过程中，究竟要如何进行选择？什么时候应该选择Synchronized？而什么时候不选用Synchronized而选用其他的锁机制。&lt;/p&gt;
-&lt;p&gt;总感觉学习了Synchronized之后，对于其内部原理熟悉了，不知道有没有其他人跟我一样困惑，我究竟该何时进行使用它呢？在哪个场景下我该第一时间想到这货？我觉得进行选择还应该先进行对比，将和我们之前学习到的一些同步机制进行联系起来，有对比才有总结，尽量多进行比较，多点思考，才有更深入的理解与认识。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - AQS：框架分析</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-aqs-kuang-jia-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-aqs-kuang-jia-fen-xi/</id>
-    <published>2020-09-26T03:47:14.482Z</published>
-    <updated>2020-08-21T12:57:01.823Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-介绍AQS&quot;&gt;&lt;a href=&quot;#1-介绍AQS&quot; class=&quot;headerlink&quot; title=&quot;1.介绍AQS&quot;&gt;&lt;/a&gt;1.介绍AQS&lt;/h1&gt;&lt;p&gt;AbstractQueuedSynchronizer （抽象队列同步器，以下简称 AQS）出现在 JDK 1.5 中，AQS 这个东西在Java的并发中是很重要的一部分，因为他是很多同步器的基础框架，比如 ReentrantLock、CountDownLatch 和 Semaphore 等等都是基于 AQS 实现的。基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作，而且也不必处理在多个位置上发生的竞争问题。 &lt;/p&gt;
-&lt;p&gt;在基于AQS构建的同步器中，&lt;u&gt;只能在一个时刻发生阻塞，从而降低上下文切换的开销，提高了吞吐量&lt;/u&gt;。同时在设计AQS时充分考虑了可伸缩行，因此J.U.C中所有基于AQS构建的同步器均可以获得这个优势。 &lt;/p&gt;
-&lt;p&gt;AQS的主要使用方式是继承，子类通过继承同步器并实现它的抽象方法来管理同步状态。&lt;/p&gt;
-&lt;p&gt;AQS使用一个int类型的成员变量state来表示同步状态，&lt;u&gt;当state&amp;gt;0时表示已经获取了锁，当state = 0时表示释放了锁&lt;/u&gt;。它提供了三个方法（&lt;code&gt;getState()&lt;/code&gt;、&lt;code&gt;setState(int newState)&lt;/code&gt;、&lt;code&gt;compareAndSetState(int expect,int update)&lt;/code&gt;）来对同步状态state进行操作，当然AQS可以确保对state的操作是安全的。&lt;/p&gt;
-&lt;p&gt;AQS通过内置的&lt;strong&gt;FIFO同步队列&lt;/strong&gt;（这个会重点分析一下）来完成资源获取线程的排队工作，如果当前线程获取同步状态失败（锁）时，AQS则会将当前线程以及等待状态等信息构造成一个节点（Node）并将其加入同步队列，同时会阻塞当前线程，当同步状态释放时，则会把节点中的线程唤醒，使其再次尝试获取同步状态。 &lt;/p&gt;
-&lt;p&gt;一句话：AQS使用一个Volatile的int类型的成员变量来表示同步状态，通过内置的FIFO队列来完成资源获取的排队工作，通过CAS完成对State值的修改。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - AQS：LockSupport阻塞唤醒线程</title>
-    <link href="https://dongxiem.github.io/2020/09/26/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/"/>
-    <id>https://dongxiem.github.io/2020/09/26/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/</id>
-    <published>2020-09-26T03:47:14.480Z</published>
-    <updated>2020-08-21T12:57:02.576Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;LockSupport在AQS中经常被调用，可以经常看到LockSupport的出现，看了很久也不清楚大概是个什么作用，总结了一些，它大概就是AQS用来实现线程的阻塞和唤醒的，分别通过&lt;code&gt;LockSupport .park()&lt;/code&gt;和 &lt;code&gt;LockSupport .unpark()&lt;/code&gt;进行实现的。&lt;/p&gt;
-&lt;p&gt;使用LockSupport的线程会与一个许可关联，其实就像是一个二元信号量（意思就是只有一个许可证可以使用），如果这个许可没有被占用，那么当前线程可以获得许可并继续执行，如果许可以已经被占用，则当前线程就会被阻塞，然后等待许可的获取。注意：&lt;strong&gt;许可默认是被占用的！&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang 源码剖析 - Channel</title>
-    <link href="https://dongxiem.github.io/2020/09/26/golang-yuan-ma-pou-xi-channel/"/>
-    <id>https://dongxiem.github.io/2020/09/26/golang-yuan-ma-pou-xi-channel/</id>
-    <published>2020-09-26T03:47:14.478Z</published>
-    <updated>2020-08-21T15:25:51.256Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>golang 基础 - 数组与切片的一些认识</title>
-    <link href="https://dongxiem.github.io/2020/09/26/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/"/>
-    <id>https://dongxiem.github.io/2020/09/26/golang-ji-chu-shu-zu-yu-qie-pian-de-yi-xie-ren-shi/</id>
-    <published>2020-09-26T03:47:14.471Z</published>
-    <updated>2020-08-29T09:08:19.225Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>golang 基础 - Slice的几个疑惑</title>
-    <link href="https://dongxiem.github.io/2020/09/26/golang-ji-chu-slice-de-ji-ge-yi-huo/"/>
-    <id>https://dongxiem.github.io/2020/09/26/golang-ji-chu-slice-de-ji-ge-yi-huo/</id>
-    <published>2020-09-26T03:47:14.467Z</published>
-    <updated>2020-08-29T09:13:09.948Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>golang gin（1） - 整体框架分析</title>
-    <link href="https://dongxiem.github.io/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/06/25/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
-    <published>2020-06-25T12:41:25.000Z</published>
-    <updated>2020-09-22T11:47:08.275Z</updated>
+    <link href="https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
+    <published>2020-07-12T12:41:25.000Z</published>
+    <updated>2020-09-27T13:40:48.540Z</updated>
     
     <summary type="html">
     
@@ -559,11 +55,69 @@
   </entry>
   
   <entry>
-    <title>golang 并发 - Sync Package深入源码剖析</title>
-    <link href="https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/"/>
-    <id>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/</id>
+    <title>golang 源码剖析 - Channel</title>
+    <link href="https://dongxiem.github.io/2020/06/29/golang-yuan-ma-pou-xi-channel/"/>
+    <id>https://dongxiem.github.io/2020/06/29/golang-yuan-ma-pou-xi-channel/</id>
+    <published>2020-06-29T14:41:25.000Z</published>
+    <updated>2020-09-27T13:40:17.678Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+      <category term="gin" scheme="https://dongxiem.github.io/tags/gin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 源码剖析 - Map</title>
+    <link href="https://dongxiem.github.io/2020/06/27/golang-yuan-ma-pou-xi-map/"/>
+    <id>https://dongxiem.github.io/2020/06/27/golang-yuan-ma-pou-xi-map/</id>
+    <published>2020-06-27T13:31:25.000Z</published>
+    <updated>2020-09-27T13:40:27.979Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+      <category term="gin" scheme="https://dongxiem.github.io/tags/gin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 并发 - Sync包应用</title>
+    <link href="https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong/"/>
+    <id>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong/</id>
     <published>2020-06-17T14:12:25.000Z</published>
-    <updated>2020-09-27T13:29:51.360Z</updated>
+    <updated>2020-09-27T10:59:04.333Z</updated>
     
     <summary type="html">
     
@@ -578,6 +132,429 @@
     
     
       <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 并发 - Sync Package深入源码剖析</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T13:41:12.996Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-Sync包-简明介绍&quot;&gt;&lt;a href=&quot;#1-Sync包-简明介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Sync包 简明介绍&quot;&gt;&lt;/a&gt;1.Sync包 简明介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;golang&lt;/code&gt; 语言有着天生适合高并发的特性，作为原生支持用户态进程（&lt;code&gt;Goroutine&lt;/code&gt;）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 &lt;code&gt;golang&lt;/code&gt; 源码的大叔们就给了&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt; 这么个包，通过浏览源码可以知道&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Mutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.RWMutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.WaitGroup&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Map&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Pool&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Once&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Cond&lt;/a&gt;，也可以看一下官方给的Sync包的一些方法解释： &lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;，方便大家。&lt;/p&gt;
+&lt;p&gt;在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个&lt;code&gt;goroutine&lt;/code&gt;在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而&lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; 包中所有的结构都适用于&lt;code&gt;goroutine&lt;/code&gt;并发执行的情况，需要好好掌握。&lt;/p&gt;
+&lt;p&gt;下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
+    <link href="https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/"/>
+    <id>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</id>
+    <published>2020-06-04T03:11:04.000Z</published>
+    <updated>2020-09-22T02:38:37.734Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从一道题目开始入手Type的一些具体知识，可以想想打印结果是什么？&lt;/p&gt;
+&lt;p&gt;这里涉及到的是一些golang语言中的Type的一些基础知识，不要再犯迷糊了，好好地加深一下认识~&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 1--&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; T &lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt;{}&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 2--&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; X &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 3--&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; Y = &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; t T = &lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x X = &lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y Y = &lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == x)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(x))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(t == &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(y))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 并发 - Channel的一些实现</title>
+    <link href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/"/>
+    <id>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</id>
+    <published>2020-05-29T08:21:14.000Z</published>
+    <updated>2020-08-23T15:53:12.075Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-使用无缓存Channel进行goroutine通信&quot;&gt;&lt;a href=&quot;#1-使用无缓存Channel进行goroutine通信&quot; class=&quot;headerlink&quot; title=&quot;1.使用无缓存Channel进行goroutine通信&quot;&gt;&lt;/a&gt;1.使用无缓存Channel进行goroutine通信&lt;/h1&gt;&lt;p&gt;在前面的关于Channel的一些认识当中，我们了解基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作，故无缓存Channels有时候也被称为同步Channels，那么我们就可以使用无缓存的Channel进行简单的goroutine通信了，代码如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;string&quot;&gt;&quot;time&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// make一个无缓存channel&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ch := &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;三秒之后开始启动！&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 等待三秒&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        time.Sleep(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; * time.Second)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ch &amp;lt;- &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 信号发送&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    }()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;- ch &lt;span class=&quot;comment&quot;&gt;// 信号接收&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;close&lt;/span&gt;(ch) &lt;span class=&quot;comment&quot;&gt;// 关闭通道&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;收到通知！&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 并发 - Channel的深入了解</title>
+    <link href="https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/"/>
+    <id>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</id>
+    <published>2020-05-25T03:41:15.000Z</published>
+    <updated>2020-09-04T05:42:31.952Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-Channels是什么？&quot;&gt;&lt;a href=&quot;#1-Channels是什么？&quot; class=&quot;headerlink&quot; title=&quot;1.Channels是什么？&quot;&gt;&lt;/a&gt;1.Channels是什么？&lt;/h1&gt;&lt;p&gt;这里又可以搬出知乎名言了，在认识一件事物之前，先问问是什么，再回答为什么！直接来说，一个Channel 是一个通信机制，它&lt;strong&gt;可以让一个Goroutine 通过它给另一个Goroutine 发送值信息&lt;/strong&gt;。每个Channel 都有一个特殊的类型，也就是Channels可发送数据的类型（例如：一个可以发送int类型数据的Channel 一般写为chan int）。&lt;/p&gt;
+&lt;p&gt;在我们常见的一些语言中，多个线程传递数据的方式一般都是共享内存，&lt;u&gt;为了解决线程冲突的问题，我们需要限制同一时间能够读写这些变量的线程数量&lt;/u&gt;。而Golang 语言提供了一种不同与使用使用共享内存加互斥锁也能进行通信的并发模型，也就是&lt;strong&gt;通信顺序进程（Communicating sequential processes，CSP）&lt;/strong&gt;。其中Goroutine 和 Channel 分别对应 CSP 中的实体和传递信息的媒介，Go 语言中的 Goroutine 会通过 Channel 传递数据。这也是Golang一直提倡的&lt;strong&gt;不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;目前的 Channel 收发操作均遵循了先入先出（FIFO）的设计，而且&lt;strong&gt;带缓存区和不带缓存区的 Channel 都会遵循先入先出对数据进行接收和发送&lt;/strong&gt;（关于带缓存区与不带缓存区在下面会提及），具体规则如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先从 Channel 读取数据的 Goroutine 会先接收到数据； &lt;/li&gt;
+&lt;li&gt;先向 Channel 发送数据的 Goroutine 会得到先发送数据的权利；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过源码查看我们可知，Channel 在运行时使用 &lt;a href=&quot;https://github.com/golang/go/blob/e35876ec6591768edace6c6f3b12646899fd1b11/src/runtime/chan.go#L32&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;runtime.hchan&lt;/a&gt; 结构体进行表示，而这玩意最后包含这一个互斥锁用于保护成员变量，所以从某种程度上说，Channel 是一个&lt;u&gt;用于同步和通信的有锁队列&lt;/u&gt;。具体数据结构如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; hchan &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	qcount   &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// total data in the queue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dataqsiz &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// size of the circular queue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	buf      unsafe.Pointer &lt;span class=&quot;comment&quot;&gt;// points to an array of dataqsiz elements&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	elemsize &lt;span class=&quot;keyword&quot;&gt;uint16&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	closed   &lt;span class=&quot;keyword&quot;&gt;uint32&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	elemtype *_type &lt;span class=&quot;comment&quot;&gt;// element type&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sendx    &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// send index&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	recvx    &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// receive index&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	recvq    waitq  &lt;span class=&quot;comment&quot;&gt;// list of recv waiters&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sendq    waitq  &lt;span class=&quot;comment&quot;&gt;// list of send waiters&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// lock protects all fields in hchan, as well as several&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// fields in sudogs blocked on this channel.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// Do not change another G&#39;s status while holding this lock&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// (in particular, do not ready a G), as this can deadlock&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// with stack shrinking.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	lock mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 基础 - go的命令源码文件</title>
+    <link href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/"/>
+    <id>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</id>
+    <published>2020-05-15T07:48:25.000Z</published>
+    <updated>2020-08-21T14:26:13.136Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-命令源码文件&quot;&gt;&lt;a href=&quot;#1-命令源码文件&quot; class=&quot;headerlink&quot; title=&quot;1.命令源码文件&quot;&gt;&lt;/a&gt;1.命令源码文件&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的&lt;/strong&gt;。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件&lt;/strong&gt;。 就像下面这段代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;Hello, world!&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;这其实就是就简单的可以运行go的一个文件了，刚开始搭建的时候我也是使用这么一段测试代码，随便创建了一个文件之后，然后敲上这么一段代码之后发现控制台可以打印出来“Hello World!”，瞬间感觉就学会了这门语言了，可是事情并没有那么简单，有多难？很难很难。&lt;/p&gt;
+&lt;p&gt;但是这里让我挺困惑的地方就是，&lt;strong&gt;这&lt;code&gt;func main()&lt;/code&gt;，没有接收参数入口啊？？？&lt;/strong&gt;难道我就只能进行打印了？这不科学，无论在C/C++，还是Java中，main方法都不是这么写的，那么问题就来了，如果进行接收参数呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 基础 - go的环境变量</title>
+    <link href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/"/>
+    <id>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/</id>
+    <published>2020-05-15T04:11:25.000Z</published>
+    <updated>2020-08-21T14:26:14.533Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-三个环境变量&quot;&gt;&lt;a href=&quot;#1-三个环境变量&quot; class=&quot;headerlink&quot; title=&quot;1.三个环境变量&quot;&gt;&lt;/a&gt;1.三个环境变量&lt;/h1&gt;&lt;p&gt;刚接触go的时候很头疼，一下子需要我配置三个环境变量，这三个环境变量看起来很让人头疼，感觉起来三个环境变量的意思大致，区分度不高，这三个环境变量也就是 &lt;code&gt;GOROOT&lt;/code&gt;、&lt;code&gt;GOPATH&lt;/code&gt; 和 &lt;code&gt;GOBIN&lt;/code&gt;。这里简单介绍一下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径。&lt;/li&gt;
+&lt;li&gt;GOPATH：若干工作区目录的路径。是我们自己定义的工作空间。&lt;/li&gt;
+&lt;li&gt;GOBIN：GO 程序生成的可执行文件（executable file）的路径。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中最让人头疼的就是这个GOROOT，看起来似是而非的感觉，那么GOPATH 有什么意义吗？&lt;/p&gt;
+&lt;p&gt;这里可以把 GOPATH 简单理解成 Go 语言的工作目录，它的值是一个目录的路径，也可以是多个目录路径，每个目录都代表 Go 语言的一个工作区（workspace）。&lt;/p&gt;
+&lt;p&gt;我们需要利于这些工作区，去放置 Go 语言的源码文件（source file），以及安装（install）后的归档文件（archive file，也就是以“.a”为扩展名的文件）和可执行文件（executable file）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这个GOPATH 其实很重要，为什么这么说呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;因为Go 语言项目在其&lt;u&gt;生命周期内的所有操作（编码、依赖管理、构建、测试、安装等）&lt;/u&gt;基本上都是围绕着 GOPATH 和工作区进行的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 多线程：FutureTask源码分析</title>
+    <link href="https://dongxiem.github.io/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/</id>
+    <published>2020-04-29T11:18:45.000Z</published>
+    <updated>2020-09-27T13:36:56.819Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-什么是FutureTask？&quot;&gt;&lt;a href=&quot;#1-什么是FutureTask？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是FutureTask？&quot;&gt;&lt;/a&gt;1. 什么是FutureTask？&lt;/h1&gt;&lt;p&gt;前面的Blog介绍了&lt;u&gt;&lt;code&gt;Future&lt;/code&gt;接口。这个接口有一个实现类叫&lt;code&gt;FutureTask&lt;/code&gt;&lt;/u&gt;。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的&lt;code&gt;cancel&lt;/code&gt;，&lt;code&gt;get&lt;/code&gt;，&lt;code&gt;isDone&lt;/code&gt;等方法要自己实现起来都是&lt;strong&gt;非常复杂&lt;/strong&gt;的。所以JDK提供了一个&lt;code&gt;FutureTask&lt;/code&gt;类来供我们使用。&lt;/p&gt;
+&lt;p&gt;FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，&lt;u&gt;线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务&lt;/u&gt;。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而&lt;u&gt;被提交的Runnable或Callable任务都会被包装成FutureTask&lt;/u&gt;，由线程池的工作线程去执行。&lt;/p&gt;
+&lt;p&gt;还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的&lt;code&gt;RunnableFuture&lt;/code&gt;接口的，而&lt;code&gt;RunnableFuture&lt;/code&gt;接口同时继承了&lt;code&gt;Runnable&lt;/code&gt;接口和&lt;code&gt;Future&lt;/code&gt;接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（&lt;code&gt;FutureTask.run()&lt;/code&gt;）。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 多线程：线程间通信交替打印</title>
+    <link href="https://dongxiem.github.io/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/"/>
+    <id>https://dongxiem.github.io/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</id>
+    <published>2020-04-26T11:15:45.000Z</published>
+    <updated>2020-09-27T13:36:45.378Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;这一部分，我通过一个经典的问题来引出几个线程间通信的方法，即：三个线程如何实现交替打印ABC？&lt;/p&gt;
+&lt;h1 id=&quot;2-代码实现&quot;&gt;&lt;a href=&quot;#2-代码实现&quot; class=&quot;headerlink&quot; title=&quot;2.代码实现&quot;&gt;&lt;/a&gt;2.代码实现&lt;/h1&gt;&lt;h2 id=&quot;2-1-Synchronized&quot;&gt;&lt;a href=&quot;#2-1-Synchronized&quot; class=&quot;headerlink&quot; title=&quot;2.1 Synchronized&quot;&gt;&lt;/a&gt;2.1 Synchronized&lt;/h2&gt;&lt;p&gt;基本思路：使用同步块和wait、notify的方法控制三个线程的执行次序。具体方法如下：从大的方向上来讲，该问题为三线程间的同步唤醒操作，主要的目的就是&lt;code&gt;ThreadA-&amp;gt;ThreadB-&amp;gt;ThreadC-&amp;gt;ThreadA&lt;/code&gt;循环执行三个线程。为了控制线程执行的顺序，那么就必须要确定唤醒、等待的顺序，所以每一个线程必须同时持有两个对象锁，才能进行打印操作。一个对象锁是prev，就是前一个线程所对应的对象锁，其主要作用是保证当前线程一定是在前一个线程操作完成后（即前一个线程释放了其对应的对象锁）才开始执行。还有一个锁就是自身对象锁。主要的思想就是，为了控制执行的顺序，必须要先持有prev锁（也就前一个线程要释放其自身对象锁），然后当前线程再申请自己对象锁，两者兼备时打印。之后首先调用&lt;code&gt;self.notify()&lt;/code&gt;唤醒下一个等待线程（注意notify不会立即释放对象锁，只有等到同步块代码执行完毕后才会释放），再调用&lt;code&gt;prev.wait()&lt;/code&gt;立即释放prev对象锁，当前线程进入休眠，等待其他线程的notify操作再次唤醒。&lt;/p&gt;
+&lt;p&gt;下面程序可以看到程序一共定义了a,b,c三个对象锁，分别对应A、B、C三个线程。A线程最先运行，A线程按顺序申请c,a对象锁，打印操作后按顺序释放a,c对象锁，并且通过notify操作唤醒线程B。线程B首先等待获取A锁，再申请B锁，后打印B，再释放B，A锁，唤醒C。线程C等待B锁，再申请C锁，后打印C，再释放C,B锁，唤醒A。看起来似乎没什么问题，但如果你仔细想一下，就会发现有问题，就是初始条件，三个线程必须按照A,B,C的顺序来启动，但是这种假设依赖于JVM中线程调度、执行的顺序。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - Synchronized 原理分析</title>
+    <link href="https://dongxiem.github.io/2020/04/25/java-bing-fa-synchronized-yuan-li-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/25/java-bing-fa-synchronized-yuan-li-fen-xi/</id>
+    <published>2020-04-25T11:12:45.000Z</published>
+    <updated>2020-09-27T13:38:53.467Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.概述&quot;&gt;&lt;/a&gt;1.概述&lt;/h1&gt;&lt;p&gt;JDK1.6 之后 Synchronized  的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。锁主要存在四中状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。&lt;/p&gt;
+&lt;p&gt;Java中的&lt;code&gt;synchronized&lt;/code&gt; 的偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&amp;gt;轻量级锁-&amp;gt;重量级锁 的顺序升级。JVM种的锁也是能降级的，只不过条件很苛刻，可以相当于没有了，策略是为了提高获得锁和释放锁的效率。&lt;/p&gt;
+&lt;p&gt;所以对Synchronized 的重点分析应该是其升级流程，以前是我觉得So easy，不就这几个状态升上去而已，不过在某天看了 &lt;a href=&quot;https://github.com/farmerjohngit/myblog/issues/12&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;死磕Synchronized底层实现&lt;/a&gt; 之后，发现我还是太嫩了，这才是真正的深入，也许对知识的求知就该如此不断的进行深入，对于Synchronized 还是有很多值得发现的知识，以下记录了学习到的一些笔记，大概对一整个锁的升级流程有了一些认识和了解。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png&quot; alt=&quot;Synchronized锁升级流程图&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - Synchronized 与其他一些锁机制的对比</title>
+    <link href="https://dongxiem.github.io/2020/04/23/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/"/>
+    <id>https://dongxiem.github.io/2020/04/23/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/</id>
+    <published>2020-04-23T04:13:45.000Z</published>
+    <updated>2020-09-27T13:38:44.760Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;我们前面已经 Synchronized 在JDK1.6 进行哪一些方面的优化，通过这些底层的优化之后Synchronized  变得好用了很多，那么它究竟和其他锁机制有什么差别？换种方式说，我在进行编程的过程中，究竟要如何进行选择？什么时候应该选择Synchronized？而什么时候不选用Synchronized而选用其他的锁机制。&lt;/p&gt;
+&lt;p&gt;总感觉学习了Synchronized之后，对于其内部原理熟悉了，不知道有没有其他人跟我一样困惑，我究竟该何时进行使用它呢？在哪个场景下我该第一时间想到这货？我觉得进行选择还应该先进行对比，将和我们之前学习到的一些同步机制进行联系起来，有对比才有总结，尽量多进行比较，多点思考，才有更深入的理解与认识。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - Synchronized 几种使用方式</title>
+    <link href="https://dongxiem.github.io/2020/04/22/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/"/>
+    <id>https://dongxiem.github.io/2020/04/22/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/</id>
+    <published>2020-04-22T04:12:45.000Z</published>
+    <updated>2020-09-27T13:38:34.355Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-概括&quot;&gt;&lt;a href=&quot;#1-概括&quot; class=&quot;headerlink&quot; title=&quot;1.概括&quot;&gt;&lt;/a&gt;1.概括&lt;/h1&gt;&lt;p&gt;Synchronized 可以有几种修饰方法，总体使用如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - CAS 分析</title>
+    <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/</id>
+    <published>2020-04-16T04:14:14.000Z</published>
+    <updated>2020-08-21T12:56:37.244Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-CAS-介绍&quot;&gt;&lt;a href=&quot;#1-CAS-介绍&quot; class=&quot;headerlink&quot; title=&quot;1.CAS 介绍&quot;&gt;&lt;/a&gt;1.CAS 介绍&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;什么是CAS？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CAS，全称：Compare and Swap，即比较-替换；CAS是一种无锁算法&lt;strong&gt;，&lt;/strong&gt;通过无锁的方式实现了多个线程间变量的同步；CAS 是乐观锁的一种实现方式，是一种轻量级锁，JUC 中很多工具类的实现就是基于 CAS 的。&lt;/p&gt;
+&lt;p&gt;注意：JVM中的CAS操作正是利用了处理器提供的&lt;strong&gt;CMPXCHG指令实现&lt;/strong&gt;的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体内容：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，才会将内存值修改为B并返回true，否则什么都不做并返回false。&lt;strong&gt;当然CAS一定要volatile变量配合&lt;/strong&gt;，这样才能保证每次拿到的变量是主内存中最新的那个值，否则旧的预期值A对某条线程来说，永远是一个不会变的值A，只要某次CAS操作失败，永远都不可能成功。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 锁相关：Condition接口分析</title>
+    <link href="https://dongxiem.github.io/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
+    <published>2020-04-02T01:13:45.000Z</published>
+    <updated>2020-09-27T13:37:32.285Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
+&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 多线程：线程创建的几种方式</title>
+    <link href="https://dongxiem.github.io/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/"/>
+    <id>https://dongxiem.github.io/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</id>
+    <published>2020-04-01T13:12:41.000Z</published>
+    <updated>2020-09-27T13:36:32.594Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;在这阶段的学习过程中我会先抛出一系列：线程如何创建？这是一个很关键的问题，并发的关键在于多线程，那么如何创建线程呢？大概有几种方式呢？这几种方式的区别是什么？什么情况下应该使用这种创建方式？什么时候又不应该呢？那么具体的过程应该是如何呢？是否应该给出一两个例子会更好的说明一下？&lt;/p&gt;
+&lt;p&gt;问题太多，搞得自己都乱了，最主要的还是要一点点的去了解，最后串成一根线，才能更好对知识的进行掌握。&lt;/p&gt;
+&lt;p&gt;我想应该将这几种方式联系起来做一个对比，这样才能更好的理解这些创建线程方式的优点与缺点。&lt;/p&gt;
+&lt;p&gt;按照现有的认识，总的来说有两种实现线程的方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;实现Runnable接口&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;继承Thread类&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其实按照我的理解的话，详细分一下的话可以分为三种，就是继承Thread类，实现Runnable接口，实现Callable接口（虽然其内部也是实现Runnable接口），主要就是实现Runnable接口没有返回值，而实现Callable接口可以有返回值，所以也可以按照这三种方式去思考实际开发过程中到底需要哪种创建方式。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 多线程：线程池的使用</title>
+    <link href="https://dongxiem.github.io/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/"/>
+    <id>https://dongxiem.github.io/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/</id>
+    <published>2020-03-26T03:11:45.000Z</published>
+    <updated>2020-09-27T13:35:52.630Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-如何配置线程池&quot;&gt;&lt;a href=&quot;#1-如何配置线程池&quot; class=&quot;headerlink&quot; title=&quot;1 如何配置线程池&quot;&gt;&lt;/a&gt;1 如何配置线程池&lt;/h1&gt;&lt;p&gt;如果我们设置的线程池数量太小的话，如果同一时间有大量任务/请求需要处理，可能会导致大量的请求/任务在任务队列中排队等待执行，甚至会出现任务队列满了之后任务/请求无法处理的情况，或者大量任务堆积在任务队列导致 OOM。这样很明显是有问题的！ CPU 根本没有得到充分利用。&lt;/p&gt;
+&lt;p&gt;但是，如果我们设置线程数量太大，大量线程可能会同时在争取 CPU 资源，这样会导致大量的上下文切换，从而增加线程的执行时间，影响了整体执行效率。&lt;/p&gt;
+&lt;p&gt;注：上下文切换的解释&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多线程编程中一般线程的个数都大于 CPU 核心的个数，而一个 CPU 核心在任意时刻只能被一个线程使用，为了让这些线程都能得到有效执行，CPU 采取的策略是为每个线程分配时间片并轮转的形式。当一个线程的时间片用完的时候就会重新处于就绪状态让给其他线程使用，这个过程就属于一次上下文切换。概括来说就是：当前任务在执行完 CPU 时间片切换到另一个任务之前会先保存自己的状态，以便下次再切换回这个任务时，可以再加载这个任务的状态。任务从保存到再加载的过程就是一次上下文切换。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上下文切换通常是计算密集型的&lt;/strong&gt;。也就是说，它需要相当可观的处理器时间，在每秒几十上百次的切换中，每次切换都需要纳秒量级的时间。所以，上下文切换对系统来说意味着消耗大量的 CPU 时间，事实上，可能是操作系统中时间消耗最大的操作。&lt;/li&gt;
+&lt;li&gt;Linux 相比与其他操作系统（包括其他类 Unix 系统）有很多的优点，其中有一项就是，其上下文切换和模式切换的时间消耗非常少。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要肯定的一点是：线程池肯定是不是越大越好。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="多线程" scheme="https://dongxiem.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 并发 - 多线程：深入线程池原理</title>
+    <link href="https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/"/>
+    <id>https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</id>
+    <published>2020-03-24T08:23:45.000Z</published>
+    <updated>2020-09-27T13:35:36.765Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-线程池简介&quot;&gt;&lt;a href=&quot;#1-线程池简介&quot; class=&quot;headerlink&quot; title=&quot;1.线程池简介&quot;&gt;&lt;/a&gt;1.线程池简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-线程池是什么？&quot;&gt;&lt;a href=&quot;#1-1-线程池是什么？&quot; class=&quot;headerlink&quot; title=&quot;1.1 线程池是什么？&quot;&gt;&lt;/a&gt;1.1 线程池是什么？&lt;/h2&gt;&lt;p&gt;线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。&lt;/p&gt;
+&lt;p&gt;线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。&lt;/p&gt;
+&lt;p&gt;线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
+    
+      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
