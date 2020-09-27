@@ -346,7 +346,7 @@
 <li><strong>mutexWaiterShift</strong>：值为 3，表示 mutex.state 右移 3 位后即为等待的 goroutine 的数量，也即表示统计阻塞在该mutex上的goroutine数目需要移位的数值。根据 <code>mutex.state &gt;&gt; mutexWaiterShift</code> 得到当前等待的 goroutine 数目</li>
 </ul>
 <p><code>Mutex</code> 中的 <code>state</code>其32位 bit 的分布具体如下所示：</p>
-<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="number">1111</span> <span class="number">1111</span> ...... <span class="number">1111</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line">|_________29__________| ↓ ↓ ↓</span><br><span class="line">          ↓	            ↓ ↓ \ 表示当前 mutex 是否加锁</span><br><span class="line">          ↓             ↓ \ 表示当前 mutex 是否被唤醒</span><br><span class="line">          ↓             \ 表示 mutex 当前是否处于饥饿状态</span><br><span class="line">          ↓</span><br><span class="line">  存储等待 goroutine 数量</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="number">1111</span> <span class="number">1111</span> ...... <span class="number">1111</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line">|_________29__________| ↓ ↓ ↓</span><br><span class="line">          ↓             ↓ ↓ \ 表示当前 mutex 是否加锁</span><br><span class="line">          ↓             ↓ \ 表示当前 mutex 是否被唤醒</span><br><span class="line">          ↓             \ 表示 mutex 当前是否处于饥饿状态</span><br><span class="line">          ↓</span><br><span class="line">  存储等待 goroutine 数量</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -360,8 +360,7 @@
 <p><strong><u>在饥饿模式下，锁的所有权将从<code>unlock</code>的<code>gorutine</code>直接交给交给等待队列中的第一个</u></strong>。新来的<code>goroutine</code>将不会尝试去获得锁，即使锁看起来是<code>unlock</code>状态, 也不会去尝试自旋操作（等也白等，在饥饿模式下是不会给你的），而是乖乖地待在等待队列的尾部。</p>
 <p>如果一个等待的<code>goroutine</code>获取了锁，并且满足一以下其中的任何一个条件：（1）它是等待队列中的最后一个；（2）它等待的时候小于1ms。它会将锁的状态转换为正常状态。</p>
 <p>正常模式有更好地性能，因为一个 <code>goroutine</code> 可以连续获得好几次 <code>mutex</code>，即使有阻塞的等待者。而饥饿模式可以有效防止出现位于等待队列尾部的等待者一直无法获取到 <code>mutex</code> 的情况。</p>
-<p><strong>加锁与解锁</strong></p>
-<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">Lock</span><span class="params">()</span></span> {</span><br><span class="line">	<span class="comment">// Fast path: grab unlocked mutex.</span></span><br><span class="line">	<span class="keyword">if</span> atomic.CompareAndSwapInt32(&amp;m.state, <span class="number">0</span>, mutexLocked) {</span><br><span class="line">		<span class="keyword">if</span> race.Enabled {</span><br><span class="line">			race.Acquire(unsafe.Pointer(m))</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// Slow path (outlined so that the fast path can be inlined)</span></span><br><span class="line">	m.lockSlow()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="加锁与解锁"><a href="#加锁与解锁" class="headerlink" title="加锁与解锁"></a>加锁与解锁</h2><figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">Lock</span><span class="params">()</span></span> {</span><br><span class="line">	<span class="comment">// Fast path: grab unlocked mutex.</span></span><br><span class="line">	<span class="keyword">if</span> atomic.CompareAndSwapInt32(&amp;m.state, <span class="number">0</span>, mutexLocked) {</span><br><span class="line">		<span class="keyword">if</span> race.Enabled {</span><br><span class="line">			race.Acquire(unsafe.Pointer(m))</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// Slow path (outlined so that the fast path can be inlined)</span></span><br><span class="line">	m.lockSlow()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -378,35 +377,6 @@
 <li></li>
 </ul>
 <script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
-    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -466,8 +436,66 @@
       </tags>
   </entry>
   <entry>
+    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>golang Sync源码剖析(4) - Sync.Map</title>
     <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(6) - Sync.Once</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -526,35 +554,6 @@
   <entry>
     <title>golang Sync源码剖析(7) - Sync.Cond</title>
     <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang Sync源码剖析(6) - Sync.Once</title>
-    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

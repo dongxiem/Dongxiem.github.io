@@ -140,7 +140,7 @@
     <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/"/>
     <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</id>
     <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:25:55.000Z</updated>
+    <updated>2020-09-27T14:28:57.462Z</updated>
     
     <summary type="html">
     
@@ -148,33 +148,6 @@
 &lt;p&gt;在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个&lt;code&gt;goroutine&lt;/code&gt;在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而&lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; 包中所有的结构都适用于&lt;code&gt;goroutine&lt;/code&gt;并发执行的情况，需要好好掌握。&lt;/p&gt;
 &lt;p&gt;下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。&lt;/p&gt;
 &lt;p&gt;注：以下&lt;code&gt;golang&lt;/code&gt;源码版本为：1.15&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
-    
-    
-      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</id>
-    <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:02:44.031Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
     
     </summary>
     
@@ -214,11 +187,65 @@
   </entry>
   
   <entry>
+    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:02:44.031Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>golang Sync源码剖析(4) - Sync.Map</title>
     <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/"/>
     <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</id>
     <published>2020-06-12T14:12:25.000Z</published>
     <updated>2020-09-27T14:02:54.080Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(6) - Sync.Once</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:03:16.208Z</updated>
     
     <summary type="html">
     
@@ -271,33 +298,6 @@
     <title>golang Sync源码剖析(7) - Sync.Cond</title>
     <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/"/>
     <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</id>
-    <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:03:16.208Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
-    
-    
-      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang Sync源码剖析(6) - Sync.Once</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</id>
     <published>2020-06-12T14:12:25.000Z</published>
     <updated>2020-09-27T14:03:16.208Z</updated>
     
