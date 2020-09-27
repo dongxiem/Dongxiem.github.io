@@ -136,6 +136,30 @@
   </entry>
   
   <entry>
+    <title>golang Sync源码剖析(1) - Sync.Mutex</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T15:01:37.584Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-Sync包-简明介绍&quot;&gt;&lt;a href=&quot;#1-Sync包-简明介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Sync包 简明介绍&quot;&gt;&lt;/a&gt;1.Sync包 简明介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;golang&lt;/code&gt; 语言有着天生适合高并发的特性，作为原生支持用户态进程（&lt;code&gt;Goroutine&lt;/code&gt;）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 &lt;code&gt;golang&lt;/code&gt; 源码的大叔们就给了&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt; 这么个包，通过浏览源码可以知道&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Mutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.RWMutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.WaitGroup&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Map&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Pool&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Once&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Cond&lt;/a&gt;，也可以看一下官方给的Sync包的一些方法解释： &lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;，方便大家。&lt;/p&gt;
+&lt;p&gt;在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个&lt;code&gt;goroutine&lt;/code&gt;在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而&lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; 包中所有的结构都适用于&lt;code&gt;goroutine&lt;/code&gt;并发执行的情况，需要好好掌握。&lt;/p&gt;
+&lt;p&gt;下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。&lt;/p&gt;
+&lt;p&gt;注：以下&lt;code&gt;golang&lt;/code&gt;源码版本为：1.15&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>golang Sync源码剖析(2) - Sync.RWMutex</title>
     <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/"/>
     <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</id>
@@ -190,35 +214,11 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(1) - Sync.Mutex</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</id>
+    <title>golang Sync源码剖析(4) - Sync.Map</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</id>
     <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:57:51.759Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-Sync包-简明介绍&quot;&gt;&lt;a href=&quot;#1-Sync包-简明介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Sync包 简明介绍&quot;&gt;&lt;/a&gt;1.Sync包 简明介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;golang&lt;/code&gt; 语言有着天生适合高并发的特性，作为原生支持用户态进程（&lt;code&gt;Goroutine&lt;/code&gt;）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 &lt;code&gt;golang&lt;/code&gt; 源码的大叔们就给了&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt; 这么个包，通过浏览源码可以知道&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Mutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.RWMutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.WaitGroup&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Map&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Pool&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Once&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Cond&lt;/a&gt;，也可以看一下官方给的Sync包的一些方法解释： &lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;，方便大家。&lt;/p&gt;
-&lt;p&gt;在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个&lt;code&gt;goroutine&lt;/code&gt;在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而&lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; 包中所有的结构都适用于&lt;code&gt;goroutine&lt;/code&gt;并发执行的情况，需要好好掌握。&lt;/p&gt;
-&lt;p&gt;下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。&lt;/p&gt;
-&lt;p&gt;注：以下&lt;code&gt;golang&lt;/code&gt;源码版本为：1.15&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
-    
-    
-      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang Sync源码剖析(5) - Sync.Pool</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</id>
-    <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:02:59.193Z</updated>
+    <updated>2020-09-27T14:02:54.080Z</updated>
     
     <summary type="html">
     
@@ -241,11 +241,11 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(4) - Sync.Map</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</id>
+    <title>golang Sync源码剖析(5) - Sync.Pool</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</id>
     <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:02:54.080Z</updated>
+    <updated>2020-09-27T14:02:59.193Z</updated>
     
     <summary type="html">
     
