@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</loc>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
     
-    <lastmod>2020-09-27T14:31:46.038Z</lastmod>
+    <lastmod>2020-09-27T14:53:12.951Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</loc>
     
-    <lastmod>2020-09-27T14:31:31.644Z</lastmod>
+    <lastmod>2020-09-27T14:31:46.038Z</lastmod>
     
   </url>
   
