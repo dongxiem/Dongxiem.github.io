@@ -17,7 +17,7 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>golang gin（1） - 整体框架分析</title>
+    <title>golang gin(1) - 整体框架分析</title>
     <link href="https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
     <published>2020-07-12T12:41:25.000Z</published>
@@ -136,17 +136,180 @@
   </entry>
   
   <entry>
-    <title>golang 并发 - Sync Package深入源码剖析</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/</id>
+    <title>golang Sync源码剖析(1) - Sync.Mutex</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</id>
     <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T13:41:12.996Z</updated>
+    <updated>2020-09-27T14:25:55.000Z</updated>
     
     <summary type="html">
     
       &lt;h1 id=&quot;1-Sync包-简明介绍&quot;&gt;&lt;a href=&quot;#1-Sync包-简明介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Sync包 简明介绍&quot;&gt;&lt;/a&gt;1.Sync包 简明介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;golang&lt;/code&gt; 语言有着天生适合高并发的特性，作为原生支持用户态进程（&lt;code&gt;Goroutine&lt;/code&gt;）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 &lt;code&gt;golang&lt;/code&gt; 源码的大叔们就给了&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt; 这么个包，通过浏览源码可以知道&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Mutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.RWMutex&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.WaitGroup&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Map&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Pool&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Once&lt;/a&gt;、&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.Cond&lt;/a&gt;，也可以看一下官方给的Sync包的一些方法解释： &lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;src/sync&lt;/a&gt;，方便大家。&lt;/p&gt;
 &lt;p&gt;在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个&lt;code&gt;goroutine&lt;/code&gt;在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而&lt;a href=&quot;https://golang.org/pkg/sync/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;sync&lt;/code&gt;&lt;/a&gt; 包中所有的结构都适用于&lt;code&gt;goroutine&lt;/code&gt;并发执行的情况，需要好好掌握。&lt;/p&gt;
 &lt;p&gt;下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。&lt;/p&gt;
+&lt;p&gt;注：以下&lt;code&gt;golang&lt;/code&gt;源码版本为：1.15&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:02:44.031Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(2) - Sync.RWMutex</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:02:42.824Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(4) - Sync.Map</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:02:54.080Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(5) - Sync.Pool</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:02:59.193Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(7) - Sync.Cond</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:03:16.208Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(6) - Sync.Once</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:03:16.208Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
     
     </summary>
     
@@ -381,170 +544,6 @@
     
       &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;我们前面已经 Synchronized 在JDK1.6 进行哪一些方面的优化，通过这些底层的优化之后Synchronized  变得好用了很多，那么它究竟和其他锁机制有什么差别？换种方式说，我在进行编程的过程中，究竟要如何进行选择？什么时候应该选择Synchronized？而什么时候不选用Synchronized而选用其他的锁机制。&lt;/p&gt;
 &lt;p&gt;总感觉学习了Synchronized之后，对于其内部原理熟悉了，不知道有没有其他人跟我一样困惑，我究竟该何时进行使用它呢？在哪个场景下我该第一时间想到这货？我觉得进行选择还应该先进行对比，将和我们之前学习到的一些同步机制进行联系起来，有对比才有总结，尽量多进行比较，多点思考，才有更深入的理解与认识。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - Synchronized 几种使用方式</title>
-    <link href="https://dongxiem.github.io/2020/04/22/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/"/>
-    <id>https://dongxiem.github.io/2020/04/22/java-bing-fa-synchronized-ji-chong-shi-yong-fang-shi/</id>
-    <published>2020-04-22T04:12:45.000Z</published>
-    <updated>2020-09-27T13:38:34.355Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-概括&quot;&gt;&lt;a href=&quot;#1-概括&quot; class=&quot;headerlink&quot; title=&quot;1.概括&quot;&gt;&lt;/a&gt;1.概括&lt;/h1&gt;&lt;p&gt;Synchronized 可以有几种修饰方法，总体使用如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/HiZIwJm32rGoFPv.png&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - CAS 分析</title>
-    <link href="https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/</id>
-    <published>2020-04-16T04:14:14.000Z</published>
-    <updated>2020-08-21T12:56:37.244Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-CAS-介绍&quot;&gt;&lt;a href=&quot;#1-CAS-介绍&quot; class=&quot;headerlink&quot; title=&quot;1.CAS 介绍&quot;&gt;&lt;/a&gt;1.CAS 介绍&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;什么是CAS？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CAS，全称：Compare and Swap，即比较-替换；CAS是一种无锁算法&lt;strong&gt;，&lt;/strong&gt;通过无锁的方式实现了多个线程间变量的同步；CAS 是乐观锁的一种实现方式，是一种轻量级锁，JUC 中很多工具类的实现就是基于 CAS 的。&lt;/p&gt;
-&lt;p&gt;注意：JVM中的CAS操作正是利用了处理器提供的&lt;strong&gt;CMPXCHG指令实现&lt;/strong&gt;的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;具体内容：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;假设有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，才会将内存值修改为B并返回true，否则什么都不做并返回false。&lt;strong&gt;当然CAS一定要volatile变量配合&lt;/strong&gt;，这样才能保证每次拿到的变量是主内存中最新的那个值，否则旧的预期值A对某条线程来说，永远是一个不会变的值A，只要某次CAS操作失败，永远都不可能成功。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 锁相关：Condition接口分析</title>
-    <link href="https://dongxiem.github.io/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/</id>
-    <published>2020-04-02T01:13:45.000Z</published>
-    <updated>2020-09-27T13:37:32.285Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;Condition就是一接口，而在AQS 中的&lt;code&gt;ConditionObject&lt;/code&gt;内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在&lt;strong&gt;生产者-消费者&lt;/strong&gt;的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：&lt;a href=&quot;https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/&quot;&gt;Java 并发 - AQS：框架分析&lt;/a&gt;，然后再进行Condition的了解&lt;/p&gt;
-&lt;p&gt;这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过&lt;code&gt;newCondition&lt;/code&gt;方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的&lt;code&gt;wait()&lt;/code&gt;, &lt;code&gt;notify()&lt;/code&gt; 或 &lt;code&gt;notifyAll()&lt;/code&gt; 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 &lt;code&gt;ReentrantLock&lt;/code&gt;  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：线程创建的几种方式</title>
-    <link href="https://dongxiem.github.io/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/"/>
-    <id>https://dongxiem.github.io/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/</id>
-    <published>2020-04-01T13:12:41.000Z</published>
-    <updated>2020-09-27T13:36:32.594Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;在这阶段的学习过程中我会先抛出一系列：线程如何创建？这是一个很关键的问题，并发的关键在于多线程，那么如何创建线程呢？大概有几种方式呢？这几种方式的区别是什么？什么情况下应该使用这种创建方式？什么时候又不应该呢？那么具体的过程应该是如何呢？是否应该给出一两个例子会更好的说明一下？&lt;/p&gt;
-&lt;p&gt;问题太多，搞得自己都乱了，最主要的还是要一点点的去了解，最后串成一根线，才能更好对知识的进行掌握。&lt;/p&gt;
-&lt;p&gt;我想应该将这几种方式联系起来做一个对比，这样才能更好的理解这些创建线程方式的优点与缺点。&lt;/p&gt;
-&lt;p&gt;按照现有的认识，总的来说有两种实现线程的方式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;实现Runnable接口&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;继承Thread类&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;其实按照我的理解的话，详细分一下的话可以分为三种，就是继承Thread类，实现Runnable接口，实现Callable接口（虽然其内部也是实现Runnable接口），主要就是实现Runnable接口没有返回值，而实现Callable接口可以有返回值，所以也可以按照这三种方式去思考实际开发过程中到底需要哪种创建方式。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：线程池的使用</title>
-    <link href="https://dongxiem.github.io/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/"/>
-    <id>https://dongxiem.github.io/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/</id>
-    <published>2020-03-26T03:11:45.000Z</published>
-    <updated>2020-09-27T13:35:52.630Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-如何配置线程池&quot;&gt;&lt;a href=&quot;#1-如何配置线程池&quot; class=&quot;headerlink&quot; title=&quot;1 如何配置线程池&quot;&gt;&lt;/a&gt;1 如何配置线程池&lt;/h1&gt;&lt;p&gt;如果我们设置的线程池数量太小的话，如果同一时间有大量任务/请求需要处理，可能会导致大量的请求/任务在任务队列中排队等待执行，甚至会出现任务队列满了之后任务/请求无法处理的情况，或者大量任务堆积在任务队列导致 OOM。这样很明显是有问题的！ CPU 根本没有得到充分利用。&lt;/p&gt;
-&lt;p&gt;但是，如果我们设置线程数量太大，大量线程可能会同时在争取 CPU 资源，这样会导致大量的上下文切换，从而增加线程的执行时间，影响了整体执行效率。&lt;/p&gt;
-&lt;p&gt;注：上下文切换的解释&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;多线程编程中一般线程的个数都大于 CPU 核心的个数，而一个 CPU 核心在任意时刻只能被一个线程使用，为了让这些线程都能得到有效执行，CPU 采取的策略是为每个线程分配时间片并轮转的形式。当一个线程的时间片用完的时候就会重新处于就绪状态让给其他线程使用，这个过程就属于一次上下文切换。概括来说就是：当前任务在执行完 CPU 时间片切换到另一个任务之前会先保存自己的状态，以便下次再切换回这个任务时，可以再加载这个任务的状态。任务从保存到再加载的过程就是一次上下文切换。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;上下文切换通常是计算密集型的&lt;/strong&gt;。也就是说，它需要相当可观的处理器时间，在每秒几十上百次的切换中，每次切换都需要纳秒量级的时间。所以，上下文切换对系统来说意味着消耗大量的 CPU 时间，事实上，可能是操作系统中时间消耗最大的操作。&lt;/li&gt;
-&lt;li&gt;Linux 相比与其他操作系统（包括其他类 Unix 系统）有很多的优点，其中有一项就是，其上下文切换和模式切换的时间消耗非常少。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;需要肯定的一点是：线程池肯定是不是越大越好。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="多线程" scheme="https://dongxiem.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：深入线程池原理</title>
-    <link href="https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/"/>
-    <id>https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</id>
-    <published>2020-03-24T08:23:45.000Z</published>
-    <updated>2020-09-27T13:35:36.765Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-线程池简介&quot;&gt;&lt;a href=&quot;#1-线程池简介&quot; class=&quot;headerlink&quot; title=&quot;1.线程池简介&quot;&gt;&lt;/a&gt;1.线程池简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-线程池是什么？&quot;&gt;&lt;a href=&quot;#1-1-线程池是什么？&quot; class=&quot;headerlink&quot; title=&quot;1.1 线程池是什么？&quot;&gt;&lt;/a&gt;1.1 线程池是什么？&lt;/h2&gt;&lt;p&gt;线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。&lt;/p&gt;
-&lt;p&gt;线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。&lt;/p&gt;
-&lt;p&gt;线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。&lt;/p&gt;
     
     </summary>
     

@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dongxiem.github.io/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/</loc>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
+    <lastmod>2020-09-27</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</loc>
+    <lastmod>2020-09-27</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</loc>
+    <lastmod>2020-09-27</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</loc>
+    <lastmod>2020-09-27</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</loc>
+    <lastmod>2020-09-27</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</loc>
+    <lastmod>2020-09-27</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</loc>
     <lastmod>2020-09-27</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</loc>

@@ -163,6 +163,609 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/" class="post-title-link" itemprop="url">Java 并发 - 多线程：线程池的使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-26 11:11:45" itemprop="dateCreated datePublished" datetime="2020-03-26T11:11:45+08:00">2020-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 21:35:52" itemprop="dateModified" datetime="2020-09-27T21:35:52+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-如何配置线程池"><a href="#1-如何配置线程池" class="headerlink" title="1 如何配置线程池"></a>1 如何配置线程池</h1><p>如果我们设置的线程池数量太小的话，如果同一时间有大量任务/请求需要处理，可能会导致大量的请求/任务在任务队列中排队等待执行，甚至会出现任务队列满了之后任务/请求无法处理的情况，或者大量任务堆积在任务队列导致 OOM。这样很明显是有问题的！ CPU 根本没有得到充分利用。</p>
+<p>但是，如果我们设置线程数量太大，大量线程可能会同时在争取 CPU 资源，这样会导致大量的上下文切换，从而增加线程的执行时间，影响了整体执行效率。</p>
+<p>注：上下文切换的解释</p>
+<ul>
+<li>多线程编程中一般线程的个数都大于 CPU 核心的个数，而一个 CPU 核心在任意时刻只能被一个线程使用，为了让这些线程都能得到有效执行，CPU 采取的策略是为每个线程分配时间片并轮转的形式。当一个线程的时间片用完的时候就会重新处于就绪状态让给其他线程使用，这个过程就属于一次上下文切换。概括来说就是：当前任务在执行完 CPU 时间片切换到另一个任务之前会先保存自己的状态，以便下次再切换回这个任务时，可以再加载这个任务的状态。任务从保存到再加载的过程就是一次上下文切换。</li>
+<li><strong>上下文切换通常是计算密集型的</strong>。也就是说，它需要相当可观的处理器时间，在每秒几十上百次的切换中，每次切换都需要纳秒量级的时间。所以，上下文切换对系统来说意味着消耗大量的 CPU 时间，事实上，可能是操作系统中时间消耗最大的操作。</li>
+<li>Linux 相比与其他操作系统（包括其他类 Unix 系统）有很多的优点，其中有一项就是，其上下文切换和模式切换的时间消耗非常少。</li>
+</ul>
+<p>需要肯定的一点是：线程池肯定是不是越大越好。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/" class="post-title-link" itemprop="url">Java 并发 - 多线程：深入线程池原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-24 16:23:45" itemprop="dateCreated datePublished" datetime="2020-03-24T16:23:45+08:00">2020-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 21:35:36" itemprop="dateModified" datetime="2020-09-27T21:35:36+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>39k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>35 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-线程池简介"><a href="#1-线程池简介" class="headerlink" title="1.线程池简介"></a>1.线程池简介</h1><h2 id="1-1-线程池是什么？"><a href="#1-1-线程池是什么？" class="headerlink" title="1.1 线程池是什么？"></a>1.1 线程池是什么？</h2><p>线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。</p>
+<p>线程池可以简单看做是一组线程的集合，通过使用线程池，我们可以方便的复用线程，避免了频繁创建和销毁线程所带来的开销。在应用上，线程池可应用在后端相关服务中。比如 Web 服务器，数据库服务器等。以 Web 服务器为例，假如 Web 服务器会收到大量短时的 HTTP 请求，如果此时我们简单的为每个 HTTP 请求创建一个处理线程，那么服务器的资源将会很快被耗尽。当然我们也可以自己去管理并复用已创建的线程，以限制资源的消耗量，但这样会使用程序的逻辑变复杂。好在，幸运的是，我们不必那样做。在 JDK 1.5 中，官方已经提供了强大的线程池工具类。通过使用这些工具类，我们可以用低廉的代价使用多线程技术。</p>
+<p>线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多个线程，等待监督管理者分配可并发执行的任务。这种做法，一方面避免了处理任务时创建销毁线程开销的代价，另一方面避免了线程数量膨胀导致的过分调度问题，保证了对内核的充分利用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/18/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/18/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/" class="post-title-link" itemprop="url">Java 并发 - AQS：LockSupport阻塞唤醒线程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-18 17:12:22" itemprop="dateCreated datePublished" datetime="2020-03-18T17:12:22+08:00">2020-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 21:38:19" itemprop="dateModified" datetime="2020-09-27T21:38:19+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>LockSupport在AQS中经常被调用，可以经常看到LockSupport的出现，看了很久也不清楚大概是个什么作用，总结了一些，它大概就是AQS用来实现线程的阻塞和唤醒的，分别通过<code>LockSupport .park()</code>和 <code>LockSupport .unpark()</code>进行实现的。</p>
+<p>使用LockSupport的线程会与一个许可关联，其实就像是一个二元信号量（意思就是只有一个许可证可以使用），如果这个许可没有被占用，那么当前线程可以获得许可并继续执行，如果许可以已经被占用，则当前线程就会被阻塞，然后等待许可的获取。注意：<strong>许可默认是被占用的！</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/18/java-bing-fa-aqs-locksupport-zu-sai-huan-xing-xian-cheng/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/17/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/17/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/" class="post-title-link" itemprop="url">Java 并发 - AQS：自定义同步工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-17 12:11:45" itemprop="dateCreated datePublished" datetime="2020-03-17T12:11:45+08:00">2020-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 21:38:02" itemprop="dateModified" datetime="2020-09-27T21:38:02+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>通过前面的AQS的基本原理了解:之后：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，我了解了大概的AQS的一整个流程，也明白了大部分的同步工具都是基于AQS来实现的，好像比较重要的就是重写tryAcquire 和 tryRelease 两个方法而已，那么我借鉴了其他同步工具的写法，试了试尝试自己实现一个基于AQS的同步工具，看看能不能正常跑起来。</p>
+<p>以下是基于独占式的写法，并不是共享式的，所以实现的也是<code>tryAcquire</code>和<code>tryRelease</code>。主要想做的事情就是同一个时刻只能让一个线程一直抱有资源做一件事情，直到这件事情做完了之后，才可以让其他线程去做一些事情，这不就是同步的概念嘛！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/17/java-bing-fa-aqs-zi-ding-yi-tong-bu-gong-ju/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/15/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/15/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/" class="post-title-link" itemprop="url">Java 并发 - 多线程：如何停止一个线程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-15 18:23:25" itemprop="dateCreated datePublished" datetime="2020-03-15T18:23:25+08:00">2020-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 21:35:44" itemprop="dateModified" datetime="2020-09-27T21:35:44+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h1><p>对于一个线程要如何去停止呢？还有不同情况下的线程要如何停止呢？停止一个线程是什么意思？就是让这个线程在它进行任务处理的时候进行停止，停掉当前的操作，之前有学习到一个<code>Thread.stop()</code>方法，好像已经被废弃了，是不安全的一个方法，那么除了这个方法，还有其他什么办法吗？</p>
+<p>总的来说，Java有如下几种方法去停止线程：</p>
+<ol>
+<li>使用stop方法强行终止，但是不推荐这个方法，因为stop是过期作废的方法<ul>
+<li>stop()方法作废的原因：如果强制让线程停止有可能使一些清理性的工作得不到完成。另外一个情况就是对锁定的对象进行了解锁，导致数据得不到同步的处理，出现数据不一致的问题</li>
+</ul>
+</li>
+<li>使用<strong>interrupt方法中断线程</strong>：<ul>
+<li>停止不了的线程，interrupt()方法的使用效果并不像for+break语句那样，马上就停止循环。调用interrupt方法是<strong>在当前线程中打了一个停止标志，并不是真的停止线程</strong></li>
+<li>可以用查看线程是否中断，并抛出异常的方式来停止执行线程中的函数</li>
+<li>如果线程在<code>sleep()</code>函数的时间范围内被interrupted就会中断线程，置状态位为false并抛出sleep interrupted异常。</li>
+</ul>
+</li>
+<li>使用<strong>退出标志</strong>，使线程正常退出，也就是当run方法完成后线程终止<ul>
+<li>使用return，配合interrupt标志可以直接中断线程</li>
+<li>但是还是建议使用异常中断线程，因为可以使用catch向上抛出异常，从而使线程停止事件得以传播</li>
+</ul>
+</li>
+<li>线程池使用<strong>shutDownAll()</strong>；</li>
+<li>Looper的<strong>quit方法或quitSafely方法</strong></li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/15/java-bing-fa-duo-xian-cheng-ru-he-ting-zhi-yi-ge-xian-cheng/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/12/java-ji-he-kuang-jia-hashmap-fen-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/12/java-ji-he-kuang-jia-hashmap-fen-xi/" class="post-title-link" itemprop="url">Java 集合框架 - HashMap 分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-12 12:12:42" itemprop="dateCreated datePublished" datetime="2020-03-12T12:12:42+08:00">2020-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 21:39:07" itemprop="dateModified" datetime="2020-09-27T21:39:07+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E9%9B%86%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">Java集合</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-HashMap实现原理"><a href="#1-HashMap实现原理" class="headerlink" title="1.HashMap实现原理"></a>1.HashMap实现原理</h1><p><strong>简述HashMap的工作原理：</strong></p>
+<p>HashMap是<strong>基于散列法（又称哈希法）的原理</strong>，使用<code>put(key, value)</code>存储对象到HashMap中，使用<code>get(key)</code>从HashMap中获取对象。使用HashMap进行查询和修改的速度都很快，平均时间复杂度O(1)。HashMap非线程安全，如果需要考虑并发，则需要使用ConcurrentHashMap，且HashMap不保证存储元素的序列；</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/12/java-ji-he-kuang-jia-hashmap-fen-xi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/10/java-ji-he-kuang-jia-hashmap-ren-shi-yu-li-jie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -451,7 +1054,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -501,13 +1104,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">228k</span>
+    <span title="站点总字数">230k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:27</span>
+    <span title="站点阅读时长">3:29</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

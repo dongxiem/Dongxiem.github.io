@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>golang gin（1） - 整体框架分析</title>
+    <title>golang gin(1) - 整体框架分析</title>
     <url>/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Gin-简明介绍"><a href="#1-Gin-简明介绍" class="headerlink" title="1.Gin 简明介绍"></a>1.Gin 简明介绍</h1><p>gin 是什么？官方给的解释为：Gin 是一个用 Go (Golang) 编写的 HTTP web 框架。 它是一个类似于 <a href="https://github.com/go-martini/martini" target="_blank" rel="noopener">martini</a> 但拥有更好性能的 API 框架, 优于 <a href="https://github.com/julienschmidt/httprouter" target="_blank" rel="noopener">httprouter</a>，速度提高了近 40 倍。</p>
 <blockquote>
@@ -310,47 +310,56 @@
       </tags>
   </entry>
   <entry>
-    <title>golang 并发 - Sync Package深入源码剖析</title>
-    <url>/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/</url>
+    <title>golang Sync源码剖析(1) - Sync.Mutex</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><p><code>golang</code> 语言有着天生适合高并发的特性，作为原生支持用户态进程（<code>Goroutine</code>）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 <code>golang</code> 源码的大叔们就给了<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a> 这么个包，通过浏览源码可以知道<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11" target="_blank" rel="noopener">sync.Mutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7" target="_blank" rel="noopener">sync.RWMutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7" target="_blank" rel="noopener">sync.WaitGroup</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7" target="_blank" rel="noopener">sync.Map</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44" target="_blank" rel="noopener">sync.Pool</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7" target="_blank" rel="noopener">sync.Once</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5" target="_blank" rel="noopener">sync.Cond</a>，也可以看一下官方给的Sync包的一些方法解释： <a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>，方便大家。</p>
 <p>在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个<code>goroutine</code>在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而<a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> 包中所有的结构都适用于<code>goroutine</code>并发执行的情况，需要好好掌握。</p>
 <p>下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。</p>
+<p>注：以下<code>golang</code>源码版本为：1.15</p>
 <a id="more"></a>
 
 
 
 <hr>
-<h1 id="2-sync-Mutex"><a href="#2-sync-Mutex" class="headerlink" title="2.sync.Mutex"></a>2.sync.Mutex</h1><h2 id="sync-Mutex-原理解析"><a href="#sync-Mutex-原理解析" class="headerlink" title="sync.Mutex 原理解析"></a>sync.Mutex 原理解析</h2><p><a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L13" target="_blank" rel="noopener">sync.Mutex</a> 可能是<code>sync</code>包中使用最广泛的原语，顾名思义就是相互排斥的锁，它确保同一时刻只有一个协程能访问某对象，也即它允许在共享资源上互斥访问（不能同时访问），初始状态为<code>unlock</code>。</p>
+<h1 id="2-sync-Mutex-源码解析"><a href="#2-sync-Mutex-源码解析" class="headerlink" title="2.sync.Mutex 源码解析"></a>2.sync.Mutex 源码解析</h1><h2 id="sync-Mutex-背景来源"><a href="#sync-Mutex-背景来源" class="headerlink" title="sync.Mutex 背景来源"></a>sync.Mutex 背景来源</h2><p>我认为了解知识的最好方式是从其发展背景进行了解，比如它在发展的过程中，做了哪些改变？是因为什么问题而做了这些改变？是否能够使得现在的框架更加优秀？我想如果有这些问题的话，了解问题会更加深入一些。</p>
+<p>我们可以看看Russ Cox在2008提交的第一版的<code>Mutex</code>实现</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Mutex <span class="keyword">struct</span> {</span><br><span class="line">    key <span class="keyword">int32</span>;</span><br><span class="line">    sema <span class="keyword">int32</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">xadd</span><span class="params">(val *<span class="keyword">int32</span>, delta <span class="keyword">int32</span>)</span> <span class="params">(<span class="built_in">new</span> <span class="keyword">int32</span>)</span></span> {</span><br><span class="line">    <span class="keyword">for</span> {</span><br><span class="line">        v := *val;</span><br><span class="line">        <span class="keyword">if</span> cas(val, v, v+delta) {</span><br><span class="line">            <span class="keyword">return</span> v+delta;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">panic</span>(<span class="string">"unreached"</span>)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">Lock</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">if</span> xadd(&amp;m.key, <span class="number">1</span>) == <span class="number">1</span> {</span><br><span class="line">        <span class="comment">// changed from 0 to 1; we hold lock</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    sys.semacquire(&amp;m.sema);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">Unlock</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">if</span> xadd(&amp;m.key, <span class="number">-1</span>) == <span class="number">0</span> {</span><br><span class="line">        <span class="comment">// changed from 1 to 0; no contention</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    sys.semrelease(&amp;m.sema);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这个版本相对简单，只需要通过<code>cas</code>对 <code>key</code> 进行加一, 如果<code>key</code>的值是从<code>0</code>加到<code>1</code>, 则直接获得了锁。否则通过<code>semacquire</code>进行sleep, 被唤醒的时候就获得了锁。</p>
+<p>2012年， commit <a href="https://github.com/golang/go/commit/dd2074c82acda9b50896bf29569ba290a0d13b03" target="_blank" rel="noopener">dd2074c8</a>做了一次大的改动，它将<code>waiter count</code>(等待者的数量)和<code>锁标识</code>分开来(内部实现还是合用使用<code>state</code>字段)。新来的 goroutine 占优势，会有更大的机会获取锁。</p>
+<p>2015年， commit <a href="https://github.com/golang/go/commit/edcad8639a902741dc49f77d000ed62b0cc6956f" target="_blank" rel="noopener">edcad863</a>, Go 1.5中<code>mutex</code>实现为全协作式的，增加了spin机制，一旦有竞争，当前goroutine就会进入调度器。在临界区执行很短的情况下可能不是最好的解决方案。</p>
+<p>2016年 commit <a href="https://github.com/golang/go/commit/0556e26273f704db73df9e7c4c3d2e8434dec7be" target="_blank" rel="noopener">0556e262</a>, Go 1.9中增加了饥饿模式，让锁变得更公平，不公平的等待时间限制在1毫秒，并且修复了一个大bug,唤醒的goroutine总是放在等待队列的尾部会导致更加不公平的等待时间。</p>
+<p>而现在的 Go 1.15 中的也稍微更加复杂了一些，初次看很容易迷糊，绝对不是说加锁解锁那么简单，对正常模式和饥饿模式的认识我也是通过源码才得知的，这其中对字段的一些共用、标识位的一些位操作都挺麻烦的，需要对源码进行进一步的理解。</p>
+<h2 id="sync-Mutex-结构体及常量定义"><a href="#sync-Mutex-结构体及常量定义" class="headerlink" title="sync.Mutex 结构体及常量定义"></a>sync.Mutex 结构体及常量定义</h2><p><a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L13" target="_blank" rel="noopener">sync.Mutex</a> 可能是<code>sync</code>包中使用最广泛的原语，顾名思义就是相互排斥的锁，它确保同一时刻只有一个协程能访问某对象，也即它允许在共享资源上互斥访问（不能同时访问），初始状态为<code>unlock</code>。</p>
 <p><code>Mutex</code> 的结构体定义如下：</p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Mutex <span class="keyword">struct</span> {</span><br><span class="line">	state <span class="keyword">int32</span></span><br><span class="line">	sema  <span class="keyword">uint32</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p>可以看到 <code>Mutex</code> 是由 <code>state</code> 和 <code>sema</code> 两个字段构成的，<code>int32</code> 和 <code>uint32</code> 均为四个字节，所以一个 <code>Mutex</code> 一般需要消耗八个字节的空间。</p>
-<p>通过源码可以很容易理解 <code>state</code> 为状态表示，而 sema 的用途是什么呢？ <code>sema</code> 是用来控制锁状态的信号量，是一个非负数。</p>
+<p>可以看到 <code>Mutex</code> 是由 <code>state</code> 和 <code>sema</code> 两个字段构成的，<code>int32</code> 和 <code>uint32</code> 均为四个字节，所以一个 <code>Mutex</code> 一般需要消耗八个字节的空间。通过源码可以很容易理解 <code>state</code> 为状态表示，而 sema 的用途是什么呢？ <code>sema</code> 其实是用来控制锁状态的信号量，它是一个非负数。</p>
 <p>查看源码我们会发现有以下几个常量：</p>
-<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	mutexLocked = <span class="number">1</span> &lt;&lt; <span class="literal">iota</span> <span class="comment">// mutex is locked</span></span><br><span class="line">	mutexWoken</span><br><span class="line">	mutexStarving</span><br><span class="line">	mutexWaiterShift = <span class="literal">iota</span></span><br><span class="line"></span><br><span class="line">	starvationThresholdNs = <span class="number">1e6</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	mutexLocked = <span class="number">1</span> &lt;&lt; <span class="literal">iota</span> <span class="comment">// mutex is locked</span></span><br><span class="line">	mutexWoken</span><br><span class="line">	mutexStarving</span><br><span class="line">	mutexWaiterShift = <span class="literal">iota</span></span><br><span class="line">	starvationThresholdNs = <span class="number">1e6</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对这几个常量稍微解释一下：</p>
+<ul>
+<li><strong>mutexLocked</strong> ：值为 1，第一位为 1，表示 mutex 已经被加锁。根据 <code>mutex.state &amp; mutexLocked</code> 的结果来判断 mutex 的状态：该位为 1 表示已加锁，0 表示未加锁。</li>
+<li><strong>mutexWoken</strong>：值为 2（二进制：10），第二位为 1，表示 mutex 是否被唤醒。根据 <code>mutex.state &amp; mutexWoken</code> 的结果判断 mutex 是否被唤醒：该位为 1 表示已被唤醒，0 表示未被唤醒。</li>
+<li><strong>mutexStarving</strong>：值为 4（二进制：100），第三位为 1，表示 mutex 是否处于饥饿模式。根据 mutex.state &amp; mutexWoken 的结果判断 mutex 是否处于饥饿模式：该位为 1 表示处于饥饿模式，0 表示正常模式。</li>
+<li><strong>mutexWaiterShift</strong>：值为 3，表示 mutex.state 右移 3 位后即为等待的 goroutine 的数量，也即表示统计阻塞在该mutex上的goroutine数目需要移位的数值。根据 <code>mutex.state &gt;&gt; mutexWaiterShift</code> 得到当前等待的 goroutine 数目</li>
+</ul>
+<p><code>Mutex</code> 中的 <code>state</code>其32位 bit 的分布具体如下所示：</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="number">1111</span> <span class="number">1111</span> ...... <span class="number">1111</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line">|_________29__________| ↓ ↓ ↓</span><br><span class="line">          ↓	            ↓ ↓ \ 表示当前 mutex 是否加锁</span><br><span class="line">          ↓             ↓ \ 表示当前 mutex 是否被唤醒</span><br><span class="line">          ↓             \ 表示 mutex 当前是否处于饥饿状态</span><br><span class="line">          ↓</span><br><span class="line">  存储等待 goroutine 数量</span><br></pre></td></tr></tbody></table></figure>
 
 
 
-<p>稍微解释一下：</p>
-<p><strong>mutexLocked</strong></p>
-<p>值为 1，第一位为 1，表示 mutex 已经被加锁。根据 <code>mutex.state &amp; mutexLocked</code> 的结果来判断 mutex 的状态：该位为 1 表示已加锁，0 表示未加锁。</p>
-<p><strong>mutexWoken</strong></p>
-<p>值为 2，第二位为 1，表示 mutex 是否被唤醒。根据 <code>mutex.state &amp; mutexWoken</code> 的结果判断 mutex 是否被唤醒：该位为 1 表示已被唤醒，0 表示未被唤醒。</p>
-<p><strong>mutexStarving</strong></p>
-<p>值为 4，第三位为 1，表示 mutex 是否处于饥饿模式。根据 mutex.state &amp; mutexWoken 的结果判断 mutex 是否处于饥饿模式：该位为 1 表示处于饥饿模式，0 表示正常模式。</p>
-<p><strong>mutexWaiterShift</strong></p>
-<p>值为 3，表示 mutex.state 右移 3 位后即为等待的 goroutine 的数量，也即表示统计阻塞在该mutex上的goroutine数目需要移位的数值。</p>
-<p><strong>starvationThresholdNs</strong></p>
-<p>值为 1000000 纳秒，即 1ms，表示将 mutex 切换到饥饿模式的等待时间阈值。这个常量在源码中有大篇幅的注释，理解这段注释对理解程序逻辑至关重要。</p>
+<p>还有最后一个常量，这个常量尤其重要，因为它引出了 引出了 <code>sync.Mutex</code> 的一个特性：保证公平。怎样来保证公平呢？通过引入正常状态和饥饿状态模式进行。</p>
+<ul>
+<li><strong>starvationThresholdNs</strong>：值为 1000000 纳秒，即 1ms，表示将 mutex 切换到饥饿模式的等待时间阈值。这个常量在源码中有大篇幅的注释，理解这段注释对理解程序逻辑至关重要。</li>
+</ul>
 <p>注解原文：<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L42" target="_blank" rel="noopener">Mutex fairness</a></p>
-<p>简单翻译如下：</p>
-<blockquote>
-<p>互斥锁有两种状态：正常状态和饥饿状态。</p>
-<p>在正常状态下，所有等待锁的goroutine按照FIFO顺序等待。唤醒的goroutine不会直接拥有锁，而是会和新请求锁的goroutine竞争锁的拥有。新请求锁的goroutine具有优势：它正在CPU上执行，而且可能有好几个，所以刚刚唤醒的goroutine有很大可能在锁竞争中失败。在这种情况下，这个被唤醒的goroutine会加入到等待队列的前面。 如果一个等待的goroutine超过1ms没有获取锁，那么它将会把锁转变为饥饿模式。</p>
-<p>在饥饿模式下，锁的所有权将从unlock的gorutine直接交给交给等待队列中的第一个。新来的goroutine将不会尝试去获得锁，即使锁看起来是unlock状态, 也不会去尝试自旋操作，而是放在等待队列的尾部。</p>
-<p>如果一个等待的goroutine获取了锁，并且满足一以下其中的任何一个条件：(1)它是队列中的最后一个；(2)它等待的时候小于1ms。它会将锁的状态转换为正常状态。</p>
-<p>正常状态有很好的性能表现，饥饿模式也是非常重要的，因为它能阻止尾部延迟的现象。</p>
-</blockquote>
+<h2 id="饥饿模式与正常模式"><a href="#饥饿模式与正常模式" class="headerlink" title="饥饿模式与正常模式"></a>饥饿模式与正常模式</h2><p>互斥锁有两种状态：正常状态和饥饿状态。</p>
+<p><strong><u>在正常状态下，所有等待锁的goroutine按照FIFO顺序等待</u></strong>。唤醒的<code>goroutine</code>不会直接拥有锁，而是会和新请求锁的goroutine竞争锁的拥有。新请求锁的<code>goroutine</code>具有优势：它正在CPU上执行，而且可能有好几个，所以刚刚唤醒的<code>goroutine</code>有很大可能在锁竞争中失败。在这种情况下，这个被唤醒的<code>goroutine</code>会加入到等待队列的前面。 如果一个等待的<code>goroutine</code>超过1ms没有获取锁，那么它将会把锁转变为饥饿模式。</p>
+<p><strong><u>在饥饿模式下，锁的所有权将从<code>unlock</code>的<code>gorutine</code>直接交给交给等待队列中的第一个</u></strong>。新来的<code>goroutine</code>将不会尝试去获得锁，即使锁看起来是<code>unlock</code>状态, 也不会去尝试自旋操作（等也白等，在饥饿模式下是不会给你的），而是乖乖地待在等待队列的尾部。</p>
+<p>如果一个等待的<code>goroutine</code>获取了锁，并且满足一以下其中的任何一个条件：（1）它是等待队列中的最后一个；（2）它等待的时候小于1ms。它会将锁的状态转换为正常状态。</p>
+<p>正常模式有更好地性能，因为一个 <code>goroutine</code> 可以连续获得好几次 <code>mutex</code>，即使有阻塞的等待者。而饥饿模式可以有效防止出现位于等待队列尾部的等待者一直无法获取到 <code>mutex</code> 的情况。</p>
 <p><strong>加锁与解锁</strong></p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">Lock</span><span class="params">()</span></span> {</span><br><span class="line">	<span class="comment">// Fast path: grab unlocked mutex.</span></span><br><span class="line">	<span class="keyword">if</span> atomic.CompareAndSwapInt32(&amp;m.state, <span class="number">0</span>, mutexLocked) {</span><br><span class="line">		<span class="keyword">if</span> race.Enabled {</span><br><span class="line">			race.Acquire(unsafe.Pointer(m))</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// Slow path (outlined so that the fast path can be inlined)</span></span><br><span class="line">	m.lockSlow()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -362,19 +371,191 @@
 
 
 
-
-
-
-
-
-
-<h2 id="sync-Mutex-应用示例"><a href="#sync-Mutex-应用示例" class="headerlink" title="sync.Mutex 应用示例"></a>sync.Mutex 应用示例</h2><hr>
-<h1 id="3-sync-RWMutex"><a href="#3-sync-RWMutex" class="headerlink" title="3.sync.RWMutex"></a>3.sync.RWMutex</h1><h2 id="sync-RWMutex-原理解析"><a href="#sync-RWMutex-原理解析" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例"><a href="#sync-RWMutex-应用示例" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
-<h1 id="4-sync-WaitGroup"><a href="#4-sync-WaitGroup" class="headerlink" title="4.sync.WaitGroup"></a>4.sync.WaitGroup</h1><h2 id="sync-RWMutex-原理解析-1"><a href="#sync-RWMutex-原理解析-1" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-1"><a href="#sync-RWMutex-应用示例-1" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
-<h1 id="5-sync-Map"><a href="#5-sync-Map" class="headerlink" title="5.sync.Map"></a>5.sync.Map</h1><h2 id="sync-RWMutex-原理解析-2"><a href="#sync-RWMutex-原理解析-2" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-2"><a href="#sync-RWMutex-应用示例-2" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
-<h1 id="6-sync-Pool"><a href="#6-sync-Pool" class="headerlink" title="6.sync.Pool"></a>6.sync.Pool</h1><h2 id="sync-RWMutex-原理解析-3"><a href="#sync-RWMutex-原理解析-3" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-3"><a href="#sync-RWMutex-应用示例-3" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
-<h1 id="7-sync-Once"><a href="#7-sync-Once" class="headerlink" title="7.sync.Once"></a>7.sync.Once</h1><h2 id="sync-RWMutex-原理解析-4"><a href="#sync-RWMutex-原理解析-4" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-4"><a href="#sync-RWMutex-应用示例-4" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
-<h1 id="8-sync-Cond"><a href="#8-sync-Cond" class="headerlink" title="8.sync.Cond"></a>8.sync.Cond</h1><h2 id="sync-RWMutex-原理解析-5"><a href="#sync-RWMutex-原理解析-5" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-5"><a href="#sync-RWMutex-应用示例-5" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><script>
+<h1 id="3-sync-Mutex-应用示例"><a href="#3-sync-Mutex-应用示例" class="headerlink" title="3.sync.Mutex 应用示例"></a>3.sync.Mutex 应用示例</h1><hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://draveness.me/golang/" target="_blank" rel="noopener">Go 语言设计与实现</a></li>
+<li><a href="https://colobu.com/2018/12/18/dive-into-sync-mutex/" target="_blank" rel="noopener">sync.mutex 源代码分析</a></li>
+<li></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(2) - Sync.RWMutex</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="3-sync-RWMutex"><a href="#3-sync-RWMutex" class="headerlink" title="3.sync.RWMutex"></a>3.sync.RWMutex</h1><h2 id="sync-RWMutex-原理解析"><a href="#sync-RWMutex-原理解析" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例"><a href="#sync-RWMutex-应用示例" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="5-sync-Map"><a href="#5-sync-Map" class="headerlink" title="5.sync.Map"></a>5.sync.Map</h1><h2 id="sync-RWMutex-原理解析-1"><a href="#sync-RWMutex-原理解析-1" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-1"><a href="#sync-RWMutex-应用示例-1" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="6-sync-Pool"><a href="#6-sync-Pool" class="headerlink" title="6.sync.Pool"></a>6.sync.Pool</h1><h2 id="sync-RWMutex-原理解析-2"><a href="#sync-RWMutex-原理解析-2" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-2"><a href="#sync-RWMutex-应用示例-2" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="7-sync-Once"><a href="#7-sync-Once" class="headerlink" title="7.sync.Once"></a>7.sync.Once</h1><h2 id="sync-RWMutex-原理解析-3"><a href="#sync-RWMutex-原理解析-3" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-3"><a href="#sync-RWMutex-应用示例-3" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="8-sync-Cond"><a href="#8-sync-Cond" class="headerlink" title="8.sync.Cond"></a>8.sync.Cond</h1><h2 id="sync-RWMutex-原理解析-4"><a href="#sync-RWMutex-原理解析-4" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-4"><a href="#sync-RWMutex-应用示例-4" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(4) - Sync.Map</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(5) - Sync.Pool</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(7) - Sync.Cond</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(6) - Sync.Once</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

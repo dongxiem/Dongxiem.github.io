@@ -177,7 +177,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/" class="post-title-link" itemprop="url">golang gin（1） - 整体框架分析</a>
+            <a href="/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/" class="post-title-link" itemprop="url">golang gin(1) - 整体框架分析</a>
         </h2>
 
         <div class="post-meta">
@@ -581,7 +581,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -595,7 +595,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/" class="post-title-link" itemprop="url">golang 并发 - Sync Package深入源码剖析</a>
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/" class="post-title-link" itemprop="url">golang Sync源码剖析(1) - Sync.Mutex</a>
         </h2>
 
         <div class="post-meta">
@@ -612,7 +612,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 21:41:12" itemprop="dateModified" datetime="2020-09-27T21:41:12+08:00">2020-09-27</time>
+                <time title="修改时间：2020-09-27 22:25:55" itemprop="dateModified" datetime="2020-09-27T22:25:55+08:00">2020-09-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -630,14 +630,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+              <span>4.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -652,14 +652,649 @@
           <h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><p><code>golang</code> 语言有着天生适合高并发的特性，作为原生支持用户态进程（<code>Goroutine</code>）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 <code>golang</code> 源码的大叔们就给了<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a> 这么个包，通过浏览源码可以知道<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11" target="_blank" rel="noopener">sync.Mutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7" target="_blank" rel="noopener">sync.RWMutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7" target="_blank" rel="noopener">sync.WaitGroup</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7" target="_blank" rel="noopener">sync.Map</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44" target="_blank" rel="noopener">sync.Pool</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7" target="_blank" rel="noopener">sync.Once</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5" target="_blank" rel="noopener">sync.Cond</a>，也可以看一下官方给的Sync包的一些方法解释： <a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>，方便大家。</p>
 <p>在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个<code>goroutine</code>在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而<a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> 包中所有的结构都适用于<code>goroutine</code>并发执行的情况，需要好好掌握。</p>
 <p>下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。</p>
+<p>注：以下<code>golang</code>源码版本为：1.15</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/06/12/golang-bing-fa-sync-package-shen-ru-yuan-ma-pou-xi/#more" rel="contents">
+              <a class="btn" href="/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/" class="post-title-link" itemprop="url">golang Sync源码剖析(3) - Sync.WaitGroup</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-12T22:12:25+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 22:02:44" itemprop="dateModified" datetime="2020-09-27T22:02:44+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/" class="post-title-link" itemprop="url">golang Sync源码剖析(2) - Sync.RWMutex</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-12T22:12:25+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 22:02:42" itemprop="dateModified" datetime="2020-09-27T22:02:42+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>217</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="3-sync-RWMutex"><a href="#3-sync-RWMutex" class="headerlink" title="3.sync.RWMutex"></a>3.sync.RWMutex</h1><h2 id="sync-RWMutex-原理解析"><a href="#sync-RWMutex-原理解析" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例"><a href="#sync-RWMutex-应用示例" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="5-sync-Map"><a href="#5-sync-Map" class="headerlink" title="5.sync.Map"></a>5.sync.Map</h1><h2 id="sync-RWMutex-原理解析-1"><a href="#sync-RWMutex-原理解析-1" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-1"><a href="#sync-RWMutex-应用示例-1" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="6-sync-Pool"><a href="#6-sync-Pool" class="headerlink" title="6.sync.Pool"></a>6.sync.Pool</h1><h2 id="sync-RWMutex-原理解析-2"><a href="#sync-RWMutex-原理解析-2" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-2"><a href="#sync-RWMutex-应用示例-2" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="7-sync-Once"><a href="#7-sync-Once" class="headerlink" title="7.sync.Once"></a>7.sync.Once</h1><h2 id="sync-RWMutex-原理解析-3"><a href="#sync-RWMutex-原理解析-3" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-3"><a href="#sync-RWMutex-应用示例-3" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><hr>
+<h1 id="8-sync-Cond"><a href="#8-sync-Cond" class="headerlink" title="8.sync.Cond"></a>8.sync.Cond</h1><h2 id="sync-RWMutex-原理解析-4"><a href="#sync-RWMutex-原理解析-4" class="headerlink" title="sync.RWMutex 原理解析"></a>sync.RWMutex 原理解析</h2><h2 id="sync-RWMutex-应用示例-4"><a href="#sync-RWMutex-应用示例-4" class="headerlink" title="sync.RWMutex 应用示例"></a>sync.RWMutex 应用示例</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/" class="post-title-link" itemprop="url">golang Sync源码剖析(4) - Sync.Map</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-12T22:12:25+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 22:02:54" itemprop="dateModified" datetime="2020-09-27T22:02:54+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/" class="post-title-link" itemprop="url">golang Sync源码剖析(5) - Sync.Pool</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-12T22:12:25+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 22:02:59" itemprop="dateModified" datetime="2020-09-27T22:02:59+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/" class="post-title-link" itemprop="url">golang Sync源码剖析(7) - Sync.Cond</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-12T22:12:25+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 22:03:16" itemprop="dateModified" datetime="2020-09-27T22:03:16+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/" class="post-title-link" itemprop="url">golang Sync源码剖析(6) - Sync.Once</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 22:12:25" itemprop="dateCreated datePublished" datetime="2020-06-12T22:12:25+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 22:03:16" itemprop="dateModified" datetime="2020-09-27T22:03:16+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -771,604 +1406,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/" class="post-title-link" itemprop="url">golang 并发 - Channel的一些实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-29 16:21:14" itemprop="dateCreated datePublished" datetime="2020-05-29T16:21:14+08:00">2020-05-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-23 23:53:12" itemprop="dateModified" datetime="2020-08-23T23:53:12+08:00">2020-08-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-使用无缓存Channel进行goroutine通信"><a href="#1-使用无缓存Channel进行goroutine通信" class="headerlink" title="1.使用无缓存Channel进行goroutine通信"></a>1.使用无缓存Channel进行goroutine通信</h1><p>在前面的关于Channel的一些认识当中，我们了解基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作，故无缓存Channels有时候也被称为同步Channels，那么我们就可以使用无缓存的Channel进行简单的goroutine通信了，代码如下：</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="comment">// make一个无缓存channel</span></span><br><span class="line">    ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        fmt.Println(<span class="string">"三秒之后开始启动！"</span>)</span><br><span class="line">        <span class="comment">// 等待三秒</span></span><br><span class="line">        time.Sleep(<span class="number">3</span> * time.Second)</span><br><span class="line">        ch &lt;- <span class="number">1</span> <span class="comment">// 信号发送</span></span><br><span class="line">    }()</span><br><span class="line">    &lt;- ch <span class="comment">// 信号接收</span></span><br><span class="line">    <span class="built_in">close</span>(ch) <span class="comment">// 关闭通道</span></span><br><span class="line">    fmt.Println(<span class="string">"收到通知！"</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/" class="post-title-link" itemprop="url">golang 并发 - Channel的深入了解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-25 11:41:15" itemprop="dateCreated datePublished" datetime="2020-05-25T11:41:15+08:00">2020-05-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-04 13:42:31" itemprop="dateModified" datetime="2020-09-04T13:42:31+08:00">2020-09-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-Channels是什么？"><a href="#1-Channels是什么？" class="headerlink" title="1.Channels是什么？"></a>1.Channels是什么？</h1><p>这里又可以搬出知乎名言了，在认识一件事物之前，先问问是什么，再回答为什么！直接来说，一个Channel 是一个通信机制，它<strong>可以让一个Goroutine 通过它给另一个Goroutine 发送值信息</strong>。每个Channel 都有一个特殊的类型，也就是Channels可发送数据的类型（例如：一个可以发送int类型数据的Channel 一般写为chan int）。</p>
-<p>在我们常见的一些语言中，多个线程传递数据的方式一般都是共享内存，<u>为了解决线程冲突的问题，我们需要限制同一时间能够读写这些变量的线程数量</u>。而Golang 语言提供了一种不同与使用使用共享内存加互斥锁也能进行通信的并发模型，也就是<strong>通信顺序进程（Communicating sequential processes，CSP）</strong>。其中Goroutine 和 Channel 分别对应 CSP 中的实体和传递信息的媒介，Go 语言中的 Goroutine 会通过 Channel 传递数据。这也是Golang一直提倡的<strong>不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存</strong>。</p>
-<p>目前的 Channel 收发操作均遵循了先入先出（FIFO）的设计，而且<strong>带缓存区和不带缓存区的 Channel 都会遵循先入先出对数据进行接收和发送</strong>（关于带缓存区与不带缓存区在下面会提及），具体规则如下：</p>
-<ul>
-<li>先从 Channel 读取数据的 Goroutine 会先接收到数据； </li>
-<li>先向 Channel 发送数据的 Goroutine 会得到先发送数据的权利；</li>
-</ul>
-<p>通过源码查看我们可知，Channel 在运行时使用 <a href="https://github.com/golang/go/blob/e35876ec6591768edace6c6f3b12646899fd1b11/src/runtime/chan.go#L32" target="_blank" rel="noopener">runtime.hchan</a> 结构体进行表示，而这玩意最后包含这一个互斥锁用于保护成员变量，所以从某种程度上说，Channel 是一个<u>用于同步和通信的有锁队列</u>。具体数据结构如下所示：</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> hchan <span class="keyword">struct</span> {</span><br><span class="line">	qcount   <span class="keyword">uint</span>           <span class="comment">// total data in the queue</span></span><br><span class="line">	dataqsiz <span class="keyword">uint</span>           <span class="comment">// size of the circular queue</span></span><br><span class="line">	buf      unsafe.Pointer <span class="comment">// points to an array of dataqsiz elements</span></span><br><span class="line">	elemsize <span class="keyword">uint16</span></span><br><span class="line">	closed   <span class="keyword">uint32</span></span><br><span class="line">	elemtype *_type <span class="comment">// element type</span></span><br><span class="line">	sendx    <span class="keyword">uint</span>   <span class="comment">// send index</span></span><br><span class="line">	recvx    <span class="keyword">uint</span>   <span class="comment">// receive index</span></span><br><span class="line">	recvq    waitq  <span class="comment">// list of recv waiters</span></span><br><span class="line">	sendq    waitq  <span class="comment">// list of send waiters</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// lock protects all fields in hchan, as well as several</span></span><br><span class="line">	<span class="comment">// fields in sudogs blocked on this channel.</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">// Do not change another G's status while holding this lock</span></span><br><span class="line">	<span class="comment">// (in particular, do not ready a G), as this can deadlock</span></span><br><span class="line">	<span class="comment">// with stack shrinking.</span></span><br><span class="line">	lock mutex</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/" class="post-title-link" itemprop="url">golang 基础 - go的命令源码文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-15 15:48:25" itemprop="dateCreated datePublished" datetime="2020-05-15T15:48:25+08:00">2020-05-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 22:26:13" itemprop="dateModified" datetime="2020-08-21T22:26:13+08:00">2020-08-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-命令源码文件"><a href="#1-命令源码文件" class="headerlink" title="1.命令源码文件"></a>1.命令源码文件</h1><p><strong>命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的</strong>。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。</p>
-<p><strong>如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件</strong>。 就像下面这段代码：</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">  fmt.Println(<span class="string">"Hello, world!"</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这其实就是就简单的可以运行go的一个文件了，刚开始搭建的时候我也是使用这么一段测试代码，随便创建了一个文件之后，然后敲上这么一段代码之后发现控制台可以打印出来“Hello World!”，瞬间感觉就学会了这门语言了，可是事情并没有那么简单，有多难？很难很难。</p>
-<p>但是这里让我挺困惑的地方就是，<strong>这<code>func main()</code>，没有接收参数入口啊？？？</strong>难道我就只能进行打印了？这不科学，无论在C/C++，还是Java中，main方法都不是这么写的，那么问题就来了，如果进行接收参数呢？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/" class="post-title-link" itemprop="url">golang 基础 - go的环境变量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-15 12:11:25" itemprop="dateCreated datePublished" datetime="2020-05-15T12:11:25+08:00">2020-05-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-21 22:26:14" itemprop="dateModified" datetime="2020-08-21T22:26:14+08:00">2020-08-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-三个环境变量"><a href="#1-三个环境变量" class="headerlink" title="1.三个环境变量"></a>1.三个环境变量</h1><p>刚接触go的时候很头疼，一下子需要我配置三个环境变量，这三个环境变量看起来很让人头疼，感觉起来三个环境变量的意思大致，区分度不高，这三个环境变量也就是 <code>GOROOT</code>、<code>GOPATH</code> 和 <code>GOBIN</code>。这里简单介绍一下。</p>
-<ul>
-<li>GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径。</li>
-<li>GOPATH：若干工作区目录的路径。是我们自己定义的工作空间。</li>
-<li>GOBIN：GO 程序生成的可执行文件（executable file）的路径。</li>
-</ul>
-<p>其中最让人头疼的就是这个GOROOT，看起来似是而非的感觉，那么GOPATH 有什么意义吗？</p>
-<p>这里可以把 GOPATH 简单理解成 Go 语言的工作目录，它的值是一个目录的路径，也可以是多个目录路径，每个目录都代表 Go 语言的一个工作区（workspace）。</p>
-<p>我们需要利于这些工作区，去放置 Go 语言的源码文件（source file），以及安装（install）后的归档文件（archive file，也就是以“.a”为扩展名的文件）和可执行文件（executable file）。</p>
-<p><strong>这个GOPATH 其实很重要，为什么这么说呢？</strong></p>
-<p>因为Go 语言项目在其<u>生命周期内的所有操作（编码、依赖管理、构建、测试、安装等）</u>基本上都是围绕着 GOPATH 和工作区进行的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - 多线程：FutureTask源码分析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-29 19:18:45" itemprop="dateCreated datePublished" datetime="2020-04-29T19:18:45+08:00">2020-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 21:36:56" itemprop="dateModified" datetime="2020-09-27T21:36:56+08:00">2020-09-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>10k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-什么是FutureTask？"><a href="#1-什么是FutureTask？" class="headerlink" title="1. 什么是FutureTask？"></a>1. 什么是FutureTask？</h1><p>前面的Blog介绍了<u><code>Future</code>接口。这个接口有一个实现类叫<code>FutureTask</code></u>。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的<code>cancel</code>，<code>get</code>，<code>isDone</code>等方法要自己实现起来都是<strong>非常复杂</strong>的。所以JDK提供了一个<code>FutureTask</code>类来供我们使用。</p>
-<p>FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，<u>线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务</u>。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而<u>被提交的Runnable或Callable任务都会被包装成FutureTask</u>，由线程池的工作线程去执行。</p>
-<p>还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的<code>RunnableFuture</code>接口的，而<code>RunnableFuture</code>接口同时继承了<code>Runnable</code>接口和<code>Future</code>接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（<code>FutureTask.run()</code>）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Garmen Lee">
-      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃花岛杂货铺">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/" class="post-title-link" itemprop="url">Java 并发 - 多线程：线程间通信交替打印</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-26 19:15:45" itemprop="dateCreated datePublished" datetime="2020-04-26T19:15:45+08:00">2020-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 21:36:45" itemprop="dateModified" datetime="2020-09-27T21:36:45+08:00">2020-09-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>8.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>这一部分，我通过一个经典的问题来引出几个线程间通信的方法，即：三个线程如何实现交替打印ABC？</p>
-<h1 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2.代码实现"></a>2.代码实现</h1><h2 id="2-1-Synchronized"><a href="#2-1-Synchronized" class="headerlink" title="2.1 Synchronized"></a>2.1 Synchronized</h2><p>基本思路：使用同步块和wait、notify的方法控制三个线程的执行次序。具体方法如下：从大的方向上来讲，该问题为三线程间的同步唤醒操作，主要的目的就是<code>ThreadA-&gt;ThreadB-&gt;ThreadC-&gt;ThreadA</code>循环执行三个线程。为了控制线程执行的顺序，那么就必须要确定唤醒、等待的顺序，所以每一个线程必须同时持有两个对象锁，才能进行打印操作。一个对象锁是prev，就是前一个线程所对应的对象锁，其主要作用是保证当前线程一定是在前一个线程操作完成后（即前一个线程释放了其对应的对象锁）才开始执行。还有一个锁就是自身对象锁。主要的思想就是，为了控制执行的顺序，必须要先持有prev锁（也就前一个线程要释放其自身对象锁），然后当前线程再申请自己对象锁，两者兼备时打印。之后首先调用<code>self.notify()</code>唤醒下一个等待线程（注意notify不会立即释放对象锁，只有等到同步块代码执行完毕后才会释放），再调用<code>prev.wait()</code>立即释放prev对象锁，当前线程进入休眠，等待其他线程的notify操作再次唤醒。</p>
-<p>下面程序可以看到程序一共定义了a,b,c三个对象锁，分别对应A、B、C三个线程。A线程最先运行，A线程按顺序申请c,a对象锁，打印操作后按顺序释放a,c对象锁，并且通过notify操作唤醒线程B。线程B首先等待获取A锁，再申请B锁，后打印B，再释放B，A锁，唤醒C。线程C等待B锁，再申请C锁，后打印C，再释放C,B锁，唤醒A。看起来似乎没什么问题，但如果你仔细想一下，就会发现有问题，就是初始条件，三个线程必须按照A,B,C的顺序来启动，但是这种假设依赖于JVM中线程调度、执行的顺序。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1440,7 +1477,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1490,13 +1527,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">228k</span>
+    <span title="站点总字数">230k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:27</span>
+    <span title="站点阅读时长">3:29</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
