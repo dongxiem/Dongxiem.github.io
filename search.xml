@@ -37,7 +37,7 @@
 <p>注：以下代码有下横线的地方，我将源码地址链接上了，使用<code>ctrl+鼠标左键</code>即可在浏览器中展开相对应的代码片段，如果Chrome安装插件 <a href="https://chrome.google.com/webstore/detail/sourcegraph/dgjhfomjieaadpoljlnidmbgkdffpack" target="_blank" rel="noopener">Sourcegraph</a> 会发现更加便捷地查看 Github 中的代码。</p>
 <hr>
 <h1 id="2-快速入门"><a href="#2-快速入门" class="headerlink" title="2.快速入门"></a>2.快速入门</h1><p>我们可以从官网给的一个简单的入门程序来看看其大概是如何工作的！</p>
-<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/ping"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> {</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H{</span><br><span class="line">			<span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line">		})</span><br><span class="line">	})</span><br><span class="line">	r.Run() <span class="comment">// 监听并在 0.0.0.0:8080 上启动服务</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    r := gin.Default()</span><br><span class="line">    r.GET(<span class="string">"/ping"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> {</span><br><span class="line">        c.JSON(<span class="number">200</span>, gin.H{</span><br><span class="line">            <span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line">        })</span><br><span class="line">    })</span><br><span class="line">    r.Run() <span class="comment">// 监听并在 0.0.0.0:8080 上启动服务</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>关于上面的一些解释：</p>
 <ol>
@@ -266,24 +266,9 @@
       </tags>
   </entry>
   <entry>
-    <title>golang 并发 - Sync包应用</title>
-    <url>/2020/06/17/golang-bing-fa-sync-bao-ying-yong/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><p><code>golang</code> 语言有着天生适合高并发的特性，作为原生支持用户态进程（<code>Goroutine</code>）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是乎编写 <code>golang</code> 源码的大叔们就给了<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a> 这么个包，通过浏览源码可以知道<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11" target="_blank" rel="noopener">sync.Mutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7" target="_blank" rel="noopener">sync.RWMutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7" target="_blank" rel="noopener">sync.WaitGroup</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7" target="_blank" rel="noopener">sync.Map</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44" target="_blank" rel="noopener">sync.Pool</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7" target="_blank" rel="noopener">sync.Once</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5" target="_blank" rel="noopener">sync.Cond</a>，也可以看一下官方给的Sync包的一些方法解释： <a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> ，同时为了节省一下大家 Clone 源码时间，或者只想简单回顾一下源码，这里我给出了快捷的入口：<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>，方便大家。</p>
-<p>在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个<code>goroutine</code>在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而<a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> 包中所有的结构都适用于<code>goroutine</code>并发执行的情况，需要好好掌握。</p>
-<p>下面我将每个同步语句分为两小部分进行解决，一部分是原理解析，另一部分是应用示例，解析原理是为了解其内部构造，应用示例是为了解其使用方法。知其然知其所以然，这才是掌握知识的最好的方法，可能篇幅较长，但愿每部分都尽心尽力的研究清楚。</p>
-<a id="more"></a>
-
-
-
-<hr>
-<p>2.sync.Mutex</p>
-<p>3.sync.RWMutex</p>
-<p>4.sync.WaitGroup</p>
-<p>5.sync.Map</p>
-<p>6.sync.Pool</p>
-<p>7.sync.Once</p>
-<p>8.sync.Cond</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><script>
+    <title>golang Sync源码剖析(2) - Sync.RWMutex</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -310,8 +295,66 @@
       </tags>
   </entry>
   <entry>
-    <title>golang Sync源码剖析(2) - Sync.RWMutex</title>
-    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</url>
+    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(4) - Sync.Map</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang Sync源码剖析(5) - Sync.Pool</title>
+    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -406,6 +449,12 @@
 
 <p>从上面的汇编源码可以知道，大概的流程为：看看这把锁是不是空闲状态，如果是的话，直接原子性地修改一下 <code>state</code> 为已被获取就行了。大概了解一下，知道该方法是原子性的即可。</p>
 <p>继续回到 <a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L72:22" target="_blank" rel="noopener">sync.Mutex.Lock</a> 当中，接下来判断如果 <a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L13" target="_blank" rel="noopener">sync.Mutex</a> 的状态不为0的时候， <a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L72:22" target="_blank" rel="noopener">sync.Mutex.Lock</a> 就会进入 <code>m.lockSlow()</code> 方法，那么<code>m.lockSlow()</code> 方法做了些什么事情呢？接下来分成几个部分介绍获取锁的过程：</p>
+<ol>
+<li>判断当前 Goroutine 能否进入自旋；</li>
+<li>通过自旋等待互斥锁的释放；</li>
+<li>计算互斥锁的最新状态；</li>
+<li>更新互斥锁的状态并获取锁；</li>
+</ol>
 <p>具体 <a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L13" target="_blank" rel="noopener">sync.Mutex</a> 源码及注释如下：</p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">Lock</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="comment">// Fast path: grab unlocked mutex.</span></span><br><span class="line">    <span class="comment">// 查看 state 是否为0，如果是则表示可以加锁，将其状态转换为1，当前 goroutine 加锁成功，函数返回</span></span><br><span class="line">    <span class="keyword">if</span> atomic.CompareAndSwapInt32(&amp;m.state, <span class="number">0</span>, mutexLocked) {</span><br><span class="line">        <span class="keyword">if</span> race.Enabled {</span><br><span class="line">            race.Acquire(unsafe.Pointer(m))</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// Slow path (outlined so that the fast path can be inlined)</span></span><br><span class="line">    m.lockSlow()</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span> <span class="title">lockSlow</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">var</span> waitStartTime <span class="keyword">int64</span></span><br><span class="line">    starving := <span class="literal">false</span></span><br><span class="line">    awoke := <span class="literal">false</span></span><br><span class="line">    iter := <span class="number">0</span></span><br><span class="line">    old := m.state</span><br><span class="line">    <span class="keyword">for</span> {</span><br><span class="line">        <span class="comment">// Don't spin in starvation mode, ownership is handed off to waiters</span></span><br><span class="line">        <span class="comment">// so we won't be able to acquire the mutex anyway.</span></span><br><span class="line">        <span class="keyword">if</span> old&amp;(mutexLocked|mutexStarving) == mutexLocked &amp;&amp; runtime_canSpin(iter) {</span><br><span class="line">            <span class="comment">// Active spinning makes sense.</span></span><br><span class="line">            <span class="comment">// Try to set mutexWoken flag to inform Unlock</span></span><br><span class="line">            <span class="comment">// to not wake other blocked goroutines.</span></span><br><span class="line">            <span class="keyword">if</span> !awoke &amp;&amp; old&amp;mutexWoken == <span class="number">0</span> &amp;&amp; old&gt;&gt;mutexWaiterShift != <span class="number">0</span> &amp;&amp;</span><br><span class="line">            atomic.CompareAndSwapInt32(&amp;m.state, old, old|mutexWoken) {</span><br><span class="line">                awoke = <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">            runtime_doSpin()</span><br><span class="line">            iter++</span><br><span class="line">            old = m.state</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">new</span> := old</span><br><span class="line">        <span class="comment">// Don't try to acquire starving mutex, new arriving goroutines must queue.</span></span><br><span class="line">        <span class="keyword">if</span> old&amp;mutexStarving == <span class="number">0</span> {</span><br><span class="line">            <span class="built_in">new</span> |= mutexLocked</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> old&amp;(mutexLocked|mutexStarving) != <span class="number">0</span> {</span><br><span class="line">            <span class="built_in">new</span> += <span class="number">1</span> &lt;&lt; mutexWaiterShift</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// The current goroutine switches mutex to starvation mode.</span></span><br><span class="line">        <span class="comment">// But if the mutex is currently unlocked, don't do the switch.</span></span><br><span class="line">        <span class="comment">// Unlock expects that starving mutex has waiters, which will not</span></span><br><span class="line">        <span class="comment">// be true in this case.</span></span><br><span class="line">        <span class="keyword">if</span> starving &amp;&amp; old&amp;mutexLocked != <span class="number">0</span> {</span><br><span class="line">            <span class="built_in">new</span> |= mutexStarving</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> awoke {</span><br><span class="line">            <span class="comment">// The goroutine has been woken from sleep,</span></span><br><span class="line">            <span class="comment">// so we need to reset the flag in either case.</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">new</span>&amp;mutexWoken == <span class="number">0</span> {</span><br><span class="line">                throw(<span class="string">"sync: inconsistent mutex state"</span>)</span><br><span class="line">            }</span><br><span class="line">            <span class="built_in">new</span> &amp;^= mutexWoken</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> atomic.CompareAndSwapInt32(&amp;m.state, old, <span class="built_in">new</span>) {</span><br><span class="line">            <span class="keyword">if</span> old&amp;(mutexLocked|mutexStarving) == <span class="number">0</span> {</span><br><span class="line">                <span class="keyword">break</span> <span class="comment">// locked the mutex with CAS</span></span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// If we were already waiting before, queue at the front of the queue.</span></span><br><span class="line">            queueLifo := waitStartTime != <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> waitStartTime == <span class="number">0</span> {</span><br><span class="line">                waitStartTime = runtime_nanotime()</span><br><span class="line">            }</span><br><span class="line">            runtime_SemacquireMutex(&amp;m.sema, queueLifo, <span class="number">1</span>)</span><br><span class="line">            starving = starving || runtime_nanotime()-waitStartTime &gt; starvationThresholdNs</span><br><span class="line">            old = m.state</span><br><span class="line">            <span class="keyword">if</span> old&amp;mutexStarving != <span class="number">0</span> {</span><br><span class="line">                <span class="comment">// If this goroutine was woken and mutex is in starvation mode,</span></span><br><span class="line">                <span class="comment">// ownership was handed off to us but mutex is in somewhat</span></span><br><span class="line">                <span class="comment">// inconsistent state: mutexLocked is not set and we are still</span></span><br><span class="line">                <span class="comment">// accounted as waiter. Fix that.</span></span><br><span class="line">                <span class="keyword">if</span> old&amp;(mutexLocked|mutexWoken) != <span class="number">0</span> || old&gt;&gt;mutexWaiterShift == <span class="number">0</span> {</span><br><span class="line">                    throw(<span class="string">"sync: inconsistent mutex state"</span>)</span><br><span class="line">                }</span><br><span class="line">                delta := <span class="keyword">int32</span>(mutexLocked - <span class="number">1</span>&lt;&lt;mutexWaiterShift)</span><br><span class="line">                <span class="keyword">if</span> !starving || old&gt;&gt;mutexWaiterShift == <span class="number">1</span> {</span><br><span class="line">                    <span class="comment">// Exit starvation mode.</span></span><br><span class="line">                    <span class="comment">// Critical to do it here and consider wait time.</span></span><br><span class="line">                    <span class="comment">// Starvation mode is so inefficient, that two goroutines</span></span><br><span class="line">                    <span class="comment">// can go lock-step infinitely once they switch mutex</span></span><br><span class="line">                    <span class="comment">// to starvation mode.</span></span><br><span class="line">                    delta -= mutexStarving</span><br><span class="line">                }</span><br><span class="line">                atomic.AddInt32(&amp;m.state, delta)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            }</span><br><span class="line">            awoke = <span class="literal">true</span></span><br><span class="line">            iter = <span class="number">0</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            old = m.state</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> race.Enabled {</span><br><span class="line">        race.Acquire(unsafe.Pointer(m))</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -436,93 +485,6 @@
 <li><a href="https://purewhite.io/2019/03/28/golang-mutex-source/" target="_blank" rel="noopener">源码剖析 golang 中 sync.Mutex</a></li>
 </ul>
 <script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang Sync源码剖析(3) - Sync.WaitGroup</title>
-    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang Sync源码剖析(4) - Sync.Map</title>
-    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang Sync源码剖析(5) - Sync.Pool</title>
-    <url>/2020/06/12/golang-sync-yuan-ma-pou-xi-5-sync.pool/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

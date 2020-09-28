@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</loc>
+    <lastmod>2020-09-28</lastmod>
+  </url>  <url>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
+    <lastmod>2020-09-28</lastmod>
+  </url>  <url>
     <loc>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</loc>
     <lastmod>2020-09-28</lastmod>
   </url>  <url>
@@ -8,12 +14,6 @@
     <lastmod>2020-09-28</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</loc>
-    <lastmod>2020-09-28</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</loc>
-    <lastmod>2020-09-28</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
     <lastmod>2020-09-28</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</loc>
@@ -83,9 +83,6 @@
     <lastmod>2020-09-27</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</loc>
-    <lastmod>2020-09-27</lastmod>
-  </url>  <url>
-    <loc>https://dongxiem.github.io/2020/06/17/golang-bing-fa-sync-bao-ying-yong/</loc>
     <lastmod>2020-09-27</lastmod>
   </url>  <url>
     <loc>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
