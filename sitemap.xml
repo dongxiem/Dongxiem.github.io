@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</loc>
+    
+    <lastmod>2020-09-28T03:32:28.328Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</loc>
+    
+    <lastmod>2020-09-28T03:31:14.218Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</loc>
+    
+    <lastmod>2020-09-28T03:29:36.220Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</loc>
+    
+    <lastmod>2020-09-28T03:29:17.951Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
     
-    <lastmod>2020-09-27T15:01:37.584Z</lastmod>
+    <lastmod>2020-09-28T03:18:24.266Z</lastmod>
     
   </url>
   
@@ -16,14 +44,14 @@
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</loc>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</loc>
     
     <lastmod>2020-09-27T14:03:16.208Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</loc>
+    <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</loc>
     
     <lastmod>2020-09-27T14:03:16.208Z</lastmod>
     
@@ -47,13 +75,6 @@
     <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</loc>
     
     <lastmod>2020-09-27T14:02:44.031Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</loc>
-    
-    <lastmod>2020-09-27T13:40:48.540Z</lastmod>
     
   </url>
   
@@ -191,30 +212,9 @@
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</loc>
-    
-    <lastmod>2020-09-04T05:42:31.952Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</loc>
-    
-    <lastmod>2020-08-23T15:53:12.075Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/</loc>
     
     <lastmod>2020-08-21T14:26:14.533Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</loc>
-    
-    <lastmod>2020-08-21T14:26:13.136Z</lastmod>
     
   </url>
   

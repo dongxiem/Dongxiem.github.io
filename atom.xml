@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-09-27T13:40:48.540Z</updated>
+  <updated>2020-09-28T03:29:17.951Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
     <id>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
     <published>2020-07-12T12:41:25.000Z</published>
-    <updated>2020-09-27T13:40:48.540Z</updated>
+    <updated>2020-09-28T03:29:17.951Z</updated>
     
     <summary type="html">
     
@@ -140,7 +140,7 @@
     <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/"/>
     <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</id>
     <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T15:01:37.584Z</updated>
+    <updated>2020-09-28T03:18:24.266Z</updated>
     
     <summary type="html">
     
@@ -192,6 +192,60 @@
     <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</id>
     <published>2020-06-12T14:12:25.000Z</published>
     <updated>2020-09-27T14:02:44.031Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(7) - Sync.Cond</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:03:16.208Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync源码剖析(6) - Sync.Once</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</id>
+    <published>2020-06-12T14:12:25.000Z</published>
+    <updated>2020-09-27T14:03:16.208Z</updated>
     
     <summary type="html">
     
@@ -268,60 +322,6 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(6) - Sync.Once</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-6-sync.once/</id>
-    <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:03:16.208Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
-    
-    
-      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang Sync源码剖析(7) - Sync.Cond</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-7-sync.cond/</id>
-    <published>2020-06-12T14:12:25.000Z</published>
-    <updated>2020-09-27T14:03:16.208Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
-    
-    
-      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
     <title>golang 基础 - 关于使用Type定义类型的几个问题</title>
     <link href="https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/"/>
     <id>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</id>
@@ -349,12 +349,12 @@
     <link href="https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/"/>
     <id>https://dongxiem.github.io/2020/05/29/golang-bing-fa-channel-de-yi-xie-shi-xian/</id>
     <published>2020-05-29T08:21:14.000Z</published>
-    <updated>2020-08-23T15:53:12.075Z</updated>
+    <updated>2020-09-28T03:31:14.218Z</updated>
     
     <summary type="html">
     
       &lt;h1 id=&quot;1-使用无缓存Channel进行goroutine通信&quot;&gt;&lt;a href=&quot;#1-使用无缓存Channel进行goroutine通信&quot; class=&quot;headerlink&quot; title=&quot;1.使用无缓存Channel进行goroutine通信&quot;&gt;&lt;/a&gt;1.使用无缓存Channel进行goroutine通信&lt;/h1&gt;&lt;p&gt;在前面的关于Channel的一些认识当中，我们了解基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作，故无缓存Channels有时候也被称为同步Channels，那么我们就可以使用无缓存的Channel进行简单的goroutine通信了，代码如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;string&quot;&gt;&quot;time&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// make一个无缓存channel&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ch := &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;三秒之后开始启动！&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 等待三秒&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        time.Sleep(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; * time.Second)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ch &amp;lt;- &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 信号发送&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    }()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;- ch &lt;span class=&quot;comment&quot;&gt;// 信号接收&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;close&lt;/span&gt;(ch) &lt;span class=&quot;comment&quot;&gt;// 关闭通道&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;收到通知！&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;time&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// make一个无缓存channel&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ch := &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;三秒之后开始启动！&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 等待三秒&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        time.Sleep(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; * time.Second)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ch &amp;lt;- &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 信号发送&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    }()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;- ch &lt;span class=&quot;comment&quot;&gt;// 信号接收&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;close&lt;/span&gt;(ch) &lt;span class=&quot;comment&quot;&gt;// 关闭通道&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;收到通知！&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -371,7 +371,7 @@
     <link href="https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/"/>
     <id>https://dongxiem.github.io/2020/05/25/golang-bing-fa-channel-de-shen-ru-liao-jie/</id>
     <published>2020-05-25T03:41:15.000Z</published>
-    <updated>2020-09-04T05:42:31.952Z</updated>
+    <updated>2020-09-28T03:32:28.328Z</updated>
     
     <summary type="html">
     
@@ -383,7 +383,7 @@
 &lt;li&gt;先向 Channel 发送数据的 Goroutine 会得到先发送数据的权利；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;通过源码查看我们可知，Channel 在运行时使用 &lt;a href=&quot;https://github.com/golang/go/blob/e35876ec6591768edace6c6f3b12646899fd1b11/src/runtime/chan.go#L32&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;runtime.hchan&lt;/a&gt; 结构体进行表示，而这玩意最后包含这一个互斥锁用于保护成员变量，所以从某种程度上说，Channel 是一个&lt;u&gt;用于同步和通信的有锁队列&lt;/u&gt;。具体数据结构如下所示：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; hchan &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	qcount   &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// total data in the queue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dataqsiz &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// size of the circular queue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	buf      unsafe.Pointer &lt;span class=&quot;comment&quot;&gt;// points to an array of dataqsiz elements&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	elemsize &lt;span class=&quot;keyword&quot;&gt;uint16&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	closed   &lt;span class=&quot;keyword&quot;&gt;uint32&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	elemtype *_type &lt;span class=&quot;comment&quot;&gt;// element type&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sendx    &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// send index&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	recvx    &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// receive index&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	recvq    waitq  &lt;span class=&quot;comment&quot;&gt;// list of recv waiters&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sendq    waitq  &lt;span class=&quot;comment&quot;&gt;// list of send waiters&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// lock protects all fields in hchan, as well as several&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// fields in sudogs blocked on this channel.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// Do not change another G&#39;s status while holding this lock&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// (in particular, do not ready a G), as this can deadlock&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// with stack shrinking.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	lock mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt; hchan &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    qcount   &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// total data in the queue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    dataqsiz &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// size of the circular queue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    buf      unsafe.Pointer &lt;span class=&quot;comment&quot;&gt;// points to an array of dataqsiz elements&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    elemsize &lt;span class=&quot;keyword&quot;&gt;uint16&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    closed   &lt;span class=&quot;keyword&quot;&gt;uint32&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    elemtype *_type &lt;span class=&quot;comment&quot;&gt;// element type&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sendx    &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// send index&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    recvx    &lt;span class=&quot;keyword&quot;&gt;uint&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// receive index&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    recvq    waitq  &lt;span class=&quot;comment&quot;&gt;// list of recv waiters&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sendq    waitq  &lt;span class=&quot;comment&quot;&gt;// list of send waiters&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// lock protects all fields in hchan, as well as several&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// fields in sudogs blocked on this channel.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Do not change another G&#39;s status while holding this lock&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// (in particular, do not ready a G), as this can deadlock&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// with stack shrinking.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -400,13 +400,13 @@
     <link href="https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/"/>
     <id>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</id>
     <published>2020-05-15T07:48:25.000Z</published>
-    <updated>2020-08-21T14:26:13.136Z</updated>
+    <updated>2020-09-28T03:29:36.220Z</updated>
     
     <summary type="html">
     
       &lt;h1 id=&quot;1-命令源码文件&quot;&gt;&lt;a href=&quot;#1-命令源码文件&quot; class=&quot;headerlink&quot; title=&quot;1.命令源码文件&quot;&gt;&lt;/a&gt;1.命令源码文件&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的&lt;/strong&gt;。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件&lt;/strong&gt;。 就像下面这段代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;Hello, world!&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;Hello, world!&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;p&gt;这其实就是就简单的可以运行go的一个文件了，刚开始搭建的时候我也是使用这么一段测试代码，随便创建了一个文件之后，然后敲上这么一段代码之后发现控制台可以打印出来“Hello World!”，瞬间感觉就学会了这门语言了，可是事情并没有那么简单，有多难？很难很难。&lt;/p&gt;
 &lt;p&gt;但是这里让我挺困惑的地方就是，&lt;strong&gt;这&lt;code&gt;func main()&lt;/code&gt;，没有接收参数入口啊？？？&lt;/strong&gt;难道我就只能进行打印了？这不科学，无论在C/C++，还是Java中，main方法都不是这么写的，那么问题就来了，如果进行接收参数呢？&lt;/p&gt;
