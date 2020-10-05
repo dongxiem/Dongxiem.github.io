@@ -252,17 +252,20 @@
     <link href="https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/"/>
     <id>https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</id>
     <published>2020-06-07T13:22:25.000Z</published>
-    <updated>2020-10-04T15:52:34.862Z</updated>
+    <updated>2020-10-05T10:40:57.475Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
+      &lt;h1 id=&quot;1-Sync-RWMutex介绍&quot;&gt;&lt;a href=&quot;#1-Sync-RWMutex介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Sync.RWMutex介绍&quot;&gt;&lt;/a&gt;1.Sync.RWMutex介绍&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L5&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sync.RWMutex&lt;/a&gt; 官方给出的定义是读/写互斥锁，锁可以由任意数量的读者或单个写者持有。 &lt;code&gt;RWMutex&lt;/code&gt;的零值是未锁定的互斥锁。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A RWMutex is a reader/writer mutual exclusion lock. The lock can be held by an arbitrary number of readers or a single writer. The zero value for a RWMutex is an unlocked mutex.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其包含了四种方法，如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(rw *RWMutex)&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Lock&lt;/span&gt;         // 提供写锁加锁操作&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(rw *RWMutex)&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RLock&lt;/span&gt;        // 提供读锁加锁操作&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(rw *RWMutex)&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RUnlock&lt;/span&gt;      // 提供读锁解锁操作&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(rw *RWMutex)&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Unlock&lt;/span&gt;       // 提供写锁解锁操作&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;p&gt;这四个方法的源码解析在下面可以深入理解，可以大概了解到在 &lt;code&gt;RWMutex&lt;/code&gt; 读操作可并发重入，而写操作是互斥的，读写锁通常用互斥锁、条件变量、信号量实现。&lt;/p&gt;
     
     </summary>
     
