@@ -225,17 +225,14 @@
     <link href="https://dongxiem.github.io/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/"/>
     <id>https://dongxiem.github.io/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</id>
     <published>2020-06-09T04:25:21.000Z</published>
-    <updated>2020-10-05T16:01:15.904Z</updated>
+    <updated>2020-10-06T07:29:03.077Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
+      &lt;h1 id=&quot;1-sync-WaitGroup-介绍&quot;&gt;&lt;a href=&quot;#1-sync-WaitGroup-介绍&quot; class=&quot;headerlink&quot; title=&quot;1.sync.WaitGroup 介绍&quot;&gt;&lt;/a&gt;1.sync.WaitGroup 介绍&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L21:2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sync.WaitGroup&lt;/a&gt; 按照官方注释给的解释，它可以等待一组 Goroutine 集合的结束，主 &lt;code&gt;goroutine&lt;/code&gt; 通过调用 &lt;code&gt;Add()&lt;/code&gt; 函数来设置一定数量进行等待的 &lt;code&gt;goroutines&lt;/code&gt; ，然后其余的一些 &lt;code&gt;goroutines&lt;/code&gt; 则进行各自的运行结束之后再调用 &lt;code&gt;Done()&lt;/code&gt;，这样一来，等待的主 &lt;code&gt;goroutine&lt;/code&gt; 会阻塞知道其余所有 &lt;code&gt;goroutines&lt;/code&gt;都结束。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A WaitGroup waits for a collection of goroutines to finish.The main goroutine calls Add to set the number of goroutines to wait for. Then each of the goroutines runs and calls Done when finished. At the same time, Wait can be used to block until all goroutines have finished.&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     

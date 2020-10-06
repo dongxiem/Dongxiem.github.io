@@ -935,7 +935,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-06 00:01:15" itemprop="dateModified" datetime="2020-10-06T00:01:15+08:00">2020-10-06</time>
+                <time title="修改时间：2020-10-06 15:29:03" itemprop="dateModified" datetime="2020-10-06T15:29:03+08:00">2020-10-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -953,14 +953,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.1k</span>
+              <span>6.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -976,89 +976,14 @@
 <blockquote>
 <p>A WaitGroup waits for a collection of goroutines to finish.The main goroutine calls Add to set the number of goroutines to wait for. Then each of the goroutines runs and calls Done when finished. At the same time, Wait can be used to block until all goroutines have finished.</p>
 </blockquote>
-<h1 id="2-源码解析"><a href="#2-源码解析" class="headerlink" title="2.源码解析"></a>2.源码解析</h1><h2 id="结构体定义"><a href="#结构体定义" class="headerlink" title="结构体定义"></a>结构体定义</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A WaitGroup must not be copied after first use.</span></span><br><span class="line"><span class="keyword">type</span> WaitGroup <span class="keyword">struct</span> {</span><br><span class="line">    <span class="comment">// 保证 sync.WaitGroup 不会被开发者通过再赋值的方式拷贝；</span></span><br><span class="line">	noCopy noCopy</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存储着状态和信号量；</span></span><br><span class="line">	state1 [<span class="number">3</span>]<span class="keyword">uint32</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<p><strong>第一个参数：noCopy</strong></p>
-<p>noCopy：它是 sync 包下的一个特殊标记，可以嵌入到结构中，在第一次使用后不可复制,使用go vet作为检测使用，并因此只能进行指针传递，从而保证全局唯一；</p>
-<p>比如下面的演示代码中：</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span> {</span><br><span class="line">    wg := sync.WaitGroup {}</span><br><span class="line">    w := wg</span><br><span class="line">    fmt.Println (w, wg)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>run 的时候没问题，但是如果你使用 go vet 做个检查就有警告了：</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">go</span> vet proc.<span class="keyword">go</span></span><br><span class="line">./prog.<span class="keyword">go</span>:<span class="number">10</span>:<span class="number">10</span>: assignment copies lock value to yawg: sync.WaitGroup</span><br><span class="line">./prog.<span class="keyword">go</span>:<span class="number">11</span>:<span class="number">14</span>: call of fmt.Println copies lock value: sync.WaitGroup</span><br><span class="line">./prog.<span class="keyword">go</span>:<span class="number">11</span>:<span class="number">18</span>: call of fmt.Println copies lock value: sync.WaitGroup</span><br></pre></td></tr></tbody></table></figure>
-
-<p>所以<strong><u>它能够保证 sync.WaitGroup 不会被开发者通过再赋值的方式拷贝</u></strong>；</p>
-<p><strong>第二个参数：state1</strong></p>
-<p>state1：是用来存放任务计数器和等待者计数器，应该会涉及到一些位操作相关的内容，估计还是挺棘手的，需要注意的是：<strong>WaitGroup 在 64 位和 32 位机器是持有不同的状态</strong>，其相对应的具体内容如下：</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">state [0]</th>
-<th align="left">state [1]</th>
-<th align="left">state [2]</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">64 位</td>
-<td align="left">waiter</td>
-<td align="left">counter</td>
-<td align="left">sema</td>
-</tr>
-<tr>
-<td align="left">32 位</td>
-<td align="left">sema</td>
-<td align="left">waiter</td>
-<td align="left">counter</td>
-</tr>
-</tbody></table>
-<p>注意其中 <code>waiter</code> 是等待者计数，<code>counter</code> 是任务计数，<code>sema</code> 是信号量，而这些再源码的注释中也解释得很清楚了：</p>
-<blockquote>
-<p>64-bit value: high 32 bits are counter, low 32 bits are waiter count.<br>64-bit atomic operations require 64-bit alignment, but 32-bit compilers do not ensure it. </p>
-<p>So we allocate 12 bytes and then use the aligned 8 bytes in them as state, and the other 4 as storage for the sema.</p>
-</blockquote>
-<p><code>sync.WaitGroup</code> 提供的私有方法 <code>sync.WaitGroup.state</code> 能够帮我们从 <code>state1</code> 字段中取出它的状态和信号量。</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// state returns pointers to the state and sema fields stored within wg.state1.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(wg *WaitGroup)</span> <span class="title">state</span><span class="params">()</span> <span class="params">(statep *<span class="keyword">uint64</span>, semap *<span class="keyword">uint32</span>)</span></span> {</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">uintptr</span>(unsafe.Pointer(&amp;wg.state1))%<span class="number">8</span> == <span class="number">0</span> {</span><br><span class="line">		<span class="keyword">return</span> (*<span class="keyword">uint64</span>)(unsafe.Pointer(&amp;wg.state1)), &amp;wg.state1[<span class="number">2</span>]</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">return</span> (*<span class="keyword">uint64</span>)(unsafe.Pointer(&amp;wg.state1[<span class="number">1</span>])), &amp;wg.state1[<span class="number">0</span>]</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-
-
-<h2 id="Add"><a href="#Add" class="headerlink" title="Add()"></a>Add()</h2><p><code>sync.WaitGroup</code> 对外暴露了三个方法分别是 <code>sync.WaitGroup.Add</code>、<code>sync.WaitGroup.Wait</code> 和 <code>sync.WaitGroup.Done</code>，而有意思的是<code>sync.WaitGroup.Done</code>向 <code>sync.WaitGroup.Add</code> 方法传入了 -1（没错，就是这么简单），接下来先从<code>sync.WaitGroup.Add</code> 开始分析起，其源码具体如下：</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Add adds delta, which may be negative, to the WaitGroup counter.</span></span><br><span class="line"><span class="comment">// If the counter becomes zero, all goroutines blocked on Wait are released.</span></span><br><span class="line"><span class="comment">// If the counter goes negative, Add panics.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Note that calls with a positive delta that occur when the counter is zero</span></span><br><span class="line"><span class="comment">// must happen before a Wait. Calls with a negative delta, or calls with a</span></span><br><span class="line"><span class="comment">// positive delta that start when the counter is greater than zero, may happen</span></span><br><span class="line"><span class="comment">// at any time.</span></span><br><span class="line"><span class="comment">// Typically this means the calls to Add should execute before the statement</span></span><br><span class="line"><span class="comment">// creating the goroutine or other event to be waited for.</span></span><br><span class="line"><span class="comment">// If a WaitGroup is reused to wait for several independent sets of events,</span></span><br><span class="line"><span class="comment">// new Add calls must happen after all previous Wait calls have returned.</span></span><br><span class="line"><span class="comment">// See the WaitGroup example.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(wg *WaitGroup)</span> <span class="title">Add</span><span class="params">(delta <span class="keyword">int</span>)</span></span> {</span><br><span class="line">	statep, semap := wg.state()</span><br><span class="line">	<span class="keyword">if</span> race.Enabled {</span><br><span class="line">		_ = *statep <span class="comment">// trigger nil deref early</span></span><br><span class="line">		<span class="keyword">if</span> delta &lt; <span class="number">0</span> {</span><br><span class="line">			<span class="comment">// Synchronize decrements with Wait.</span></span><br><span class="line">			race.ReleaseMerge(unsafe.Pointer(wg))</span><br><span class="line">		}</span><br><span class="line">		race.Disable()</span><br><span class="line">		<span class="keyword">defer</span> race.Enable()</span><br><span class="line">	}</span><br><span class="line">	state := atomic.AddUint64(statep, <span class="keyword">uint64</span>(delta)&lt;&lt;<span class="number">32</span>)</span><br><span class="line">	v := <span class="keyword">int32</span>(state &gt;&gt; <span class="number">32</span>)</span><br><span class="line">	w := <span class="keyword">uint32</span>(state)</span><br><span class="line">	<span class="keyword">if</span> race.Enabled &amp;&amp; delta &gt; <span class="number">0</span> &amp;&amp; v == <span class="keyword">int32</span>(delta) {</span><br><span class="line">		<span class="comment">// The first increment must be synchronized with Wait.</span></span><br><span class="line">		<span class="comment">// Need to model this as a read, because there can be</span></span><br><span class="line">		<span class="comment">// several concurrent wg.counter transitions from 0.</span></span><br><span class="line">		race.Read(unsafe.Pointer(semap))</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> v &lt; <span class="number">0</span> {</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">"sync: negative WaitGroup counter"</span>)</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> w != <span class="number">0</span> &amp;&amp; delta &gt; <span class="number">0</span> &amp;&amp; v == <span class="keyword">int32</span>(delta) {</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">"sync: WaitGroup misuse: Add called concurrently with Wait"</span>)</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> v &gt; <span class="number">0</span> || w == <span class="number">0</span> {</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// This goroutine has set counter to 0 when waiters &gt; 0.</span></span><br><span class="line">	<span class="comment">// Now there can't be concurrent mutations of state:</span></span><br><span class="line">	<span class="comment">// - Adds must not happen concurrently with Wait,</span></span><br><span class="line">	<span class="comment">// - Wait does not increment waiters if it sees counter == 0.</span></span><br><span class="line">	<span class="comment">// Still do a cheap sanity check to detect WaitGroup misuse.</span></span><br><span class="line">	<span class="keyword">if</span> *statep != state {</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">"sync: WaitGroup misuse: Add called concurrently with Wait"</span>)</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// Reset waiters count to 0.</span></span><br><span class="line">	*statep = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> ; w != <span class="number">0</span>; w-- {</span><br><span class="line">		runtime_Semrelease(semap, <span class="literal">false</span>, <span class="number">0</span>)</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="Done"><a href="#Done" class="headerlink" title="Done()"></a>Done()</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Done decrements the WaitGroup counter by one.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(wg *WaitGroup)</span> <span class="title">Done</span><span class="params">()</span></span> {</span><br><span class="line">	wg.Add(<span class="number">-1</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="Wait"><a href="#Wait" class="headerlink" title="Wait()"></a>Wait()</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Wait blocks until the WaitGroup counter is zero.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(wg *WaitGroup)</span> <span class="title">Wait</span><span class="params">()</span></span> {</span><br><span class="line">	statep, semap := wg.state()</span><br><span class="line">	<span class="keyword">if</span> race.Enabled {</span><br><span class="line">		_ = *statep <span class="comment">// trigger nil deref early</span></span><br><span class="line">		race.Disable()</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span> {</span><br><span class="line">		state := atomic.LoadUint64(statep)</span><br><span class="line">		v := <span class="keyword">int32</span>(state &gt;&gt; <span class="number">32</span>)</span><br><span class="line">		w := <span class="keyword">uint32</span>(state)</span><br><span class="line">		<span class="keyword">if</span> v == <span class="number">0</span> {</span><br><span class="line">			<span class="comment">// Counter is 0, no need to wait.</span></span><br><span class="line">			<span class="keyword">if</span> race.Enabled {</span><br><span class="line">				race.Enable()</span><br><span class="line">				race.Acquire(unsafe.Pointer(wg))</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		}</span><br><span class="line">		<span class="comment">// Increment waiters count.</span></span><br><span class="line">		<span class="keyword">if</span> atomic.CompareAndSwapUint64(statep, state, state+<span class="number">1</span>) {</span><br><span class="line">			<span class="keyword">if</span> race.Enabled &amp;&amp; w == <span class="number">0</span> {</span><br><span class="line">				<span class="comment">// Wait must be synchronized with the first Add.</span></span><br><span class="line">				<span class="comment">// Need to model this is as a write to race with the read in Add.</span></span><br><span class="line">				<span class="comment">// As a consequence, can do the write only for the first waiter,</span></span><br><span class="line">				<span class="comment">// otherwise concurrent Waits will race with each other.</span></span><br><span class="line">				race.Write(unsafe.Pointer(semap))</span><br><span class="line">			}</span><br><span class="line">			runtime_Semacquire(semap)</span><br><span class="line">			<span class="keyword">if</span> *statep != <span class="number">0</span> {</span><br><span class="line">				<span class="built_in">panic</span>(<span class="string">"sync: WaitGroup is reused before previous Wait has returned"</span>)</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">if</span> race.Enabled {</span><br><span class="line">				race.Enable()</span><br><span class="line">				race.Acquire(unsafe.Pointer(wg))</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-
-
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1579,13 +1504,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">255k</span>
+    <span title="站点总字数">256k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:52</span>
+    <span title="站点阅读时长">3:53</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
