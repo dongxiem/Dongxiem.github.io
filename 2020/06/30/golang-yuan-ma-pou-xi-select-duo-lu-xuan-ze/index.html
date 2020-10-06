@@ -22,18 +22,18 @@
 
   <meta name="description" content="document.querySelectorAll(&#39;.github-emoji&#39;)           .forEach(el &#x3D;&gt; {             if (!el.dataset.src) { return; }             const img &#x3D; document.createElement(&#39;img&#39;);             img.style">
 <meta property="og:type" content="article">
-<meta property="og:title" content="golang Sync源码剖析(6) - sync.Once">
-<meta property="og:url" content="https://dongxiem.github.io/2020/06/19/golang-sync-yuan-ma-pou-xi-6-sync.once/index.html">
+<meta property="og:title" content="golang 源码剖析 - Select多路选择">
+<meta property="og:url" content="https://dongxiem.github.io/2020/06/30/golang-yuan-ma-pou-xi-select-duo-lu-xuan-ze/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
 <meta property="og:description" content="document.querySelectorAll(&#39;.github-emoji&#39;)           .forEach(el &#x3D;&gt; {             if (!el.dataset.src) { return; }             const img &#x3D; document.createElement(&#39;img&#39;);             img.style">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-19T12:32:35.000Z">
-<meta property="article:modified_time" content="2020-09-28T04:19:44.265Z">
+<meta property="article:published_time" content="2020-06-30T15:33:15.000Z">
+<meta property="article:modified_time" content="2020-10-06T08:16:20.989Z">
 <meta property="article:author" content="Garmen Lee">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dongxiem.github.io/2020/06/19/golang-sync-yuan-ma-pou-xi-6-sync.once/">
+<link rel="canonical" href="https://dongxiem.github.io/2020/06/30/golang-yuan-ma-pou-xi-select-duo-lu-xuan-ze/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>golang Sync源码剖析(6) - sync.Once | 桃花岛杂货铺</title>
+  <title>golang 源码剖析 - Select多路选择 | 桃花岛杂货铺</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/19/golang-sync-yuan-ma-pou-xi-6-sync.once/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/30/golang-yuan-ma-pou-xi-select-duo-lu-xuan-ze/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          golang Sync源码剖析(6) - sync.Once
+          golang 源码剖析 - Select多路选择
         </h1>
 
         <div class="post-meta">
@@ -190,7 +190,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-06-19 20:32:35" itemprop="dateCreated datePublished" datetime="2020-06-19T20:32:35+08:00">2020-06-19</time>
+              <time title="创建时间：2020-06-30 23:33:15" itemprop="dateCreated datePublished" datetime="2020-06-30T23:33:15+08:00">2020-06-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,12 +270,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/16/golang-sync-yuan-ma-pou-xi-5-sync.pool/" rel="prev" title="golang Sync源码剖析(5) - sync.Pool">
-      <i class="fa fa-chevron-left"></i> golang Sync源码剖析(5) - sync.Pool
+    <a href="/2020/06/22/golang-sync-bao-yuan-ma-pou-xi-7-sync.cond/" rel="prev" title="golang Sync包源码剖析(7) - sync.Cond">
+      <i class="fa fa-chevron-left"></i> golang Sync包源码剖析(7) - sync.Cond
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/22/golang-sync-yuan-ma-pou-xi-7-sync.cond/" rel="next" title="golang Sync源码剖析(7) - sync.Cond">
-      golang Sync源码剖析(7) - sync.Cond <i class="fa fa-chevron-right"></i>
+    <a href="/2020/07/05/golang-yuan-ma-pou-xi-context-shang-xia-wen/" rel="next" title="golang 源码剖析 - Context上下文">
+      golang 源码剖析 - Context上下文 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -350,7 +350,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

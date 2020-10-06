@@ -163,6 +163,283 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/16/java-bing-fa-cas-fen-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/16/java-bing-fa-cas-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - CAS 分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-16 12:14:14" itemprop="dateCreated datePublished" datetime="2020-04-16T12:14:14+08:00">2020-04-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-CAS-介绍"><a href="#1-CAS-介绍" class="headerlink" title="1.CAS 介绍"></a>1.CAS 介绍</h1><p><strong>什么是CAS？</strong></p>
+<p>CAS，全称：Compare and Swap，即比较-替换；CAS是一种无锁算法<strong>，</strong>通过无锁的方式实现了多个线程间变量的同步；CAS 是乐观锁的一种实现方式，是一种轻量级锁，JUC 中很多工具类的实现就是基于 CAS 的。</p>
+<p>注意：JVM中的CAS操作正是利用了处理器提供的<strong>CMPXCHG指令实现</strong>的。</p>
+<p><strong>具体内容：</strong></p>
+<p>假设有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，才会将内存值修改为B并返回true，否则什么都不做并返回false。<strong>当然CAS一定要volatile变量配合</strong>，这样才能保证每次拿到的变量是主内存中最新的那个值，否则旧的预期值A对某条线程来说，永远是一个不会变的值A，只要某次CAS操作失败，永远都不可能成功。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/16/java-bing-fa-cas-fen-xi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/" class="post-title-link" itemprop="url">Java 并发 - 锁相关：Condition接口分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-02 09:13:45" itemprop="dateCreated datePublished" datetime="2020-04-02T09:13:45+08:00">2020-04-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>16 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>Condition就是一接口，而在AQS 中的<code>ConditionObject</code>内部类实现了这个接口。Condition接口中只是进行了一些等待和通知方法的声明，并没有进行实现，Condition 经常可以用在<strong>生产者-消费者</strong>的场景中，关于Condition相关的东西，我们需要先了解AQS相关的知识，可以看看之前的那篇文章：<a href="https://dongxiem.github.io/2020/03/31/java-bing-fa-aqs-kuang-jia-fen-xi/">Java 并发 - AQS：框架分析</a>，然后再进行Condition的了解</p>
+<p>这里先讲一句：Condition 中的方法则要配合锁对象使用，并通过<code>newCondition</code>方法获取实现类对象。这有点像Object 中的方法需要配合 synchronized 关键字使用。关于Condition与Object类实现的这些方法可以看这篇文章中最下面的那个对比，Ojbect类的<code>wait()</code>, <code>notify()</code> 或 <code>notifyAll()</code> 方法是基于对象的监视器锁的，我们现在所讲的Condition是基于 <code>ReentrantLock</code>  实现的，而ReentrantLock 是依赖于 AbstractQueuedSynchronizer 实现的。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/02/java-bing-fa-suo-xiang-guan-condition-jie-kou-fen-xi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Garmen Lee">
+      <meta itemprop="description" content="杂货铺售卖知识 诸位自取">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃花岛杂货铺">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/" class="post-title-link" itemprop="url">Java 并发 - 多线程：线程创建的几种方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-01 21:12:41" itemprop="dateCreated datePublished" datetime="2020-04-01T21:12:41+08:00">2020-04-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Java多线程与并发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>20k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>18 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>在这阶段的学习过程中我会先抛出一系列：线程如何创建？这是一个很关键的问题，并发的关键在于多线程，那么如何创建线程呢？大概有几种方式呢？这几种方式的区别是什么？什么情况下应该使用这种创建方式？什么时候又不应该呢？那么具体的过程应该是如何呢？是否应该给出一两个例子会更好的说明一下？</p>
+<p>问题太多，搞得自己都乱了，最主要的还是要一点点的去了解，最后串成一根线，才能更好对知识的进行掌握。</p>
+<p>我想应该将这几种方式联系起来做一个对比，这样才能更好的理解这些创建线程方式的优点与缺点。</p>
+<p>按照现有的认识，总的来说有两种实现线程的方式：</p>
+<ol>
+<li><strong>实现Runnable接口</strong></li>
+<li><strong>继承Thread类</strong></li>
+</ol>
+<p>其实按照我的理解的话，详细分一下的话可以分为三种，就是继承Thread类，实现Runnable接口，实现Callable接口（虽然其内部也是实现Runnable接口），主要就是实现Runnable接口没有返回值，而实现Callable接口可以有返回值，所以也可以按照这三种方式去思考实际开发过程中到底需要哪种创建方式。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/01/java-bing-fa-duo-xian-cheng-xian-cheng-chuang-jian-de-ji-chong-fang-shi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/03/26/java-bing-fa-duo-xian-cheng-xian-cheng-chi-de-shi-yong/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -998,7 +1275,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-09-28T04:16:20.689Z</updated>
+  <updated>2020-10-06T08:11:35.516Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>golang gin(1) - 整体框架分析</title>
-    <link href="https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/07/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
-    <published>2020-07-12T12:41:25.000Z</published>
-    <updated>2020-09-28T04:16:20.689Z</updated>
+    <link href="https://dongxiem.github.io/2020/08/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/"/>
+    <id>https://dongxiem.github.io/2020/08/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</id>
+    <published>2020-08-12T12:41:25.000Z</published>
+    <updated>2020-10-06T08:11:35.516Z</updated>
     
     <summary type="html">
     
@@ -55,9 +55,90 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(7) - sync.Cond</title>
-    <link href="https://dongxiem.github.io/2020/06/22/golang-sync-yuan-ma-pou-xi-7-sync.cond/"/>
-    <id>https://dongxiem.github.io/2020/06/22/golang-sync-yuan-ma-pou-xi-7-sync.cond/</id>
+    <title>golang 源码剖析 - Defer关键字</title>
+    <link href="https://dongxiem.github.io/2020/07/08/golang-yuan-ma-pou-xi-defer-guan-jian-zi/"/>
+    <id>https://dongxiem.github.io/2020/07/08/golang-yuan-ma-pou-xi-defer-guan-jian-zi/</id>
+    <published>2020-07-08T13:23:51.000Z</published>
+    <updated>2020-10-06T08:23:32.079Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 源码剖析 - Context上下文</title>
+    <link href="https://dongxiem.github.io/2020/07/05/golang-yuan-ma-pou-xi-context-shang-xia-wen/"/>
+    <id>https://dongxiem.github.io/2020/07/05/golang-yuan-ma-pou-xi-context-shang-xia-wen/</id>
+    <published>2020-07-05T15:41:55.000Z</published>
+    <updated>2020-10-06T08:18:17.758Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 源码剖析 - Select多路选择</title>
+    <link href="https://dongxiem.github.io/2020/06/30/golang-yuan-ma-pou-xi-select-duo-lu-xuan-ze/"/>
+    <id>https://dongxiem.github.io/2020/06/30/golang-yuan-ma-pou-xi-select-duo-lu-xuan-ze/</id>
+    <published>2020-06-30T15:33:15.000Z</published>
+    <updated>2020-10-06T08:16:20.989Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="https://dongxiem.github.io/categories/golang/"/>
+    
+    
+      <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang Sync包源码剖析(7) - sync.Cond</title>
+    <link href="https://dongxiem.github.io/2020/06/22/golang-sync-bao-yuan-ma-pou-xi-7-sync.cond/"/>
+    <id>https://dongxiem.github.io/2020/06/22/golang-sync-bao-yuan-ma-pou-xi-7-sync.cond/</id>
     <published>2020-06-22T05:13:25.000Z</published>
     <updated>2020-09-28T04:21:10.883Z</updated>
     
@@ -82,9 +163,9 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(6) - sync.Once</title>
-    <link href="https://dongxiem.github.io/2020/06/19/golang-sync-yuan-ma-pou-xi-6-sync.once/"/>
-    <id>https://dongxiem.github.io/2020/06/19/golang-sync-yuan-ma-pou-xi-6-sync.once/</id>
+    <title>golang Sync包源码剖析(6) - sync.Once</title>
+    <link href="https://dongxiem.github.io/2020/06/19/golang-sync-bao-yuan-ma-pou-xi-6-sync.once/"/>
+    <id>https://dongxiem.github.io/2020/06/19/golang-sync-bao-yuan-ma-pou-xi-6-sync.once/</id>
     <published>2020-06-19T12:32:35.000Z</published>
     <updated>2020-09-28T04:19:44.265Z</updated>
     
@@ -109,9 +190,9 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(5) - sync.Pool</title>
-    <link href="https://dongxiem.github.io/2020/06/16/golang-sync-yuan-ma-pou-xi-5-sync.pool/"/>
-    <id>https://dongxiem.github.io/2020/06/16/golang-sync-yuan-ma-pou-xi-5-sync.pool/</id>
+    <title>golang Sync包源码剖析(5) - sync.Pool</title>
+    <link href="https://dongxiem.github.io/2020/06/16/golang-sync-bao-yuan-ma-pou-xi-5-sync.pool/"/>
+    <id>https://dongxiem.github.io/2020/06/16/golang-sync-bao-yuan-ma-pou-xi-5-sync.pool/</id>
     <published>2020-06-16T12:19:25.000Z</published>
     <updated>2020-09-28T04:19:31.935Z</updated>
     
@@ -136,9 +217,9 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(4) - sync.Map</title>
-    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/"/>
-    <id>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</id>
+    <title>golang Sync包源码剖析(4) - sync.Map</title>
+    <link href="https://dongxiem.github.io/2020/06/12/golang-sync-bao-yuan-ma-pou-xi-4-sync.map/"/>
+    <id>https://dongxiem.github.io/2020/06/12/golang-sync-bao-yuan-ma-pou-xi-4-sync.map/</id>
     <published>2020-06-12T14:12:25.000Z</published>
     <updated>2020-09-27T14:02:54.080Z</updated>
     
@@ -163,9 +244,9 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(3) - sync.WaitGroup</title>
-    <link href="https://dongxiem.github.io/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/"/>
-    <id>https://dongxiem.github.io/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</id>
+    <title>golang Sync包源码剖析(3) - sync.WaitGroup</title>
+    <link href="https://dongxiem.github.io/2020/06/09/golang-sync-bao-yuan-ma-pou-xi-3-sync.waitgroup/"/>
+    <id>https://dongxiem.github.io/2020/06/09/golang-sync-bao-yuan-ma-pou-xi-3-sync.waitgroup/</id>
     <published>2020-06-09T04:25:21.000Z</published>
     <updated>2020-10-06T07:35:24.578Z</updated>
     
@@ -187,9 +268,9 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(2) - sync.RWMutex</title>
-    <link href="https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/"/>
-    <id>https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</id>
+    <title>golang Sync包源码剖析(2) - sync.RWMutex</title>
+    <link href="https://dongxiem.github.io/2020/06/07/golang-sync-bao-yuan-ma-pou-xi-2-sync.rwmutex/"/>
+    <id>https://dongxiem.github.io/2020/06/07/golang-sync-bao-yuan-ma-pou-xi-2-sync.rwmutex/</id>
     <published>2020-06-07T13:22:25.000Z</published>
     <updated>2020-10-05T12:37:57.460Z</updated>
     
@@ -217,9 +298,9 @@
   </entry>
   
   <entry>
-    <title>golang Sync源码剖析(1) - sync.Mutex</title>
-    <link href="https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/"/>
-    <id>https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</id>
+    <title>golang Sync包源码剖析(1) - sync.Mutex</title>
+    <link href="https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/"/>
+    <id>https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/</id>
     <published>2020-06-05T14:12:25.000Z</published>
     <updated>2020-10-06T07:48:00.238Z</updated>
     
@@ -260,11 +341,11 @@
   </entry>
   
   <entry>
-    <title>golang 源码剖析 - Channel</title>
-    <link href="https://dongxiem.github.io/2020/06/02/golang-yuan-ma-pou-xi-channel/"/>
-    <id>https://dongxiem.github.io/2020/06/02/golang-yuan-ma-pou-xi-channel/</id>
+    <title>golang 源码剖析 - Channel通道底层原理</title>
+    <link href="https://dongxiem.github.io/2020/06/02/golang-yuan-ma-pou-xi-channel-tong-dao-di-ceng-yuan-li/"/>
+    <id>https://dongxiem.github.io/2020/06/02/golang-yuan-ma-pou-xi-channel-tong-dao-di-ceng-yuan-li/</id>
     <published>2020-06-02T14:41:25.000Z</published>
-    <updated>2020-10-06T08:05:03.099Z</updated>
+    <updated>2020-10-06T08:22:52.000Z</updated>
     
     <summary type="html">
     
@@ -283,8 +364,6 @@
     
     
       <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-      <category term="gin" scheme="https://dongxiem.github.io/tags/gin/"/>
     
   </entry>
   
@@ -340,9 +419,9 @@
   </entry>
   
   <entry>
-    <title>golang 源码剖析 - Map</title>
-    <link href="https://dongxiem.github.io/2020/05/18/golang-yuan-ma-pou-xi-map/"/>
-    <id>https://dongxiem.github.io/2020/05/18/golang-yuan-ma-pou-xi-map/</id>
+    <title>golang 源码剖析 - Map映射</title>
+    <link href="https://dongxiem.github.io/2020/05/18/golang-yuan-ma-pou-xi-map-ying-she/"/>
+    <id>https://dongxiem.github.io/2020/05/18/golang-yuan-ma-pou-xi-map-ying-she/</id>
     <published>2020-05-18T13:31:25.000Z</published>
     <updated>2020-10-06T08:07:00.683Z</updated>
     
@@ -367,9 +446,9 @@
   </entry>
   
   <entry>
-    <title>golang 源码剖析 - Slice</title>
-    <link href="https://dongxiem.github.io/2020/05/12/golang-yuan-ma-pou-xi-slice/"/>
-    <id>https://dongxiem.github.io/2020/05/12/golang-yuan-ma-pou-xi-slice/</id>
+    <title>golang 源码剖析 - Slice切片</title>
+    <link href="https://dongxiem.github.io/2020/05/12/golang-yuan-ma-pou-xi-slice-qie-pian/"/>
+    <id>https://dongxiem.github.io/2020/05/12/golang-yuan-ma-pou-xi-slice-qie-pian/</id>
     <published>2020-05-12T13:31:25.000Z</published>
     <updated>2020-10-06T08:07:47.363Z</updated>
     
@@ -462,86 +541,6 @@
       &lt;h1 id=&quot;1-什么是FutureTask？&quot;&gt;&lt;a href=&quot;#1-什么是FutureTask？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是FutureTask？&quot;&gt;&lt;/a&gt;1. 什么是FutureTask？&lt;/h1&gt;&lt;p&gt;前面的Blog介绍了&lt;u&gt;&lt;code&gt;Future&lt;/code&gt;接口。这个接口有一个实现类叫&lt;code&gt;FutureTask&lt;/code&gt;&lt;/u&gt;。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的&lt;code&gt;cancel&lt;/code&gt;，&lt;code&gt;get&lt;/code&gt;，&lt;code&gt;isDone&lt;/code&gt;等方法要自己实现起来都是&lt;strong&gt;非常复杂&lt;/strong&gt;的。所以JDK提供了一个&lt;code&gt;FutureTask&lt;/code&gt;类来供我们使用。&lt;/p&gt;
 &lt;p&gt;FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，&lt;u&gt;线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务&lt;/u&gt;。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而&lt;u&gt;被提交的Runnable或Callable任务都会被包装成FutureTask&lt;/u&gt;，由线程池的工作线程去执行。&lt;/p&gt;
 &lt;p&gt;还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的&lt;code&gt;RunnableFuture&lt;/code&gt;接口的，而&lt;code&gt;RunnableFuture&lt;/code&gt;接口同时继承了&lt;code&gt;Runnable&lt;/code&gt;接口和&lt;code&gt;Future&lt;/code&gt;接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（&lt;code&gt;FutureTask.run()&lt;/code&gt;）。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：线程间通信交替打印</title>
-    <link href="https://dongxiem.github.io/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/"/>
-    <id>https://dongxiem.github.io/2020/04/26/java-bing-fa-duo-xian-cheng-xian-cheng-jian-tong-xin-jiao-ti-da-yin/</id>
-    <published>2020-04-26T11:15:45.000Z</published>
-    <updated>2020-09-27T13:36:45.378Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;这一部分，我通过一个经典的问题来引出几个线程间通信的方法，即：三个线程如何实现交替打印ABC？&lt;/p&gt;
-&lt;h1 id=&quot;2-代码实现&quot;&gt;&lt;a href=&quot;#2-代码实现&quot; class=&quot;headerlink&quot; title=&quot;2.代码实现&quot;&gt;&lt;/a&gt;2.代码实现&lt;/h1&gt;&lt;h2 id=&quot;2-1-Synchronized&quot;&gt;&lt;a href=&quot;#2-1-Synchronized&quot; class=&quot;headerlink&quot; title=&quot;2.1 Synchronized&quot;&gt;&lt;/a&gt;2.1 Synchronized&lt;/h2&gt;&lt;p&gt;基本思路：使用同步块和wait、notify的方法控制三个线程的执行次序。具体方法如下：从大的方向上来讲，该问题为三线程间的同步唤醒操作，主要的目的就是&lt;code&gt;ThreadA-&amp;gt;ThreadB-&amp;gt;ThreadC-&amp;gt;ThreadA&lt;/code&gt;循环执行三个线程。为了控制线程执行的顺序，那么就必须要确定唤醒、等待的顺序，所以每一个线程必须同时持有两个对象锁，才能进行打印操作。一个对象锁是prev，就是前一个线程所对应的对象锁，其主要作用是保证当前线程一定是在前一个线程操作完成后（即前一个线程释放了其对应的对象锁）才开始执行。还有一个锁就是自身对象锁。主要的思想就是，为了控制执行的顺序，必须要先持有prev锁（也就前一个线程要释放其自身对象锁），然后当前线程再申请自己对象锁，两者兼备时打印。之后首先调用&lt;code&gt;self.notify()&lt;/code&gt;唤醒下一个等待线程（注意notify不会立即释放对象锁，只有等到同步块代码执行完毕后才会释放），再调用&lt;code&gt;prev.wait()&lt;/code&gt;立即释放prev对象锁，当前线程进入休眠，等待其他线程的notify操作再次唤醒。&lt;/p&gt;
-&lt;p&gt;下面程序可以看到程序一共定义了a,b,c三个对象锁，分别对应A、B、C三个线程。A线程最先运行，A线程按顺序申请c,a对象锁，打印操作后按顺序释放a,c对象锁，并且通过notify操作唤醒线程B。线程B首先等待获取A锁，再申请B锁，后打印B，再释放B，A锁，唤醒C。线程C等待B锁，再申请C锁，后打印C，再释放C,B锁，唤醒A。看起来似乎没什么问题，但如果你仔细想一下，就会发现有问题，就是初始条件，三个线程必须按照A,B,C的顺序来启动，但是这种假设依赖于JVM中线程调度、执行的顺序。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="AQS" scheme="https://dongxiem.github.io/tags/AQS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - Synchronized 原理分析</title>
-    <link href="https://dongxiem.github.io/2020/04/25/java-bing-fa-synchronized-yuan-li-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/04/25/java-bing-fa-synchronized-yuan-li-fen-xi/</id>
-    <published>2020-04-25T11:12:45.000Z</published>
-    <updated>2020-09-27T13:38:53.467Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.概述&quot;&gt;&lt;/a&gt;1.概述&lt;/h1&gt;&lt;p&gt;JDK1.6 之后 Synchronized  的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。锁主要存在四中状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。&lt;/p&gt;
-&lt;p&gt;Java中的&lt;code&gt;synchronized&lt;/code&gt; 的偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&amp;gt;轻量级锁-&amp;gt;重量级锁 的顺序升级。JVM种的锁也是能降级的，只不过条件很苛刻，可以相当于没有了，策略是为了提高获得锁和释放锁的效率。&lt;/p&gt;
-&lt;p&gt;所以对Synchronized 的重点分析应该是其升级流程，以前是我觉得So easy，不就这几个状态升上去而已，不过在某天看了 &lt;a href=&quot;https://github.com/farmerjohngit/myblog/issues/12&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;死磕Synchronized底层实现&lt;/a&gt; 之后，发现我还是太嫩了，这才是真正的深入，也许对知识的求知就该如此不断的进行深入，对于Synchronized 还是有很多值得发现的知识，以下记录了学习到的一些笔记，大概对一整个锁的升级流程有了一些认识和了解。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;锁升级的过程可以具体看该图，大致的流程框架图很清晰（文末已注明出处）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/03/31/nCGAmlfKqzhjdv1.png&quot; alt=&quot;Synchronized锁升级流程图&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - Synchronized 与其他一些锁机制的对比</title>
-    <link href="https://dongxiem.github.io/2020/04/23/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/"/>
-    <id>https://dongxiem.github.io/2020/04/23/java-bing-fa-synchronized-yu-qi-ta-yi-xie-suo-ji-zhi-de-dui-bi/</id>
-    <published>2020-04-23T04:13:45.000Z</published>
-    <updated>2020-09-27T13:38:44.760Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h1&gt;&lt;p&gt;我们前面已经 Synchronized 在JDK1.6 进行哪一些方面的优化，通过这些底层的优化之后Synchronized  变得好用了很多，那么它究竟和其他锁机制有什么差别？换种方式说，我在进行编程的过程中，究竟要如何进行选择？什么时候应该选择Synchronized？而什么时候不选用Synchronized而选用其他的锁机制。&lt;/p&gt;
-&lt;p&gt;总感觉学习了Synchronized之后，对于其内部原理熟悉了，不知道有没有其他人跟我一样困惑，我究竟该何时进行使用它呢？在哪个场景下我该第一时间想到这货？我觉得进行选择还应该先进行对比，将和我们之前学习到的一些同步机制进行联系起来，有对比才有总结，尽量多进行比较，多点思考，才有更深入的理解与认识。&lt;/p&gt;
     
     </summary>
     

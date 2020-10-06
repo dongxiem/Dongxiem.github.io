@@ -22,8 +22,8 @@
 
   <meta name="description" content="1.Sync包 简明介绍golang 语言有着天生适合高并发的特性，作为原生支持用户态进程（Goroutine）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是编写 golang 源码的大叔们就给了src&#x2F;sync 这么个包，通过浏览源码可以知道src&#x2F;sync包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="golang Sync源码剖析(1) - sync.Mutex">
-<meta property="og:url" content="https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/index.html">
+<meta property="og:title" content="golang Sync包源码剖析(1) - sync.Mutex">
+<meta property="og:url" content="https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
 <meta property="og:description" content="1.Sync包 简明介绍golang 语言有着天生适合高并发的特性，作为原生支持用户态进程（Goroutine）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是编写 golang 源码的大叔们就给了src&#x2F;sync 这么个包，通过浏览源码可以知道src&#x2F;sync包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/">
+<link rel="canonical" href="https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>golang Sync源码剖析(1) - sync.Mutex | 桃花岛杂货铺</title>
+  <title>golang Sync包源码剖析(1) - sync.Mutex | 桃花岛杂货铺</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          golang Sync源码剖析(1) - sync.Mutex
+          golang Sync包源码剖析(1) - sync.Mutex
         </h1>
 
         <div class="post-meta">
@@ -450,8 +450,8 @@
       <i class="fa fa-chevron-left"></i> golang 基础 - 关于使用Type定义类型的几个问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/" rel="next" title="golang Sync源码剖析(2) - sync.RWMutex">
-      golang Sync源码剖析(2) - sync.RWMutex <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/07/golang-sync-bao-yuan-ma-pou-xi-2-sync.rwmutex/" rel="next" title="golang Sync包源码剖析(2) - sync.RWMutex">
+      golang Sync包源码剖析(2) - sync.RWMutex <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -527,7 +527,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

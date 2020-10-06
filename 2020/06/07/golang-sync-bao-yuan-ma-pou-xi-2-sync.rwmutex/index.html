@@ -22,8 +22,8 @@
 
   <meta name="description" content="1.sync.RWMutex 介绍Sync.RWMutex 官方给出的定义是读&#x2F;写互斥锁，锁可以由任意数量的读者或单个写者持有。 RWMutex的零值是未锁定的互斥锁。  A RWMutex is a reader&#x2F;writer mutual exclusion lock. The lock can be held by an arbitrary number of readers or a si">
 <meta property="og:type" content="article">
-<meta property="og:title" content="golang Sync源码剖析(2) - sync.RWMutex">
-<meta property="og:url" content="https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/index.html">
+<meta property="og:title" content="golang Sync包源码剖析(2) - sync.RWMutex">
+<meta property="og:url" content="https://dongxiem.github.io/2020/06/07/golang-sync-bao-yuan-ma-pou-xi-2-sync.rwmutex/index.html">
 <meta property="og:site_name" content="桃花岛杂货铺">
 <meta property="og:description" content="1.sync.RWMutex 介绍Sync.RWMutex 官方给出的定义是读&#x2F;写互斥锁，锁可以由任意数量的读者或单个写者持有。 RWMutex的零值是未锁定的互斥锁。  A RWMutex is a reader&#x2F;writer mutual exclusion lock. The lock can be held by an arbitrary number of readers or a si">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/">
+<link rel="canonical" href="https://dongxiem.github.io/2020/06/07/golang-sync-bao-yuan-ma-pou-xi-2-sync.rwmutex/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>golang Sync源码剖析(2) - sync.RWMutex | 桃花岛杂货铺</title>
+  <title>golang Sync包源码剖析(2) - sync.RWMutex | 桃花岛杂货铺</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/">
+    <link itemprop="mainEntityOfPage" href="https://dongxiem.github.io/2020/06/07/golang-sync-bao-yuan-ma-pou-xi-2-sync.rwmutex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          golang Sync源码剖析(2) - sync.RWMutex
+          golang Sync包源码剖析(2) - sync.RWMutex
         </h1>
 
         <div class="post-meta">
@@ -375,12 +375,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/" rel="prev" title="golang Sync源码剖析(1) - sync.Mutex">
-      <i class="fa fa-chevron-left"></i> golang Sync源码剖析(1) - sync.Mutex
+    <a href="/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/" rel="prev" title="golang Sync包源码剖析(1) - sync.Mutex">
+      <i class="fa fa-chevron-left"></i> golang Sync包源码剖析(1) - sync.Mutex
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/" rel="next" title="golang Sync源码剖析(3) - sync.WaitGroup">
-      golang Sync源码剖析(3) - sync.WaitGroup <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/09/golang-sync-bao-yuan-ma-pou-xi-3-sync.waitgroup/" rel="next" title="golang Sync包源码剖析(3) - sync.WaitGroup">
+      golang Sync包源码剖析(3) - sync.WaitGroup <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -456,7 +456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
