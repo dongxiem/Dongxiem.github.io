@@ -205,67 +205,6 @@
       </tags>
   </entry>
   <entry>
-    <title>golang 源码剖析 - Channel</title>
-    <url>/2020/06/29/golang-yuan-ma-pou-xi-channel/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>Channel有锁还是无锁？</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-        <tag>gin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang 源码剖析 - Map</title>
-    <url>/2020/06/27/golang-yuan-ma-pou-xi-map/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id=""><a href="#" class="headerlink" title=""></a></h1><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-        <tag>gin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>golang Sync源码剖析(7) - sync.Cond</title>
     <url>/2020/06/22/golang-sync-yuan-ma-pou-xi-7-sync.cond/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
@@ -658,11 +597,9 @@
     <url>/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><p><code>golang</code> 语言有着天生适合高并发的特性，作为原生支持用户态进程（<code>Goroutine</code>）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是编写 <code>golang</code> 源码的大叔们就给了<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a> 这么个包，通过浏览源码可以知道<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11" target="_blank" rel="noopener">sync.Mutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7" target="_blank" rel="noopener">sync.RWMutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7" target="_blank" rel="noopener">sync.WaitGroup</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7" target="_blank" rel="noopener">sync.Map</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44" target="_blank" rel="noopener">sync.Pool</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7" target="_blank" rel="noopener">sync.Once</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5" target="_blank" rel="noopener">sync.Cond</a>，也可以看一下官方给的sync包的一些方法解释： <a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> ，同时为了节省一下 Clone 源码时间，或者只想简单回顾一下源码，这里给了快捷的入口：<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>。</p>
 <p>在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个<code>goroutine</code>在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而<a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> 包中所有的结构都适用于<code>goroutine</code>并发执行的情况，需要好好掌握。</p>
-<p>注：以下<code>golang</code>源码版本为：1.15</p>
 <a id="more"></a>
 
-
-
+<p>注：以下<code>golang</code>源码版本为：1.15</p>
 <hr>
 <h1 id="2-sync-Mutex-源码解析"><a href="#2-sync-Mutex-源码解析" class="headerlink" title="2.sync.Mutex 源码解析"></a>2.sync.Mutex 源码解析</h1><p>​    </p>
 <h2 id="sync-Mutex-背景更迭"><a href="#sync-Mutex-背景更迭" class="headerlink" title="sync.Mutex 背景更迭"></a>sync.Mutex 背景更迭</h2><p>我认为了解知识的最好方式是从其发展背景进行了解，比如它在发展的过程中，做了哪些改变？是因为什么问题而做了这些改变？是否能够使得现在的框架更加优秀？我想如果有这些问题的话，了解会更加深入一些。</p>
@@ -965,6 +902,37 @@
       </categories>
       <tags>
         <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang 源码剖析 - Channel</title>
+    <url>/2020/06/02/golang-yuan-ma-pou-xi-channel/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>Channel有锁还是无锁？</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+        <tag>gin</tag>
       </tags>
   </entry>
   <entry>
@@ -1300,8 +1268,66 @@ val, ok := <-ch
       </tags>
   </entry>
   <entry>
+    <title>golang 源码剖析 - Map</title>
+    <url>/2020/05/18/golang-yuan-ma-pou-xi-map/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang 源码剖析 - Slice</title>
+    <url>/2020/05/12/golang-yuan-ma-pou-xi-slice/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>golang 基础 - go的命令源码文件</title>
-    <url>/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</url>
+    <url>/2020/05/08/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-命令源码文件"><a href="#1-命令源码文件" class="headerlink" title="1.命令源码文件"></a>1.命令源码文件</h1><p><strong>命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的</strong>。我们可以通过构建或安装，生成与其对应的可执行文件，后者一般会与该命令源码文件的直接父目录同名。</p>
 <p><strong>如果一个源码文件声明属于main包，并且包含一个无参数声明且无结果声明的main函数，那么它就是命令源码文件</strong>。 就像下面这段代码：</p>
 <figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    fmt.Println(<span class="string">"Hello, world!"</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -1426,7 +1452,7 @@ val, ok := <-ch
   </entry>
   <entry>
     <title>golang 基础 - go的环境变量</title>
-    <url>/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/</url>
+    <url>/2020/05/08/golang-ji-chu-go-de-huan-jing-bian-liang/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-三个环境变量"><a href="#1-三个环境变量" class="headerlink" title="1.三个环境变量"></a>1.三个环境变量</h1><p>刚接触go的时候很头疼，一下子需要我配置三个环境变量，这三个环境变量看起来很让人头疼，感觉起来三个环境变量的意思大致，区分度不高，这三个环境变量也就是 <code>GOROOT</code>、<code>GOPATH</code> 和 <code>GOBIN</code>。这里简单介绍一下。</p>
 <ul>
 <li>GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径。</li>

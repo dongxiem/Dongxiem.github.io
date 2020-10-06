@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/05/12/golang-yuan-ma-pou-xi-slice/</loc>
+    
+    <lastmod>2020-10-06T08:07:47.363Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/05/18/golang-yuan-ma-pou-xi-map/</loc>
+    
+    <lastmod>2020-10-06T08:07:00.683Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/05/08/golang-ji-chu-go-de-huan-jing-bian-liang/</loc>
+    
+    <lastmod>2020-10-06T08:06:25.236Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/05/08/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</loc>
+    
+    <lastmod>2020-10-06T08:06:22.594Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
+    
+    <lastmod>2020-10-06T08:05:16.475Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/06/02/golang-yuan-ma-pou-xi-channel/</loc>
+    
+    <lastmod>2020-10-06T08:05:03.099Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
+    
+    <lastmod>2020-10-06T07:48:00.238Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/06/09/golang-sync-yuan-ma-pou-xi-3-sync.waitgroup/</loc>
     
     <lastmod>2020-10-06T07:35:24.578Z</lastmod>
@@ -12,13 +61,6 @@
     <loc>https://dongxiem.github.io/2020/06/07/golang-sync-yuan-ma-pou-xi-2-sync.rwmutex/</loc>
     
     <lastmod>2020-10-05T12:37:57.460Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/06/05/golang-sync-yuan-ma-pou-xi-1-sync.mutex/</loc>
-    
-    <lastmod>2020-10-05T11:14:48.292Z</lastmod>
     
   </url>
   
@@ -65,30 +107,9 @@
   </url>
   
   <url>
-    <loc>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-ming-ling-yuan-ma-wen-jian/</loc>
-    
-    <lastmod>2020-09-28T03:29:36.220Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dongxiem.github.io/2020/06/12/golang-sync-yuan-ma-pou-xi-4-sync.map/</loc>
     
     <lastmod>2020-09-27T14:02:54.080Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/06/27/golang-yuan-ma-pou-xi-map/</loc>
-    
-    <lastmod>2020-09-27T13:40:27.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/06/29/golang-yuan-ma-pou-xi-channel/</loc>
-    
-    <lastmod>2020-09-27T13:40:17.678Z</lastmod>
     
   </url>
   
@@ -194,20 +215,6 @@
     <loc>https://dongxiem.github.io/2020/03/24/java-bing-fa-duo-xian-cheng-shen-ru-xian-cheng-chi-yuan-li/</loc>
     
     <lastmod>2020-09-27T13:35:36.765Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
-    
-    <lastmod>2020-09-22T02:38:37.734Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/05/15/golang-ji-chu-go-de-huan-jing-bian-liang/</loc>
-    
-    <lastmod>2020-08-21T14:26:14.533Z</lastmod>
     
   </url>
   

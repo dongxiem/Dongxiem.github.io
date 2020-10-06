@@ -28,7 +28,7 @@
 <meta property="og:description" content="1.Sync包 简明介绍golang 语言有着天生适合高并发的特性，作为原生支持用户态进程（Goroutine）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是编写 golang 源码的大叔们就给了src&#x2F;sync 这么个包，通过浏览源码可以知道src&#x2F;sync包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-05T14:12:25.000Z">
-<meta property="article:modified_time" content="2020-10-05T11:14:48.292Z">
+<meta property="article:modified_time" content="2020-10-06T07:48:00.238Z">
 <meta property="article:author" content="Garmen Lee">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -227,11 +227,9 @@
       
         <h1 id="1-Sync包-简明介绍"><a href="#1-Sync包-简明介绍" class="headerlink" title="1.Sync包 简明介绍"></a>1.Sync包 简明介绍</h1><p><code>golang</code> 语言有着天生适合高并发的特性，作为原生支持用户态进程（<code>Goroutine</code>）的语言，当涉及到并发编程，多线程编程时候，则离不开锁相关的概念了，于是编写 <code>golang</code> 源码的大叔们就给了<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a> 这么个包，通过浏览源码可以知道<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>包中提供了用于同步的一些基本原语，可以说这是一个很重要的的包了，如果掌握这个包，在编写代码的工程中肯定能够大有帮助，这个包大体上有：<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/mutex.go#L11" target="_blank" rel="noopener">sync.Mutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/rwmutex.go#L7" target="_blank" rel="noopener">sync.RWMutex</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/waitgroup.go#L7" target="_blank" rel="noopener">sync.WaitGroup</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/map.go#L7" target="_blank" rel="noopener">sync.Map</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/pool.go#L44" target="_blank" rel="noopener">sync.Pool</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/once.go#L7" target="_blank" rel="noopener">sync.Once</a>、<a href="https://sourcegraph.com/github.com/golang/go@master/-/blob/src/sync/cond.go#L5" target="_blank" rel="noopener">sync.Cond</a>，也可以看一下官方给的sync包的一些方法解释： <a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> ，同时为了节省一下 Clone 源码时间，或者只想简单回顾一下源码，这里给了快捷的入口：<a href="https://sourcegraph.com/github.com/golang/go@master/-/tree/src/sync" target="_blank" rel="noopener">src/sync</a>。</p>
 <p>在并发编程中，同步原语或者锁，他们的主要作用是保证多个线程或者多个<code>goroutine</code>在访问同一片内存时不会出现混乱的问题，这个是一个非常重要的内容，很多人在编写代码的时候常常没有注重对这些并发访问的内容进行关注，导致出现事故也不清楚是什么原因，而<a href="https://golang.org/pkg/sync/" target="_blank" rel="noopener"><code>sync</code></a> 包中所有的结构都适用于<code>goroutine</code>并发执行的情况，需要好好掌握。</p>
-<p>注：以下<code>golang</code>源码版本为：1.15</p>
 <a id="more"></a>
 
-
-
+<p>注：以下<code>golang</code>源码版本为：1.15</p>
 <hr>
 <h1 id="2-sync-Mutex-源码解析"><a href="#2-sync-Mutex-源码解析" class="headerlink" title="2.sync.Mutex 源码解析"></a>2.sync.Mutex 源码解析</h1><p>​    </p>
 <h2 id="sync-Mutex-背景更迭"><a href="#sync-Mutex-背景更迭" class="headerlink" title="sync.Mutex 背景更迭"></a>sync.Mutex 背景更迭</h2><p>我认为了解知识的最好方式是从其发展背景进行了解，比如它在发展的过程中，做了哪些改变？是因为什么问题而做了这些改变？是否能够使得现在的框架更加优秀？我想如果有这些问题的话，了解会更加深入一些。</p>
@@ -529,7 +527,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
