@@ -28,7 +28,7 @@
 <meta property="og:description" content="1 简介对于一个线程要如何去停止呢？还有不同情况下的线程要如何停止呢？停止一个线程是什么意思？就是让这个线程在它进行任务处理的时候进行停止，停掉当前的操作，之前有学习到一个Thread.stop()方法，好像已经被废弃了，是不安全的一个方法，那么除了这个方法，还有其他什么办法吗？ 总的来说，Java有如下几种方法去停止线程：  使用stop方法强行终止，但是不推荐这个方法，因为stop是过期作废的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-15T10:23:25.000Z">
-<meta property="article:modified_time" content="2020-09-27T13:35:44.011Z">
+<meta property="article:modified_time" content="2020-10-20T13:36:05.121Z">
 <meta property="article:author" content="Garmen Lee">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="并发">
@@ -402,7 +402,6 @@
 <p>由于stop()方法以及在JDK中被标明为“过期/作废”的方法，显然它在功能上具有缺陷，所以不建议在程序张使用stop()方法。</p>
 <hr>
 <h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3 小结"></a>3 小结</h1><p>以上总结了一些如何去停止线程的方法，最重要的就是使用<code>interrupt</code>打出的那两套组合拳，还讲了<code>interrupted</code> 和 <code>isinterrupted</code>的区别，还讲了一下sleep()方法下进行线程停止会发生什么，最后再浅显的讲解了一下stop方法带来的不好，还是有很多东西需要深入理解的。</p>
-<p>以上参考书籍及文章：</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

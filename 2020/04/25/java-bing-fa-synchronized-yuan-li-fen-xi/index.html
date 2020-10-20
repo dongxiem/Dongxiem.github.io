@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/03/31/QZesVDEtJqmHl9C.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/31/8U6mNSjGLeKMrEB.png">
 <meta property="article:published_time" content="2020-04-25T11:12:45.000Z">
-<meta property="article:modified_time" content="2020-09-27T13:38:53.467Z">
+<meta property="article:modified_time" content="2020-10-20T13:34:54.305Z">
 <meta property="article:author" content="Garmen Lee">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="并发">
@@ -365,7 +365,6 @@
 </ol>
 <p>偏向锁撤销的具体流程如下所示：</p>
 <p><img src="https://i.loli.net/2020/03/31/EUIOaiTgNluLqzw.png" alt="偏向锁撤销流程图"></p>
-<p>偏向锁撤销的具体底层代码分析如下：</p>
 <h3 id="2-1-8-批量重偏向与撤销"><a href="#2-1-8-批量重偏向与撤销" class="headerlink" title="2.1.8 批量重偏向与撤销"></a>2.1.8 批量重偏向与撤销</h3><p>JVM中还增加了一种批量重偏向/撤销的机制，主要是解决如下两种情况：</p>
 <ol>
 <li>重偏向（<code>bulk rebias</code>）机制解决的场景：一个线程创建了大量对象并执行了初始的同步操作，之后在另一个线程中将这些对象作为锁进行之后的操作。这种case下，会导致大量的偏向锁撤销操作。</li>
@@ -386,7 +385,6 @@
 <p><img src="https://i.loli.net/2020/03/31/pKTxoGV4clYetOL.png" alt="image.png"></p>
 <p>整体流程图示如下：</p>
 <p><img src="https://i.loli.net/2020/03/31/dCB5fQcuU49j3Pn.png" alt="image.png"></p>
-<p>轻量级锁的锁获取源码：</p>
 <h3 id="2-2-2-轻量级锁释放锁"><a href="#2-2-2-轻量级锁释放锁" class="headerlink" title="2.2.2 轻量级锁释放锁"></a>2.2.2 轻量级锁释放锁</h3><p>其释放锁步骤如下（轻量级锁的释放也是通过CAS操作来进行的）：</p>
 <ol>
 <li>取出在获取轻量级锁保存在<code>Displaced Mark Word</code>中的数据；</li>
