@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/</loc>
+    
+    <lastmod>2020-10-28T03:24:42.972Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/03/12/java-ji-he-kuang-jia-hashmap-fen-xi/</loc>
     
     <lastmod>2020-10-20T13:36:07.398Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>https://dongxiem.github.io/2020/06/04/golang-ji-chu-guan-yu-shi-yong-type-ding-yi-lei-xing-de-ji-ge-wen-ti/</loc>
     
     <lastmod>2020-10-06T08:05:16.475Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/</loc>
-    
-    <lastmod>2020-10-06T07:48:00.238Z</lastmod>
     
   </url>
   
