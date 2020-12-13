@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongxiem.github.io/2020/12/13/golang/</loc>
+    
+    <lastmod>2020-12-13T09:16:23.461Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/</loc>
     
-    <lastmod>2020-10-28T03:24:42.972Z</lastmod>
+    <lastmod>2020-10-28T03:29:57.529Z</lastmod>
     
   </url>
   

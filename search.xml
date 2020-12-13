@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>golang - </title>
+    <url>/2020/12/13/golang/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+  </entry>
+  <entry>
     <title>golang gin(1) - 整体框架分析</title>
     <url>/2020/08/12/golang-gin-1-zheng-ti-kuang-jia-fen-xi/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Gin-简明介绍"><a href="#1-Gin-简明介绍" class="headerlink" title="1.Gin 简明介绍"></a>1.Gin 简明介绍</h1><p>gin 是什么？官方给的解释为：Gin 是一个用 Go (Golang) 编写的 HTTP web 框架。 它是一个类似于 <a href="https://github.com/go-martini/martini" target="_blank" rel="noopener">martini</a> 但拥有更好性能的 API 框架, 优于 <a href="https://github.com/julienschmidt/httprouter" target="_blank" rel="noopener">httprouter</a>，速度提高了近 40 倍。</p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dongxiem.github.io/"/>
-  <updated>2020-10-06T08:11:35.516Z</updated>
+  <updated>2020-12-13T09:16:23.461Z</updated>
   <id>https://dongxiem.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>golang - </title>
+    <link href="https://dongxiem.github.io/2020/12/13/golang/"/>
+    <id>https://dongxiem.github.io/2020/12/13/golang/</id>
+    <published>2020-12-13T09:16:23.461Z</published>
+    <updated>2020-12-13T09:16:23.461Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>golang gin(1) - 整体框架分析</title>
@@ -302,7 +325,7 @@
     <link href="https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/"/>
     <id>https://dongxiem.github.io/2020/06/05/golang-sync-bao-yuan-ma-pou-xi-1-sync.mutex/</id>
     <published>2020-06-05T14:12:25.000Z</published>
-    <updated>2020-10-28T03:24:42.972Z</updated>
+    <updated>2020-10-28T03:29:57.529Z</updated>
     
     <summary type="html">
     
@@ -526,31 +549,6 @@
     
     
       <category term="go" scheme="https://dongxiem.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 并发 - 多线程：FutureTask源码分析</title>
-    <link href="https://dongxiem.github.io/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/"/>
-    <id>https://dongxiem.github.io/2020/04/29/java-bing-fa-duo-xian-cheng-futuretask-yuan-ma-fen-xi/</id>
-    <published>2020-04-29T11:18:45.000Z</published>
-    <updated>2020-10-20T13:35:37.268Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-什么是FutureTask？&quot;&gt;&lt;a href=&quot;#1-什么是FutureTask？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是FutureTask？&quot;&gt;&lt;/a&gt;1. 什么是FutureTask？&lt;/h1&gt;&lt;p&gt;前面的Blog介绍了&lt;u&gt;&lt;code&gt;Future&lt;/code&gt;接口。这个接口有一个实现类叫&lt;code&gt;FutureTask&lt;/code&gt;&lt;/u&gt;。FutureTask类有什么用？为什么要有一个FutureTask类？前面说到了Future只是一个接口，而它里面的&lt;code&gt;cancel&lt;/code&gt;，&lt;code&gt;get&lt;/code&gt;，&lt;code&gt;isDone&lt;/code&gt;等方法要自己实现起来都是&lt;strong&gt;非常复杂&lt;/strong&gt;的。所以JDK提供了一个&lt;code&gt;FutureTask&lt;/code&gt;类来供我们使用。&lt;/p&gt;
-&lt;p&gt;FutureTask是Future的具体实现，且实现了Runnable接口，即FutureTask满足了Task的行为，是一个可以被用来执行的Future。FutureTask是JUC提供的线程池实现用到的任务基本单元，&lt;u&gt;线程池主要接收两种对象：一个是Runnable任务，一种是Callable任务&lt;/u&gt;。按照ExecutorService接口定义的行为，可以将Runnable或Callable任务提交到线程池执行，而&lt;u&gt;被提交的Runnable或Callable任务都会被包装成FutureTask&lt;/u&gt;，由线程池的工作线程去执行。&lt;/p&gt;
-&lt;p&gt;还有的就是前面的文章中所讲的FutureTask 为什么可以使用Executor 也可以使用线程直接执行？因为FutureTask是实现的&lt;code&gt;RunnableFuture&lt;/code&gt;接口的，而&lt;code&gt;RunnableFuture&lt;/code&gt;接口同时继承了&lt;code&gt;Runnable&lt;/code&gt;接口和&lt;code&gt;Future&lt;/code&gt;接口。因此，FutureTask可以交给Executor执行，也可以由调用线程直接执行（&lt;code&gt;FutureTask.run()&lt;/code&gt;）。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java多线程与并发" scheme="https://dongxiem.github.io/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Java" scheme="https://dongxiem.github.io/tags/Java/"/>
-    
-      <category term="并发" scheme="https://dongxiem.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
